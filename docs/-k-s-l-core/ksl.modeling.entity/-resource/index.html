@@ -40,7 +40,7 @@
             </a>
     </div>
     <div>
-1.0    </div>
+R1.0.1    </div>
     <div class="pull-right d-flex">
         <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
         <div id="searchBar"></div>
@@ -55,7 +55,7 @@
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><span class="current">Resource</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Resource</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">Resource</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-resource-c-ifc/index.html">ResourceCIfc</a></div><p class="paragraph">A Resource represents a number of common units that can be allocated to entities.  A resource has an initial capacity that cannot be changed during a replication. This base resource class can only be busy or idle.</p><p class="paragraph">A resource is busy if at least 1 unit has been allocated. A resource becomes busy when it has allocations. If a seize-request occurs and the resource has capacity to fill it completely, then the request is allocated the requested amount.  If insufficient capacity is available at the time of the request, then the request waits until the requested units can be allocated.</p><p class="paragraph">If b(t) is the number of units allocated at time t, and c(t) is the current capacity of the resource, then the number of available units, a(t), is defined as a(t) = c(t) - b(t).  Thus, a resource is idle if a(t) = c(t).  Since a resource is busy if b(t) 0, busy and idle are complements of each other. A resource is either busy b(t) 0 or idle b(t) = 0.  If a(t) 0, then the resource has units that it can be allocated.</p><p class="paragraph">The utilization of a resource is defined as the ratio of the average number of busy units to the average number of active units.  Units are active if they are part of the current capacity of the resource.</p><p class="paragraph">Subclasses of Resource implement additional state behavior.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">Resource</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span> : <a href="../-process-model/index.html">ProcessModel</a>, <a href="../-resource-c-ifc/index.html">ResourceCIfc</a></div><p class="paragraph">A Resource represents a number of common units that can be allocated to entities.  A resource has an initial capacity that cannot be changed during a replication. This base resource class can only be busy or idle.</p><p class="paragraph">A resource is busy if at least 1 unit has been allocated. A resource becomes busy when it has allocations. If a seize-request occurs and the resource has capacity to fill it completely, then the request is allocated the requested amount.  If insufficient capacity is available at the time of the request, then the request waits until the requested units can be allocated.</p><p class="paragraph">If b(t) is the number of units allocated at time t, and c(t) is the current capacity of the resource, then the number of available units, a(t), is defined as a(t) = c(t) - b(t).  Thus, a resource is idle if a(t) = c(t).  Since a resource is busy if b(t) 0, busy and idle are complements of each other. A resource is either busy b(t) 0 or idle b(t) = 0.  If a(t) 0, then the resource has units that it can be allocated.</p><p class="paragraph">The utilization of a resource is defined as the ratio of the average number of busy units to the average number of active units.  Units are active if they are part of the current capacity of the resource.</p><p class="paragraph">Subclasses of Resource implement additional state behavior.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
@@ -82,7 +82,22 @@
         </div>
       </div>
       <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="916089416%2FFunctions%2F769193423" anchor-label="addAllocationListener" id="916089416%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+      <div class="table" data-togglable="Functions"><a data-name="1805533803%2FFunctions%2F769193423" anchor-label="activate" id="1805533803%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-process-model/activate.html"><span><span>activate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1805533803%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-process-model/activate.html"><span class="token function">activate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">process<span class="token operator">: </span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token punctuation">, </span></span><span class="parameter ">timeUntilActivation<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simulation/-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-process-model/activate.html"><span class="token function">activate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">process<span class="token operator">: </span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token punctuation">, </span></span><span class="parameter ">timeUntilActivation<span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simulation/-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Cause the entity to start the process. The activation of the process is governed by an event that is scheduled to occur at the specified activation time.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="916089416%2FFunctions%2F769193423" anchor-label="addAllocationListener" id="916089416%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
         <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
           <div class="main-subrow keyValue ">
             <div class=""><span class="inline-flex">
@@ -648,6 +663,21 @@
             <div>
               <div class="title">
                 <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="../../ksl.simulation/-model-element/set-warm-up-option-for-model-elements.html"><span class="token function">setWarmUpOptionForModelElements</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">warmUpFlag<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets the warm-up option flag of all model elements (children) contained by this model element.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+<a data-name="2116295243%2FFunctions%2F769193423" anchor-label="startProcessSequence" id="2116295243%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../-process-model/start-process-sequence.html"><span>start</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Sequence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2116295243%2FFunctions%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-process-model/start-process-sequence.html">T</a><span class="token operator"> : </span><a href="../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token operator">&gt; </span><a href="../-process-model/start-process-sequence.html"><span class="token function">startProcessSequence</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><a href="../-process-model/start-process-sequence.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">timeUntilActivation<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simulation/-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Cause the entity to start the process sequence in the order specified by the sequence. The activation of the first process is governed by an event that is scheduled to occur based on the time until activation parameter.</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-process-model/start-process-sequence.html">T</a><span class="token operator"> : </span><a href="../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token operator">&gt; </span><a href="../-process-model/start-process-sequence.html"><span class="token function">startProcessSequence</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><a href="../-process-model/start-process-sequence.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">timeUnitActivation<span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simulation/-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-k-s-l-process/index.html">KSLProcess</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Cause the entity to start the process sequence in the order specified by the sequence. The activation of the first process is governed by an event that is scheduled to occur at the specified activation time.</p></div></div></div>
               </div>
             </div>
           </div>
@@ -1299,6 +1329,21 @@
             </div>
           </div>
         </div>
+<a data-name="-561861094%2FProperties%2F769193423" anchor-label="spatialModel" id="-561861094%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../ksl.simulation/-model-element/spatial-model.html"><span>spatial</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-561861094%2FProperties%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div>
+              <div class="title">
+                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-561861094%2FProperties%2F769193423" anchor-label="spatialModel" id="-561861094%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.simulation/-model-element/spatial-model.html">spatialModel</a><span class="token operator">: </span><a href="../../ksl.modeling.spatial/-spatial-model/index.html">SpatialModel</a></div><div class="brief "><a data-name="-561861094%2FProperties%2F769193423" anchor-label="spatialModel" id="-561861094%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">The spatial model associated with this model element. By default, each model element uses its parent model element's spatial model unless changed via this property. This changes the spatial model for this model element and no others.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
 <a data-name="325159969%2FProperties%2F769193423" anchor-label="startStateTime" id="325159969%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
         <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
           <div class="main-subrow keyValue ">
@@ -1487,6 +1532,17 @@
             <div class=""><span class="inline-flex">
                 <div><a href="../-resource-with-q/index.html">ResourceWithQ</a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1225014229%2FInheritors%2F769193423"></span>
+                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                </span></span></div>
+            <div></div>
+          </div>
+        </div>
+<a data-name="-1764544085%2FInheritors%2F769193423" anchor-label="MovableResource" id="-1764544085%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+          <div class="main-subrow keyValue ">
+            <div class=""><span class="inline-flex">
+                <div><a href="../../ksl.modeling.spatial/-movable-resource/index.html">MovableResource</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1764544085%2FInheritors%2F769193423"></span>
                   <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                 </span></span></div>
             <div></div>
