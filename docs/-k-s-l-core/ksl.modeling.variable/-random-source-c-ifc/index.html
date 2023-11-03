@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>RandomSourceCIfc</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
     if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -18,12 +19,13 @@
         }
     }
     </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
-<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
@@ -32,183 +34,182 @@
 <script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-<div class="navigation-wrapper" id="navigation-wrapper">
-    <div id="leftToggler"><span class="icon-toggler"></span></div>
-    <div class="library-name">
-            <a href="../../../index.html">
-                    <span>KSLCore</span>
-            </a>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            KSLCore
+                    </a>
+            </div>
+            <div class="library-version">
+R1.0.2            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
     </div>
-    <div>
-R1.0.1    </div>
-    <div class="pull-right d-flex">
-        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
     </div>
-</div>
-<div id="container">
-    <div id="leftColumn">
-        <div id="sideMenu"></div>
-    </div>
-    <div id="main">
-<div class="main-content" id="content" pageIds="KSLCore::ksl.modeling.variable/RandomSourceCIfc///PointingToDeclaration//769193423">
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.variable/RandomSourceCIfc///PointingToDeclaration//769193423">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.variable</a><span class="delimiter">/</span><span class="current">RandomSourceCIfc</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Random</span><wbr></wbr><span>Source</span><wbr></wbr><span><span>CIfc</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">RandomSourceCIfc</a> : <a href="../../ksl.utilities.random.rng/-stream-option-ifc/index.html">StreamOptionIfc</a>, <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><p class="paragraph">While RandomVariable instances should in general be declared as private within model elements, this interface provides the modeler the ability to declare a public property that returns an instance with limited ability to change and use the underlying RandomVariable, prior to running the model.</p><p class="paragraph">For example:</p><p class="paragraph">private val myTBA = RandomVariable(this, ExponentialRV(6.0, 1)) val tba: RandomSourceCIfc     get() = myTBA</p><p class="paragraph">Then users of the public property can change the initial random source and do other controlled changes without fully exposing the private variable.  The implementer of the model element that contains the private random variable does not have to write additional functions to control the random variable and can use this strategy to expose what is needed. This is most relevant to setting up the model elements prior to running the model or accessing information after the model has been executed. Changes or use during a model run is readily available through the general interface presented by RandomVariable.</p><p class="paragraph">The naming convention &quot;CIfc&quot; is used to denote controlled interface.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">RandomSourceCIfc</a> : <a href="../../ksl.utilities.random.rng/-stream-option-ifc/index.html">StreamOptionIfc</a>, <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><p class="paragraph">While RandomVariable instances should in general be declared as private within model elements, this interface provides the modeler the ability to declare a public property that returns an instance with limited ability to change and use the underlying RandomVariable, prior to running the model.</p><p class="paragraph">For example:</p><p class="paragraph">private val myTBA = RandomVariable(this, ExponentialRV(6.0, 1)) val tba: RandomSourceCIfc     get() = myTBA</p><p class="paragraph">Then users of the public property can change the initial random source and do other controlled changes without fully exposing the private variable.  The implementer of the model element that contains the private random variable does not have to write additional functions to control the random variable and can use this strategy to expose what is needed. This is most relevant to setting up the model elements prior to running the model or accessing information after the model has been executed. Changes or use during a model run is readily available through the general interface presented by RandomVariable.</p><p class="paragraph">The naming convention &quot;CIfc&quot; is used to denote controlled interface.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-element/index.html">RandomElement</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
-      <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="162570484%2FFunctions%2F769193423" anchor-label="asString" id="162570484%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="as-string.html"><span>as</span><wbr></wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="162570484%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="as-string.html"><span class="token function">asString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h2 class="">Properties</h2>
-      <div class="table" data-togglable="Properties"><a data-name="1705524953%2FProperties%2F769193423" anchor-label="advanceToNextSubStreamOption" id="1705524953%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities.random.rng/-stream-option-ifc/advance-to-next-sub-stream-option.html"><span>advance</span><wbr></wbr><span>To</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1705524953%2FProperties%2F769193423" anchor-label="advanceToNextSubStreamOption" id="1705524953%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities.random.rng/-stream-option-ifc/advance-to-next-sub-stream-option.html"><span>advance</span><wbr></wbr><span>To</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1705524953%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1705524953%2FProperties%2F769193423" anchor-label="advanceToNextSubStreamOption" id="1705524953%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities.random.rng/-stream-option-ifc/advance-to-next-sub-stream-option.html">advanceToNextSubStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><a data-name="1705524953%2FProperties%2F769193423" anchor-label="advanceToNextSubStreamOption" id="1705524953%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">If true, the stream will automatically participate in having its stream advanced to the next sub-stream via stream managers</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities.random.rng/-stream-option-ifc/advance-to-next-sub-stream-option.html">advanceToNextSubStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the stream will automatically participate in having its stream advanced to the next sub-stream via stream managers</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-240136916%2FProperties%2F769193423" anchor-label="id" id="-240136916%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-identity-ifc/id.html"><span><span>id</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-identity-ifc/id.html"><span><span>id</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-240136916%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-240136916%2FProperties%2F769193423" anchor-label="id" id="-240136916%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities/-identity-ifc/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities/-identity-ifc/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="1669685985%2FProperties%2F769193423" anchor-label="initialRandomSource" id="1669685985%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="initial-random-source.html"><span>initial</span><wbr></wbr><span>Random</span><wbr></wbr><span><span>Source</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-random-source.html"><span>initial</span><wbr></wbr><span>Random</span><wbr></wbr><span><span>Source</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1669685985%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1669685985%2FProperties%2F769193423" anchor-label="initialRandomSource" id="1669685985%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="initial-random-source.html">initialRandomSource</a><span class="token operator">: </span><a href="../../ksl.utilities.random/-random-ifc/index.html">RandomIfc</a></div><div class="brief "><a data-name="1669685985%2FProperties%2F769193423" anchor-label="initialRandomSource" id="1669685985%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">RandomIfc provides a reference to the underlying source of randomness to initialize each replication. Controls the underlying RandomIfc source for the RandomVariable. This is the source to which each replication will be initialized.  This is only used when the replication is initialized. Changing the reference has no effect during a replication, since the random variable will continue to use the reference returned by property randomSource.  Please also see the discussion in the class documentation.</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="initial-random-source.html">initialRandomSource</a><span class="token operator">: </span><a href="../../ksl.utilities.random/-random-ifc/index.html">RandomIfc</a></div><div class="brief "><p class="paragraph">RandomIfc provides a reference to the underlying source of randomness to initialize each replication. Controls the underlying RandomIfc source for the RandomVariable. This is the source to which each replication will be initialized.  This is only used when the replication is initialized. Changing the reference has no effect during a replication, since the random variable will continue to use the reference returned by property randomSource.  Please also see the discussion in the class documentation.</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-729466131%2FProperties%2F769193423" anchor-label="initialRandomSourceChangeWarning" id="-729466131%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="initial-random-source-change-warning.html"><span>initial</span><wbr></wbr><span>Random</span><wbr></wbr><span>Source</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Warning</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-random-source-change-warning.html"><span>initial</span><wbr></wbr><span>Random</span><wbr></wbr><span>Source</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Warning</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-729466131%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-729466131%2FProperties%2F769193423" anchor-label="initialRandomSourceChangeWarning" id="-729466131%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="initial-random-source-change-warning.html">initialRandomSourceChangeWarning</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><a data-name="-729466131%2FProperties%2F769193423" anchor-label="initialRandomSourceChangeWarning" id="-729466131%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">Controls whether warning of changing the initial random source during a replication is logged, default is true.</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="initial-random-source-change-warning.html">initialRandomSourceChangeWarning</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls whether warning of changing the initial random source during a replication is logged, default is true.</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-795138849%2FProperties%2F769193423" anchor-label="label" id="-795138849%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-identity-ifc/label.html"><span><span>label</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-identity-ifc/label.html"><span><span>label</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-795138849%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-795138849%2FProperties%2F769193423" anchor-label="label" id="-795138849%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities/-identity-ifc/label.html">label</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities/-identity-ifc/label.html">label</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-984850545%2FProperties%2F769193423" anchor-label="name" id="-984850545%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-name-ifc/name.html"><span><span>name</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-name-ifc/name.html"><span><span>name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-984850545%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-984850545%2FProperties%2F769193423" anchor-label="name" id="-984850545%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities/-name-ifc/name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities/-name-ifc/name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-882802154%2FProperties%2F769193423" anchor-label="resetStartStreamOption" id="-882802154%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities.random.rng/-stream-option-ifc/reset-start-stream-option.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities.random.rng/-stream-option-ifc/reset-start-stream-option.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-882802154%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-882802154%2FProperties%2F769193423" anchor-label="resetStartStreamOption" id="-882802154%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities.random.rng/-stream-option-ifc/reset-start-stream-option.html">resetStartStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><a data-name="-882802154%2FProperties%2F769193423" anchor-label="resetStartStreamOption" id="-882802154%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><p class="paragraph">If true, the stream will automatically participate in having its stream reset to its start stream via stream managers</p></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="../../ksl.utilities.random.rng/-stream-option-ifc/reset-start-stream-option.html">resetStartStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the stream will automatically participate in having its stream reset to its start stream via stream managers</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="449370395%2FProperties%2F769193423" anchor-label="rnStream" id="449370395%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="rn-stream.html"><span>rn</span><wbr></wbr><span><span>Stream</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rn-stream.html"><span>rn</span><wbr></wbr><span><span>Stream</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="449370395%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="449370395%2FProperties%2F769193423" anchor-label="rnStream" id="449370395%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="rn-stream.html">rnStream</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">var </span><a href="rn-stream.html">rnStream</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Inheritors</h2>
-      <div class="table" data-togglable="Inheritors"><a data-name="-2040907099%2FInheritors%2F769193423" anchor-label="RandomElement" id="-2040907099%2FInheritors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.modeling.elements/-random-element/index.html">RandomElement</a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2040907099%2FInheritors%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div></div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="162570484%2FFunctions%2F769193423" anchor-label="asString" id="162570484%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="as-string.html"><span>as</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="162570484%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="as-string.html"><span class="token function">asString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -220,7 +221,8 @@ R1.0.1    </div>
                 class="pull-right"><span>Generated by </span><a
                 href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

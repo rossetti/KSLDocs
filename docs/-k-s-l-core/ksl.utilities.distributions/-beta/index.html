@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Beta</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
     if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -18,12 +19,13 @@
         }
     }
     </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
-<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
@@ -32,326 +34,398 @@
 <script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-<div class="navigation-wrapper" id="navigation-wrapper">
-    <div id="leftToggler"><span class="icon-toggler"></span></div>
-    <div class="library-name">
-            <a href="../../../index.html">
-                    <span>KSLCore</span>
-            </a>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            KSLCore
+                    </a>
+            </div>
+            <div class="library-version">
+R1.0.2            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
     </div>
-    <div>
-R1.0.1    </div>
-    <div class="pull-right d-flex">
-        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
     </div>
-</div>
-<div id="container">
-    <div id="leftColumn">
-        <div id="sideMenu"></div>
-    </div>
-    <div id="main">
-<div class="main-content" id="content" pageIds="KSLCore::ksl.utilities.distributions/Beta///PointingToDeclaration//769193423">
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.distributions/Beta///PointingToDeclaration//769193423">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.distributions</a><span class="delimiter">/</span><span class="current">Beta</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Beta</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Beta</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape1<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">shape2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-distribution/index.html">Distribution</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">Beta</a><span class="token operator">&gt; </span>, <a href="../-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="../-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a></div><p class="paragraph">Create Beta distribution with the supplied parameters</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Beta</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">alphaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">betaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-distribution/index.html">Distribution</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="index.html">Beta</a><span class="token operator">&gt; </span>, <a href="../-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="../-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a></div><p class="paragraph">Create Beta distribution with the supplied parameters</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>alpha</span><wbr></wbr><span><span>Shape</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the first shape parameter</p></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>beta</span><wbr></wbr><span><span>Shape</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the second shape parameter</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Parameters">Parameters</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
-      <h4 class="">Parameters</h4>
-      <div data-togglable="Parameters">
-        <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>shape1</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the first shape parameter</p></div></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex"><div><u><span><span>shape2</span></span></u></div></span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">the second shape parameter</p></div></div></div></div></div></div></div></div></div>
-      </div>
-      <h2 class="tabbedcontent">Constructors</h2>
-      <div class="table" data-togglable="Constructors"><a data-name="889452337%2FConstructors%2F769193423" anchor-label="Beta" id="889452337%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue TabbedContent">
-            <div class=""><span class="inline-flex">
-                <div><a href="-beta.html"><span><span>Beta</span></span></a></div>
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="889452337%2FConstructors%2F769193423" anchor-label="Beta" id="889452337%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-beta.html"><span><span>Beta</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="889452337%2FConstructors%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="-beta.html"><span class="token function">Beta</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape1<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">shape2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">alphaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">betaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Types</h2>
-      <div class="table" data-togglable="Types"><a data-name="874677237%2FClasslikes%2F769193423" anchor-label="Companion" id="874677237%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="874677237%2FClasslikes%2F769193423" anchor-label="Companion" id="874677237%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="874677237%2FClasslikes%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h2 class="">Functions</h2>
-      <div class="table" data-togglable="Functions"><a data-name="1315022304%2FFunctions%2F769193423" anchor-label="cdf" id="1315022304%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="cdf.html"><span><span>cdf</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1315022304%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the F(x) = Pr{X <= x} where F represents the cumulative distribution function</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x1<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">x2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the Pr{x1<=X<=x2} for the distribution</p></div></div></div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-2139568240%2FProperties%2F769193423" anchor-label="alpha" id="-2139568240%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="alpha.html"><span><span>alpha</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2139568240%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="alpha.html">alpha</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-<a data-name="650409706%2FFunctions%2F769193423" anchor-label="complementaryCDF" id="650409706%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../-c-d-f-ifc/complementary-c-d-f.html"><span>complementary</span><wbr></wbr><span><span>CDF</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650409706%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/complementary-c-d-f.html"><span class="token function">complementaryCDF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the complementary cumulative probability distribution function for given value of x</p></div></div></div>
+<a data-name="185055804%2FProperties%2F769193423" anchor-label="beta" id="185055804%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="beta.html"><span><span>beta</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="185055804%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="beta.html">beta</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-<a data-name="-597773784%2FFunctions%2F769193423" anchor-label="domain" id="-597773784%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="domain.html"><span><span>domain</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-597773784%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="domain.html"><span class="token function">domain</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities/-interval/index.html">Interval</a></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="1756938167%2FFunctions%2F769193423" anchor-label="instance" id="1756938167%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="instance.html"><span><span>instance</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1756938167%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="instance.html"><span class="token function">instance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">Beta</a></div><div class="brief "><p class="paragraph">Returns a new instance</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-186855988%2FFunctions%2F769193423" anchor-label="invCDF" id="-186855988%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="inv-c-d-f.html"><span>inv</span><wbr></wbr><span><span>CDF</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-186855988%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="inv-c-d-f.html"><span class="token function">invCDF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Provides the inverse cumulative distribution function for the distribution</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1468299769%2FFunctions%2F769193423" anchor-label="mean" id="-1468299769%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="mean.html"><span><span>mean</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1468299769%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="mean.html"><span class="token function">mean</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the mean or expected value of a distribution</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1481297524%2FFunctions%2F769193423" anchor-label="parameters" id="-1481297524%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="parameters.html"><span><span>parameters</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1481297524%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Gets the parameters</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Sets the parameters</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape1<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">shape2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Changes the parameters to the supplied values</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="329691144%2FFunctions%2F769193423" anchor-label="pdf" id="329691144%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="pdf.html"><span><span>pdf</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="329691144%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="pdf.html"><span class="token function">pdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the f(x) where f represents the probability density function for the distribution.  Note this is not a probability.</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1438165708%2FFunctions%2F769193423" anchor-label="randomVariable" id="-1438165708%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="random-variable.html"><span>random</span><wbr></wbr><span><span>Variable</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438165708%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="random-variable.html"><span class="token function">randomVariable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">stream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html"><span class="token function">randomVariable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-1951765279%2FFunctions%2F769193423" anchor-label="standardDeviation" id="-1951765279%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../-variance-ifc/standard-deviation.html"><span>standard</span><wbr></wbr><span><span>Deviation</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1951765279%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-variance-ifc/standard-deviation.html"><span class="token function">standardDeviation</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the standard deviation for the distribution as the square root of the variance if it exists</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="-974789285%2FFunctions%2F769193423" anchor-label="variance" id="-974789285%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="variance.html"><span><span>variance</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-974789285%2FFunctions%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="variance.html"><span class="token function">variance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the variance of the distribution if defined</p></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <h2 class="">Properties</h2>
-      <div class="table" data-togglable="Properties"><a data-name="1911808825%2FProperties%2F769193423" anchor-label="alpha1" id="1911808825%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="alpha1.html"><span><span>alpha1</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1911808825%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1911808825%2FProperties%2F769193423" anchor-label="alpha1" id="1911808825%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="alpha1.html">alpha1</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-<a data-name="1942828632%2FProperties%2F769193423" anchor-label="alpha2" id="1942828632%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="alpha2.html"><span><span>alpha2</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1942828632%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="1942828632%2FProperties%2F769193423" anchor-label="alpha2" id="1942828632%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="alpha2.html">alpha2</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
 <a data-name="-240136916%2FProperties%2F769193423" anchor-label="id" id="-240136916%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-identity-ifc/id.html"><span><span>id</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-identity-ifc/id.html"><span><span>id</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-240136916%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-240136916%2FProperties%2F769193423" anchor-label="id" id="-240136916%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../ksl.utilities/-identity-ifc/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../ksl.utilities/-identity-ifc/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-795138849%2FProperties%2F769193423" anchor-label="label" id="-795138849%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-identity-ifc/label.html"><span><span>label</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-identity-ifc/label.html"><span><span>label</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-795138849%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-795138849%2FProperties%2F769193423" anchor-label="label" id="-795138849%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="../../ksl.utilities/-identity-ifc/label.html">label</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="../../ksl.utilities/-identity-ifc/label.html">label</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div></div></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 <a data-name="-984850545%2FProperties%2F769193423" anchor-label="name" id="-984850545%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities/-name-ifc/name.html"><span><span>name</span></span></a></div>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities/-name-ifc/name.html"><span><span>name</span></span></a></div>
 <span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-984850545%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="-984850545%2FProperties%2F769193423" anchor-label="name" id="-984850545%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../ksl.utilities/-name-ifc/name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "></div></div></div>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../ksl.utilities/-name-ifc/name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="755760255%2FProperties%2F769193423" anchor-label="randomVariable" id="755760255%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html"><span>random</span><wbr></wbr><span><span>Variable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="755760255%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html">randomVariable</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div></div></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-<a data-name="755760255%2FProperties%2F769193423" anchor-label="randomVariable" id="755760255%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
-        <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
-          <div class="main-subrow keyValue ">
-            <div class=""><span class="inline-flex">
-                <div><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html"><span>random</span><wbr></wbr><span><span>Variable</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="755760255%2FProperties%2F769193423"></span>
-                  <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                </span></span></div>
-            <div>
-              <div class="title">
-                <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><a data-name="755760255%2FProperties%2F769193423" anchor-label="randomVariable" id="755760255%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html">randomVariable</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div><div class="brief "></div></div></div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="972225864%2FFunctions%2F769193423" anchor-label="cdf" id="972225864%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cdf.html"><span><span>cdf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="972225864%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the F(x) = Pr{X <= x} where F represents the cumulative distribution function</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Returns an array of probabilities each representing F(x_i). The CDF is evaluated for each point in the input array <a href="../-c-d-f-ifc/cdf.html">x</a> and the probabilities are returned in the returned array.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">interval<span class="token operator">: </span><a href="../../ksl.utilities/-interval/index.html">Interval</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the probability of being in the interval, F(upper limit) - F(lower limit) Be careful, this is Pr{lower limit < = X < = upper limit} which includes the lower limit and has implications if the distribution is discrete</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/cdf.html"><span class="token function">cdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x1<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">x2<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the Pr{x1 <= X <= x2} for the distribution. Be careful, this is Pr{x1 <= X <= x2} which includes the lower limit and has implications if the distribution is discrete</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="650409706%2FFunctions%2F769193423" anchor-label="complementaryCDF" id="650409706%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-c-d-f-ifc/complementary-c-d-f.html"><span>complementary</span><wbr></wbr><span><span>CDF</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650409706%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-c-d-f-ifc/complementary-c-d-f.html"><span class="token function">complementaryCDF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the complementary cumulative probability distribution function for given value of x.  This is P{X > x}</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-597773784%2FFunctions%2F769193423" anchor-label="domain" id="-597773784%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="domain.html"><span><span>domain</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-597773784%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="domain.html"><span class="token function">domain</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities/-interval/index.html">Interval</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1756938167%2FFunctions%2F769193423" anchor-label="instance" id="1756938167%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="instance.html"><span><span>instance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1756938167%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="instance.html"><span class="token function">instance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">Beta</a></div><div class="brief "><p class="paragraph">Returns a new instance</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1850926434%2FFunctions%2F769193423" anchor-label="invCDF" id="1850926434%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inv-c-d-f.html"><span>inv</span><wbr></wbr><span><span>CDF</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1850926434%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="inv-c-d-f.html"><span class="token function">invCDF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">p<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Provides the inverse cumulative distribution function for the distribution</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-inverse-c-d-f-ifc/inv-c-d-f.html"><span class="token function">invCDF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">probabilities<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Computes x_p where P(X <= x_p) = p for the supplied array of probabilities. Requires that the values within the supplied array are in (0,1)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-464800763%2FFunctions%2F769193423" anchor-label="likelihood" id="-464800763%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-p-d-f-ifc/likelihood.html"><span><span>likelihood</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-464800763%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-p-d-f-ifc/likelihood.html"><span class="token function">likelihood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Assuming that the observations in the array <a href="../-p-d-f-ifc/likelihood.html">data</a> are from a random sample, this function computes the likelihood function. This is computed using as the sum of the log-likelihood function raised to e. Implementation may want to specify other computationally efficient formulas for this function or (most likely) the sum of the log-likelihood function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="159160526%2FFunctions%2F769193423" anchor-label="logLikelihood" id="159160526%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-p-d-f-ifc/log-likelihood.html"><span>log</span><wbr></wbr><span><span>Likelihood</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="159160526%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-p-d-f-ifc/log-likelihood.html"><span class="token function">logLikelihood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the natural log of the pdf function evaluated at <a href="../-p-d-f-ifc/log-likelihood.html">x</a>. Implementations may want to specify computationally efficient formulas for this function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1468299769%2FFunctions%2F769193423" anchor-label="mean" id="-1468299769%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mean.html"><span><span>mean</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1468299769%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="mean.html"><span class="token function">mean</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the mean or expected value of a distribution</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1481297524%2FFunctions%2F769193423" anchor-label="parameters" id="-1481297524%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="parameters.html"><span><span>parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1481297524%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Returns the parameters of the distribution.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">params<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Changes the parameters to the supplied values params0 the alpha shape parameter params1the beta shape parameter</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="parameters.html"><span class="token function">parameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">alphaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">betaShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Changes the parameters to the supplied values</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="329691144%2FFunctions%2F769193423" anchor-label="pdf" id="329691144%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="pdf.html"><span><span>pdf</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="329691144%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="pdf.html"><span class="token function">pdf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the f(x) where f represents the probability density function for the distribution.  Note this is not a probability.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1438165708%2FFunctions%2F769193423" anchor-label="randomVariable" id="-1438165708%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="random-variable.html"><span>random</span><wbr></wbr><span><span>Variable</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1438165708%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="random-variable.html"><span class="token function">randomVariable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">stream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../../ksl.utilities.random.rvariable/-get-r-variable-ifc/random-variable.html"><span class="token function">randomVariable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1951765279%2FFunctions%2F769193423" anchor-label="standardDeviation" id="-1951765279%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-variance-ifc/standard-deviation.html"><span>standard</span><wbr></wbr><span><span>Deviation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1951765279%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-variance-ifc/standard-deviation.html"><span class="token function">standardDeviation</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the standard deviation for the distribution as the square root of the variance if it exists</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1950694230%2FFunctions%2F769193423" anchor-label="sumLogLikelihood" id="-1950694230%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-log-likelihood-ifc/sum-log-likelihood.html"><span>sum</span><wbr></wbr><span>Log</span><wbr></wbr><span><span>Likelihood</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1950694230%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">fun </span><a href="../-log-likelihood-ifc/sum-log-likelihood.html"><span class="token function">sumLogLikelihood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the sum of the log-likelihood function evaluated at each observation in the <a href="../-log-likelihood-ifc/sum-log-likelihood.html">data</a>. Implementations may want to specify computationally efficient formulas for this function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1081897408%2FFunctions%2F769193423" anchor-label="toString" id="1081897408%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1081897408%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-974789285%2FFunctions%2F769193423" anchor-label="variance" id="-974789285%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="variance.html"><span><span>variance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-974789285%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="variance.html"><span class="token function">variance</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the variance of the distribution if defined</p></div></div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -365,7 +439,8 @@ R1.0.1    </div>
                 class="pull-right"><span>Generated by </span><a
                 href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

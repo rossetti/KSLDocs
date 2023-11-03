@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PDFModeler</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            KSLCore
+                    </a>
+            </div>
+            <div class="library-version">
+R1.0.2            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting/PDFModeler///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.distributions.fitting</a><span class="delimiter">/</span><span class="current">PDFModeler</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>PDFModeler</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">PDFModeler</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div><p class="paragraph">The purpose of this class is to serve as the general location for implementing the estimation of distribution parameter across many distributions. The general use involves the following:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val d = PDFModeler(data)
+val estimationResults: List<EstimationResult> = d.estimateParameters(d.allEstimators)
+val scoringResults = d.scoringResults(estimationResults)
+val model = d.evaluateScoringResults(scoringResults)
+scoringResults.forEach( ::println)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">The scoring results will be updated with the evaluation information and will contain the evaluation scores. The scoring results can be sorted to find the recommended distribution based on the evaluation score.</p><p class="paragraph">Alternatively, the single function can be used:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">  val d = PDFModeler(data)
+  val results  = d.estimateAndEvaluateScores()
+
+This function returns an instance of PDFModelingResults, which
+will have the results of the entire fitting process. The advantage of using
+the individual functions may permit some further customization of
+the estimation process.</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1644905168%2FConstructors%2F769193423" anchor-label="PDFModeler" id="1644905168%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-p-d-f-modeler.html"><span><span>PDFModeler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1644905168%2FConstructors%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-966902926%2FClasslikes%2F769193423" anchor-label="Companion" id="-966902926%2FClasslikes%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-966902926%2FClasslikes%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-390537673%2FProperties%2F769193423" anchor-label="allEstimators" id="-390537673%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-estimators.html"><span>all</span><wbr></wbr><span><span>Estimators</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-390537673%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="all-estimators.html">allEstimators</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This set contains all the known estimators for estimating continuous distributions. This is the union of nonRestrictedEstimators and positiveRestrictedEstimators</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1141123735%2FProperties%2F769193423" anchor-label="allScoringModels" id="1141123735%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-scoring-models.html"><span>all</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Models</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1141123735%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="all-scoring-models.html">allScoringModels</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-p-d-f-scoring-model/index.html">PDFScoringModel</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This set holds predefined scoring models for evaluating the distribution goodness of fit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="315379595%2FProperties%2F769193423" anchor-label="defaultZeroTolerance" id="315379595%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-zero-tolerance.html"><span>default</span><wbr></wbr><span>Zero</span><wbr></wbr><span><span>Tolerance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="315379595%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="default-zero-tolerance.html">defaultZeroTolerance</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How close we consider a double is to 0.0 to consider it 0.0 Default is 0.001</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1648550315%2FProperties%2F769193423" anchor-label="hasNegatives" id="1648550315%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-negatives.html"><span>has</span><wbr></wbr><span><span>Negatives</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1648550315%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="has-negatives.html">hasNegatives</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-822343781%2FProperties%2F769193423" anchor-label="hasZeroes" id="-822343781%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-zeroes.html"><span>has</span><wbr></wbr><span><span>Zeroes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-822343781%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="has-zeroes.html">hasZeroes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-3866297%2FProperties%2F769193423" anchor-label="histogram" id="-3866297%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="histogram.html"><span><span>histogram</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-3866297%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="histogram.html">histogram</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-histogram-ifc/index.html">HistogramIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-586393136%2FProperties%2F769193423" anchor-label="leftShift" id="-586393136%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="left-shift.html"><span>left</span><wbr></wbr><span><span>Shift</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-586393136%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="left-shift.html">leftShift</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Estimates a possible shift parameter for the data. See PDFModeler.estimateLeftShiftParameter(). If any of the data are negative then there will be no shift. There must be at least 3 different positive values for a shift to be estimated; otherwise, it will be 0.0. Any estimated shift that is less that the defaultZeroTolerance will be set to 0.0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1800781328%2FProperties%2F769193423" anchor-label="nonRestrictedEstimators" id="-1800781328%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="non-restricted-estimators.html"><span>non</span><wbr></wbr><span>Restricted</span><wbr></wbr><span><span>Estimators</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1800781328%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="non-restricted-estimators.html">nonRestrictedEstimators</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This set holds estimators that can fit distributions for which the domain is not restricted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="130921256%2FProperties%2F769193423" anchor-label="positiveRestrictedEstimators" id="130921256%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="positive-restricted-estimators.html"><span>positive</span><wbr></wbr><span>Restricted</span><wbr></wbr><span><span>Estimators</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="130921256%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="positive-restricted-estimators.html">positiveRestrictedEstimators</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">This set holds the recommended estimators for estimating the parameters of distributions on the positive domain x in (0, infinity)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1353091252%2FProperties%2F769193423" anchor-label="statistics" id="-1353091252%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="statistics.html"><span><span>statistics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1353091252%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="statistics.html">statistics</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="103584425%2FFunctions%2F769193423" anchor-label="acfPlotAsHTML" id="103584425%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="acf-plot-as-h-t-m-l.html"><span>acf</span><wbr></wbr><span>Plot</span><wbr></wbr><span>As</span><wbr></wbr><span><span>HTML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="103584425%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="acf-plot-as-h-t-m-l.html"><span class="token function">acfPlotAsHTML</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The ACF plot portion of the results as html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-217360940%2FFunctions%2F769193423" anchor-label="allResultsToHTML" id="-217360940%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-results-to-h-t-m-l.html"><span>all</span><wbr></wbr><span>Results</span><wbr></wbr><span>To</span><wbr></wbr><span><span>HTML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-217360940%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="all-results-to-h-t-m-l.html"><span class="token function">allResultsToHTML</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Makes a histogram, observations plot, auto-correlation plot, performs the fitting and scoring process, and performs goodness of fit tests on the top scoring distribution and captures the results as a string containing the html for display.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2138251514%2FFunctions%2F769193423" anchor-label="bootStrapParameterEstimates" id="2138251514%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="boot-strap-parameter-estimates.html"><span>boot</span><wbr></wbr><span>Strap</span><wbr></wbr><span>Parameter</span><wbr></wbr><span><span>Estimates</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2138251514%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="boot-strap-parameter-estimates.html"><span class="token function">bootStrapParameterEstimates</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">result<span class="token operator">: </span><a href="../-estimation-result/index.html">EstimationResult</a><span class="token punctuation">, </span></span><span class="parameter ">numBootstrapSamples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">399</span><span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span><span class="token punctuation">, </span></span><span class="parameter ">stream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a><span class="token operator"> = </span>KSLRandom.nextRNStream()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../ksl.utilities.statistic/-bootstrap-estimate/index.html">BootstrapEstimate</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="boot-strap-parameter-estimates.html"><span class="token function">bootStrapParameterEstimates</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">estimator<span class="token operator">: </span><a href="../../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">numBootstrapSamples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">399</span><span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span><span class="token punctuation">, </span></span><span class="parameter ">stream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a><span class="token operator"> = </span>KSLRandom.nextRNStream()<span class="token punctuation">, </span></span><span class="parameter ">label<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../../ksl.utilities.statistic/-bootstrap-estimate/index.html">BootstrapEstimate</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Computes bootstrap confidence intervals for the estimated parameters of the distribution</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-206722%2FFunctions%2F769193423" anchor-label="confidenceIntervalForMinimum" id="-206722%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="confidence-interval-for-minimum.html"><span>confidence</span><wbr></wbr><span>Interval</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Minimum</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-206722%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="confidence-interval-for-minimum.html"><span class="token function">confidenceIntervalForMinimum</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numBootstrapSamples<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">399</span><span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities/-interval/index.html">Interval</a></div><div class="brief "><p class="paragraph">Uses bootstrapping to estimate a confidence interval for the minimum</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-684160156%2FFunctions%2F769193423" anchor-label="estimateAndEvaluateScores" id="-684160156%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="estimate-and-evaluate-scores.html"><span>estimate</span><wbr></wbr><span>And</span><wbr></wbr><span>Evaluate</span><wbr></wbr><span><span>Scores</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-684160156%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="estimate-and-evaluate-scores.html"><span class="token function">estimateAndEvaluateScores</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">estimators<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token operator">&gt;</span><span class="token operator"> = </span>allEstimators<span class="token punctuation">, </span></span><span class="parameter ">automaticShifting<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">scoringModels<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-p-d-f-scoring-model/index.html">PDFScoringModel</a><span class="token operator">&gt;</span><span class="token operator"> = </span>allScoringModels</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-p-d-f-modeling-results/index.html">PDFModelingResults</a></div><div class="brief "><p class="paragraph">This function estimates the parameters based on the supplied <a href="estimate-and-evaluate-scores.html">estimators</a> and scores the estimators based on the supplied scoring models <a href="estimate-and-evaluate-scores.html">scoringModels</a>. By default, a shift parameter for the distributions is estimated. The results are bundles up into a class that holds the estimation results, the scoring results, and the model used for evaluating the model goodness of fit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-465619314%2FFunctions%2F769193423" anchor-label="estimateParameters" id="-465619314%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="estimate-parameters.html"><span>estimate</span><wbr></wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-465619314%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="estimate-parameters.html"><span class="token function">estimateParameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">estimators<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">automaticShifting<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-estimation-result/index.html">EstimationResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Estimates the parameters for all estimators represented by the set of <a href="estimate-parameters.html">estimators</a>. The parameter <a href="estimate-parameters.html">automaticShifting</a> controls whether the data will be automatically shifted.</p></div><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="estimate-parameters.html"><span class="token function">estimateParameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">estimator<span class="token operator">: </span><a href="../-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">automaticShifting<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-estimation-result/index.html">EstimationResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A convenience method for invoking parameter estimation for a single instance of ParameterEstimatorIfc. The parameter <a href="estimate-parameters.html">automaticShifting</a> controls whether the data will be automatically shifted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-44910622%2FFunctions%2F769193423" anchor-label="evaluateScores" id="-44910622%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="evaluate-scores.html"><span>evaluate</span><wbr></wbr><span><span>Scores</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-44910622%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="evaluate-scores.html"><span class="token function">evaluateScores</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">estimationResults<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-estimation-result/index.html">EstimationResult</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">scoringModels<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-p-d-f-scoring-model/index.html">PDFScoringModel</a><span class="token operator">&gt;</span><span class="token operator"> = </span>allScoringModels</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-p-d-f-modeling-results/index.html">PDFModelingResults</a></div><div class="brief "><p class="paragraph">This function applies the supplied scoring models to the estimation results.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2118265673%2FFunctions%2F769193423" anchor-label="evaluateScoringResults" id="-2118265673%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="evaluate-scoring-results.html"><span>evaluate</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Results</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2118265673%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="evaluate-scoring-results.html"><span class="token function">evaluateScoringResults</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">scoringResults<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-scoring-result/index.html">ScoringResult</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">model<span class="token operator">: </span><a href="../../ksl.utilities.moda/-additive-m-o-d-a-model/index.html">AdditiveMODAModel</a><span class="token operator"> = </span>createDefaultEvaluationModel(scoringResults)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.moda/-additive-m-o-d-a-model/index.html">AdditiveMODAModel</a></div><div class="brief "><p class="paragraph">Evaluates the supplied scoring results using the supplied evaluation model.  A default additive MODA model is supplied that uses linear value functions for each metric.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="242261888%2FFunctions%2F769193423" anchor-label="histogramResultsAsHTML" id="242261888%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="histogram-results-as-h-t-m-l.html"><span>histogram</span><wbr></wbr><span>Results</span><wbr></wbr><span>As</span><wbr></wbr><span><span>HTML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="242261888%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="histogram-results-as-h-t-m-l.html"><span class="token function">histogramResultsAsHTML</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The histogram portion of the results as html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-824886422%2FFunctions%2F769193423" anchor-label="observationsPlotAsHTML" id="-824886422%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="observations-plot-as-h-t-m-l.html"><span>observations</span><wbr></wbr><span>Plot</span><wbr></wbr><span>As</span><wbr></wbr><span><span>HTML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-824886422%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="observations-plot-as-h-t-m-l.html"><span class="token function">observationsPlotAsHTML</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The observations plot portion of the results as html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1249889617%2FFunctions%2F769193423" anchor-label="scoringResults" id="-1249889617%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scoring-results.html"><span>scoring</span><wbr></wbr><span><span>Results</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1249889617%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="scoring-results.html"><span class="token function">scoringResults</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">results<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-estimation-result/index.html">EstimationResult</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">scoringModels<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-p-d-f-scoring-model/index.html">PDFScoringModel</a><span class="token operator">&gt;</span><span class="token operator"> = </span>allScoringModels</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="../-scoring-result/index.html">ScoringResult</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Estimation results in the list of <a href="scoring-results.html">results</a> are scored by each scoring model in the supplied set <a href="scoring-results.html">scoringModels</a>.  Any estimation results within the supplied list that were not successfully estimated or had no parameters estimated will not be scored.  The returned list contains instances holding the scoring results for each successfully estimated distribution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1040916779%2FFunctions%2F769193423" anchor-label="scoringResultsAsHTML" id="1040916779%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="scoring-results-as-h-t-m-l.html"><span>scoring</span><wbr></wbr><span>Results</span><wbr></wbr><span>As</span><wbr></wbr><span><span>HTML</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1040916779%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="scoring-results-as-h-t-m-l.html"><span class="token function">scoringResultsAsHTML</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Just the scoring results as html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1586274070%2FFunctions%2F769193423" anchor-label="showAllResultsInBrowser" id="-1586274070%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="show-all-results-in-browser.html"><span>show</span><wbr></wbr><span>All</span><wbr></wbr><span>Results</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Browser</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1586274070%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="show-all-results-in-browser.html"><span class="token function">showAllResultsInBrowser</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fileName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;pdfModelingResults&quot;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Makes a histogram, observations plot, auto-correlation plot, performs the fitting and scoring process, and performs goodness of fit tests on the top scoring distribution and displays all the results by opening a browser window. The generated html file is stored in the KSL.plotDir directory using the supplied name as the pre-fix for a temporary file.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

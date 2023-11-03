@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ConveyorRequest</title>
+    <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../../styles/style.css" rel="Stylesheet">
+<link href="../../../../styles/main.css" rel="Stylesheet">
+<link href="../../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../../index.html">
+                            KSLCore
+                    </a>
+            </div>
+            <div class="library-version">
+R1.0.2            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/Conveyor.ConveyorRequest///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><a href="../index.html">Conveyor</a><span class="delimiter">/</span><span class="current">ConveyorRequest</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Conveyor</span><wbr></wbr><span><span>Request</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="index.html">ConveyorRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>entity<span class="token operator">: </span><a href="../../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numCellsNeeded<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>entryLocation<span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>accessResumePriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="../../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a>, <a href="../../-conveyor-request-ifc/index.html">ConveyorRequestIfc</a></div><p class="paragraph">A conveyor request represents the holding of cells on a conveyor and acts as a &quot;ticket&quot; to use the conveyor.  Once an entity has a conveyor request, the entity has control over the cells at the start of the segment associated with the entry location along the conveyor.  After receiving a request to access the conveyor the entity can either ride on the conveyor or exit. The conveyor request blocks at the point of access until riding or exiting. The request is placed in the blocking entry state.  When the entity asks to ride the conveyor then the request will be placed in the riding state. If the entity never rides the conveyor, then the request stays in the blocking entry state.  The property isWaitingForEntry indicates that the conveyor request is waiting to be allowed to block the entry cell of the conveyor at its current location. Once the conveyor request is used to ride the conveyor, the isWaitingToConvey property will report false. The isBlockingEntry property will report true until the request begins riding.  Once the request reaches its destination, the isBlockingExit property will be true and the request is in the blocking exit state.  When the request exits the conveyor the isCompleted property is true and the request is in the completed state.  Once in the completed state, the request can no longer be used for any interaction with the conveyor.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="936243228%2FConstructors%2F769193423" anchor-label="ConveyorRequest" id="936243228%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-conveyor-request.html"><span>Conveyor</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="936243228%2FConstructors%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><a href="../../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token punctuation">, </span></span><span class="parameter ">numCellsNeeded<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">entryLocation<span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="token punctuation">, </span></span><span class="parameter ">accessResumePriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1833576507%2FProperties%2F769193423" anchor-label="accessResumePriority" id="1833576507%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="access-resume-priority.html"><span>access</span><wbr></wbr><span>Resume</span><wbr></wbr><span><span>Priority</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1833576507%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="access-resume-priority.html">accessResumePriority</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Can be used when the entity is resumed</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1136135714%2FProperties%2F769193423" anchor-label="attachedObject" id="-1136135714%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/attached-object.html"><span>attached</span><wbr></wbr><span><span>Object</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1136135714%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="../../../ksl.simulation/-model-element/-q-object/attached-object.html">attachedObject</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A reference to an object that can be attached to the QObject when queued</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-744205787%2FProperties%2F769193423" anchor-label="conveyor" id="-744205787%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="conveyor.html"><span><span>conveyor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-744205787%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="conveyor.html">conveyor</a><span class="token operator">: </span><a href="../index.html">Conveyor</a></div><div class="brief "><p class="paragraph">The conveyor the entity is using</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="533347000%2FProperties%2F769193423" anchor-label="createTime" id="533347000%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/create-time.html"><span>create</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="533347000%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/create-time.html">createTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the QObject was created</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1599390972%2FProperties%2F769193423" anchor-label="currentLocation" id="1599390972%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-location.html"><span>current</span><wbr></wbr><span><span>Location</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1599390972%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="current-location.html">currentLocation</a><span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">The current location of the entity. This is assigned when the entity arrives at the end of a segment</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-256024644%2FProperties%2F769193423" anchor-label="destination" id="-256024644%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="destination.html"><span><span>destination</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-256024644%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="destination.html">destination</a><span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The final location where the entity wants to visit on the conveyor</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1422959821%2FProperties%2F769193423" anchor-label="entity" id="1422959821%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entity.html"><span><span>entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1422959821%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entity.html">entity</a><span class="token operator">: </span><a href="../../-process-model/-entity/index.html">ProcessModel.Entity</a></div><div class="brief "><p class="paragraph">The entity that needs to use the conveyor</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1640531158%2FProperties%2F769193423" anchor-label="entryCell" id="1640531158%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entry-cell.html"><span>entry</span><wbr></wbr><span><span>Cell</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1640531158%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="entry-cell.html">entryCell</a><span class="token operator">: </span><a href="../-cell/index.html">Conveyor.Cell</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1814400099%2FProperties%2F769193423" anchor-label="entryLocation" id="1814400099%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entry-location.html"><span>entry</span><wbr></wbr><span><span>Location</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1814400099%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entry-location.html">entryLocation</a><span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">The location where the entity first accessed the conveyor</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1772913025%2FProperties%2F769193423" anchor-label="frontCell" id="-1772913025%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="front-cell.html"><span>front</span><wbr></wbr><span><span>Cell</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772913025%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="front-cell.html">frontCell</a><span class="token operator">: </span><a href="../-cell/index.html">Conveyor.Cell</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The cell that is occupied by the item that is the furthest forward (closest to the end) on the conveyor that the item is currently occupying.  Null means that the item is not occupying any cells. An item may occupy 1 or more cells depending on the number of cells that it needs while riding on the conveyor.  If the conveyor has 5 cells (1, 2, 3, 4, 5) and the item needs 2 cells and is occupying cells 2 and 3, then its front cell is 3.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-741527733%2FProperties%2F769193423" anchor-label="hasReachedAnExitCell" id="-741527733%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-reached-an-exit-cell.html"><span>has</span><wbr></wbr><span>Reached</span><wbr></wbr><span>An</span><wbr></wbr><span>Exit</span><wbr></wbr><span><span>Cell</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-741527733%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="has-reached-an-exit-cell.html">hasReachedAnExitCell</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the item has reached the last cell of the current segment</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1721735948%2FProperties%2F769193423" anchor-label="hasReachedDestination" id="-1721735948%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-reached-destination.html"><span>has</span><wbr></wbr><span>Reached</span><wbr></wbr><span><span>Destination</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1721735948%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="has-reached-destination.html">hasReachedDestination</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the entity has reached its destination</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1720100922%2FProperties%2F769193423" anchor-label="id" id="-1720100922%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/id.html"><span><span>id</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1720100922%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/id.html">id</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a></div><div class="brief "><p class="paragraph">Gets a uniquely assigned identifier for this QObject. This identifier is assigned when the QObject is created. It may vary if the order of creation changes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="923425975%2FProperties%2F769193423" anchor-label="isBlockingEntry" id="923425975%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-blocking-entry.html"><span>is</span><wbr></wbr><span>Blocking</span><wbr></wbr><span><span>Entry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="923425975%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-blocking-entry.html">isBlockingEntry</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="903460275%2FProperties%2F769193423" anchor-label="isBlockingExit" id="903460275%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-blocking-exit.html"><span>is</span><wbr></wbr><span>Blocking</span><wbr></wbr><span><span>Exit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="903460275%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-blocking-exit.html">isBlockingExit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-632587543%2FProperties%2F769193423" anchor-label="isCompleted" id="-632587543%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-completed.html"><span>is</span><wbr></wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-632587543%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-completed.html">isCompleted</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="270589811%2FProperties%2F769193423" anchor-label="isNextCellOccupied" id="270589811%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-next-cell-occupied.html"><span>is</span><wbr></wbr><span>Next</span><wbr></wbr><span>Cell</span><wbr></wbr><span><span>Occupied</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="270589811%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="is-next-cell-occupied.html">isNextCellOccupied</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-188923171%2FProperties%2F769193423" anchor-label="isNotQueued" id="-188923171%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/is-not-queued.html"><span>is</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Queued</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-188923171%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/is-not-queued.html">isNotQueued</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-204631836%2FProperties%2F769193423" anchor-label="isQueued" id="-204631836%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/is-queued.html"><span>is</span><wbr></wbr><span><span>Queued</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-204631836%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/is-queued.html">isQueued</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the QObject is queued</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="288431601%2FProperties%2F769193423" anchor-label="isRiding" id="288431601%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-riding.html"><span>is</span><wbr></wbr><span><span>Riding</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="288431601%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-riding.html">isRiding</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="189161406%2FProperties%2F769193423" anchor-label="isWaitingForEntry" id="189161406%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-waiting-for-entry.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Entry</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="189161406%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-waiting-for-entry.html">isWaitingForEntry</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1446692694%2FProperties%2F769193423" anchor-label="name" id="1446692694%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/name.html"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1446692694%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the QObject</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1045499216%2FProperties%2F769193423" anchor-label="numCellsNeeded" id="1045499216%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-cells-needed.html"><span>num</span><wbr></wbr><span>Cells</span><wbr></wbr><span><span>Needed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1045499216%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-cells-needed.html">numCellsNeeded</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The number of cells needed when riding on the conveyor</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="622727303%2FProperties%2F769193423" anchor-label="numCellsOccupied" id="622727303%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-cells-occupied.html"><span>num</span><wbr></wbr><span>Cells</span><wbr></wbr><span><span>Occupied</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="622727303%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-cells-occupied.html">numCellsOccupied</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The number of cells currently occupied on the conveyor. This may be different from numCellsAllocated because an allocation does not need to convey. It can be used to block the conveyor at one of its entrance locations</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1521384282%2FProperties%2F769193423" anchor-label="occupiesCells" id="-1521384282%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="occupies-cells.html"><span>occupies</span><wbr></wbr><span><span>Cells</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1521384282%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="occupies-cells.html">occupiesCells</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if the item occupies cells. After exiting the conveyor the item does not occupy any cells</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="582761328%2FProperties%2F769193423" anchor-label="plannedLocation" id="582761328%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../-conveyor-request-ifc/planned-location.html"><span>planned</span><wbr></wbr><span><span>Location</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="582761328%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword"></span><span class="token keyword">val </span><a href="../../-conveyor-request-ifc/planned-location.html">plannedLocation</a><span class="token operator">: </span><a href="../../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">While riding this is the location where the entity is heading</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="538985565%2FProperties%2F769193423" anchor-label="priority" id="538985565%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/priority.html"><span><span>priority</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538985565%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">var </span><a href="../../../ksl.simulation/-model-element/-q-object/priority.html">priority</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Sets the priority to the supplied value If the QObject is queued, the queue's changePriority() method is called (possibly causing a reordering of the queue) which may cause significant reordering overhead otherwise the priority is directly changed Changing this value only changes how the QObjects are compared and may or may not change how they are ordered in the queue, depending on the queue discipline used</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-10261368%2FProperties%2F769193423" anchor-label="queue" id="-10261368%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/queue.html"><span><span>queue</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-10261368%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="../../../ksl.simulation/-model-element/-q-object/queue.html">queue</a><span class="token operator">: </span><a href="../../../ksl.modeling.queue/-queue/index.html">Queue</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The current queue that the QObject is in, null if not in a queue</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1237909083%2FProperties%2F769193423" anchor-label="queuedState" id="1237909083%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/queued-state.html"><span>queued</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1237909083%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/queued-state.html">queuedState</a><span class="token operator">: </span><a href="../../../ksl.utilities.statistic/-state-accessor-ifc/index.html">StateAccessorIfc</a></div><div class="brief "><p class="paragraph">This method can be used to get direct access to the State that represents when the object was queued. This allows access to the total time in the queued state as well as other statistical accumulation of state statistics</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-890966998%2FProperties%2F769193423" anchor-label="rearCell" id="-890966998%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rear-cell.html"><span>rear</span><wbr></wbr><span><span>Cell</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-890966998%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="rear-cell.html">rearCell</a><span class="token operator">: </span><a href="../-cell/index.html">Conveyor.Cell</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The cell that is occupied by the item that is closest to the origin of the conveyor that the item is currently on.  Null means that the item is not occupying any cells. An item may occupy 1 or more cells depending on the number of cells that it needs while riding on the conveyor. If the segment has 5 cells (1, 2, 3, 4, 5) and the item needs 2 cells and is occupying cells 2 and 3, then its rear cell is 2.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-203548770%2FProperties%2F769193423" anchor-label="status" id="-203548770%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="status.html"><span><span>status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-203548770%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="status.html">status</a><span class="token operator">: </span><a href="../-item-status/index.html">Conveyor.ItemStatus</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1127509530%2FProperties%2F769193423" anchor-label="timeEnteredQueue" id="1127509530%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/time-entered-queue.html"><span>time</span><wbr></wbr><span>Entered</span><wbr></wbr><span><span>Queue</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1127509530%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/time-entered-queue.html">timeEnteredQueue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the QObject was LAST enqueued</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1495003246%2FProperties%2F769193423" anchor-label="timeExitedQueue" id="-1495003246%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/time-exited-queue.html"><span>time</span><wbr></wbr><span>Exited</span><wbr></wbr><span><span>Queue</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1495003246%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/time-exited-queue.html">timeExitedQueue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the QObject LAST exited a queue</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-264463110%2FProperties%2F769193423" anchor-label="timeInQueue" id="-264463110%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/time-in-queue.html"><span>time</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Queue</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-264463110%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../../../ksl.simulation/-model-element/-q-object/time-in-queue.html">timeInQueue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the QObject spent in the Queue based on the LAST time dequeued</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="897567299%2FProperties%2F769193423" anchor-label="timeStamp" id="897567299%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/time-stamp.html"><span>time</span><wbr></wbr><span><span>Stamp</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="897567299%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="../../../ksl.simulation/-model-element/-q-object/time-stamp.html">timeStamp</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">can be used to time stamp the qObject</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-126284439%2FProperties%2F769193423" anchor-label="valueObject" id="-126284439%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/value-object.html"><span>value</span><wbr></wbr><span><span>Object</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-126284439%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">var </span><a href="../../../ksl.simulation/-model-element/-q-object/value-object.html">valueObject</a><span class="token operator">: </span><a href="../../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Allows for a generic value to be held by the QObject</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1966433111%2FFunctions%2F769193423" anchor-label="compareTo" id="1966433111%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/compare-to.html"><span>compare</span><wbr></wbr><span><span>To</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1966433111%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="../../../ksl.simulation/-model-element/-q-object/compare-to.html"><span class="token function">compareTo</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="../../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Returns a negative integer, zero, or a positive integer if this object is less than, equal to, or greater than the specified object.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1025399957%2FFunctions%2F769193423" anchor-label="toString" id="1025399957%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../../ksl.simulation/-model-element/-q-object/to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1025399957%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../../ksl.simulation/-model-element/-q-object/to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
