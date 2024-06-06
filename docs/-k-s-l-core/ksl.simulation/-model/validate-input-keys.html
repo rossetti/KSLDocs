@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>validateInputKeys</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            KSLCore
+                    </a>
+            </div>
+            <div class="library-version">
+R1.0.9            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="member" id="content" pageIds="KSLCore::ksl.simulation/Model/validateInputKeys/#kotlin.collections.Set[kotlin.String]#kotlin.Char/PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simulation</a><span class="delimiter">/</span><a href="index.html">Model</a><span class="delimiter">/</span><span class="current">validateInputKeys</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>validate</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Keys</span></span></h1>
+  </div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="validate-input-keys.html"><span class="token function">validateInputKeys</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">conCatString<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html">Char</a><span class="token operator"> = </span>rvParamConCatChar</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><p class="paragraph">Checks if the supplied set of strings are valid inputs (controls or random variable parameters).</p><p class="paragraph">For controls, by default, the key to associate with the value is the model element's name concatenated with the property that was annotated with the control.  For example, if the resource had name Worker and annotated property initialCapacity, then the key will be &quot;Worker.initialCapacity&quot;. Note the use of the &quot;.&quot; character to separate the model element name and the property name.  Since, the KSL model element naming convention require unique names for each model element, the key will be unique for the control. However, the model element name may be a very long string depending on your approach to naming the model elements. The name associated with each control can be inspected by asking the model for its controls via model.controls() and then using the methods on the Controls class for the names. The controlsMapAsJsonString() or asMap() functions are especially helpful for this purpose.</p><p class="paragraph">For the parameters associated with random variables, the naming convention is different. Again, the model element name is used as part of the identifier, then the value of rvParamConCatString from the companion object is concatenated between the name of the model element and the name of its parameter.  For example, suppose there is a random variable that has been named ServiceTimeRV that is exponentially distributed. Also assume that rvParamConCatString is &quot;.&quot;, which is its default value. Then, to access the mean of the service time random variable, we use &quot;ServiceTimeRV.mean&quot;. Thus, it is important to note the name of the random variable within the model and the default names used by the KSL for the random variable parameters.  When random variables are not explicitly named by the modeler, the KSL will automatically provide a default unique name. Thus, if you plan to control a specific random variable's parameters, you should strongly consider providing an explicit name. To get the names (and current values) of the random variable parameters, you can print out the toString() method of the RVParameterSetter class after obtaining it from the model via the model's rvParameterSetter property.</p><span class="kdoc-tag"><h4 class="">Return</h4><p class="paragraph">true if all provided input keys are valid</p></span><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>input</span><wbr></wbr><span><span>Keys</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the set of keys to check</p></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>con</span><wbr></wbr><span>Cat</span><wbr></wbr><span><span>Char</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the character used to concatenate random variables with their parameters. By default, this is &quot;.&quot;</p></div></div></div></div></div></div></div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
