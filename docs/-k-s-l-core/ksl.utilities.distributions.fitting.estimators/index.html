@@ -26,39 +26,82 @@
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
 <link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
 <script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
     <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../index.html">
-                            KSLCore
-                    </a>
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../index.html">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.1.9        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":dokkaHtml/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":dokkaHtml/main"
+                                       data-filter=":dokkaHtml/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div class="library-version">
-R1.1.3            </div>
         </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
         </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
+    </nav>
         <div id="container">
             <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
             </div>
             <div id="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting.estimators////PointingToDeclaration//769193423">
@@ -81,7 +124,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-beta-m-o-m-parameter-estimator/index.html">BetaMOMParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;BetaMOMParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the beta distribution via the method of moments. Formulas can be found in:</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-beta-m-o-m-parameter-estimator/index.html">BetaMOMParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;BetaMOMParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the beta distribution via the method of moments. Formulas can be found in:</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -141,7 +184,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gamma-m-l-e-parameter-estimator/index.html">GammaMLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;GammaMLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Gamma distribution based on a MLE algorithm. See page 285-286 of Law (2007) Simulation Modeling and Analysis.  Uses bi-section search seeded by initial estimates based on MOM estimates.  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gamma-m-l-e-parameter-estimator/index.html">GammaMLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;GammaMLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Gamma distribution based on a MLE algorithm. See page 285-286 of Law (2007) Simulation Modeling and Analysis.  Uses bi-section search seeded by initial estimates based on MOM estimates.  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -201,7 +244,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-logistic-m-o-m-parameter-estimator/index.html">LogisticMOMParameterEstimator</a> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the location and scale of a logistic distribution based on the method of moments. Observations must not all be equal. There must be at least two observations. The moment matching is based on an unbiased estimate of the variance.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-logistic-m-o-m-parameter-estimator/index.html">LogisticMOMParameterEstimator</a> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the location and scale of a logistic distribution based on the method of moments. Observations must not all be equal. There must be at least two observations. The moment matching is based on an unbiased estimate of the variance.  Uses the median for the location parameter because logistic distribution should be symmetric and median is less sensitive to outliers.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -276,7 +319,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pearson-type5-m-l-e-parameter-estimator/index.html">PearsonType5MLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;PearsonType5MLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Pearson Type 5 distribution based on a MLE algorithm. See page 293-294 of Law (2007) Simulation Modeling and Analysis.  Uses bi-section search seeded by initial estimates based on MOM estimates.  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence. The algorithm relies on the fact if X ~ PT5(shape, scale) if and only if 1/X ~ gamma(shape, 1/scale).  Thus, the data is transformed as 1/X, and a gamma distribution is fit. If the MLE of the gamma is successful the correct parameters are returned.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pearson-type5-m-l-e-parameter-estimator/index.html">PearsonType5MLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;PearsonType5MLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Pearson Type 5 distribution based on a MLE algorithm. See page 293-294 of Law (2007) Simulation Modeling and Analysis.  Uses bi-section search seeded by initial estimates based on MOM estimates.  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence. The algorithm relies on the fact if X ~ PT5(shape, scale) if and only if 1/X ~ gamma(shape, 1/scale).  Thus, the data is transformed as 1/X, and a gamma distribution is fit. If the MLE of the gamma is successful the correct parameters are returned.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -336,7 +379,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull-m-l-e-parameter-estimator/index.html">WeibullMLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;WeibullMLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Weibull distribution based on a MLE algorithm. See page 287-288 of Law (2007) Simulation Modeling and Analysis.  Uses Newton steps followed by bi-section search (if needed).  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull-m-l-e-parameter-estimator/index.html">WeibullMLEParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;WeibullMLEParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Estimates the parameters of the Weibull distribution based on a MLE algorithm. See page 287-288 of Law (2007) Simulation Modeling and Analysis.  Uses Newton steps followed by bi-section search (if needed).  Convergence is not guaranteed and will be indicated in the EstimatedParameters success property and the message.  Requires that the data be strictly positive and that there are at least two observations. Also, requires that all the supplied data are not equal. The user may vary some of the search control parameters to assist with convergence.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -351,7 +394,7 @@ R1.1.3            </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull-percentile-parameter-estimator/index.html">WeibullPercentileParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;WeibullPercentileParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Applies the percentile method to estimating the parameters of the Weibull distribution as outline in these papers:</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull-percentile-parameter-estimator/index.html">WeibullPercentileParameterEstimator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span><span class="token string">&quot;WeibullPercentileParameterEstimator&quot;</span></span></span><span class="token punctuation">)</span> : <a href="-parameter-estimator-ifc/index.html">ParameterEstimatorIfc</a>, <a href="../ksl.utilities.statistic/-m-v-b-s-estimator-ifc/index.html">MVBSEstimatorIfc</a>, <a href="../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a></div><div class="brief "><p class="paragraph">Applies the percentile method to estimating the parameters of the Weibull distribution as outline in these papers:</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -361,11 +404,16 @@ R1.1.3            </div>
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
             </div>
         </div>
     </div>
