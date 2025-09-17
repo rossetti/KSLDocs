@@ -46,7 +46,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.2        </div>
+R1.2.3        </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active=""
@@ -108,7 +108,7 @@ R1.2.2        </div>
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.cache</a><span class="delimiter">/</span><span class="current">MemorySolutionCache</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Memory</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Cache</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MemorySolutionCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultCacheSize<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>allowInfeasibleSolutions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../-solution-cache-ifc/index.html">SolutionCacheIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/cache/MemorySolutionCache.kt#L23">source</a>)</span></span></div><p class="paragraph">A memory-based cache to hold solutions.  A simplified cache to avoid including more advanced caches in the dependency tree. This cache holds solutions in a map based on (RequestData, Solution) pairs.  The cache is capacity constrained to the specified capacity.  The user can supply an eviction rule that will identify a solution to evict when the capacity is reached. If no eviction rule is supplied, then by default the algorithm removes the first solution that is deterministically infeasible, infinite, or undefined in some manner. Then, it will identify the oldest solution with the largest penalized objective function for removal.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>capacity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum permitted size of the cache</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>allow</span><wbr></wbr><span>Infeasible</span><wbr></wbr><span><span>Solutions</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true, the input infeasible solutions are allowed to be saved in the cache. If false, input-infeasible solutions are silently ignored. The default is false (do not allow input infeasible solutions to be saved)</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MemorySolutionCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultCacheSize<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>allowInfeasibleSolutions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../-solution-cache-ifc/index.html">SolutionCacheIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/cache/MemorySolutionCache.kt#L21">source</a>)</span></span></div><p class="paragraph">A memory-based cache to hold solutions.  A simplified cache to avoid including more advanced caches in the dependency tree. This cache holds solutions in a map based on (RequestData, Solution) pairs.  The cache is capacity constrained to the specified capacity.  The user can supply an eviction rule that will identify a solution to evict when the capacity is reached. If no eviction rule is supplied, then by default the algorithm removes the first solution that is deterministically infeasible, infinite, or undefined in some manner. Then, it will identify the oldest solution with the largest penalized objective function for removal.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>capacity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum permitted size of the cache</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>allow</span><wbr></wbr><span>Infeasible</span><wbr></wbr><span><span>Solutions</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true, the input infeasible solutions are allowed to be saved in the cache. If false, input-infeasible solutions are silently ignored. The default is false (do not allow input infeasible solutions to be saved)</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
@@ -153,7 +153,37 @@ R1.2.2        </div>
       </div>
       <div data-togglable="PROPERTY">
         <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-318250856%2FProperties%2F-251573632" anchor-label="allowInfeasibleSolutions" id="-318250856%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="-151538311%2FProperties%2F-251573632" anchor-label="allowCacheLookups" id="-151538311%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="allow-cache-lookups.html"><span>allow</span><wbr></wbr><span>Cache</span><wbr></wbr><span><span>Lookups</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-151538311%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="allow-cache-lookups.html">allowCacheLookups</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the cache will allow lookups of solutions based on the input settings. If false, the cache will not allow lookups of solutions based on the input settings. The default is true (allow cache lookups)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2036896956%2FProperties%2F-251573632" anchor-label="allowCachePuts" id="-2036896956%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="allow-cache-puts.html"><span>allow</span><wbr></wbr><span>Cache</span><wbr></wbr><span><span>Puts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2036896956%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="allow-cache-puts.html">allowCachePuts</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the cache will allow puts of solutions based on the input settings. If false, the cache will not allow puts of solutions based on the input settings. The default is true (allow cache puts)</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-318250856%2FProperties%2F-251573632" anchor-label="allowInfeasibleSolutions" id="-318250856%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
@@ -193,7 +223,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entries.html">entries</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/-entry/index.html">Map.Entry</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a><span class="token punctuation">, </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="entries.html">entries</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/-entry/index.html">Map.Entry</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a><span class="token punctuation">, </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -223,7 +253,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="keys.html">keys</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="keys.html">keys</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -262,17 +292,32 @@ R1.2.2        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-22798969%2FFunctions%2F-251573632" anchor-label="containsKey" id="-22798969%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="-394363892%2FFunctions%2F-251573632" anchor-label="clear" id="-394363892%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="contains-key.html"><span>contains</span><wbr></wbr><span><span>Key</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-22798969%2FFunctions%2F-251573632"></span>
+                  <div><a href="clear.html"><span><span>clear</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-394363892%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains-key.html"><span class="token function">containsKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="clear.html"><span class="token function">clear</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes all items from the cache</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-835759666%2FFunctions%2F-251573632" anchor-label="containsKey" id="-835759666%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains-key.html"><span>contains</span><wbr></wbr><span><span>Key</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-835759666%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="contains-key.html"><span class="token function">containsKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -302,22 +347,22 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="find-eviction-candidate.html"><span class="token function">findEvictionCandidate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a></div><div class="brief "><p class="paragraph">By default, the eviction candidate will be:</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="find-eviction-candidate.html"><span class="token function">findEvictionCandidate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a></div><div class="brief "><p class="paragraph">By default, the eviction candidate will be:</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1525367119%2FFunctions%2F-251573632" anchor-label="get" id="-1525367119%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="1956639480%2FFunctions%2F-251573632" anchor-label="get" id="1956639480%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get.html"><span><span>get</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1525367119%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1956639480%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">key<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -337,32 +382,32 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
-<a data-name="1588046779%2FFunctions%2F-251573632" anchor-label="put" id="1588046779%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="-1104188990%2FFunctions%2F-251573632" anchor-label="put" id="-1104188990%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="put.html"><span><span>put</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1588046779%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1104188990%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="put.html"><span class="token function">put</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">requestData<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a><span class="token punctuation">, </span></span><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Places the solution into the cache. It is important that implementors handle the insertion of infeasible inputs and ensure that the input map is associated with the solution</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="put.html"><span class="token function">put</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">modelInputs<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a><span class="token punctuation">, </span></span><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Places the solution into the cache. It is important that implementors handle the insertion of infeasible inputs and ensure that the input map is associated with the solution</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="382226891%2FFunctions%2F-251573632" anchor-label="remove" id="382226891%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="-430733806%2FFunctions%2F-251573632" anchor-label="remove" id="-430733806%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove.html"><span><span>remove</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="382226891%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-430733806%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">requestData<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-request-data/index.html">RequestData</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Looks up and removes the solution associated with the supplied input map. Null is returned if there is no associated solution. It is important that implementor handle the reduced size relative to the cache.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="remove.html"><span class="token function">remove</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">modelInputs<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Looks up and removes the solution associated with the supplied input map. Null is returned if there is no associated solution. It is important that implementors handle the reduced size relative to the cache.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -378,21 +423,6 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="solutions.html"><span class="token function">solutions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solutions/index.html">Solutions</a></div><div class="brief "><p class="paragraph">Retrieves the solution in the cache as a group of solutions</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-<a data-name="1851447331%2FFunctions%2F-251573632" anchor-label="toSolutionData" id="1851447331%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="to-solution-data.html"><span>to</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Data</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1851447331%2FFunctions%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-solution-data.html"><span class="token function">toSolutionData</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution-data/index.html">SolutionData</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Converts the data in the cache to a list containing instances of the SolutionData</p></div></div></div>
                 </div>
               </div>
             </div>

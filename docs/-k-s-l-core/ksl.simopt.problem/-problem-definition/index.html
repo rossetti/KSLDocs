@@ -46,7 +46,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.2        </div>
+R1.2.3        </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active=""
@@ -108,24 +108,24 @@ R1.2.2        </div>
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.problem</a><span class="delimiter">/</span><span class="current">ProblemDefinition</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Problem</span><wbr></wbr><span><span>Definition</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ProblemDefinition</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/problem/ProblemDefinition.kt#L48">source</a>)</span></span></div><p class="paragraph">This class describes an optimization problem for use within simulation optimization algorithms. The general optimization problem is presented as minimizing the expected value of some function H(x), where x is some input parameters to the simulation and H(.) is the simulation model response for the objective function. The input parameters are assumed to be real-valued specified by a name between a lower and upper bound and a granularity. The granularity specifies the acceptable precision of the input. The problem can have a set of linear constraints. The linear constraints are a deterministic function of the inputs. The problem can also have a set of functional constraints.  A functional constraint is a deterministic function of the inputs that is bounded by constraints. This permits non-linear deterministic functional forms for the problem. In addition, a set of probabilistic constraints of the form EG(x)< c can be specified, where G(x) is some response from the simulation.</p><p class="paragraph">To use this class, the user first defines the objective function response name, the names of the input variables, and the names of the responses to appear in the problem. Then the reference to the class can be used to specify inputs and constraints.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the problem for labeling and identification purposes. If no name is supplied, then a unique name is constructed.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>model</span><wbr></wbr><span><span>Identifier</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the identifier of the model that this problem definition is associated with. The identifier should correspond to an actual model name registered with a simulation provider.  The input names and response names should be valid for the identified model.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response within the simulation model. This name is used to extract the observed simulation values from the simulation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>input</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of the inputs for the simulation model. These names are used to set values for the simulation when executing experiments. Any constraints specified on the input variables must use these names.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of any responses that will appear in response constraints. The default is empty.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>indifference</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Parameter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a parameter that represents the smallest actual difference that is important to detect for the objective function response. This parameter can be used by solvers to determine if differences between solutions are considered practically insignificant. The default is zero.</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ProblemDefinition</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>optimizationType<span class="token operator">: </span><a href="../-optimization-type/index.html">OptimizationType</a><span class="token operator"> = </span>OptimizationType.MINIMIZE<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/problem/ProblemDefinition.kt#L50">source</a>)</span></span></div><p class="paragraph">This class describes an optimization problem for use within simulation optimization algorithms. The general optimization problem is presented as minimizing the expected value of some function H(x), where x is some input parameters to the simulation and H(.) is the simulation model response for the objective function. The input parameters are assumed to be real-valued specified by a name between a lower and upper bound and a granularity. The granularity specifies the acceptable precision of the input. The problem can have a set of linear constraints. The linear constraints are a deterministic function of the inputs. The problem can also have a set of functional constraints.  A functional constraint is a deterministic function of the inputs that is bounded by constraints. This permits non-linear deterministic functional forms for the problem. In addition, a set of probabilistic constraints of the form EG(x)< c can be specified, where G(x) is some response from the simulation.</p><p class="paragraph">To use this class, the user first defines the objective function response name, the names of the input variables, and the names of the responses to appear in the problem. Then the reference to the class can be used to specify inputs and constraints.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the problem for labeling and identification purposes. If no name is supplied, then a unique name is constructed.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>model</span><wbr></wbr><span><span>Identifier</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the identifier of the model that this problem definition is associated with. The identifier should correspond to an actual model name registered with a simulation provider.  The input names and response names should be valid for the identified model.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response within the simulation model. This name is used to extract the observed simulation values from the simulation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>input</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of the inputs for the simulation model. These names are used to set values for the simulation when executing experiments. Any constraints specified on the input variables must use these names.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of any responses that will appear in response constraints. The default is empty.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>optimization</span><wbr></wbr><span><span>Type</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The type of optimization to perform, either MINIMIZE or MAXIMIZE.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>indifference</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Parameter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a parameter that represents the smallest actual difference that is important to detect for the objective function response. This parameter can be used by solvers to determine if differences between solutions are considered practically insignificant. The default is zero.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span><span>Granularity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the granularity of the objective function</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="141396883%2FConstructors%2F-251573632" anchor-label="ProblemDefinition" id="141396883%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="527818648%2FConstructors%2F-251573632" anchor-label="ProblemDefinition" id="527818648%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-problem-definition.html"><span>Problem</span><wbr></wbr><span><span>Definition</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="141396883%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="527818648%2FConstructors%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">optimizationType<span class="token operator">: </span><a href="../-optimization-type/index.html">OptimizationType</a><span class="token operator"> = </span>OptimizationType.MINIMIZE<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -179,6 +179,51 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="functional-constraints.html">functionalConstraints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-functional-constraint/index.html">FunctionalConstraint</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The functional constraints for the problem as a list</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1784580401%2FProperties%2F-251573632" anchor-label="hasFunctionalConstraints" id="-1784580401%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-functional-constraints.html"><span>has</span><wbr></wbr><span>Functional</span><wbr></wbr><span><span>Constraints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1784580401%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="has-functional-constraints.html">hasFunctionalConstraints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if there are functional constraints</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2076929393%2FProperties%2F-251573632" anchor-label="hasLinearConstraints" id="2076929393%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-linear-constraints.html"><span>has</span><wbr></wbr><span>Linear</span><wbr></wbr><span><span>Constraints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2076929393%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="has-linear-constraints.html">hasLinearConstraints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if there are linear constraints</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="601722701%2FProperties%2F-251573632" anchor-label="hasResponseConstraints" id="601722701%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-response-constraints.html"><span>has</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Constraints</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601722701%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="has-response-constraints.html">hasResponseConstraints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if there are response constraints</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -348,6 +393,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="-1856348561%2FProperties%2F-251573632" anchor-label="isIntegerOrdered" id="-1856348561%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-integer-ordered.html"><span>is</span><wbr></wbr><span>Integer</span><wbr></wbr><span><span>Ordered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1856348561%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-integer-ordered.html">isIntegerOrdered</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">A problem definition is considered integer-ordered if its input variables are all integer-ordered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="274251457%2FProperties%2F-251573632" anchor-label="linearConstraints" id="274251457%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -408,6 +468,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="-1447881803%2FProperties%2F-251573632" anchor-label="objFncFactor" id="-1447881803%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obj-fnc-factor.html"><span>obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Factor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1447881803%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="obj-fnc-factor.html">objFncFactor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Used to maximization problems into minimization problems</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="241721497%2FProperties%2F-251573632" anchor-label="objFnGranularity" id="241721497%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -434,6 +509,36 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="obj-fn-response-name.html">objFnResponseName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1851544319%2FProperties%2F-251573632" anchor-label="optimizationType" id="-1851544319%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="optimization-type.html"><span>optimization</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1851544319%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="optimization-type.html">optimizationType</a><span class="token operator">: </span><a href="../-optimization-type/index.html">OptimizationType</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1683373137%2FProperties%2F-251573632" anchor-label="penaltyFunction" id="1683373137%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="penalty-function.html"><span>penalty</span><wbr></wbr><span><span>Function</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1683373137%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="penalty-function.html">penaltyFunction</a><span class="token operator">: </span><a href="../-penalty-function-ifc/index.html">PenaltyFunctionIfc</a></div><div class="brief "><p class="paragraph">The user may supply a penalty function to use when computing the constraint violation penalty; otherwise the default penalty function is used.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -502,6 +607,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="2147354943%2FFunctions%2F-251573632" anchor-label="convertPointsToInputs" id="2147354943%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="convert-points-to-inputs.html"><span>convert</span><wbr></wbr><span>Points</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Inputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2147354943%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="convert-points-to-inputs.html"><span class="token function">convertPointsToInputs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">points<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-input-map/index.html">InputMap</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Translates the supplied list of arrays to a set of named input pairs (name, value). Assumes that the order of the array elements is the same as the order of the defined names for the problem. NOTE!!: If the supplied value is outside the range of the named variable, it is adjusted to the closest boundary. In addition, the granularity of the input variable is applied.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1436183718%2FFunctions%2F-251573632" anchor-label="emptyResponseMap" id="-1436183718%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -517,6 +637,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="-972297810%2FFunctions%2F-251573632" anchor-label="filterToFeasibleInputs" id="-972297810%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="filter-to-feasible-inputs.html"><span>filter</span><wbr></wbr><span>To</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Inputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-972297810%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="filter-to-feasible-inputs.html"><span class="token function">filterToFeasibleInputs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">points<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-input-map/index.html">InputMap</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Filters the supplied list of arrays to a set of input maps that are input feasible. Each array is checked if it is input-feasible <a href="is-input-feasible.html">isInputFeasible</a> and if so added to the resulting returned set.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1847152070%2FFunctions%2F-251573632" anchor-label="functionalConstraint" id="1847152070%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -528,6 +663,21 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="functional-constraint.html"><span class="token function">functionalConstraint</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lhsFunc<span class="token operator">: </span><a href="../-constraint-function-ifc/index.html">ConstraintFunctionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">rhsValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">inequalityType<span class="token operator">: </span><a href="../-inequality-type/index.html">InequalityType</a><span class="token operator"> = </span>InequalityType.LESS_THAN</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-functional-constraint/index.html">FunctionalConstraint</a></div><div class="brief "><p class="paragraph">Creates an <a href="../-functional-constraint/index.html">FunctionalConstraint</a> based on the supplied function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-595656650%2FFunctions%2F-251573632" anchor-label="functionalConstraintViolations" id="-595656650%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="functional-constraint-violations.html"><span>functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-595656650%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="functional-constraint-violations.html"><span class="token function">functionalConstraintViolations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Computes and returns the violation for each functional constraint.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -562,6 +712,81 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="-770236867%2FFunctions%2F-251573632" anchor-label="granularObjFncValue" id="-770236867%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="granular-obj-fnc-value.html"><span>granular</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-770236867%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="granular-obj-fnc-value.html"><span class="token function">granularObjFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the objective function value for the provided solution in terms of its specified granularity. If the granularity is 0.0 then the raw value is returned. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1469268499%2FFunctions%2F-251573632" anchor-label="granularPenalizedObjFncValue" id="1469268499%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="granular-penalized-obj-fnc-value.html"><span>granular</span><wbr></wbr><span>Penalized</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1469268499%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="granular-penalized-obj-fnc-value.html"><span class="token function">granularPenalizedObjFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the granular version of the penalized objective function value for the provided solution in terms of its specified granularity. If the granularity is 0.0 then the raw value is returned. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="19515599%2FFunctions%2F-251573632" anchor-label="granularPenaltyFncValue" id="19515599%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="granular-penalty-fnc-value.html"><span>granular</span><wbr></wbr><span>Penalty</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="19515599%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="granular-penalty-fnc-value.html"><span class="token function">granularPenaltyFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the penalty function value for the provided solution in terms of its specified granularity. If the granularity is 0.0 then the raw value is returned. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1747496520%2FFunctions%2F-251573632" anchor-label="inputRangeLatinHyperCubeInputs" id="1747496520%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="input-range-latin-hyper-cube-inputs.html"><span>input</span><wbr></wbr><span>Range</span><wbr></wbr><span>Latin</span><wbr></wbr><span>Hyper</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Inputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1747496520%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="input-range-latin-hyper-cube-inputs.html"><span class="token function">inputRangeLatinHyperCubeInputs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numPoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rnStream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a><span class="token operator"> = </span>KSLRandom.defaultRNStream()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-input-map/index.html">InputMap</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Generates the specified number of points using Latin hyper-cube sampling over the ranges of inputs. The points may not be feasible with respect to linear or functional constraints.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-543490238%2FFunctions%2F-251573632" anchor-label="inputRangeLatinHyperCubePoints" id="-543490238%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="input-range-latin-hyper-cube-points.html"><span>input</span><wbr></wbr><span>Range</span><wbr></wbr><span>Latin</span><wbr></wbr><span>Hyper</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Points</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-543490238%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="input-range-latin-hyper-cube-points.html"><span class="token function">inputRangeLatinHyperCubePoints</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numPoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">rnStream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a><span class="token operator"> = </span>KSLRandom.defaultRNStream()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Generates the specified number of points using Latin hyper-cube sampling over the ranges of inputs. The points may not be feasible with respect to linear or functional constraints.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-157304098%2FFunctions%2F-251573632" anchor-label="inputVariable" id="-157304098%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -577,17 +802,17 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
-<a data-name="1978859797%2FFunctions%2F-251573632" anchor-label="isFunctionalConstraintFeasible" id="1978859797%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="-1252557215%2FFunctions%2F-251573632" anchor-label="isFunctionalConstraintFeasible" id="-1252557215%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-functional-constraint-feasible.html"><span>is</span><wbr></wbr><span>Functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Feasible</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1978859797%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1252557215%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-functional-constraint-feasible.html"><span class="token function">isFunctionalConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within functional constraints. False will be returned if at least one functional constraint is infeasible.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-functional-constraint-feasible.html"><span class="token function">isFunctionalConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the array's elements are feasible with respect to any functional constraints</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-functional-constraint-feasible.html"><span class="token function">isFunctionalConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within functional constraints. False will be returned if at least one functional constraint is infeasible.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -602,37 +827,37 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-feasible.html"><span class="token function">isInputFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-feasible.html"><span class="token function">isInputFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The supplied input is considered input-feasible if it is feasible with respect to the defined input parameter ranges, the linear constraints, and the functional constraints.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-feasible.html"><span class="token function">isInputFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-feasible.html"><span class="token function">isInputFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The supplied input is considered input-feasible if it is feasible with respect to the defined input parameter ranges, the linear constraints, and the functional constraints.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="660909992%2FFunctions%2F-251573632" anchor-label="isInputRangeFeasible" id="660909992%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="454831175%2FFunctions%2F-251573632" anchor-label="isInputRangeFeasible" id="454831175%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-input-range-feasible.html"><span>is</span><wbr></wbr><span>Input</span><wbr></wbr><span>Range</span><wbr></wbr><span><span>Feasible</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="660909992%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="454831175%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-range-feasible.html"><span class="token function">isInputRangeFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within the ranges defined for the variables. False will be returned if at least one input variable is not within its defined range.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-range-feasible.html"><span class="token function">isInputRangeFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the array's elements are within the defined input ranges for each input variable.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-input-range-feasible.html"><span class="token function">isInputRangeFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within the ranges defined for the variables. False will be returned if at least one input variable is not within its defined range.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1159150025%2FFunctions%2F-251573632" anchor-label="isLinearConstraintFeasible" id="-1159150025%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="695325605%2FFunctions%2F-251573632" anchor-label="isLinearConstraintFeasible" id="695325605%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-linear-constraint-feasible.html"><span>is</span><wbr></wbr><span>Linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Feasible</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1159150025%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="695325605%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-linear-constraint-feasible.html"><span class="token function">isLinearConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within linear constraints. False will be returned if at least one linear constraint is infeasible.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-linear-constraint-feasible.html"><span class="token function">isLinearConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the array's elements are feasible with respect to any linear constraints</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="is-linear-constraint-feasible.html"><span class="token function">isLinearConstraintFeasible</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Interprets the supplied map as inputs for the problem definition and returns true if the values are within linear constraints. False will be returned if at least one linear constraint is infeasible.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -707,7 +932,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-adjusted-r-h-s.html"><span class="token function">linearConstraintsAdjustedRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Returns the coefficients of the constraints as a matrix. Assume we have the constraint A<i>x </i><<i> b or A</i>x b, then this function returns the b vector. The values have been adjusted for the direction of the constraint.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-adjusted-r-h-s.html"><span class="token function">linearConstraintsAdjustedRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint A<i>x </i><<i> b or A</i>x b, then this function returns the b vector. The values have been adjusted for the direction of the constraint such that the constraint is considered to have a less-than orientation.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -722,7 +947,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-l-h-s-values.html"><span class="token function">linearConstraintsLHSValues</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Returns the adjusted left-hand side values for each constraint. Make the adjustment such that the constraint is considered less-than orientation.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-l-h-s-values.html"><span class="token function">linearConstraintsLHSValues</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Returns the adjusted left-hand side values for each constraint. Makes the adjustment such that the constraint is considered less-than orientation.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -738,6 +963,21 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-r-h-s.html"><span class="token function">linearConstraintsRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint, A<i>x </i><<i> b or A</i>x b, then this function returns the b vector. The values have not been adjusted for the direction of the constraint.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1745924056%2FFunctions%2F-251573632" anchor-label="linearConstraintViolations" id="1745924056%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="linear-constraint-violations.html"><span>linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1745924056%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraint-violations.html"><span class="token function">linearConstraintViolations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Computes and returns the violation for each linear constraint.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -768,6 +1008,51 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="moore-neighborhood-finder.html"><span class="token function">mooreNeighborhoodFinder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">radius<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.solvers/-neighborhood-finder-ifc/index.html">NeighborhoodFinderIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="954301629%2FFunctions%2F-251573632" anchor-label="objFncValue" id="954301629%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="obj-fnc-value.html"><span>obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="954301629%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="obj-fnc-value.html"><span class="token function">objFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the objective function value for the provided solution. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="273363859%2FFunctions%2F-251573632" anchor-label="penalizedObjFncValue" id="273363859%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="penalized-obj-fnc-value.html"><span>penalized</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="273363859%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="penalized-obj-fnc-value.html"><span class="token function">penalizedObjFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the penalized objective function value for the provided solution. Ensures that the returned value is oriented according to the optimization type. This is the objective function value plue the penality function value.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="648079183%2FFunctions%2F-251573632" anchor-label="penaltyFncValue" id="648079183%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="penalty-fnc-value.html"><span>penalty</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="648079183%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="penalty-fnc-value.html"><span class="token function">penaltyFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the total violation penalty associated with the constraints for the problem. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -917,7 +1202,22 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-input-map.html"><span class="token function">toInputMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Translates the supplied array to named input pairs (name, value). Assumes that the order of the array is the same as the order of the defined names for the problem. If the supplied value is outside the range of the name variable, it is adjusted to the closest boundary. In addition, the granularity of the input variable is applied.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-input-map.html"><span class="token function">toInputMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">map<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Ensures that the supplied map is translated to an appropriate map containing name, value pairs for this problem. The resulting InputMap will have valid names and values that are input-range-feasible. The values will be rounded to the appropriate granularity for the named input variable.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-input-map.html"><span class="token function">toInputMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Translates the supplied array to named input pairs (name, value). Assumes that the order of the array is the same as the order of the defined names for the problem. NOTE!!: If the supplied value is outside the range of the name variable, it is adjusted to the closest boundary. In addition, the granularity of the input variable is applied. Thus, the returned input map will be input-range-feasible after this conversion process.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-input-map.html"><span class="token function">toInputMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">map<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Ensures that the supplied map is translated to an appropriate map containing name, value pairs for this problem. The resulting InputMap will have valid names and values that are input-range-feasible. The values will be rounded to the appropriate granularity for the named input variable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-897223850%2FFunctions%2F-251573632" anchor-label="toMap" id="-897223850%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-map.html"><span>to</span><wbr></wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-897223850%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="to-map.html"><span class="token function">toMap</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Translates the supplied array to named input pairs (name, value). Assumes that the order of the array is the same as the order of the defined names for the problem. NOTE!!: No adjustment of the value is performed. The resulting map may be infeasible with respect to input variable ranges and other deterministic constraints.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -937,6 +1237,51 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="1923241040%2FFunctions%2F-251573632" anchor-label="totalFunctionalConstraintViolations" id="1923241040%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-functional-constraint-violations.html"><span>total</span><wbr></wbr><span>Functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1923241040%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="total-functional-constraint-violations.html"><span class="token function">totalFunctionalConstraintViolations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes and returns the total violation for the functional constraints.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1335798428%2FFunctions%2F-251573632" anchor-label="totalLinearConstrainViolations" id="-1335798428%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-linear-constrain-violations.html"><span>total</span><wbr></wbr><span>Linear</span><wbr></wbr><span>Constrain</span><wbr></wbr><span><span>Violations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1335798428%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="total-linear-constrain-violations.html"><span class="token function">totalLinearConstrainViolations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes and returns the total violation for the linear constraints.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1458717106%2FFunctions%2F-251573632" anchor-label="totalResponseConstraintViolations" id="-1458717106%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-response-constraint-violations.html"><span>total</span><wbr></wbr><span>Response</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1458717106%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="total-response-constraint-violations.html"><span class="token function">totalResponseConstraintViolations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">averages<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The total violations associated with the response constraints for the provided values within the map holding the average response for each named response.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1330028866%2FFunctions%2F-251573632" anchor-label="validate" id="-1330028866%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -947,7 +1292,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="validate.html"><span class="token function">validate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the supplied map has valid names and valid values (input range feasible)</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="validate.html"><span class="token function">validate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if the supplied map has valid names and valid values (input-range feasible)</p></div></div></div>
                 </div>
               </div>
             </div>

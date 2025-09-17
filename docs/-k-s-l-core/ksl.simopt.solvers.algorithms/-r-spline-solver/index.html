@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>RSplineSolver</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.2.3        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.solvers.algorithms/RSplineSolver///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.solvers.algorithms</a><span class="delimiter">/</span><span class="current">RSplineSolver</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>RSpline</span><wbr></wbr><span><span>Solver</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">RSplineSolver</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maxIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultMaxNumberIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../../ksl.simopt.solvers/-fixed-growth-rate-replication-schedule/index.html">FixedGrowthRateReplicationSchedule</a><span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>KSLRandom.DefaultRNStreamProvider<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-stochastic-solver/index.html">StochasticSolver</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/algorithms/RSplineSolver.kt#L60">source</a>)</span></span></div><p class="paragraph">This class represents an implementation of R-SPLINE from the paper:</p><p class="paragraph">H. Wang, R. Pasupathy, and B. W. Schmeiser, “Integer-Ordered Simulation Optimization using R-SPLINE: Retrospective Search with Piecewise-Linear Interpolation and Neighborhood Enumeration,” ACM Transactions on Modeling and Computer Simulation (TOMACS), vol. 23, no. 3, pp. 17–24, July 2013, doi: 10.1145/2499913.2499916.</p><p class="paragraph">The original algorithm used the total number of oracle calls as an approach to stopping the iterations. Matlab/R implementations did not use this approach, but had a limit on the total number of R-SPLINE iterations.  The basic implementation of all solvers has such a limit via the maxIterations property. The theory of the approach indicates that each sample-path problem, P_k, is used to seed the next sample path problem. This causes the solutions to the P_k problems to eventually converge to some solution. The original paper does not provide much insight into how to compare solutions for stopping. The approach implemented here follows the suggestions found within the cross-entropy literature. The sequence of P_k calls will stop when a fixed number of the last produced solutions test for equality. The default here is to indicate that solutions are equal if they compare equal according to a confidence interval test and have the same input variable values. The confidence interval test is based on the penalized objective function value. The stopping criteria is controlled by the <a href="solution-checker.html">solutionChecker</a> property.  Users can supply their own checking procedure via this property and their own definition of equality via its solutionEqualityChecker property.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Definition</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the problem being solved.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The evaluator responsible for assessing the quality of solutions. Must implement the EvaluatorIfc interface.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>max</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The maximum number of iterations allowed for the solving process.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Strategy to determine the number of replications to perform for each evaluation.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>solution</span><wbr></wbr><span>Equality</span><wbr></wbr><span><span>Checker</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Used when testing if solutions have converged for equality between solutions. The default is <a href="../../ksl.simopt.evaluator/-inputs-and-confidence-interval-equality/index.html">InputsAndConfidenceIntervalEquality</a>, which checks if the inputs are the same and there is no statistical difference between the solutions</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Num</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the random number stream number, defaults to 0, which means the next stream</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Provider</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the provider of random number streams, defaults to <a href="../../ksl.utilities.random.rvariable/-k-s-l-random/-default-r-n-stream-provider.html">KSLRandom.DefaultRNStreamProvider</a></p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">Optional name identifier for this instance of the solver.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="207735030%2FConstructors%2F-251573632" anchor-label="RSplineSolver" id="207735030%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-r-spline-solver.html"><span>RSpline</span><wbr></wbr><span><span>Solver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="207735030%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maxIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultMaxNumberIterations<span class="token punctuation">, </span></span><span class="parameter ">initialNumReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultInitialSampleSize<span class="token punctuation">, </span></span><span class="parameter ">sampleSizeGrowthRate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultReplicationGrowthRate<span class="token punctuation">, </span></span><span class="parameter ">maxNumReplications<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultMaxNumReplications<span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>KSLRandom.DefaultRNStreamProvider<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maxIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultMaxNumberIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../../ksl.simopt.solvers/-fixed-growth-rate-replication-schedule/index.html">FixedGrowthRateReplicationSchedule</a><span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>KSLRandom.DefaultRNStreamProvider<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates an R-SPLINE solver with the specified parameters.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1437663918%2FClasslikes%2F-251573632" anchor-label="Companion" id="-1437663918%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437663918%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2045246425%2FClasslikes%2F-251573632" anchor-label="NESearchResults" id="-2045246425%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-n-e-search-results/index.html"><span>NESearch</span><wbr></wbr><span><span>Results</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2045246425%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-n-e-search-results/index.html">NESearchResults</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>numOracleCalls<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1667536389%2FClasslikes%2F-251573632" anchor-label="PLIResults" id="-1667536389%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-p-l-i-results/index.html"><span><span>PLIResults</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1667536389%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-p-l-i-results/index.html">PLIResults</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>numOracleCalls<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gradients<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="433406210%2FClasslikes%2F-251573632" anchor-label="SPLIResults" id="433406210%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-p-l-i-results/index.html"><span><span>SPLIResults</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="433406210%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-s-p-l-i-results/index.html">SPLIResults</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>numOracleCalls<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1043994745%2FProperties%2F-251573632" anchor-label="fixedGrowthRateReplicationSchedule" id="-1043994745%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fixed-growth-rate-replication-schedule.html"><span>fixed</span><wbr></wbr><span>Growth</span><wbr></wbr><span>Rate</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Schedule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1043994745%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="fixed-growth-rate-replication-schedule.html">fixedGrowthRateReplicationSchedule</a><span class="token operator">: </span><a href="../../ksl.simopt.solvers/-fixed-growth-rate-replication-schedule/index.html">FixedGrowthRateReplicationSchedule</a></div><div class="brief "><p class="paragraph">This defines the growth schedule for the number of replications. In the original paper, this is the value of m_k.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="159656574%2FProperties%2F-251573632" anchor-label="initialLineSearchStepSize" id="159656574%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-line-search-step-size.html"><span>initial</span><wbr></wbr><span>Line</span><wbr></wbr><span>Search</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="159656574%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="initial-line-search-step-size.html">initialLineSearchStepSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The initial setting of the line search step-size. By default, this is 2.0</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-61342209%2FProperties%2F-251573632" anchor-label="initialMaxSplineCallLimit" id="-61342209%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-max-spline-call-limit.html"><span>initial</span><wbr></wbr><span>Max</span><wbr></wbr><span>Spline</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-61342209%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="initial-max-spline-call-limit.html">initialMaxSplineCallLimit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Since the number of SPLINE calls can grow as the algorithm proceeds, this variable provides the initial number of SPLINE calls to which the growth is applied. The default value is <a href="-companion/default-initial-max-spline-calls.html">defaultInitialMaxSplineCalls</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2146223301%2FProperties%2F-251573632" anchor-label="lineSearchIterMax" id="-2146223301%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="line-search-iter-max.html"><span>line</span><wbr></wbr><span>Search</span><wbr></wbr><span>Iter</span><wbr></wbr><span><span>Max</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2146223301%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="line-search-iter-max.html">lineSearchIterMax</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">This variable limits the number of permissible line-searches within the SPLINE step.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1806953861%2FProperties%2F-251573632" anchor-label="lineSearchStepSizeMultiplier" id="1806953861%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="line-search-step-size-multiplier.html"><span>line</span><wbr></wbr><span>Search</span><wbr></wbr><span>Step</span><wbr></wbr><span>Size</span><wbr></wbr><span><span>Multiplier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1806953861%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="line-search-step-size-multiplier.html">lineSearchStepSizeMultiplier</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The multiplier that increases the line search step-size for each line search iteration. The default is 2.0</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1833020665%2FProperties%2F-251573632" anchor-label="maxSplineCallLimit" id="-1833020665%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="max-spline-call-limit.html"><span>max</span><wbr></wbr><span>Spline</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1833020665%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-spline-call-limit.html">maxSplineCallLimit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Since the number of SPLINE calls can grow as the algorithm proceeds, this variable provides the maximum number of calls that are permissible. The growth with not exceed this value. By default, this is <a href="-companion/default-max-spline-call-limit.html">defaultMaxSplineCallLimit</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="364781787%2FProperties%2F-251573632" anchor-label="neighborhoodFinder" id="364781787%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="neighborhood-finder.html"><span>neighborhood</span><wbr></wbr><span><span>Finder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="364781787%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="neighborhood-finder.html">neighborhoodFinder</a><span class="token operator">: </span><a href="../../ksl.simopt.solvers/-neighborhood-finder-ifc/index.html">NeighborhoodFinderIfc</a></div><div class="brief "><p class="paragraph">The neighborhood finder for performing the neighborhood search. By default, this is a von Neumann neighborhood.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1443745304%2FProperties%2F-251573632" anchor-label="perturbation" id="-1443745304%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="perturbation.html"><span><span>perturbation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1443745304%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="perturbation.html">perturbation</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The amount of the perturbation for Algorithm 4 in the paper:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-492757539%2FProperties%2F-251573632" anchor-label="rSPLINESampleSize" id="-492757539%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="r-s-p-l-i-n-e-sample-size.html"><span>r</span><wbr></wbr><span>SPLINESample</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-492757539%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="r-s-p-l-i-n-e-sample-size.html">rSPLINESampleSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">This variable tracks the current sample size for each SPLINE iteration. In the notation of the paper, this is m_k.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1740324111%2FProperties%2F-251573632" anchor-label="solutionChecker" id="1740324111%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="solution-checker.html"><span>solution</span><wbr></wbr><span><span>Checker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1740324111%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="solution-checker.html">solutionChecker</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-checker/index.html">SolutionChecker</a></div><div class="brief "><p class="paragraph">Used to check if the last set of solutions that were captured are the same.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1369267509%2FProperties%2F-251573632" anchor-label="spliMaxIterations" id="-1369267509%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spli-max-iterations.html"><span>spli</span><wbr></wbr><span>Max</span><wbr></wbr><span><span>Iterations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1369267509%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="spli-max-iterations.html">spliMaxIterations</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">This variable limits the number of permissible SPLI-searches within the SPLINE step.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="522493177%2FProperties%2F-251573632" anchor-label="splineCallGrowthRate" id="522493177%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spline-call-growth-rate.html"><span>spline</span><wbr></wbr><span>Call</span><wbr></wbr><span>Growth</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522493177%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="spline-call-growth-rate.html">splineCallGrowthRate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The rate at which the permissible number of SPLINE calls grows. By default, this is defined by <a href="-companion/default-spline-call-growth-rate.html">defaultSplineCallGrowthRate</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-544300065%2FProperties%2F-251573632" anchor-label="splineCallLimit" id="-544300065%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spline-call-limit.html"><span>spline</span><wbr></wbr><span>Call</span><wbr></wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-544300065%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="spline-call-limit.html">splineCallLimit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Since the number of SPLINE calls can grow as the algorithm proceeds, this variable represents the current number of permissible SPLINE calls. In the notation of the R-SPLINE paper, this is b_k.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

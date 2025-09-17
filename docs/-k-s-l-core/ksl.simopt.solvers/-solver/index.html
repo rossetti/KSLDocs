@@ -46,7 +46,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.2        </div>
+R1.2.3        </div>
         <div class="navigation-controls">
         <div class="filter-section filter-section_loading" id="filter-section">
                 <button class="platform-tag platform-selector jvm-like" data-active=""
@@ -108,24 +108,24 @@ R1.2.2        </div>
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.solvers</a><span class="delimiter">/</span><span class="current">Solver</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Solver</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Solver</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../../ksl.simopt.evaluator/-compare-solutions-ifc/index.html">CompareSolutionsIfc</a>, <a href="../-solver-emitter-ifc/index.html">SolverEmitterIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/Solver.kt#L57">source</a>)</span></span></div><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p><p class="paragraph">Specialized implementations may have specific methods for determining stopping criteria; however, to avoid the execution of a large number of iterations, the iterative process has a specified maximum number of iterations.</p><p class="paragraph">Within the context of simulation optimization, the supplied evaluator promises to execute requests for evaluations of the simulation model at particular design points (as determined by the algorithm). In addition, because of the stochastic nature of the evaluation, the solver may request one or more replications for its evaluation requests. The number of replications may dynamically change, and thus the user needs to supply a function to determine the number of replications per evaluation.  Within the framework of the hooks for subclasses, the user could specify more complex procedures for determining the number of replications per evaluation.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>maximum</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of iterations permitted for the main loop. This must be greater than 0.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the function controlling how many replications are requested for each evaluation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the reference to the evaluator for evaluating responses from the model</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a name to help with identifying the solver when multiple solvers are used on a problem</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Solver</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../-solver-emitter-ifc/index.html">SolverEmitterIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/Solver.kt#L68">source</a>)</span></span></div><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p><p class="paragraph">Specialized implementations may have specific methods for determining stopping criteria; however, to avoid the execution of a large number of iterations, the iterative process has a specified maximum number of iterations.</p><p class="paragraph">Within the context of simulation optimization, the supplied evaluator promises to execute requests for evaluations of the simulation model at particular design points (as determined by the algorithm). In addition, because of the stochastic nature of the evaluation, the solver may request one or more replications for its evaluation requests. The number of replications may dynamically change, and thus the user needs to supply a function to determine the number of replications per evaluation.  Within the framework of the hooks for subclasses, the user could specify more complex procedures for determining the number of replications per evaluation.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Definition</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the problem being solved</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the reference to the evaluator for evaluating responses from the model</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>maximum</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of iterations permitted for the main loop. This must be greater than 0.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the function controlling how many replications are requested for each evaluation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a name to help with identifying the solver when multiple solvers are used on a problem</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="1214915213%2FConstructors%2F-251573632" anchor-label="Solver" id="1214915213%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="1610905139%2FConstructors%2F-251573632" anchor-label="Solver" id="1610905139%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-solver.html"><span><span>Solver</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1214915213%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1610905139%2FConstructors%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultReplicationsPerEvaluation<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultReplicationsPerEvaluation<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -163,7 +163,22 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="best-solution.html">bestSolution</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">The best solution found so far in the search. Some algorithms may allow the current solution to vary from the best solution due to randomness or other search needs (e.g., explore bad areas with the hope of getting better). The algorithm should ensure the updating of the best solution found across any iteration.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="best-solution.html">bestSolution</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">The best solution found so far in the search. Some algorithms may allow the current solution to vary from the best solution due to randomness or other search needs (e.g., explore bad areas with the hope of getting better). The algorithm should ensure the updating of the best solution found across any iteration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1525097452%2FProperties%2F-251573632" anchor-label="bestSolutions" id="1525097452%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="best-solutions.html"><span>best</span><wbr></wbr><span><span>Solutions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1525097452%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="best-solutions.html">bestSolutions</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solutions-ifc/index.html">SolutionsIfc</a></div><div class="brief "><p class="paragraph">A read-only view of the best solutions evaluated by the solver. Not all solvers retain past solutions. Also, in general, the evaluator may have access to a cache of solutions.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -213,6 +228,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="1392304371%2FProperties%2F-251573632" anchor-label="evaluator" id="1392304371%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="evaluator.html"><span><span>evaluator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1392304371%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="evaluator.html">evaluator</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a></div><div class="brief "><p class="paragraph">The evaluator used by the solver.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1449207828%2FProperties%2F-251573632" anchor-label="initialPoint" id="-1449207828%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -224,6 +254,21 @@ R1.2.2        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="initial-point.html">initialPoint</a><span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The initial point associated with the initial solution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1890028613%2FProperties%2F-251573632" anchor-label="initialSolution" id="1890028613%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-solution.html"><span>initial</span><wbr></wbr><span><span>Solution</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1890028613%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="initial-solution.html">initialSolution</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">?</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -303,17 +348,32 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
-<a data-name="-834990652%2FProperties%2F-251573632" anchor-label="numTimesBestSolutionUpdated" id="-834990652%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+<a data-name="2067345895%2FProperties%2F-251573632" anchor-label="numOracleCalls" id="2067345895%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="num-times-best-solution-updated.html"><span>num</span><wbr></wbr><span>Times</span><wbr></wbr><span>Best</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Updated</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-834990652%2FProperties%2F-251573632"></span>
+                  <div><a href="num-oracle-calls.html"><span>num</span><wbr></wbr><span>Oracle</span><wbr></wbr><span><span>Calls</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2067345895%2FProperties%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="num-times-best-solution-updated.html">numTimesBestSolutionUpdated</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Counts the number of times that a new current solution replaced the current best solution. This can be used to measure how often an iteration results in a better solution being found.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="num-oracle-calls.html">numOracleCalls</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">A variable that tracks the total number of simulation oracle calls.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="803448983%2FProperties%2F-251573632" anchor-label="numReplicationsRequested" id="803448983%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-replications-requested.html"><span>num</span><wbr></wbr><span>Replications</span><wbr></wbr><span><span>Requested</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="803448983%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="num-replications-requested.html">numReplicationsRequested</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">A variable that tracks the total number of simulation replications requested.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -328,7 +388,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="penalized-solution-gap.html">penalizedSolutionGap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The difference between the previous solution's penalized objective function value and the current solution's penalized objective function value.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="penalized-solution-gap.html">penalizedSolutionGap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The difference between the current solution's penalized objective function value and the previous solution's penalized objective function value.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -373,7 +433,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="problem-definition.html">problemDefinition</a><span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a></div><div class="brief "><p class="paragraph">A convenience property to access the problem being solved</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="problem-definition.html">problemDefinition</a><span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -393,21 +453,6 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
-<a data-name="-657544891%2FProperties%2F-251573632" anchor-label="saveSolutions" id="-657544891%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="save-solutions.html"><span>save</span><wbr></wbr><span><span>Solutions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-657544891%2FProperties%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="save-solutions.html">saveSolutions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, updates to the current solution will be captured automatically to memory. The default is false.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="-2077060206%2FProperties%2F-251573632" anchor-label="solutionComparer" id="-2077060206%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -418,7 +463,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="solution-comparer.html">solutionComparer</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-compare-solutions-ifc/index.html">CompareSolutionsIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The user can supply a comparator for comparing whether one solution is smaller, equal to, or larger than another solution. If supplied, this function will be used instead of the implemented compare() function. The user can supply a function or override the compare function to specialize how solutions are compared.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="solution-comparer.html">solutionComparer</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The user can supply a comparator for comparing whether one solution is smaller, equal to, or larger than another solution. If supplied, this function will be used instead of the implemented compare() function. The user can supply a function or override the compare function to specialize how solutions are compared.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -453,21 +498,6 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
-<a data-name="777704808%2FProperties%2F-251573632" anchor-label="solutions" id="777704808%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="solutions.html"><span><span>solutions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="777704808%2FProperties%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="solutions.html">solutions</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solutions-ifc/index.html">SolutionsIfc</a></div><div class="brief "><p class="paragraph">A read-only view of the solutions evaluated by the solver. Not all solvers retain past solutions. Also, in general, the evaluator will have access to a cache of solutions.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="340739218%2FProperties%2F-251573632" anchor-label="startingPoint" id="340739218%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -493,7 +523,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="un-penalized-solution-gap.html">unPenalizedSolutionGap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The difference between the previous solution's unpenalized objective function value and the current solution's unpenalized objective function value.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="un-penalized-solution-gap.html">unPenalizedSolutionGap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The difference between the current solution's unpenalized objective function value and the previous solution's unpenalized objective function value.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -502,7 +532,22 @@ R1.2.2        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-647303288%2FFunctions%2F-251573632" anchor-label="compare" id="-647303288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+        <div class="table"><a data-name="705310639%2FFunctions%2F-251573632" anchor-label="clearBestSolutions" id="705310639%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-best-solutions.html"><span>clear</span><wbr></wbr><span>Best</span><wbr></wbr><span><span>Solutions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="705310639%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-best-solutions.html"><span class="token function">clearBestSolutions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Clears the best solutions captured by the solver. The solver will retain all best solutions that have been observed until they are cleared, even with repeated use.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-647303288%2FFunctions%2F-251573632" anchor-label="compare" id="-647303288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
@@ -512,7 +557,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="compare.html"><span class="token function">compare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Recognizing the need to be able to compare solutions that may have sampling error, the user can override this function to provide more extensive comparison or supply an instance of the <a href="../../ksl.simopt.evaluator/-compare-solutions-ifc/index.html">CompareSolutionsIfc</a> interface via the <a href="solution-comparer.html">solutionComparer</a> property Returns -1 if first is less than the second solution, 0 if the solutions are to be considered equivalent, and 1 if the first is larger than the second solution.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="compare.html"><span class="token function">compare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Recognizing the need to be able to compare solutions that may have sampling error, the user can override this function to provide more extensive comparison or supply an instance of the Comparator<Solution> interface via the <a href="solution-comparer.html">solutionComparer</a> property Returns -1 if first is less than the second solution, 0 if the solutions are to be considered equivalent, and 1 if the first is larger than the second solution.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -577,6 +622,21 @@ R1.2.2        </div>
               </div>
             </div>
           </div>
+<a data-name="-1563999310%2FFunctions%2F-251573632" anchor-label="minimumSolution" id="-1563999310%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minimum-solution.html"><span>minimum</span><wbr></wbr><span><span>Solution</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1563999310%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="minimum-solution.html"><span class="token function">minimumSolution</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">comparator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator"> = </span>PenalizedObjectiveFunctionComparator</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">Returns the smaller of the two solutions. Ties result in the first solution being returned. This function uses the supplied comparator.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1907272148%2FFunctions%2F-251573632" anchor-label="runAllIterations" id="-1907272148%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -587,7 +647,7 @@ R1.2.2        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="run-all-iterations.html"><span class="token function">runAllIterations</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Causes the solver to run all iterations until its stopping criteria is met or the maximum number of iterations has been reached.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="run-all-iterations.html"><span class="token function">runAllIterations</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Causes the solver to run all iterations until its stopping criteria is met, or the maximum number of iterations has been reached.</p></div></div></div>
                 </div>
               </div>
             </div>
