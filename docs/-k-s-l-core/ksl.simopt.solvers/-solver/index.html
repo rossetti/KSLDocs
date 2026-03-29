@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Solver</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.solvers/Solver///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.solvers</a><span class="delimiter">/</span><span class="current">Solver</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Solver</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Solver</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../-solver-emitter-ifc/index.html">SolverEmitterIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/Solver.kt#L68">source</a>)</span></span></div><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p><p class="paragraph">Specialized implementations may have specific methods for determining stopping criteria; however, to avoid the execution of a large number of iterations, the iterative process has a specified maximum number of iterations.</p><p class="paragraph">Within the context of simulation optimization, the supplied evaluator promises to execute requests for evaluations of the simulation model at particular design points (as determined by the algorithm). In addition, because of the stochastic nature of the evaluation, the solver may request one or more replications for its evaluation requests. The number of replications may dynamically change, and thus the user needs to supply a function to determine the number of replications per evaluation.  Within the framework of the hooks for subclasses, the user could specify more complex procedures for determining the number of replications per evaluation.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Definition</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the problem being solved</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the reference to the evaluator for evaluating responses from the model</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>maximum</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of iterations permitted for the main loop. This must be greater than 0.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the function controlling how many replications are requested for each evaluation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a name to help with identifying the solver when multiple solvers are used on a problem</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">Solver</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Comparator.html">Comparator</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt; </span>, <a href="../-iteration-emitter-ifc/index.html">IterationEmitterIfc</a>, <a href="../-life-cycle-emitter-ifc/index.html">LifeCycleEmitterIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/Solver.kt#L116">source</a>)</span></span></div><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p><p class="paragraph">Specialized implementations may have specific methods for determining stopping criteria; however, to avoid the execution of a large number of iterations, the iterative process has a specified maximum number of iterations.</p><p class="paragraph">Within the context of simulation optimization, the supplied evaluator promises to execute requests for evaluations of the simulation model at particular design points (as determined by the algorithm). In addition, because of the stochastic nature of the evaluation, the solver may request one or more replications for its evaluation requests. The number of replications may dynamically change, and thus the user needs to supply a function to determine the number of replications per evaluation.  Within the framework of the hooks for subclasses, the user could specify more complex procedures for determining the number of replications per evaluation.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Definition</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the problem being solved</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the reference to the evaluator for evaluating responses from the model</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>maximum</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of iterations permitted for the main loop. This must be greater than 0.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the function controlling how many replications are requested for each evaluation</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a name to help with identifying the solver when multiple solvers are used on a problem</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="1610905139%2FConstructors%2F-251573632" anchor-label="Solver" id="1610905139%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-solver.html"><span><span>Solver</span></span></a></div>
@@ -125,7 +125,7 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultReplicationsPerEvaluation<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultReplicationsPerEvaluation<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A solver is an iterative algorithm that searches for the optimal solution to a defined problem. In this abstract base class, the algorithm is conceptualized as having a main iterative loop. The loop is the main loop that ultimately determines the convergence of the algorithm and recommended solution.  Some algorithms have &quot;inner&quot; loops&quot;. In general, inner loops are used to control localized search for solutions.  If an algorithm has additional inner loops, these can be embedded within the main loop via the subclassing process.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1909500023%2FClasslikes%2F-251573632" anchor-label="Companion" id="-1909500023%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -149,12 +149,27 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1093962578%2FClasslikes%2F-251573632" anchor-label="MainIterativeProcess" id="1093962578%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-main-iterative-process/index.html"><span>Main</span><wbr></wbr><span>Iterative</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1093962578%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-main-iterative-process/index.html">MainIterativeProcess</a> : <a href="../../ksl.simulation/-iterative-process/index.html">IterativeProcess</a><span class="token operator">&lt;</span><a href="-main-iterative-process/index.html">Solver.MainIterativeProcess</a><span class="token operator">&gt; </span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-971158981%2FProperties%2F-251573632" anchor-label="bestSolution" id="-971158981%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="best-solution.html"><span>best</span><wbr></wbr><span><span>Solution</span></span></a></div>
@@ -169,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1525097452%2FProperties%2F-251573632" anchor-label="bestSolutions" id="1525097452%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="best-solutions.html"><span>best</span><wbr></wbr><span><span>Solutions</span></span></a></div>
@@ -184,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="522466145%2FProperties%2F-251573632" anchor-label="currentPoint" id="522466145%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-point.html"><span>current</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -199,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2056618160%2FProperties%2F-251573632" anchor-label="currentSolution" id="2056618160%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-solution.html"><span>current</span><wbr></wbr><span><span>Solution</span></span></a></div>
@@ -214,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2082033210%2FProperties%2F-251573632" anchor-label="ensureProblemFeasibleRequests" id="2082033210%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="ensure-problem-feasible-requests.html"><span>ensure</span><wbr></wbr><span>Problem</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Requests</span></span></a></div>
@@ -229,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1392304371%2FProperties%2F-251573632" anchor-label="evaluator" id="1392304371%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="evaluator.html"><span><span>evaluator</span></span></a></div>
@@ -244,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1449207828%2FProperties%2F-251573632" anchor-label="initialPoint" id="-1449207828%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-point.html"><span>initial</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -259,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1890028613%2FProperties%2F-251573632" anchor-label="initialSolution" id="1890028613%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-solution.html"><span>initial</span><wbr></wbr><span><span>Solution</span></span></a></div>
@@ -274,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1453927961%2FProperties%2F-251573632" anchor-label="iterationCounter" id="1453927961%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="iteration-counter.html"><span>iteration</span><wbr></wbr><span><span>Counter</span></span></a></div>
@@ -289,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-55738922%2FProperties%2F-251573632" anchor-label="iterativeProcess" id="-55738922%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="iterative-process.html"><span>iterative</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -304,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1639580962%2FProperties%2F-251573632" anchor-label="maxFeasibleSamplingIterations" id="-1639580962%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-feasible-sampling-iterations.html"><span>max</span><wbr></wbr><span>Feasible</span><wbr></wbr><span>Sampling</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -319,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1831674563%2FProperties%2F-251573632" anchor-label="maximumNumberIterations" id="1831674563%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-number-iterations.html"><span>maximum</span><wbr></wbr><span>Number</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -333,8 +348,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1059196792%2FProperties%2F-251573632" anchor-label="myBestSolutions" id="1059196792%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-best-solutions.html"><span>my</span><wbr></wbr><span>Best</span><wbr></wbr><span><span>Solutions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1059196792%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-best-solutions.html">myBestSolutions</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solutions/index.html">Solutions</a></div><div class="brief "><p class="paragraph">Permits capture of evaluated solutions locally by the solver. Not all solvers retain past solutions. Also, in general, the evaluator will have access to a cache of solutions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="836093137%2FProperties%2F-251573632" anchor-label="myInitialSolution" id="836093137%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-initial-solution.html"><span>my</span><wbr></wbr><span>Initial</span><wbr></wbr><span><span>Solution</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="836093137%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">lateinit </span><span class="token keyword">var </span><a href="my-initial-solution.html">myInitialSolution</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">The initial starting solution for the algorithm. It is the responsibility of the subclass to initialize the initial solution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1566419871%2FProperties%2F-251573632" anchor-label="neighborGenerator" id="-1566419871%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="neighbor-generator.html"><span>neighbor</span><wbr></wbr><span><span>Generator</span></span></a></div>
@@ -349,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2067345895%2FProperties%2F-251573632" anchor-label="numOracleCalls" id="2067345895%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-oracle-calls.html"><span>num</span><wbr></wbr><span>Oracle</span><wbr></wbr><span><span>Calls</span></span></a></div>
@@ -364,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="803448983%2FProperties%2F-251573632" anchor-label="numReplicationsRequested" id="803448983%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-replications-requested.html"><span>num</span><wbr></wbr><span>Replications</span><wbr></wbr><span><span>Requested</span></span></a></div>
@@ -379,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1990819633%2FProperties%2F-251573632" anchor-label="penalizedSolutionGap" id="-1990819633%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="penalized-solution-gap.html"><span>penalized</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Gap</span></span></a></div>
@@ -394,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1012122889%2FProperties%2F-251573632" anchor-label="previousPoint" id="1012122889%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-point.html"><span>previous</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -409,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-583225848%2FProperties%2F-251573632" anchor-label="previousSolution" id="-583225848%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-solution.html"><span>previous</span><wbr></wbr><span><span>Solution</span></span></a></div>
@@ -424,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1252485072%2FProperties%2F-251573632" anchor-label="problemDefinition" id="-1252485072%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="problem-definition.html"><span>problem</span><wbr></wbr><span><span>Definition</span></span></a></div>
@@ -439,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2034488112%2FProperties%2F-251573632" anchor-label="replicationsPerEvaluation" id="2034488112%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replications-per-evaluation.html"><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></a></div>
@@ -453,8 +498,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="281049194%2FProperties%2F-251573632" anchor-label="snapShotFrequency" id="281049194%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="snap-shot-frequency.html"><span>snap</span><wbr></wbr><span>Shot</span><wbr></wbr><span><span>Frequency</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="281049194%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="snap-shot-frequency.html">snapShotFrequency</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">If a listener is attached to the solver via its iterationEmitter property, then snapshots of the solver's state are captured at the end of each iteration according to this specified frequency. For example, if the frequency is 10, then every 10th iteration is emitted. The default is 1.  If nothing listens for emissions, then no snapshots are emitted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-2077060206%2FProperties%2F-251573632" anchor-label="solutionComparer" id="-2077060206%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="solution-comparer.html"><span>solution</span><wbr></wbr><span><span>Comparer</span></span></a></div>
@@ -463,13 +523,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="solution-comparer.html">solutionComparer</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The user can supply a comparator for comparing whether one solution is smaller, equal to, or larger than another solution. If supplied, this function will be used instead of the implemented compare() function. The user can supply a function or override the compare function to specialize how solutions are compared.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="solution-comparer.html">solutionComparer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-comparator/index.html">Comparator</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The user can supply a comparator for comparing whether one solution is smaller, equal to, or larger than another solution. If supplied, this function will be used instead of the implemented compare() function. The user can supply a function or override the compare function to specialize how solutions are compared.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-552431139%2FProperties%2F-251573632" anchor-label="solutionPrecision" id="-552431139%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="solution-precision.html"><span>solution</span><wbr></wbr><span><span>Precision</span></span></a></div>
@@ -484,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1799590609%2FProperties%2F-251573632" anchor-label="solutionQualityEvaluator" id="-1799590609%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="solution-quality-evaluator.html"><span>solution</span><wbr></wbr><span>Quality</span><wbr></wbr><span><span>Evaluator</span></span></a></div>
@@ -498,8 +558,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="268103432%2FProperties%2F-251573632" anchor-label="solverResult" id="268103432%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="solver-result.html"><span>solver</span><wbr></wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="268103432%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="solver-result.html">solverResult</a><span class="token operator">: </span><a href="../-solver-result/index.html">SolverResult</a></div><div class="brief "><p class="paragraph">Captures the current results of the optimization run. Guarantees a valid result object, returning a pending state if not yet executed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="340739218%2FProperties%2F-251573632" anchor-label="startingPoint" id="340739218%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="starting-point.html"><span>starting</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -514,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2032149514%2FProperties%2F-251573632" anchor-label="unPenalizedSolutionGap" id="-2032149514%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="un-penalized-solution-gap.html"><span>un</span><wbr></wbr><span>Penalized</span><wbr></wbr><span>Solution</span><wbr></wbr><span><span>Gap</span></span></a></div>
@@ -531,9 +606,39 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="705310639%2FFunctions%2F-251573632" anchor-label="clearBestSolutions" id="705310639%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="404380464%2FFunctions%2F-251573632" anchor-label="afterMainIteration" id="404380464%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-main-iteration.html"><span>after</span><wbr></wbr><span>Main</span><wbr></wbr><span><span>Iteration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="404380464%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="after-main-iteration.html"><span class="token function">afterMainIteration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This function is called after the function mainIteration() executes. Provides a hook for additional after-iteration logic, which could be placed here instead of at the end of the mainIteration() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1317429181%2FFunctions%2F-251573632" anchor-label="beforeMainIteration" id="1317429181%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-main-iteration.html"><span>before</span><wbr></wbr><span>Main</span><wbr></wbr><span><span>Iteration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1317429181%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="before-main-iteration.html"><span class="token function">beforeMainIteration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This function is called before the function mainIteration() is executed. Provides a hook for additional pre-iteration logic, which could be placed here instead of at the beginning of the mainIteration() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="705310639%2FFunctions%2F-251573632" anchor-label="clearBestSolutions" id="705310639%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="clear-best-solutions.html"><span>clear</span><wbr></wbr><span>Best</span><wbr></wbr><span><span>Solutions</span></span></a></div>
@@ -548,7 +653,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-647303288%2FFunctions%2F-251573632" anchor-label="compare" id="-647303288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="compare.html"><span><span>compare</span></span></a></div>
@@ -557,13 +662,28 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="compare.html"><span class="token function">compare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Recognizing the need to be able to compare solutions that may have sampling error, the user can override this function to provide more extensive comparison or supply an instance of the Comparator<Solution> interface via the <a href="solution-comparer.html">solutionComparer</a> property Returns -1 if first is less than the second solution, 0 if the solutions are to be considered equivalent, and 1 if the first is larger than the second solution.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="compare.html"><span class="token function">compare</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Recognizing the need to be able to compare solutions that may have sampling error, the user can override this function to provide more extensive comparison or supply an instance of the Comparator<Solution> interface via the <a href="solution-comparer.html">solutionComparer</a> property Returns -1 if first is less than the second solution, 0 if the solutions are to be considered equivalent, 1 if the first is larger than the second solution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="172002640%2FFunctions%2F-251573632" anchor-label="createModelInputs" id="172002640%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-model-inputs.html"><span>create</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Inputs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="172002640%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="create-model-inputs.html"><span class="token function">createModelInputs</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputMap<span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token punctuation">, </span></span><span class="parameter ">numReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>replicationsPerEvaluation.numReplicationsPerEvaluation(this)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a></div><div class="brief "><p class="paragraph">Creates a request for evaluation from the input map. The number of replications for the request will be based on the property <span data-unresolved-link="ksl.simopt.solvers/Solver//#ksl.simopt.problem.ProblemDefinition#ksl.simopt.evaluator.EvaluatorIfc#kotlin.Int#ksl.simopt.solvers.ReplicationPerEvaluationIfc#kotlin.String?/PointingToCallableParameters(3)/">replicationsPerEvaluation</span> for the solver. The resulting request will be input range-feasible but may be infeasible with respect to the problem. If the user does not allow infeasible requests by setting the <a href="ensure-problem-feasible-requests.html">ensureProblemFeasibleRequests</a> to false, then this function will throw an exception if the supplied input is infeasible with respect to the deterministic constraints of the problem.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="257604880%2FFunctions%2F-251573632" anchor-label="endIterations" id="257604880%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="end-iterations.html"><span>end</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -577,8 +697,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1737689267%2FFunctions%2F-251573632" anchor-label="extractSolverSpecificState" id="-1737689267%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extract-solver-specific-state.html"><span>extract</span><wbr></wbr><span>Solver</span><wbr></wbr><span>Specific</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1737689267%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="extract-solver-specific-state.html"><span class="token function">extractSolverSpecificState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A hook for subclasses to inject their specific internal state metrics into the snapshot without having to override the entire <a href="make-solver-state-snapshot.html">makeSolverStateSnapshot</a> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1334888756%2FFunctions%2F-251573632" anchor-label="generateInputFeasibleNeighbor" id="1334888756%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="generate-input-feasible-neighbor.html"><span>generate</span><wbr></wbr><span>Input</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Neighbor</span></span></a></div>
@@ -592,8 +727,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="754544301%2FFunctions%2F-251573632" anchor-label="generateNeighbor" id="754544301%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="generate-neighbor.html"><span>generate</span><wbr></wbr><span><span>Neighbor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="754544301%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="generate-neighbor.html"><span class="token function">generateNeighbor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">currentPoint<span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token punctuation">, </span></span><span class="parameter ">rnStream<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Generates a neighboring point based on the current point represented by the input map. This method determines the next potential point in the iterative process, either through a neighbor generator or by randomizing the value of a randomly selected input variable. Unless a neighborhood generator is supplied, the resulting point will be input-range feasible. Thus, it may be infeasible with respect to deterministic constraints. If a neighborhood generator is not supplied, the approach is to randomly select one of the coordinates (inputs) and then randomly generating an input-range feasible value for the selected input.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="684862184%2FFunctions%2F-251573632" anchor-label="hasNextIteration" id="684862184%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-next-iteration.html"><span>has</span><wbr></wbr><span>Next</span><wbr></wbr><span><span>Iteration</span></span></a></div>
@@ -608,7 +758,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="318138440%2FFunctions%2F-251573632" anchor-label="initialize" id="318138440%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
@@ -622,23 +772,173 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
-<a data-name="-1563999310%2FFunctions%2F-251573632" anchor-label="minimumSolution" id="-1563999310%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="345618930%2FFunctions%2F-251573632" anchor-label="initializeIterations" id="345618930%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="minimum-solution.html"><span>minimum</span><wbr></wbr><span><span>Solution</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1563999310%2FFunctions%2F-251573632"></span>
+                  <div><a href="initialize-iterations.html"><span>initialize</span><wbr></wbr><span><span>Iterations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="345618930%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="minimum-solution.html"><span class="token function">minimumSolution</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">comparator<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator"> = </span>PenalizedObjectiveFunctionComparator</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">Returns the smaller of the two solutions. Ties result in the first solution being returned. This function uses the supplied comparator.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="initialize-iterations.html"><span class="token function">initializeIterations</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses may implement this function to prepare the solver before running the first iteration. Generally, it is sufficient to just implement the startingPoint() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-411735763%2FFunctions%2F-251573632" anchor-label="isStoppingCriteriaSatisfied" id="-411735763%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-stopping-criteria-satisfied.html"><span>is</span><wbr></wbr><span>Stopping</span><wbr></wbr><span>Criteria</span><wbr></wbr><span><span>Satisfied</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-411735763%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="is-stopping-criteria-satisfied.html"><span class="token function">isStoppingCriteriaSatisfied</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Subclasses should implement this function to determine if the solver should continue running iterations. This will likely include some implementation of stopping criteria. This function should implement stopping criteria based on the quality of the solution. The number of iterations, compared to the maximum number of iterations, is automatically checked after each step in the iterative process. Unless overridden, this function returns false by default, which indicates that the solution quality criteria have not been satisfied.  This will cause the solver to iterate through all iterations of the solution process up to the maximum number of iterations. Alternatively, the user can specify an instance of the SolutionQualityEvaluatorIfc interface to determine if the solution quality has been reached.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1510005986%2FFunctions%2F-251573632" anchor-label="mainIteration" id="-1510005986%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="main-iteration.html"><span>main</span><wbr></wbr><span><span>Iteration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1510005986%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="main-iteration.html"><span class="token function">mainIteration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This function should contain the logic that iteratively executes until the maximum number of iterations is reached or until the stopping criteria is met.  The base implementation calls nextPoint() to determine the next point to evaluate, requests an evaluation of the point, and then updates the current solution if the resulting solution is better than the current solution. Generally, implementing startingPoint() and nextPoint() should be adequate. The property <a href="iteration-counter.html">iterationCounter</a> represents the current iteration within the mainIteration() function. That is, the value of <a href="iteration-counter.html">iterationCounter</a> is incremented prior to the execution of the mainIteration() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1437093321%2FFunctions%2F-251573632" anchor-label="mainIterationsEnded" id="-1437093321%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="main-iterations-ended.html"><span>main</span><wbr></wbr><span>Iterations</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437093321%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="main-iterations-ended.html"><span class="token function">mainIterationsEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses should implement this function to clean up after running <strong>all</strong> iterations.  That is, after the main iteration has stopped.  This may include such concepts as selecting the best once all iterations have completed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1960948562%2FFunctions%2F-251573632" anchor-label="makeSolverStateSnapshot" id="-1960948562%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="make-solver-state-snapshot.html"><span>make</span><wbr></wbr><span>Solver</span><wbr></wbr><span>State</span><wbr></wbr><span><span>Snapshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1960948562%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="make-solver-state-snapshot.html"><span class="token function">makeSolverStateSnapshot</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-solver-state-snapshot/index.html">SolverStateSnapshot</a></div><div class="brief "><p class="paragraph">Creates an immutable snapshot of the solver's current state. This is typically called at the end of an iteration to broadcast the state to any attached listeners safely.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1490985867%2FFunctions%2F-251573632" anchor-label="minimumSolution" id="1490985867%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="minimum-solution.html"><span>minimum</span><wbr></wbr><span><span>Solution</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1490985867%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="minimum-solution.html"><span class="token function">minimumSolution</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">first<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">second<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token punctuation">, </span></span><span class="parameter ">comparator<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-comparator/index.html">Comparator</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span><span class="token operator"> = </span>PenalizedObjectiveFunctionComparator</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">Returns the smaller of the two solutions. Ties result in the first solution being returned. This function uses the supplied comparator.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1674363259%2FFunctions%2F-251573632" anchor-label="nextPoint" id="-1674363259%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="next-point.html"><span>next</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1674363259%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="next-point.html"><span class="token function">nextPoint</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Defines and specifies how to get the next point for the solver's iterative process. This function is intended to be overridden in subclasses to provide a method for determining the next point in the search process.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1467826513%2FFunctions%2F-251573632" anchor-label="printResults" id="-1467826513%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="print-results.html"><span>print</span><wbr></wbr><span><span>Results</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1467826513%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="print-results.html"><span class="token function">printResults</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Prints the current results of the optimization run to the console. This includes details about the solver's performance,</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2136224457%2FFunctions%2F-251573632" anchor-label="requestEvaluation" id="2136224457%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request-evaluation.html"><span>request</span><wbr></wbr><span><span>Evaluation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2136224457%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="request-evaluation.html"><span class="token function">requestEvaluation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">input<span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token punctuation">, </span></span><span class="parameter ">numReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>replicationsPerEvaluation.numReplicationsPerEvaluation(this)<span class="token punctuation">, </span></span><span class="parameter ">cachingAllowed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">Requests an evaluation for a single input map and returns the resulting solution. The function prepares the input as an evaluation request, performs the evaluation, and subsequently emits and logs the resulting solution.  CRN is not permitted for a single evaluation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1025958370%2FFunctions%2F-251573632" anchor-label="requestEvaluations" id="-1025958370%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request-evaluations.html"><span>request</span><wbr></wbr><span><span>Evaluations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1025958370%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="request-evaluations.html"><span class="token function">requestEvaluations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">numReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>replicationsPerEvaluation.numReplicationsPerEvaluation(this)<span class="token punctuation">, </span></span><span class="parameter ">crnOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">cachingAllowed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a><span class="token punctuation">, </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Requests evaluations for a set of input maps. The function prepares the evaluation requests from the provided inputs and then performs evaluations to generate solutions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-88786913%2FFunctions%2F-251573632" anchor-label="requestEvaluationsWithCRN" id="-88786913%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="request-evaluations-with-c-r-n.html"><span>request</span><wbr></wbr><span>Evaluations</span><wbr></wbr><span>With</span><wbr></wbr><span><span>CRN</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-88786913%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="request-evaluations-with-c-r-n.html"><span class="token function">requestEvaluationsWithCRN</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">numReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>replicationsPerEvaluation.numReplicationsPerEvaluation(this)</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../../ksl.simopt.evaluator/-model-inputs/index.html">ModelInputs</a><span class="token punctuation">, </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Requests evaluations for a set of input maps. The function prepares the evaluation requests from the provided inputs and then performs evaluations to generate solutions. The evaluations will be performed using the common random numbers.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1907272148%2FFunctions%2F-251573632" anchor-label="runAllIterations" id="-1907272148%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="run-all-iterations.html"><span>run</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -653,7 +953,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2006591975%2FFunctions%2F-251573632" anchor-label="runNextIteration" id="-2006591975%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="run-next-iteration.html"><span>run</span><wbr></wbr><span>Next</span><wbr></wbr><span><span>Iteration</span></span></a></div>
@@ -667,8 +967,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="340739218%2FFunctions%2F-251573632" anchor-label="startingPoint" id="340739218%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="starting-point.html"><span>starting</span><wbr></wbr><span><span>Point</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="340739218%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="starting-point.html"><span class="token function">startingPoint</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.simopt.problem/-input-map/index.html">InputMap</a></div><div class="brief "><p class="paragraph">Defines and specifies the starting point for the solver's iterative process. This function is intended to be overridden in subclasses to provide an initial setting of input values for the solver.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1560838433%2FFunctions%2F-251573632" anchor-label="stopIterations" id="-1560838433%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="stop-iterations.html"><span>stop</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -683,7 +998,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1501766740%2FFunctions%2F-251573632" anchor-label="toString" id="-1501766740%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -703,17 +1018,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

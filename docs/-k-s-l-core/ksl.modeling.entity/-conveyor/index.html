@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Conveyor</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/Conveyor///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><span class="current">Conveyor</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Conveyor</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Conveyor</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">segmentData<span class="token operator">: </span><a href="../-conveyor-segments/index.html">ConveyorSegments</a><span class="token punctuation">, </span></span><span class="parameter ">conveyorType<span class="token operator">: </span><a href="-type/index.html">Conveyor.Type</a><span class="token operator"> = </span>Type.ACCUMULATING<span class="token punctuation">, </span></span><span class="parameter ">velocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maxEntityCellsAllowed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/Conveyor.kt#L132">source</a>)</span></span></div><p class="paragraph">A conveyor consists of a series of segments. A segment has a starting location (origin) and an ending location (destination) and is associated with a conveyor. The start and end of each segment represent locations along the conveyor where entities can enter and exit.  A conveyor does not utilize a spatial model. The locations associated with its segments are instances of the interface IdentityIfc. Thus, movement on the conveyor is disassociated with any spatial model associated with the entity using the conveyor.  Since a spatial model using instances of the LocationIfc interface and LocationIfc extends the IdentityIfc, the locations associated with segments can be the same as those associated with spatial models. If the destination of a ride request is an instance of LocationIfc then the entity's curren location property will be updated after the movement. However, if the segments are not defined by locations within a spatial model, no updating of the entity's location will take place. The modeler is responsible for making the update to the entity location, if applicable.</p><p class="paragraph">A conveyor has a cell size, which represents the length of each cell on all segments of the conveyor. A conveyor also has a maximum permitted number of cells that can be occupied by an item riding on the conveyor.  A conveyor has an <a href="initial-velocity.html">initialVelocity</a>.  Each segment moves at the same velocity.</p><p class="paragraph">Each segment has a specified length that is divided into a number of equally sized contiguous cells. The length of any segment must be an integer multiple of the conveyor's cell size so that each segment will have an integer number of cells to represent its length. If a segment consists of 12 cells and the length of the conveyor is 12 feet then each cell represents 1 foot. If a segment consists of 4 cells and the length of the segment is 12 feet, then each cell of the segment represents 3 feet.  Thus, a cell represents a generalized unit of distance along the segment. Segments may have a different number of cells because they may have different lengths.</p><p class="paragraph">The cells on a conveyor are numbered from 1 to n, with 1 at the entry of the first segment, and n at the exit of the last segment, where n is the number of cells for the conveyor.</p><p class="paragraph">Items that ride on the conveyor must be allocated cells and then occupy the cells while moving on the conveyor.  Items can occupy more than one cell while riding on the conveyor.  For example, if the conveyor has 5 cells (1, 2, 3, 4, 5) and the item needs 2 cells and is occupying cells 2 and 3, then the front cell associated with the item is cell 3 and the rear cell associated with the item is cell 2.</p><p class="paragraph">An entity trying to access the conveyor at an entry cell of the conveyor, waits until it can block the cell. A request for entry on the conveyor will wait for the entry cell if the entry cell is unavailable (blocked or occupied) or if another item is positioned to use the entry cell.  Once the entity has control of the entry cell, this creates a blockage on the conveyor, which may restrict conveyor movement. For a non-accumulating conveyor the blockage stops all movement on the conveyor. For accumulating conveyors, the blockage restricts movement behind the blocked cell.  Gaining control of the entry cell does not position the entity to ride on the conveyor. The entity simply controls the entry cell and causes a blockage. The entity is not on the conveyor during the blockage.</p><p class="paragraph">If the entity decides to ride on the conveyor, the entity will be allocated cells based on its request and occupy those cells while moving on the conveyor. First, the entity's request is removed from the request queue and positioned to enter the conveyor at the entry cell. To occupy a cell, the entity must move the distance represented by the cell (essentially covering the cell).  Thus, an entering entity takes the time needed to move through its required cells before being fully on the conveyor.  An entity occupies a cell during the time it traverses the cell's length. Thus, assuming a single item, the time to move from the start of a segment to the end of the segment is the time that it takes to travel through all the cells of the segment, including the entry cell and the exit cell.</p><p class="paragraph">When an entity riding on the conveyor reaches its destination (an exit cell), the entity causes a blockage on the conveyor. For a non-accumulating conveyor, the entire conveyor stops.  For an accumulating conveyor, the blockage restricts movement behind the blockage causing items behind the blockage to continue to move until they cannot move forward. When an entity exits the conveyor, there will be a delay for the entity to move through the cells that it occupies before the entity can be considered completely off of the conveyor. Thus, exiting the conveyor is not assumed to be instantaneous. This implementation assumes that the entity must move through the occupied cells to get off the conveyor.  Any delay to unload the item from the conveyor will be in addition to the exiting delay.  Thus, a modeling situation in which the entity is picked up off the conveyor may need to account for the &quot;extra&quot; exiting delay. This implementation basically assumes that the item is pushed through the occupying cells at the end of the conveyor in order to exit. Scenarios where the item is picked up would not necessarily require the time to move through the cells.</p><p class="paragraph">A conveyor is considered circular if the entry location of the first segment is the same as the exit location of the last segment.</p><p class="paragraph">To construct a conveyor, use the supplied builder or specify the segment data.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the containing model element</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>velocity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the initial velocity of the conveyor</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>segment</span><wbr></wbr><span><span>Data</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the specification of the segments</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>max</span><wbr></wbr><span>Entity</span><wbr></wbr><span>Cells</span><wbr></wbr><span><span>Allowed</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of cells that an entity can occupy while riding on the conveyor</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the conveyor</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Conveyor</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">segmentData<span class="token operator">: </span><a href="../-conveyor-segments/index.html">ConveyorSegments</a><span class="token punctuation">, </span></span><span class="parameter ">conveyorType<span class="token operator">: </span><a href="-type/index.html">Conveyor.Type</a><span class="token operator"> = </span>Type.ACCUMULATING<span class="token punctuation">, </span></span><span class="parameter ">velocity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maxEntityCellsAllowed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/Conveyor.kt#L132">source</a>)</span></span></div><p class="paragraph">A conveyor consists of a series of segments. A segment has a starting location (origin) and an ending location (destination) and is associated with a conveyor. The start and end of each segment represent locations along the conveyor where entities can enter and exit.  A conveyor does not utilize a spatial model. The locations associated with its segments are instances of the interface IdentityIfc. Thus, movement on the conveyor is disassociated with any spatial model associated with the entity using the conveyor.  Since a spatial model using instances of the LocationIfc interface and LocationIfc extends the IdentityIfc, the locations associated with segments can be the same as those associated with spatial models. If the destination of a ride request is an instance of LocationIfc then the entity's curren location property will be updated after the movement. However, if the segments are not defined by locations within a spatial model, no updating of the entity's location will take place. The modeler is responsible for making the update to the entity location, if applicable.</p><p class="paragraph">A conveyor has a cell size, which represents the length of each cell on all segments of the conveyor. A conveyor also has a maximum permitted number of cells that can be occupied by an item riding on the conveyor.  A conveyor has an <a href="initial-velocity.html">initialVelocity</a>.  Each segment moves at the same velocity.</p><p class="paragraph">Each segment has a specified length that is divided into a number of equally sized contiguous cells. The length of any segment must be an integer multiple of the conveyor's cell size so that each segment will have an integer number of cells to represent its length. If a segment consists of 12 cells and the length of the conveyor is 12 feet then each cell represents 1 foot. If a segment consists of 4 cells and the length of the segment is 12 feet, then each cell of the segment represents 3 feet.  Thus, a cell represents a generalized unit of distance along the segment. Segments may have a different number of cells because they may have different lengths.</p><p class="paragraph">The cells on a conveyor are numbered from 1 to n, with 1 at the entry of the first segment, and n at the exit of the last segment, where n is the number of cells for the conveyor.</p><p class="paragraph">Items that ride on the conveyor must be allocated cells and then occupy the cells while moving on the conveyor.  Items can occupy more than one cell while riding on the conveyor.  For example, if the conveyor has 5 cells (1, 2, 3, 4, 5) and the item needs 2 cells and is occupying cells 2 and 3, then the front cell associated with the item is cell 3 and the rear cell associated with the item is cell 2.</p><p class="paragraph">An entity trying to access the conveyor at an entry cell of the conveyor, waits until it can block the cell. A request for entry on the conveyor will wait for the entry cell if the entry cell is unavailable (blocked or occupied) or if another item is positioned to use the entry cell.  Once the entity has control of the entry cell, this creates a blockage on the conveyor, which may restrict conveyor movement. For a non-accumulating conveyor the blockage stops all movement on the conveyor. For accumulating conveyors, the blockage restricts movement behind the blocked cell.  Gaining control of the entry cell does not position the entity to ride on the conveyor. The entity simply controls the entry cell and causes a blockage. The entity is not on the conveyor during the blockage.</p><p class="paragraph">If the entity decides to ride on the conveyor, the entity will be allocated cells based on its request and occupy those cells while moving on the conveyor. First, the entity's request is removed from the request queue and positioned to enter the conveyor at the entry cell. To occupy a cell, the entity must move the distance represented by the cell (essentially covering the cell).  Thus, an entering entity takes the time needed to move through its required cells before being fully on the conveyor.  An entity occupies a cell during the time it traverses the cell's length. Thus, assuming a single item, the time to move from the start of a segment to the end of the segment is the time that it takes to travel through all the cells of the segment, including the entry cell and the exit cell.</p><p class="paragraph">When an entity riding on the conveyor reaches its destination (an exit cell), the entity causes a blockage on the conveyor. For a non-accumulating conveyor, the entire conveyor stops.  For an accumulating conveyor, the blockage restricts movement behind the blockage causing items behind the blockage to continue to move until they cannot move forward. When an entity exits the conveyor, there will be a delay for the entity to move through the cells that it occupies before the entity can be considered completely off of the conveyor. Thus, exiting the conveyor is not assumed to be instantaneous. This implementation assumes that the entity must move through the occupied cells to get off the conveyor.  Any delay to unload the item from the conveyor will be in addition to the exiting delay.  Thus, a modeling situation in which the entity is picked up off the conveyor may need to account for the &quot;extra&quot; exiting delay. This implementation basically assumes that the item is pushed through the occupying cells at the end of the conveyor in order to exit. Scenarios where the item is picked up would not necessarily require the time to move through the cells.</p><p class="paragraph">A conveyor is considered circular if the entry location of the first segment is the same as the exit location of the last segment.</p><p class="paragraph">To construct a conveyor, use the supplied builder or specify the segment data.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the containing model element</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>velocity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the initial velocity of the conveyor</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>segment</span><wbr></wbr><span><span>Data</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the specification of the segments</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>max</span><wbr></wbr><span>Entity</span><wbr></wbr><span>Cells</span><wbr></wbr><span><span>Allowed</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of cells that an entity can occupy while riding on the conveyor</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the conveyor</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-670728675%2FConstructors%2F-251573632" anchor-label="Conveyor" id="-670728675%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-conveyor.html"><span><span>Conveyor</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1294421267%2FClasslikes%2F-251573632" anchor-label="Cell" id="-1294421267%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-cell/index.html"><span><span>Cell</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-974354180%2FClasslikes%2F-251573632" anchor-label="CellSizeStepIfc" id="-974354180%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-cell-size-step-ifc/index.html"><span>Cell</span><wbr></wbr><span>Size</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-706966829%2FClasslikes%2F-251573632" anchor-label="CellType" id="-706966829%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-cell-type/index.html"><span>Cell</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2018869369%2FClasslikes%2F-251573632" anchor-label="Companion" id="-2018869369%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-117738801%2FClasslikes%2F-251573632" anchor-label="ConveyorRequest" id="-117738801%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-conveyor-request/index.html"><span>Conveyor</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -210,7 +210,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="903805982%2FClasslikes%2F-251573632" anchor-label="ConveyorTypeStepIfc" id="903805982%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-conveyor-type-step-ifc/index.html"><span>Conveyor</span><wbr></wbr><span>Type</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -225,7 +225,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1907510337%2FClasslikes%2F-251573632" anchor-label="CSegment" id="-1907510337%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-segment/index.html"><span><span>CSegment</span></span></a></div>
@@ -240,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1822304732%2FClasslikes%2F-251573632" anchor-label="FirstSegmentStepIfc" id="1822304732%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-first-segment-step-ifc/index.html"><span>First</span><wbr></wbr><span>Segment</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -255,7 +255,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1448274506%2FClasslikes%2F-251573632" anchor-label="ItemStatus" id="1448274506%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-item-status/index.html"><span>Item</span><wbr></wbr><span><span>Status</span></span></a></div>
@@ -270,7 +270,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="430025896%2FClasslikes%2F-251573632" anchor-label="SegmentStepIfc" id="430025896%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-segment-step-ifc/index.html"><span>Segment</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -285,7 +285,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="432959509%2FClasslikes%2F-251573632" anchor-label="Type" id="432959509%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-type/index.html"><span><span>Type</span></span></a></div>
@@ -300,7 +300,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="573342038%2FClasslikes%2F-251573632" anchor-label="VelocityStepIfc" id="573342038%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-velocity-step-ifc/index.html"><span>Velocity</span><wbr></wbr><span>Step</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -317,9 +317,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1111513210%2FProperties%2F-251573632" anchor-label="accessingHoldQ" id="-1111513210%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="accessing-hold-q.html"><span>accessing</span><wbr></wbr><span>Hold</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2076100884%2FProperties%2F-251573632" anchor-label="accessQueues" id="2076100884%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="access-queues.html"><span>access</span><wbr></wbr><span><span>Queues</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1582787173%2FProperties%2F-251573632" anchor-label="accumulating" id="-1582787173%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="accumulating.html"><span><span>accumulating</span></span></a></div>
@@ -358,13 +358,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.BOOLEAN///PointingToDeclaration/">ControlType.BOOLEAN</span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="accumulating.html">accumulating</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-b-o-o-l-e-a-n/index.html">ControlType.BOOLEAN</a></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="accumulating.html">accumulating</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="78342583%2FProperties%2F-251573632" anchor-label="cellSize" id="78342583%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cell-size.html"><span>cell</span><wbr></wbr><span><span>Size</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2077713201%2FProperties%2F-251573632" anchor-label="cellTravelTime" id="2077713201%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cell-travel-time.html"><span>cell</span><wbr></wbr><span>Travel</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="575213728%2FProperties%2F-251573632" anchor-label="cellUtilization" id="575213728%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cell-utilization.html"><span>cell</span><wbr></wbr><span><span>Utilization</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2048505798%2FProperties%2F-251573632" anchor-label="conveyorCells" id="-2048505798%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="conveyor-cells.html"><span>conveyor</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1298718379%2FProperties%2F-251573632" anchor-label="conveyorType" id="-1298718379%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="conveyor-type.html"><span>conveyor</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="648416172%2FProperties%2F-251573632" anchor-label="defaultMovementPriority" id="648416172%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-movement-priority.html"><span>default</span><wbr></wbr><span>Movement</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-395725701%2FProperties%2F-251573632" anchor-label="entryCells" id="-395725701%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="entry-cells.html"><span>entry</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1857595790%2FProperties%2F-251573632" anchor-label="entryLocations" id="1857595790%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="entry-locations.html"><span>entry</span><wbr></wbr><span><span>Locations</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2083277619%2FProperties%2F-251573632" anchor-label="exitCells" id="-2083277619%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="exit-cells.html"><span>exit</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="425637452%2FProperties%2F-251573632" anchor-label="exitingHoldQ" id="425637452%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="exiting-hold-q.html"><span>exiting</span><wbr></wbr><span>Hold</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1235628256%2FProperties%2F-251573632" anchor-label="exitLocations" id="1235628256%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="exit-locations.html"><span>exit</span><wbr></wbr><span><span>Locations</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1234085599%2FProperties%2F-251573632" anchor-label="initialVelocity" id="1234085599%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-velocity.html"><span>initial</span><wbr></wbr><span><span>Velocity</span></span></a></div>
@@ -538,13 +538,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.DOUBLE///PointingToDeclaration/">ControlType.DOUBLE</span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="initial-velocity.html">initialVelocity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The initial velocity is the default movement velocity through cells on the conveyor.  Changing the initial velocity will change the velocity that is set at the beginning of each replication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-d-o-u-b-l-e/index.html">ControlType.DOUBLE</a><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="initial-velocity.html">initialVelocity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The initial velocity is the default movement velocity through cells on the conveyor.  Changing the initial velocity will change the velocity that is set at the beginning of each replication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1968145361%2FProperties%2F-251573632" anchor-label="isCircular" id="1968145361%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-circular.html"><span>is</span><wbr></wbr><span><span>Circular</span></span></a></div>
@@ -559,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1231271517%2FProperties%2F-251573632" anchor-label="isStopped" id="1231271517%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-stopped.html"><span>is</span><wbr></wbr><span><span>Stopped</span></span></a></div>
@@ -574,7 +574,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-567358878%2FProperties%2F-251573632" anchor-label="maxEntityCellsAllowed" id="-567358878%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-entity-cells-allowed.html"><span>max</span><wbr></wbr><span>Entity</span><wbr></wbr><span>Cells</span><wbr></wbr><span><span>Allowed</span></span></a></div>
@@ -583,13 +583,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="max-entity-cells-allowed.html">maxEntityCellsAllowed</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="max-entity-cells-allowed.html">maxEntityCellsAllowed</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1759671533%2FProperties%2F-251573632" anchor-label="numberOfOccupiedCells" id="1759671533%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-occupied-cells.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span>Occupied</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -604,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-325016819%2FProperties%2F-251573632" anchor-label="numOccupiedCells" id="-325016819%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-occupied-cells.html"><span>num</span><wbr></wbr><span>Occupied</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -619,7 +619,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="217899875%2FProperties%2F-251573632" anchor-label="ridingHoldQ" id="217899875%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="riding-hold-q.html"><span>riding</span><wbr></wbr><span>Hold</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -634,7 +634,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-671659718%2FProperties%2F-251573632" anchor-label="segments" id="-671659718%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="segments.html"><span><span>segments</span></span></a></div>
@@ -649,7 +649,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1077493091%2FProperties%2F-251573632" anchor-label="velocity" id="-1077493091%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="velocity.html"><span><span>velocity</span></span></a></div>
@@ -666,9 +666,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1393711260%2FFunctions%2F-251573632" anchor-label="accessQueueAt" id="-1393711260%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="access-queue-at.html"><span>access</span><wbr></wbr><span>Queue</span><wbr></wbr><span><span>At</span></span></a></div>
@@ -683,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="563296565%2FFunctions%2F-251573632" anchor-label="blockedCells" id="563296565%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="blocked-cells.html"><span>blocked</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -698,7 +698,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-206388075%2FFunctions%2F-251573632" anchor-label="blockedEntryCells" id="-206388075%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="blocked-entry-cells.html"><span>blocked</span><wbr></wbr><span>Entry</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -713,7 +713,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1384433293%2FFunctions%2F-251573632" anchor-label="blockedExitCells" id="-1384433293%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="blocked-exit-cells.html"><span>blocked</span><wbr></wbr><span>Exit</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -728,7 +728,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-319486197%2FFunctions%2F-251573632" anchor-label="conveyorRequests" id="-319486197%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="conveyor-requests.html"><span>conveyor</span><wbr></wbr><span><span>Requests</span></span></a></div>
@@ -743,7 +743,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1639508889%2FFunctions%2F-251573632" anchor-label="enteringPriorityAt" id="1639508889%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="entering-priority-at.html"><span>entering</span><wbr></wbr><span>Priority</span><wbr></wbr><span><span>At</span></span></a></div>
@@ -758,7 +758,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1736591457%2FFunctions%2F-251573632" anchor-label="hasBlockedCells" id="1736591457%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-blocked-cells.html"><span>has</span><wbr></wbr><span>Blocked</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -773,7 +773,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-464149326%2FFunctions%2F-251573632" anchor-label="hasItemPositionedToEnter" id="-464149326%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-item-positioned-to-enter.html"><span>has</span><wbr></wbr><span>Item</span><wbr></wbr><span>Positioned</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Enter</span></span></a></div>
@@ -788,7 +788,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1657387492%2FFunctions%2F-251573632" anchor-label="hasMovableCell" id="1657387492%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-movable-cell.html"><span>has</span><wbr></wbr><span>Movable</span><wbr></wbr><span><span>Cell</span></span></a></div>
@@ -803,7 +803,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1661554464%2FFunctions%2F-251573632" anchor-label="hasNoBlockedCells" id="-1661554464%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-no-blocked-cells.html"><span>has</span><wbr></wbr><span>No</span><wbr></wbr><span>Blocked</span><wbr></wbr><span><span>Cells</span></span></a></div>
@@ -817,8 +817,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1222656010%2FFunctions%2F-251573632" anchor-label="initialize" id="1222656010%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1222656010%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1431399463%2FFunctions%2F-251573632" anchor-label="isEntryLocationBlocked" id="-1431399463%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-entry-location-blocked.html"><span>is</span><wbr></wbr><span>Entry</span><wbr></wbr><span>Location</span><wbr></wbr><span><span>Blocked</span></span></a></div>
@@ -833,7 +848,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-903260685%2FFunctions%2F-251573632" anchor-label="isExitLocationBlocked" id="-903260685%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-exit-location-blocked.html"><span>is</span><wbr></wbr><span>Exit</span><wbr></wbr><span>Location</span><wbr></wbr><span><span>Blocked</span></span></a></div>
@@ -848,7 +863,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="657085618%2FFunctions%2F-251573632" anchor-label="isOccupied" id="657085618%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-occupied.html"><span>is</span><wbr></wbr><span><span>Occupied</span></span></a></div>
@@ -863,7 +878,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2027944660%2FFunctions%2F-251573632" anchor-label="isReachable" id="-2027944660%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-reachable.html"><span>is</span><wbr></wbr><span><span>Reachable</span></span></a></div>
@@ -877,8 +892,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-725151412%2FFunctions%2F-251573632" anchor-label="replicationEnded" id="-725151412%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replication-ended.html"><span>replication</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-725151412%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="replication-ended.html"><span class="token function">replicationEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed when the replication ends and prior to the calling of afterReplication(). It is called when each replication ends and can be used to collect data from the model element, etc.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="932412435%2FFunctions%2F-251573632" anchor-label="startConveyor" id="932412435%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="start-conveyor.html"><span>start</span><wbr></wbr><span><span>Conveyor</span></span></a></div>
@@ -893,7 +923,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2011367810%2FFunctions%2F-251573632" anchor-label="statisticalReportingForConveyorAccessQueues" id="-2011367810%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistical-reporting-for-conveyor-access-queues.html"><span>statistical</span><wbr></wbr><span>Reporting</span><wbr></wbr><span>For</span><wbr></wbr><span>Conveyor</span><wbr></wbr><span>Access</span><wbr></wbr><span><span>Queues</span></span></a></div>
@@ -908,7 +938,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-261809138%2FFunctions%2F-251573632" anchor-label="statisticalReportingForHoldQueues" id="-261809138%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistical-reporting-for-hold-queues.html"><span>statistical</span><wbr></wbr><span>Reporting</span><wbr></wbr><span>For</span><wbr></wbr><span>Hold</span><wbr></wbr><span><span>Queues</span></span></a></div>
@@ -923,7 +953,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1396200315%2FFunctions%2F-251573632" anchor-label="statsticalReportingForSegmentUtilization" id="1396200315%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statstical-reporting-for-segment-utilization.html"><span>statstical</span><wbr></wbr><span>Reporting</span><wbr></wbr><span>For</span><wbr></wbr><span>Segment</span><wbr></wbr><span><span>Utilization</span></span></a></div>
@@ -938,7 +968,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1397662195%2FFunctions%2F-251573632" anchor-label="stopConveyor" id="-1397662195%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="stop-conveyor.html"><span>stop</span><wbr></wbr><span><span>Conveyor</span></span></a></div>
@@ -953,7 +983,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="18725870%2FFunctions%2F-251573632" anchor-label="toString" id="18725870%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -973,17 +1003,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

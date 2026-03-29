@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Companion</title>
     <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.io.dbutil/DatabaseIfc.Companion///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../../index.html">ksl.utilities.io.dbutil</a><span class="delimiter">/</span><a href="../index.html">DatabaseIfc</a><span class="delimiter">/</span><span class="current">Companion</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Companion</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Companion</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/dbutil/DatabaseIfc.kt#L1244">source</a>)</span></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Companion</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/dbutil/DatabaseIfc.kt#L1244">source</a>)</span></span></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1793691737%2FClasslikes%2F-251573632" anchor-label="ColumnType" id="-1793691737%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-column-type/index.html"><span>Column</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-172673080%2FProperties%2F-251573632" anchor-label="COMMENT_PATTERN" id="-172673080%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-o-m-m-e-n-t_-p-a-t-t-e-r-n.html"><span>COMMENT_</span><wbr></wbr><span>PATTERN</span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1360176975%2FProperties%2F-251573632" anchor-label="DEFAULT_DELIMITER" id="1360176975%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-e-f-a-u-l-t_-d-e-l-i-m-i-t-e-r.html"><span>DEFAULT_</span><wbr></wbr><span>DELIMITER</span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1357731246%2FProperties%2F-251573632" anchor-label="logger" id="-1357731246%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="logger.html"><span><span>logger</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-641334017%2FProperties%2F-251573632" anchor-label="NEW_DELIMITER_PATTERN" id="-641334017%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-n-e-w_-d-e-l-i-m-i-t-e-r_-p-a-t-t-e-r-n.html"><span>NEW_</span><wbr></wbr><span>DELIMITER_</span><wbr></wbr><span>PATTERN</span></a></div>
@@ -197,9 +197,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1222719148%2FFunctions%2F-251573632" anchor-label="addBatch" id="-1222719148%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-batch.html"><span>add</span><wbr></wbr><span><span>Batch</span></span></a></div>
@@ -214,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="729112740%2FFunctions%2F-251573632" anchor-label="columnMetaData" id="729112740%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="column-meta-data.html"><span>column</span><wbr></wbr><span>Meta</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -229,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1026080781%2FFunctions%2F-251573632" anchor-label="columnNames" id="1026080781%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="column-names.html"><span>column</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -244,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="952334075%2FFunctions%2F-251573632" anchor-label="containsSchema" id="952334075%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-schema.html"><span>contains</span><wbr></wbr><span><span>Schema</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1362965482%2FFunctions%2F-251573632" anchor-label="containsTable" id="1362965482%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-table.html"><span>contains</span><wbr></wbr><span><span>Table</span></span></a></div>
@@ -274,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-417222849%2FFunctions%2F-251573632" anchor-label="containsView" id="-417222849%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-view.html"><span>contains</span><wbr></wbr><span><span>View</span></span></a></div>
@@ -289,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="709766467%2FFunctions%2F-251573632" anchor-label="createCachedRowSet" id="709766467%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-cached-row-set.html"><span>create</span><wbr></wbr><span>Cached</span><wbr></wbr><span>Row</span><wbr></wbr><span><span>Set</span></span></a></div>
@@ -304,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1347288038%2FFunctions%2F-251573632" anchor-label="dbTableNamesBySchema" id="1347288038%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="db-table-names-by-schema.html"><span>db</span><wbr></wbr><span>Table</span><wbr></wbr><span>Names</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Schema</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="392824562%2FFunctions%2F-251573632" anchor-label="dbTablesFromMetaData" id="392824562%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="db-tables-from-meta-data.html"><span>db</span><wbr></wbr><span>Tables</span><wbr></wbr><span>From</span><wbr></wbr><span>Meta</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="988943517%2FFunctions%2F-251573632" anchor-label="dbViewNamesBySchema" id="988943517%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="db-view-names-by-schema.html"><span>db</span><wbr></wbr><span>View</span><wbr></wbr><span>Names</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Schema</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="34480041%2FFunctions%2F-251573632" anchor-label="dbViewsFromMetaData" id="34480041%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="db-views-from-meta-data.html"><span>db</span><wbr></wbr><span>Views</span><wbr></wbr><span>From</span><wbr></wbr><span>Meta</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-466868206%2FFunctions%2F-251573632" anchor-label="deleteAllFromTableSQL" id="-466868206%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="delete-all-from-table-s-q-l.html"><span>delete</span><wbr></wbr><span>All</span><wbr></wbr><span>From</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>SQL</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1234934931%2FFunctions%2F-251573632" anchor-label="deleteFromTableWhereSQL" id="-1234934931%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="delete-from-table-where-s-q-l.html"><span>delete</span><wbr></wbr><span>From</span><wbr></wbr><span>Table</span><wbr></wbr><span>Where</span><wbr></wbr><span><span>SQL</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="396915953%2FFunctions%2F-251573632" anchor-label="executeCommand" id="396915953%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="execute-command.html"><span>execute</span><wbr></wbr><span><span>Command</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1015284972%2FFunctions%2F-251573632" anchor-label="executeCommands" id="1015284972%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="execute-commands.html"><span>execute</span><wbr></wbr><span><span>Commands</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-726203319%2FFunctions%2F-251573632" anchor-label="fetchCachedRowSet" id="-726203319%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fetch-cached-row-set.html"><span>fetch</span><wbr></wbr><span>Cached</span><wbr></wbr><span>Row</span><wbr></wbr><span><span>Set</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2010890460%2FFunctions%2F-251573632" anchor-label="fetchOpenResultSet" id="2010890460%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fetch-open-result-set.html"><span>fetch</span><wbr></wbr><span>Open</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Set</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="902697928%2FFunctions%2F-251573632" anchor-label="fillFromColumn" id="902697928%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fill-from-column.html"><span>fill</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Column</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-528525120%2FFunctions%2F-251573632" anchor-label="insertIntoTableStatementSQL" id="-528525120%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="insert-into-table-statement-s-q-l.html"><span>insert</span><wbr></wbr><span>Into</span><wbr></wbr><span>Table</span><wbr></wbr><span>Statement</span><wbr></wbr><span><span>SQL</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1139548261%2FFunctions%2F-251573632" anchor-label="logWarnings" id="-1139548261%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="log-warnings.html"><span>log</span><wbr></wbr><span><span>Warnings</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1212441637%2FFunctions%2F-251573632" anchor-label="makeDeleteFromPreparedStatement" id="1212441637%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="make-delete-from-prepared-statement.html"><span>make</span><wbr></wbr><span>Delete</span><wbr></wbr><span>From</span><wbr></wbr><span>Prepared</span><wbr></wbr><span><span>Statement</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2110914223%2FFunctions%2F-251573632" anchor-label="makeInsertPreparedStatement" id="-2110914223%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="make-insert-prepared-statement.html"><span>make</span><wbr></wbr><span>Insert</span><wbr></wbr><span>Prepared</span><wbr></wbr><span><span>Statement</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1123410074%2FFunctions%2F-251573632" anchor-label="numRows" id="1123410074%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-rows.html"><span>num</span><wbr></wbr><span><span>Rows</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-758125288%2FFunctions%2F-251573632" anchor-label="parseCommandString" id="-758125288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="parse-command-string.html"><span>parse</span><wbr></wbr><span>Command</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -553,13 +553,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-command-string.html"><span class="token function">parseCommandString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">input<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the command from the string.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-command-string.html"><span class="token function">parseCommandString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">input<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the command from the string.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1282940239%2FFunctions%2F-251573632" anchor-label="parseLine" id="-1282940239%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="parse-line.html"><span>parse</span><wbr></wbr><span><span>Line</span></span></a></div>
@@ -568,13 +568,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-line.html"><span class="token function">parseLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-line-option/index.html">DatabaseIfc.LineOption</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the SQL command from the string. Uses EmbeddedDerbyDatabase.DEFAULT_DELIMITER as the delimiter, i.e. &quot;;&quot; Checks for &quot;--&quot;, &quot;//&quot; and &quot;#&quot; as start of line comments</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-line.html"><span class="token function">parseLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">delimiter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-line-option/index.html">DatabaseIfc.LineOption</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the SQL command from the string.  Checks for &quot;--&quot;, &quot;//&quot; and &quot;#&quot; as start of line comments</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-line.html"><span class="token function">parseLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-line-option/index.html">DatabaseIfc.LineOption</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the SQL command from the string. Uses EmbeddedDerbyDatabase.DEFAULT_DELIMITER as the delimiter, i.e. &quot;;&quot; Checks for &quot;--&quot;, &quot;//&quot; and &quot;#&quot; as start of line comments</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="parse-line.html"><span class="token function">parseLine</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">delimiter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">command<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-line-option/index.html">DatabaseIfc.LineOption</a></div><div class="brief "><p class="paragraph">Takes the input string and builds a string to represent the SQL command from the string.  Checks for &quot;--&quot;, &quot;//&quot; and &quot;#&quot; as start of line comments</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="138045958%2FFunctions%2F-251573632" anchor-label="parseQueriesInSQLScript" id="138045958%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="parse-queries-in-s-q-l-script.html"><span>parse</span><wbr></wbr><span>Queries</span><wbr></wbr><span>In</span><wbr></wbr><span><span>SQLScript</span></span></a></div>
@@ -589,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1342420917%2FFunctions%2F-251573632" anchor-label="parseQueriesInString" id="-1342420917%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="parse-queries-in-string.html"><span>parse</span><wbr></wbr><span>Queries</span><wbr></wbr><span>In</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -604,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="695940103%2FFunctions%2F-251573632" anchor-label="schemaNames" id="695940103%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="schema-names.html"><span>schema</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -619,7 +619,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1527960050%2FFunctions%2F-251573632" anchor-label="tableNames" id="-1527960050%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="table-names.html"><span>table</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -634,7 +634,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1557030857%2FFunctions%2F-251573632" anchor-label="toDataFrame" id="-1557030857%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-data-frame.html"><span>to</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -649,7 +649,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1437125394%2FFunctions%2F-251573632" anchor-label="updateTableStatementSQL" id="-1437125394%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="update-table-statement-s-q-l.html"><span>update</span><wbr></wbr><span>Table</span><wbr></wbr><span>Statement</span><wbr></wbr><span><span>SQL</span></span></a></div>
@@ -664,7 +664,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-961714309%2FFunctions%2F-251573632" anchor-label="viewNames" id="-961714309%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="view-names.html"><span>view</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -679,7 +679,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1123239264%2FFunctions%2F-251573632" anchor-label="writeAsCSV" id="-1123239264%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-as-c-s-v.html"><span>write</span><wbr></wbr><span>As</span><wbr></wbr><span><span>CSV</span></span></a></div>
@@ -694,7 +694,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1112520401%2FFunctions%2F-251573632" anchor-label="writeAsMarkdown" id="1112520401%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-as-markdown.html"><span>write</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Markdown</span></span></a></div>
@@ -709,7 +709,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1493099663%2FFunctions%2F-251573632" anchor-label="writeAsText" id="1493099663%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-as-text.html"><span>write</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -729,17 +729,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ProblemDefinition</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.problem/ProblemDefinition///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.problem</a><span class="delimiter">/</span><span class="current">ProblemDefinition</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Problem</span><wbr></wbr><span><span>Definition</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ProblemDefinition</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>optimizationType<span class="token operator">: </span><a href="../-optimization-type/index.html">OptimizationType</a><span class="token operator"> = </span>OptimizationType.MINIMIZE<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/problem/ProblemDefinition.kt#L50">source</a>)</span></span></div><p class="paragraph">This class describes an optimization problem for use within simulation optimization algorithms. The general optimization problem is presented as minimizing the expected value of some function H(x), where x is some input parameters to the simulation and H(.) is the simulation model response for the objective function. The input parameters are assumed to be real-valued specified by a name between a lower and upper bound and a granularity. The granularity specifies the acceptable precision of the input. The problem can have a set of linear constraints. The linear constraints are a deterministic function of the inputs. The problem can also have a set of functional constraints.  A functional constraint is a deterministic function of the inputs that is bounded by constraints. This permits non-linear deterministic functional forms for the problem. In addition, a set of probabilistic constraints of the form EG(x)< c can be specified, where G(x) is some response from the simulation.</p><p class="paragraph">To use this class, the user first defines the objective function response name, the names of the input variables, and the names of the responses to appear in the problem. Then the reference to the class can be used to specify inputs and constraints.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the problem for labeling and identification purposes. If no name is supplied, then a unique name is constructed.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>model</span><wbr></wbr><span><span>Identifier</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the identifier of the model that this problem definition is associated with. The identifier should correspond to an actual model name registered with a simulation provider.  The input names and response names should be valid for the identified model.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response within the simulation model. This name is used to extract the observed simulation values from the simulation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>input</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of the inputs for the simulation model. These names are used to set values for the simulation when executing experiments. Any constraints specified on the input variables must use these names.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of any responses that will appear in response constraints. The default is empty.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>optimization</span><wbr></wbr><span><span>Type</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The type of optimization to perform, either MINIMIZE or MAXIMIZE.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>indifference</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Parameter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a parameter that represents the smallest actual difference that is important to detect for the objective function response. This parameter can be used by solvers to determine if differences between solutions are considered practically insignificant. The default is zero.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span><span>Granularity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the granularity of the objective function</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ProblemDefinition</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>modelIdentifier<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>objFnResponseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>optimizationType<span class="token operator">: </span><a href="../-optimization-type/index.html">OptimizationType</a><span class="token operator"> = </span>OptimizationType.MINIMIZE<span class="token punctuation">, </span></span><span class="parameter ">indifferenceZoneParameter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">objFnGranularity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/problem/ProblemDefinition.kt#L50">source</a>)</span></span></div><p class="paragraph">This class describes an optimization problem for use within simulation optimization algorithms. The general optimization problem is presented as minimizing the expected value of some function H(x), where x is some input parameters to the simulation and H(.) is the simulation model response for the objective function. The input parameters are assumed to be real-valued specified by a name between a lower and upper bound and a granularity. The granularity specifies the acceptable precision of the input. The problem can have a set of linear constraints. The linear constraints are a deterministic function of the inputs. The problem can also have a set of functional constraints.  A functional constraint is a deterministic function of the inputs that is bounded by constraints. This permits non-linear deterministic functional forms for the problem. In addition, a set of probabilistic constraints of the form EG(x)< c can be specified, where G(x) is some response from the simulation.</p><p class="paragraph">To use this class, the user first defines the objective function response name, the names of the input variables, and the names of the responses to appear in the problem. Then the reference to the class can be used to specify inputs and constraints.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the problem for labeling and identification purposes. If no name is supplied, then a unique name is constructed.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>model</span><wbr></wbr><span><span>Identifier</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the identifier of the model that this problem definition is associated with. The identifier should correspond to an actual model name registered with a simulation provider.  The input names and response names should be valid for the identified model.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response within the simulation model. This name is used to extract the observed simulation values from the simulation</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>input</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of the inputs for the simulation model. These names are used to set values for the simulation when executing experiments. Any constraints specified on the input variables must use these names.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Names</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the names of any responses that will appear in response constraints. The default is empty.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>optimization</span><wbr></wbr><span><span>Type</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The type of optimization to perform, either MINIMIZE or MAXIMIZE.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>indifference</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Parameter</span></span></u></div></span></div><div><div class="title"><p class="paragraph">a parameter that represents the smallest actual difference that is important to detect for the objective function response. This parameter can be used by solvers to determine if differences between solutions are considered practically insignificant. The default is zero.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span><span>Granularity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the granularity of the objective function</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="527818648%2FConstructors%2F-251573632" anchor-label="ProblemDefinition" id="527818648%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-problem-definition.html"><span>Problem</span><wbr></wbr><span><span>Definition</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1145905735%2FClasslikes%2F-251573632" anchor-label="Companion" id="-1145905735%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1455129406%2FProperties%2F-251573632" anchor-label="allResponseNames" id="-1455129406%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-response-names.html"><span>all</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -168,8 +168,53 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-880586429%2FProperties%2F-251573632" anchor-label="defaultFunctionalPenalty" id="-880586429%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-functional-penalty.html"><span>default</span><wbr></wbr><span>Functional</span><wbr></wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-880586429%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-functional-penalty.html">defaultFunctionalPenalty</a><span class="token operator">: </span><a href="../-penalty-function-ifc/index.html">PenaltyFunctionIfc</a></div><div class="brief "><p class="paragraph">Default penalty applied to functional constraints if no custom penalty is provided.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1301367707%2FProperties%2F-251573632" anchor-label="defaultLinearPenalty" id="-1301367707%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-linear-penalty.html"><span>default</span><wbr></wbr><span>Linear</span><wbr></wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1301367707%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-linear-penalty.html">defaultLinearPenalty</a><span class="token operator">: </span><a href="../-penalty-function-ifc/index.html">PenaltyFunctionIfc</a></div><div class="brief "><p class="paragraph">Default penalty applied to linear constraints if no custom penalty is provided.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1776843135%2FProperties%2F-251573632" anchor-label="defaultResponsePenalty" id="-1776843135%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-response-penalty.html"><span>default</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Penalty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1776843135%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-response-penalty.html">defaultResponsePenalty</a><span class="token operator">: </span><a href="../-penalty-function-ifc/index.html">PenaltyFunctionIfc</a></div><div class="brief "><p class="paragraph">Default penalty applied to response constraints if no custom penalty is provided.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1786404833%2FProperties%2F-251573632" anchor-label="functionalConstraints" id="-1786404833%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="functional-constraints.html"><span>functional</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -184,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1784580401%2FProperties%2F-251573632" anchor-label="hasFunctionalConstraints" id="-1784580401%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-functional-constraints.html"><span>has</span><wbr></wbr><span>Functional</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -199,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2076929393%2FProperties%2F-251573632" anchor-label="hasLinearConstraints" id="2076929393%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-linear-constraints.html"><span>has</span><wbr></wbr><span>Linear</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -214,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="601722701%2FProperties%2F-251573632" anchor-label="hasResponseConstraints" id="601722701%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-response-constraints.html"><span>has</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -229,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="128114295%2FProperties%2F-251573632" anchor-label="indifferenceZoneParameter" id="128114295%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="indifference-zone-parameter.html"><span>indifference</span><wbr></wbr><span>Zone</span><wbr></wbr><span><span>Parameter</span></span></a></div>
@@ -244,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1610941545%2FProperties%2F-251573632" anchor-label="inputDefinitionList" id="-1610941545%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-definition-list.html"><span>input</span><wbr></wbr><span>Definition</span><wbr></wbr><span><span>List</span></span></a></div>
@@ -259,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-340500782%2FProperties%2F-251573632" anchor-label="inputDefinitions" id="-340500782%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-definitions.html"><span>input</span><wbr></wbr><span><span>Definitions</span></span></a></div>
@@ -274,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1959525850%2FProperties%2F-251573632" anchor-label="inputGranularities" id="-1959525850%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-granularities.html"><span>input</span><wbr></wbr><span><span>Granularities</span></span></a></div>
@@ -289,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="263775492%2FProperties%2F-251573632" anchor-label="inputIntervals" id="263775492%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-intervals.html"><span>input</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -304,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1502666748%2FProperties%2F-251573632" anchor-label="inputLowerBounds" id="1502666748%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-lower-bounds.html"><span>input</span><wbr></wbr><span>Lower</span><wbr></wbr><span><span>Bounds</span></span></a></div>
@@ -319,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1056319143%2FProperties%2F-251573632" anchor-label="inputMidPoints" id="1056319143%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-mid-points.html"><span>input</span><wbr></wbr><span>Mid</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -334,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-885300790%2FProperties%2F-251573632" anchor-label="inputNames" id="-885300790%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-names.html"><span>input</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -349,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="900868082%2FProperties%2F-251573632" anchor-label="inputRanges" id="900868082%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-ranges.html"><span>input</span><wbr></wbr><span><span>Ranges</span></span></a></div>
@@ -364,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-5217305%2FProperties%2F-251573632" anchor-label="inputSize" id="-5217305%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-size.html"><span>input</span><wbr></wbr><span><span>Size</span></span></a></div>
@@ -379,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="717504059%2FProperties%2F-251573632" anchor-label="inputUpperBounds" id="717504059%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-upper-bounds.html"><span>input</span><wbr></wbr><span>Upper</span><wbr></wbr><span><span>Bounds</span></span></a></div>
@@ -394,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1856348561%2FProperties%2F-251573632" anchor-label="isIntegerOrdered" id="-1856348561%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-integer-ordered.html"><span>is</span><wbr></wbr><span>Integer</span><wbr></wbr><span><span>Ordered</span></span></a></div>
@@ -409,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="274251457%2FProperties%2F-251573632" anchor-label="linearConstraints" id="274251457%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraints.html"><span>linear</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -424,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1501071630%2FProperties%2F-251573632" anchor-label="maxFeasibleSamplingIterations" id="1501071630%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-feasible-sampling-iterations.html"><span>max</span><wbr></wbr><span>Feasible</span><wbr></wbr><span>Sampling</span><wbr></wbr><span><span>Iterations</span></span></a></div>
@@ -439,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="379612551%2FProperties%2F-251573632" anchor-label="midPoints" id="379612551%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mid-points.html"><span>mid</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -448,13 +493,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mid-points.html">midPoints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The mid-point of each input variable's range as an input map</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mid-points.html">midPoints</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The mid-point of each input variable's range as mutable map. The key is the name of the input variable, and the value is the mid-point of the variable's range. This can be used to generate a starting point for the problem based on the mid-point of the input variable ranges. Or, you can change the associated value for a particular input variable to generate a starting point that is not based on the mid-point of the variable's range. Then, use the <a href="to-input-map.html">toInputMap</a> function to convert the map into an input map that can be used as a starting point for the problem.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-40708032%2FProperties%2F-251573632" anchor-label="modelIdentifier" id="-40708032%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-identifier.html"><span>model</span><wbr></wbr><span><span>Identifier</span></span></a></div>
@@ -469,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1447881803%2FProperties%2F-251573632" anchor-label="objFncFactor" id="-1447881803%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="obj-fnc-factor.html"><span>obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Factor</span></span></a></div>
@@ -484,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="241721497%2FProperties%2F-251573632" anchor-label="objFnGranularity" id="241721497%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="obj-fn-granularity.html"><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span><span>Granularity</span></span></a></div>
@@ -499,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1254592935%2FProperties%2F-251573632" anchor-label="objFnResponseName" id="1254592935%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="obj-fn-response-name.html"><span>obj</span><wbr></wbr><span>Fn</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -514,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1851544319%2FProperties%2F-251573632" anchor-label="optimizationType" id="-1851544319%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="optimization-type.html"><span>optimization</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -528,23 +573,8 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
-<a data-name="1683373137%2FProperties%2F-251573632" anchor-label="penaltyFunction" id="1683373137%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="penalty-function.html"><span>penalty</span><wbr></wbr><span><span>Function</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1683373137%2FProperties%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="penalty-function.html">penaltyFunction</a><span class="token operator">: </span><a href="../-penalty-function-ifc/index.html">PenaltyFunctionIfc</a></div><div class="brief "><p class="paragraph">The user may supply a penalty function to use when computing the constraint violation penalty; otherwise the default penalty function is used.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="-899953507%2FProperties%2F-251573632" anchor-label="responseConstraints" id="-899953507%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-constraints.html"><span>response</span><wbr></wbr><span><span>Constraints</span></span></a></div>
@@ -559,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1047366731%2FProperties%2F-251573632" anchor-label="responseNames" id="1047366731%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-names.html"><span>response</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -574,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1540935429%2FProperties%2F-251573632" anchor-label="startingPointGenerator" id="1540935429%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="starting-point-generator.html"><span>starting</span><wbr></wbr><span>Point</span><wbr></wbr><span><span>Generator</span></span></a></div>
@@ -591,9 +621,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-865097644%2FFunctions%2F-251573632" anchor-label="badSolution" id="-865097644%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bad-solution.html"><span>bad</span><wbr></wbr><span><span>Solution</span></span></a></div>
@@ -608,7 +638,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2147354943%2FFunctions%2F-251573632" anchor-label="convertPointsToInputs" id="2147354943%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="convert-points-to-inputs.html"><span>convert</span><wbr></wbr><span>Points</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Inputs</span></span></a></div>
@@ -623,7 +653,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1436183718%2FFunctions%2F-251573632" anchor-label="emptyResponseMap" id="-1436183718%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="empty-response-map.html"><span>empty</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -638,7 +668,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-972297810%2FFunctions%2F-251573632" anchor-label="filterToFeasibleInputs" id="-972297810%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="filter-to-feasible-inputs.html"><span>filter</span><wbr></wbr><span>To</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Inputs</span></span></a></div>
@@ -653,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1847152070%2FFunctions%2F-251573632" anchor-label="functionalConstraint" id="1847152070%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="functional-constraint.html"><span>functional</span><wbr></wbr><span><span>Constraint</span></span></a></div>
@@ -668,7 +698,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-595656650%2FFunctions%2F-251573632" anchor-label="functionalConstraintViolations" id="-595656650%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="functional-constraint-violations.html"><span>functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -683,7 +713,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1858924398%2FFunctions%2F-251573632" anchor-label="generateInputFeasibleValues" id="1858924398%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="generate-input-feasible-values.html"><span>generate</span><wbr></wbr><span>Input</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -698,7 +728,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="153370068%2FFunctions%2F-251573632" anchor-label="generateRandomInputValues" id="153370068%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="generate-random-input-values.html"><span>generate</span><wbr></wbr><span>Random</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -713,7 +743,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-770236867%2FFunctions%2F-251573632" anchor-label="granularObjFncValue" id="-770236867%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="granular-obj-fnc-value.html"><span>granular</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -728,7 +758,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1469268499%2FFunctions%2F-251573632" anchor-label="granularPenalizedObjFncValue" id="1469268499%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="granular-penalized-obj-fnc-value.html"><span>granular</span><wbr></wbr><span>Penalized</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -743,7 +773,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="19515599%2FFunctions%2F-251573632" anchor-label="granularPenaltyFncValue" id="19515599%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="granular-penalty-fnc-value.html"><span>granular</span><wbr></wbr><span>Penalty</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -758,7 +788,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1747496520%2FFunctions%2F-251573632" anchor-label="inputRangeLatinHyperCubeInputs" id="1747496520%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-range-latin-hyper-cube-inputs.html"><span>input</span><wbr></wbr><span>Range</span><wbr></wbr><span>Latin</span><wbr></wbr><span>Hyper</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Inputs</span></span></a></div>
@@ -773,7 +803,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-543490238%2FFunctions%2F-251573632" anchor-label="inputRangeLatinHyperCubePoints" id="-543490238%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-range-latin-hyper-cube-points.html"><span>input</span><wbr></wbr><span>Range</span><wbr></wbr><span>Latin</span><wbr></wbr><span>Hyper</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -788,7 +818,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-157304098%2FFunctions%2F-251573632" anchor-label="inputVariable" id="-157304098%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-variable.html"><span>input</span><wbr></wbr><span><span>Variable</span></span></a></div>
@@ -803,7 +833,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1252557215%2FFunctions%2F-251573632" anchor-label="isFunctionalConstraintFeasible" id="-1252557215%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-functional-constraint-feasible.html"><span>is</span><wbr></wbr><span>Functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Feasible</span></span></a></div>
@@ -818,7 +848,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="995881673%2FFunctions%2F-251573632" anchor-label="isInputFeasible" id="995881673%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-input-feasible.html"><span>is</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Feasible</span></span></a></div>
@@ -833,7 +863,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="454831175%2FFunctions%2F-251573632" anchor-label="isInputRangeFeasible" id="454831175%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-input-range-feasible.html"><span>is</span><wbr></wbr><span>Input</span><wbr></wbr><span>Range</span><wbr></wbr><span><span>Feasible</span></span></a></div>
@@ -848,7 +878,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="695325605%2FFunctions%2F-251573632" anchor-label="isLinearConstraintFeasible" id="695325605%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-linear-constraint-feasible.html"><span>is</span><wbr></wbr><span>Linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Feasible</span></span></a></div>
@@ -863,7 +893,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1921113765%2FFunctions%2F-251573632" anchor-label="isValidResponse" id="1921113765%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-valid-response.html"><span>is</span><wbr></wbr><span>Valid</span><wbr></wbr><span><span>Response</span></span></a></div>
@@ -878,7 +908,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="710044482%2FFunctions%2F-251573632" anchor-label="linearConstraint" id="710044482%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraint.html"><span>linear</span><wbr></wbr><span><span>Constraint</span></span></a></div>
@@ -893,7 +923,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1631922697%2FFunctions%2F-251573632" anchor-label="linearConstraintAdjustedMatrix" id="-1631922697%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraint-adjusted-matrix.html"><span>linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span>Adjusted</span><wbr></wbr><span><span>Matrix</span></span></a></div>
@@ -908,7 +938,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="837402949%2FFunctions%2F-251573632" anchor-label="linearConstraintMatrix" id="837402949%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraint-matrix.html"><span>linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Matrix</span></span></a></div>
@@ -917,13 +947,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraint-matrix.html"><span class="token function">linearConstraintMatrix</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the coefficients of the constraints as a matrix. Assume we have the constraint A<i>x </i><<i> b or A</i>x b, then this function returns the A matrix. The coefficients have not been adjusted for the direction of the constraints.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraint-matrix.html"><span class="token function">linearConstraintMatrix</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-array/index.html">Array</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the coefficients of the constraints as a matrix. Assume we have the constraint A<i>x </i><<i> b or A</i>x > b, then this function returns the A matrix. The coefficients have not been adjusted for the direction of the constraints.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1860566134%2FFunctions%2F-251573632" anchor-label="linearConstraintsAdjustedRHS" id="-1860566134%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraints-adjusted-r-h-s.html"><span>linear</span><wbr></wbr><span>Constraints</span><wbr></wbr><span>Adjusted</span><wbr></wbr><span><span>RHS</span></span></a></div>
@@ -932,13 +962,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-adjusted-r-h-s.html"><span class="token function">linearConstraintsAdjustedRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint A<i>x </i><<i> b or A</i>x b, then this function returns the b vector. The values have been adjusted for the direction of the constraint such that the constraint is considered to have a less-than orientation.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-adjusted-r-h-s.html"><span class="token function">linearConstraintsAdjustedRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint A<i>x </i><<i> b or A</i>x > b, then this function returns the b vector. The values have been adjusted for the direction of the constraint such that the constraint is considered to have a less-than orientation.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="136156436%2FFunctions%2F-251573632" anchor-label="linearConstraintsLHSValues" id="136156436%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraints-l-h-s-values.html"><span>linear</span><wbr></wbr><span>Constraints</span><wbr></wbr><span><span>LHSValues</span></span></a></div>
@@ -953,7 +983,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2134212604%2FFunctions%2F-251573632" anchor-label="linearConstraintsRHS" id="2134212604%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraints-r-h-s.html"><span>linear</span><wbr></wbr><span>Constraints</span><wbr></wbr><span><span>RHS</span></span></a></div>
@@ -962,13 +992,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-r-h-s.html"><span class="token function">linearConstraintsRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint, A<i>x </i><<i> b or A</i>x b, then this function returns the b vector. The values have not been adjusted for the direction of the constraint.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="linear-constraints-r-h-s.html"><span class="token function">linearConstraintsRHS</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Assume we have the constraint, A<i>x </i><<i> b or A</i>x > b, then this function returns the b vector. The values have not been adjusted for the direction of the constraint.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1745924056%2FFunctions%2F-251573632" anchor-label="linearConstraintViolations" id="1745924056%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="linear-constraint-violations.html"><span>linear</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -983,7 +1013,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="379612551%2FFunctions%2F-251573632" anchor-label="midPoints" id="379612551%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mid-points.html"><span>mid</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -998,7 +1028,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2063040348%2FFunctions%2F-251573632" anchor-label="mooreNeighborhoodFinder" id="2063040348%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="moore-neighborhood-finder.html"><span>moore</span><wbr></wbr><span>Neighborhood</span><wbr></wbr><span><span>Finder</span></span></a></div>
@@ -1013,7 +1043,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="954301629%2FFunctions%2F-251573632" anchor-label="objFncValue" id="954301629%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="obj-fnc-value.html"><span>obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -1028,7 +1058,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="273363859%2FFunctions%2F-251573632" anchor-label="penalizedObjFncValue" id="273363859%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="penalized-obj-fnc-value.html"><span>penalized</span><wbr></wbr><span>Obj</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -1043,7 +1073,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="648079183%2FFunctions%2F-251573632" anchor-label="penaltyFncValue" id="648079183%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="penalty-fnc-value.html"><span>penalty</span><wbr></wbr><span>Fnc</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -1052,13 +1082,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="penalty-fnc-value.html"><span class="token function">penaltyFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Returns the total violation penalty associated with the constraints for the problem. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="penalty-fnc-value.html"><span class="token function">penaltyFncValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">solution<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Computes the total additive penalty for the provided solution by evaluating individual constraint violations. Ensures that the returned value is oriented according to the optimization type.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1363433290%2FFunctions%2F-251573632" anchor-label="randomInputName" id="-1363433290%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="random-input-name.html"><span>random</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -1073,7 +1103,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1832402775%2FFunctions%2F-251573632" anchor-label="randomizeInputFeasibleValue" id="-1832402775%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="randomize-input-feasible-value.html"><span>randomize</span><wbr></wbr><span>Input</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -1088,7 +1118,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1572296788%2FFunctions%2F-251573632" anchor-label="randomizeInputValue" id="-1572296788%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="randomize-input-value.html"><span>randomize</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -1103,7 +1133,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2005478884%2FFunctions%2F-251573632" anchor-label="responseConstraint" id="-2005478884%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-constraint.html"><span>response</span><wbr></wbr><span><span>Constraint</span></span></a></div>
@@ -1118,7 +1148,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="692515886%2FFunctions%2F-251573632" anchor-label="responseConstraintsAdjustedRHS" id="692515886%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-constraints-adjusted-r-h-s.html"><span>response</span><wbr></wbr><span>Constraints</span><wbr></wbr><span>Adjusted</span><wbr></wbr><span><span>RHS</span></span></a></div>
@@ -1133,7 +1163,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-392211296%2FFunctions%2F-251573632" anchor-label="responseConstraintsRHS" id="-392211296%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-constraints-r-h-s.html"><span>response</span><wbr></wbr><span>Constraints</span><wbr></wbr><span><span>RHS</span></span></a></div>
@@ -1148,7 +1178,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1264536784%2FFunctions%2F-251573632" anchor-label="responseConstraintViolations" id="1264536784%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-constraint-violations.html"><span>response</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -1163,7 +1193,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-242560205%2FFunctions%2F-251573632" anchor-label="roundToGranularity" id="-242560205%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="round-to-granularity.html"><span>round</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Granularity</span></span></a></div>
@@ -1178,7 +1208,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1761572216%2FFunctions%2F-251573632" anchor-label="startingPoint" id="1761572216%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="starting-point.html"><span>starting</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -1193,7 +1223,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1002569571%2FFunctions%2F-251573632" anchor-label="toInputMap" id="1002569571%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-input-map.html"><span>to</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -1208,7 +1238,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-897223850%2FFunctions%2F-251573632" anchor-label="toMap" id="-897223850%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-map.html"><span>to</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -1223,7 +1253,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="878169980%2FFunctions%2F-251573632" anchor-label="toString" id="878169980%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -1238,7 +1268,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1923241040%2FFunctions%2F-251573632" anchor-label="totalFunctionalConstraintViolations" id="1923241040%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-functional-constraint-violations.html"><span>total</span><wbr></wbr><span>Functional</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -1253,7 +1283,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1335798428%2FFunctions%2F-251573632" anchor-label="totalLinearConstrainViolations" id="-1335798428%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-linear-constrain-violations.html"><span>total</span><wbr></wbr><span>Linear</span><wbr></wbr><span>Constrain</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -1268,7 +1298,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1458717106%2FFunctions%2F-251573632" anchor-label="totalResponseConstraintViolations" id="-1458717106%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-response-constraint-violations.html"><span>total</span><wbr></wbr><span>Response</span><wbr></wbr><span>Constraint</span><wbr></wbr><span><span>Violations</span></span></a></div>
@@ -1283,7 +1313,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1330028866%2FFunctions%2F-251573632" anchor-label="validate" id="-1330028866%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate.html"><span><span>validate</span></span></a></div>
@@ -1298,7 +1328,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1831956967%2FFunctions%2F-251573632" anchor-label="validateInputVariable" id="1831956967%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate-input-variable.html"><span>validate</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Variable</span></span></a></div>
@@ -1313,7 +1343,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-254741072%2FFunctions%2F-251573632" anchor-label="validateNames" id="-254741072%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate-names.html"><span>validate</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -1328,7 +1358,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="540473354%2FFunctions%2F-251573632" anchor-label="validateProblemDefinition" id="540473354%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate-problem-definition.html"><span>validate</span><wbr></wbr><span>Problem</span><wbr></wbr><span><span>Definition</span></span></a></div>
@@ -1343,7 +1373,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="686744789%2FFunctions%2F-251573632" anchor-label="vonNeumannNeighborhoodFinder" id="686744789%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="von-neumann-neighborhood-finder.html"><span>von</span><wbr></wbr><span>Neumann</span><wbr></wbr><span>Neighborhood</span><wbr></wbr><span><span>Finder</span></span></a></div>
@@ -1363,17 +1393,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

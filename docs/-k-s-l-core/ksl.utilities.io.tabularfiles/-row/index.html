@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Row</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.io.tabularfiles/Row///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.io.tabularfiles</a><span class="delimiter">/</span><span class="current">Row</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Row</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Row</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tabularFile<span class="token operator">: </span><a href="../-tabular-file/index.html">TabularFile</a></span></span><span class="token punctuation">)</span> : <a href="../-row-getter-ifc/index.html">RowGetterIfc</a>, <a href="../-row-setter-ifc/index.html">RowSetterIfc</a>, <a href="../-row-ifc/index.html">RowIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/tabularfiles/Row.kt#L318">source</a>)</span></span></div><p class="paragraph">An abstraction for a row within a tabular file. The access to the columns is 0-based.  Why? Because most if not all of kotlin's data containers (arrays, lists, etc.) are 0-based.  The first column has index 0, 2nd column has index 1, etc.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Row</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tabularFile<span class="token operator">: </span><a href="../-tabular-file/index.html">TabularFile</a></span></span><span class="token punctuation">)</span> : <a href="../-row-getter-ifc/index.html">RowGetterIfc</a>, <a href="../-row-setter-ifc/index.html">RowSetterIfc</a>, <a href="../-row-ifc/index.html">RowIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/tabularfiles/Row.kt#L318">source</a>)</span></span></div><p class="paragraph">An abstraction for a row within a tabular file. The access to the columns is 0-based.  Why? Because most if not all of kotlin's data containers (arrays, lists, etc.) are 0-based.  The first column has index 0, 2nd column has index 1, etc.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-776377552%2FConstructors%2F-251573632" anchor-label="Row" id="-776377552%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-row.html"><span><span>Row</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-181225822%2FProperties%2F-251573632" anchor-label="bytes" id="-181225822%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bytes.html"><span><span>bytes</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1287131995%2FProperties%2F-251573632" anchor-label="columnNames" id="1287131995%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="column-names.html"><span>column</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="45390666%2FProperties%2F-251573632" anchor-label="columnTypes" id="45390666%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="column-types.html"><span>column</span><wbr></wbr><span><span>Types</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1933633694%2FProperties%2F-251573632" anchor-label="dataTypes" id="1933633694%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="data-types.html"><span>data</span><wbr></wbr><span><span>Types</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1260938314%2FProperties%2F-251573632" anchor-label="elements" id="-1260938314%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="elements.html"><span><span>elements</span></span></a></div>
@@ -210,7 +210,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-887590249%2FProperties%2F-251573632" anchor-label="isAllNumeric" id="-887590249%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-all-numeric.html"><span>is</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Numeric</span></span></a></div>
@@ -225,7 +225,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1140139849%2FProperties%2F-251573632" anchor-label="isAllText" id="1140139849%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-all-text.html"><span>is</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -240,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1256804057%2FProperties%2F-251573632" anchor-label="numberColumns" id="1256804057%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-columns.html"><span>number</span><wbr></wbr><span><span>Columns</span></span></a></div>
@@ -255,7 +255,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-585450944%2FProperties%2F-251573632" anchor-label="numeric" id="-585450944%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="numeric.html"><span><span>numeric</span></span></a></div>
@@ -270,7 +270,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1897506871%2FProperties%2F-251573632" anchor-label="numNumericColumns" id="1897506871%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-numeric-columns.html"><span>num</span><wbr></wbr><span>Numeric</span><wbr></wbr><span><span>Columns</span></span></a></div>
@@ -285,7 +285,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1532604029%2FProperties%2F-251573632" anchor-label="numTextColumns" id="-1532604029%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-text-columns.html"><span>num</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Columns</span></span></a></div>
@@ -300,7 +300,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1761655039%2FProperties%2F-251573632" anchor-label="rowNum" id="-1761655039%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="row-num.html"><span>row</span><wbr></wbr><span><span>Num</span></span></a></div>
@@ -315,7 +315,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-341628864%2FProperties%2F-251573632" anchor-label="text" id="-341628864%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="text.html"><span><span>text</span></span></a></div>
@@ -332,9 +332,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1020001225%2FFunctions%2F-251573632" anchor-label="asStringArray" id="-1020001225%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="as-string-array.html"><span>as</span><wbr></wbr><span>String</span><wbr></wbr><span><span>Array</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1730318653%2FFunctions%2F-251573632" anchor-label="getColumn" id="-1730318653%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-column.html"><span>get</span><wbr></wbr><span><span>Column</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="840127412%2FFunctions%2F-251573632" anchor-label="getColumnName" id="840127412%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-column-name.html"><span>get</span><wbr></wbr><span>Column</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1078936495%2FFunctions%2F-251573632" anchor-label="getDataType" id="-1078936495%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-data-type.html"><span>get</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-42516059%2FFunctions%2F-251573632" anchor-label="getElement" id="-42516059%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-element.html"><span>get</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-859492010%2FFunctions%2F-251573632" anchor-label="getNumeric" id="-859492010%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-numeric.html"><span>get</span><wbr></wbr><span><span>Numeric</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="682548318%2FFunctions%2F-251573632" anchor-label="getText" id="682548318%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-text.html"><span>get</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="220097627%2FFunctions%2F-251573632" anchor-label="getType" id="220097627%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-type.html"><span>get</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1251296088%2FFunctions%2F-251573632" anchor-label="isNumeric" id="-1251296088%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-numeric.html"><span>is</span><wbr></wbr><span><span>Numeric</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-55591596%2FFunctions%2F-251573632" anchor-label="isText" id="-55591596%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-text.html"><span>is</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1818918484%2FFunctions%2F-251573632" anchor-label="setElement" id="1818918484%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-element.html"><span>set</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-302338474%2FFunctions%2F-251573632" anchor-label="setElements" id="-302338474%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-elements.html"><span>set</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1870966917%2FFunctions%2F-251573632" anchor-label="setNumeric" id="1870966917%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-numeric.html"><span>set</span><wbr></wbr><span><span>Numeric</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-247223518%2FFunctions%2F-251573632" anchor-label="setText" id="-247223518%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-text.html"><span>set</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="249813378%2FFunctions%2F-251573632" anchor-label="toCSV" id="249813378%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-c-s-v.html"><span>to</span><wbr></wbr><span><span>CSV</span></span></a></div>
@@ -559,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="810166241%2FFunctions%2F-251573632" anchor-label="toString" id="810166241%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -579,17 +579,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

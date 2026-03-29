@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Model</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simulation/Model///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simulation</a><span class="delimiter">/</span><span class="current">Model</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Model</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Model</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>simulationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Simulation&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">pathToOutputDirectory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a><span class="token operator"> = </span>KSL.createSubDirectory(simulationName.replace(&quot; &quot;, &quot;_&quot;) + &quot;_OutputDir&quot;)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>autoCSVReports<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventCalendar<span class="token operator">: </span><a href="../../ksl.calendar/-calendar-ifc/index.html">CalendarIfc</a><span class="token operator"> = </span>PriorityQueueEventCalendar()</span></span><span class="token punctuation">)</span> : <a href="../-model-element/index.html">ModelElement</a>, <a href="../-experiment-ifc/index.html">ExperimentIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/Model.kt#L75">source</a>)</span></span></div><p class="paragraph">A simulation model is a representation of a system for the purpose of recreating the system's behavior over time. A KSL model consists of many model elements that represent the components of the system. The user create a model to contain model elements and adds the model elements prior to executing the simulation.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">    val model = Model(&quot;Drive Through Pharmacy&quot;, autoCSVReports = true)<br>    model.numberOfReplications = 30<br>    model.lengthOfReplication = 20000.0<br>    model.lengthOfReplicationWarmUp = 5000.0<br>    // add DriveThroughPharmacy to the main model<br>    val dtp = DriveThroughPharmacy(model, 1)<br>    dtp.arrivalRV.initialRandomSource = ExponentialRV(6.0, 1)<br>    dtp.serviceRV.initialRandomSource = ExponentialRV(3.0, 2)<br>    model.simulate()<br>    model.print()</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>simulation</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the simulation model. This name must be unique within the context of the elements in this model. A unique name is assigned by default.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>path</span><wbr></wbr><span>To</span><wbr></wbr><span>Output</span><wbr></wbr><span><span>Directory</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the path specifying the location where simulation output files will be stored. By default, this is the simulation name augmented by &quot;_OutputDir&quot;.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span><span>CSVReports</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true the simulation output results will automatically be stored in comma separated value files. The default is false.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>event</span><wbr></wbr><span><span>Calendar</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the event calendar to use for holding events. By default, this is a <a href="../../ksl.calendar/-priority-queue-event-calendar/index.html">PriorityQueueEventCalendar</a>.</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Model</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>simulationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Simulation&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">pathToOutputDirectory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a><span class="token operator"> = </span>KSL.createSubDirectory(simulationName.replace(&quot; &quot;, &quot;_&quot;) + &quot;_OutputDir&quot;)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>autoCSVReports<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventCalendar<span class="token operator">: </span><a href="../../ksl.calendar/-calendar-ifc/index.html">CalendarIfc</a><span class="token operator"> = </span>PriorityQueueEventCalendar()</span></span><span class="token punctuation">)</span> : <a href="../-model-element/index.html">ModelElement</a>, <a href="../-experiment-ifc/index.html">ExperimentIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/Model.kt#L75">source</a>)</span></span></div><p class="paragraph">A simulation model is a representation of a system for the purpose of recreating the system's behavior over time. A KSL model consists of many model elements that represent the components of the system. The user create a model to contain model elements and adds the model elements prior to executing the simulation.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">    val model = Model(&quot;Drive Through Pharmacy&quot;, autoCSVReports = true)<br>    model.numberOfReplications = 30<br>    model.lengthOfReplication = 20000.0<br>    model.lengthOfReplicationWarmUp = 5000.0<br>    // add DriveThroughPharmacy to the main model<br>    val dtp = DriveThroughPharmacy(model, 1)<br>    dtp.arrivalRV.initialRandomSource = ExponentialRV(6.0, 1)<br>    dtp.serviceRV.initialRandomSource = ExponentialRV(3.0, 2)<br>    model.simulate()<br>    model.print()</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>simulation</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the simulation model. This name must be unique within the context of the elements in this model. A unique name is assigned by default.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>path</span><wbr></wbr><span>To</span><wbr></wbr><span>Output</span><wbr></wbr><span><span>Directory</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the path specifying the location where simulation output files will be stored. By default, this is the simulation name augmented by &quot;_OutputDir&quot;.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span><span>CSVReports</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true the simulation output results will automatically be stored in comma separated value files. The default is false.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>event</span><wbr></wbr><span><span>Calendar</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the event calendar to use for holding events. By default, this is a <a href="../../ksl.calendar/-priority-queue-event-calendar/index.html">PriorityQueueEventCalendar</a>.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="1280398427%2FConstructors%2F-251573632" anchor-label="Model" id="1280398427%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-model.html"><span><span>Model</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1221996568%2FClasslikes%2F-251573632" anchor-label="Companion" id="-1221996568%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1615156793%2FProperties%2F-251573632" anchor-label="advanceNextSubStreamOption" id="1615156793%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advance-next-sub-stream-option.html"><span>advance</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -169,7 +169,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-539819786%2FProperties%2F-251573632" anchor-label="allReplicationsCompleted" id="-539819786%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-replications-completed.html"><span>all</span><wbr></wbr><span>Replications</span><wbr></wbr><span><span>Completed</span></span></a></div>
@@ -184,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1664454949%2FProperties%2F-251573632" anchor-label="antitheticOption" id="1664454949%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="antithetic-option.html"><span>antithetic</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -199,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2141468559%2FProperties%2F-251573632" anchor-label="autoCSVReports" id="-2141468559%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auto-c-s-v-reports.html"><span>auto</span><wbr></wbr><span><span>CSVReports</span></span></a></div>
@@ -214,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="734596093%2FProperties%2F-251573632" anchor-label="autoPrintSummaryReport" id="734596093%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auto-print-summary-report.html"><span>auto</span><wbr></wbr><span>Print</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Report</span></span></a></div>
@@ -223,13 +223,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-print-summary-report.html">autoPrintSummaryReport</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-print-summary-report.html">autoPrintSummaryReport</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If this property is true, then the console printed summary report will automatically be printed to the console when the simulation run is completed. The default is false.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-785386313%2FProperties%2F-251573632" anchor-label="baseTimeUnit" id="-785386313%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="base-time-unit.html"><span>base</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Unit</span></span></a></div>
@@ -244,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1425653507%2FProperties%2F-251573632" anchor-label="beginExecutionTime" id="-1425653507%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="begin-execution-time.html"><span>begin</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2041174123%2FProperties%2F-251573632" anchor-label="configuration" id="2041174123%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="configuration.html"><span><span>configuration</span></span></a></div>
@@ -268,13 +268,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="configuration.html">configuration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If supplied, the configuration used by the model configuration manager.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="configuration.html">configuration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If supplied, the configuration used by the model configuration manager. Setting this property causes the isConfigured property to report false until the configuration is applied when the experiment is set up.  If null is supplied, then isConfigured will always report false.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="646792770%2FProperties%2F-251573632" anchor-label="counters" id="646792770%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="counters.html"><span><span>counters</span></span></a></div>
@@ -289,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-143634165%2FProperties%2F-251573632" anchor-label="currentReplicationId" id="-143634165%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-replication-id.html"><span>current</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Id</span></span></a></div>
@@ -304,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1603533283%2FProperties%2F-251573632" anchor-label="currentReplicationNumber" id="-1603533283%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-replication-number.html"><span>current</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Number</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-105848553%2FProperties%2F-251573632" anchor-label="defaultStreamNumber" id="-105848553%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-stream-number.html"><span>default</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Number</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="312706341%2FProperties%2F-251573632" anchor-label="description" id="312706341%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="description.html"><span><span>description</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="431287440%2FProperties%2F-251573632" anchor-label="elapsedExecutionTime" id="431287440%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="elapsed-execution-time.html"><span>elapsed</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1060917935%2FProperties%2F-251573632" anchor-label="endExecutionTime" id="1060917935%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="end-execution-time.html"><span>end</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-476134309%2FProperties%2F-251573632" anchor-label="experimentalControls" id="-476134309%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="experimental-controls.html"><span>experimental</span><wbr></wbr><span><span>Controls</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1854896993%2FProperties%2F-251573632" anchor-label="experimentId" id="1854896993%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="experiment-id.html"><span>experiment</span><wbr></wbr><span><span>Id</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1045852209%2FProperties%2F-251573632" anchor-label="experimentName" id="1045852209%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="experiment-name.html"><span>experiment</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="260920295%2FProperties%2F-251573632" anchor-label="frequencies" id="260920295%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frequencies.html"><span><span>frequencies</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1874785224%2FProperties%2F-251573632" anchor-label="garbageCollectAfterReplicationFlag" id="1874785224%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="garbage-collect-after-replication-flag.html"><span>garbage</span><wbr></wbr><span>Collect</span><wbr></wbr><span>After</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Flag</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2128431274%2FProperties%2F-251573632" anchor-label="histograms" id="2128431274%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="histograms.html"><span><span>histograms</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1766338641%2FProperties%2F-251573632" anchor-label="isConfigured" id="1766338641%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-configured.html"><span>is</span><wbr></wbr><span><span>Configured</span></span></a></div>
@@ -478,13 +478,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="is-configured.html">isConfigured</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates if a configuration has been applied. If you supply a configuration and a model configuration manager, then during the execution of the setUpExperiment() function, the model will be configured and this property will then report true. No future configurations will be applied while this property is set to true. If you want future experiments to apply a configuration, then this property should be set to false.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="is-configured.html">isConfigured</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates if a configuration has been applied. If you supply a configuration and a model configuration manager, then during the execution of the setUpExperiment() function, the model will be configured and this property will then report true. No future configurations will be applied while this property is set to true. If you want future experiments to apply a configuration, then this property should be set to false. The only way to set this property to false is to set the configuration property.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="484736515%2FProperties%2F-251573632" anchor-label="isCreated" id="484736515%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-created.html"><span>is</span><wbr></wbr><span><span>Created</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="12579085%2FProperties%2F-251573632" anchor-label="isDone" id="12579085%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-done.html"><span>is</span><wbr></wbr><span><span>Done</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-938478095%2FProperties%2F-251573632" anchor-label="isEnded" id="-938478095%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-ended.html"><span>is</span><wbr></wbr><span><span>Ended</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-375198221%2FProperties%2F-251573632" anchor-label="isExecutionTimeExceeded" id="-375198221%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-execution-time-exceeded.html"><span>is</span><wbr></wbr><span>Execution</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Exceeded</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="122556567%2FProperties%2F-251573632" anchor-label="isInitialized" id="122556567%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-initialized.html"><span>is</span><wbr></wbr><span><span>Initialized</span></span></a></div>
@@ -559,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1805583645%2FProperties%2F-251573632" anchor-label="isNotRunning" id="-1805583645%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-not-running.html"><span>is</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Running</span></span></a></div>
@@ -574,7 +574,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1494732624%2FProperties%2F-251573632" anchor-label="isReplicationCompleted" id="1494732624%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-replication-completed.html"><span>is</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Completed</span></span></a></div>
@@ -589,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="637368076%2FProperties%2F-251573632" anchor-label="isRunning" id="637368076%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-running.html"><span>is</span><wbr></wbr><span><span>Running</span></span></a></div>
@@ -604,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1068239580%2FProperties%2F-251573632" anchor-label="isUnfinished" id="-1068239580%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-unfinished.html"><span>is</span><wbr></wbr><span><span>Unfinished</span></span></a></div>
@@ -619,7 +619,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1445082194%2FProperties%2F-251573632" anchor-label="lengthOfReplication" id="1445082194%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="length-of-replication.html"><span>length</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Replication</span></span></a></div>
@@ -634,7 +634,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-468543374%2FProperties%2F-251573632" anchor-label="lengthOfReplicationWarmUp" id="-468543374%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="length-of-replication-warm-up.html"><span>length</span><wbr></wbr><span>Of</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Warm</span><wbr></wbr><span><span>Up</span></span></a></div>
@@ -649,7 +649,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1894624390%2FProperties%2F-251573632" anchor-label="listOfAcrossReplicationStatistics" id="1894624390%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="list-of-across-replication-statistics.html"><span>list</span><wbr></wbr><span>Of</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -664,7 +664,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1899545796%2FProperties%2F-251573632" anchor-label="maximumAllowedExecutionTime" id="1899545796%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-allowed-execution-time.html"><span>maximum</span><wbr></wbr><span>Allowed</span><wbr></wbr><span>Execution</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -679,7 +679,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="590165205%2FProperties%2F-251573632" anchor-label="maximumAllowedExecutionTimePerReplication" id="590165205%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-allowed-execution-time-per-replication.html"><span>maximum</span><wbr></wbr><span>Allowed</span><wbr></wbr><span>Execution</span><wbr></wbr><span>Time</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Replication</span></span></a></div>
@@ -694,7 +694,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1168828415%2FProperties%2F-251573632" anchor-label="modelConfigurationManager" id="-1168828415%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-configuration-manager.html"><span>model</span><wbr></wbr><span>Configuration</span><wbr></wbr><span><span>Manager</span></span></a></div>
@@ -709,7 +709,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1657875247%2FProperties%2F-251573632" anchor-label="modelIdentifier" id="1657875247%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-identifier.html"><span>model</span><wbr></wbr><span><span>Identifier</span></span></a></div>
@@ -723,8 +723,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-2075749336%2FProperties%2F-251573632" anchor-label="mySpatialModel" id="-2075749336%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-spatial-model.html"><span>my</span><wbr></wbr><span>Spatial</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2075749336%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="my-spatial-model.html">mySpatialModel</a><span class="token operator">: </span><a href="../../ksl.modeling.spatial/-spatial-model/index.html">SpatialModel</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1326777074%2FProperties%2F-251573632" anchor-label="numberOfReplications" id="1326777074%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-replications.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -739,7 +754,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-660649906%2FProperties%2F-251573632" anchor-label="numberOfStreamAdvancesPriorToRunning" id="-660649906%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-stream-advances-prior-to-running.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span>Stream</span><wbr></wbr><span>Advances</span><wbr></wbr><span>Prior</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Running</span></span></a></div>
@@ -754,7 +769,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="969844198%2FProperties%2F-251573632" anchor-label="numberReplicationsCompleted" id="969844198%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-replications-completed.html"><span>number</span><wbr></wbr><span>Replications</span><wbr></wbr><span><span>Completed</span></span></a></div>
@@ -769,7 +784,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-698321579%2FProperties%2F-251573632" anchor-label="numChunks" id="-698321579%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-chunks.html"><span>num</span><wbr></wbr><span><span>Chunks</span></span></a></div>
@@ -783,23 +798,8 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
-<a data-name="-669221357%2FProperties%2F-251573632" anchor-label="out" id="-669221357%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="--out--.html"><span><span>out</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-669221357%2FProperties%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="--out--.html">out</a><span class="token operator">: </span><a href="../../ksl.utilities.io/-log-print-writer/index.html">LogPrintWriter</a></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="618618549%2FProperties%2F-251573632" anchor-label="outputDirectory" id="618618549%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="output-directory.html"><span>output</span><wbr></wbr><span><span>Directory</span></span></a></div>
@@ -814,7 +814,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1267686260%2FProperties%2F-251573632" anchor-label="repIdRange" id="1267686260%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rep-id-range.html"><span>rep</span><wbr></wbr><span>Id</span><wbr></wbr><span><span>Range</span></span></a></div>
@@ -829,7 +829,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1661109854%2FProperties%2F-251573632" anchor-label="repLengthWarningMessageOption" id="1661109854%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rep-length-warning-message-option.html"><span>rep</span><wbr></wbr><span>Length</span><wbr></wbr><span>Warning</span><wbr></wbr><span>Message</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -844,7 +844,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1555152800%2FProperties%2F-251573632" anchor-label="replicationInitializationOption" id="1555152800%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replication-initialization-option.html"><span>replication</span><wbr></wbr><span>Initialization</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -859,7 +859,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-166268847%2FProperties%2F-251573632" anchor-label="resetStartStreamOption" id="-166268847%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reset-start-stream-option.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -874,7 +874,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-474886406%2FProperties%2F-251573632" anchor-label="responseNames" id="-474886406%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-names.html"><span>response</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -889,7 +889,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="187214479%2FProperties%2F-251573632" anchor-label="responses" id="187214479%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="responses.html"><span><span>responses</span></span></a></div>
@@ -904,7 +904,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-719946211%2FProperties%2F-251573632" anchor-label="runErrorMsg" id="-719946211%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="run-error-msg.html"><span>run</span><wbr></wbr><span>Error</span><wbr></wbr><span><span>Msg</span></span></a></div>
@@ -919,7 +919,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1490193237%2FProperties%2F-251573632" anchor-label="runName" id="-1490193237%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="run-name.html"><span>run</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -934,7 +934,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1364751485%2FProperties%2F-251573632" anchor-label="rvParameterSetter" id="1364751485%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rv-parameter-setter.html"><span>rv</span><wbr></wbr><span>Parameter</span><wbr></wbr><span><span>Setter</span></span></a></div>
@@ -949,7 +949,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-503702937%2FProperties%2F-251573632" anchor-label="simulationName" id="-503702937%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="simulation-name.html"><span>simulation</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -964,7 +964,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-623809967%2FProperties%2F-251573632" anchor-label="simulationReporter" id="-623809967%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="simulation-reporter.html"><span>simulation</span><wbr></wbr><span><span>Reporter</span></span></a></div>
@@ -979,7 +979,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1680700777%2FProperties%2F-251573632" anchor-label="startingRepId" id="1680700777%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="starting-rep-id.html"><span>starting</span><wbr></wbr><span>Rep</span><wbr></wbr><span><span>Id</span></span></a></div>
@@ -994,7 +994,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1186813634%2FProperties%2F-251573632" anchor-label="stoppedByCondition" id="1186813634%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="stopped-by-condition.html"><span>stopped</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Condition</span></span></a></div>
@@ -1009,7 +1009,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="582688851%2FProperties%2F-251573632" anchor-label="timeSeriesResponses" id="582688851%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time-series-responses.html"><span>time</span><wbr></wbr><span>Series</span><wbr></wbr><span><span>Responses</span></span></a></div>
@@ -1024,7 +1024,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1590936842%2FProperties%2F-251573632" anchor-label="variables" id="1590936842%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="variables.html"><span><span>variables</span></span></a></div>
@@ -1041,9 +1041,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-800334294%2FFunctions%2F-251573632" anchor-label="advanceSubStreams" id="-800334294%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advance-sub-streams.html"><span>advance</span><wbr></wbr><span>Sub</span><wbr></wbr><span><span>Streams</span></span></a></div>
@@ -1058,7 +1058,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1635688247%2FFunctions%2F-251573632" anchor-label="advanceToNextSubStream" id="-1635688247%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advance-to-next-sub-stream.html"><span>advance</span><wbr></wbr><span>To</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span><span>Stream</span></span></a></div>
@@ -1073,7 +1073,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="172364714%2FFunctions%2F-251573632" anchor-label="antitheticOption" id="172364714%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="antithetic-option.html"><span>antithetic</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -1088,7 +1088,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1407134725%2FFunctions%2F-251573632" anchor-label="changeRunParameters" id="-1407134725%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="change-run-parameters.html"><span>change</span><wbr></wbr><span>Run</span><wbr></wbr><span><span>Parameters</span></span></a></div>
@@ -1103,7 +1103,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-988010211%2FFunctions%2F-251573632" anchor-label="containsModelElement" id="-988010211%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-model-element.html"><span>contains</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -1118,7 +1118,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1440738915%2FFunctions%2F-251573632" anchor-label="controls" id="1440738915%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="controls.html"><span><span>controls</span></span></a></div>
@@ -1133,7 +1133,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1676947457%2FFunctions%2F-251573632" anchor-label="counter" id="-1676947457%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="counter.html"><span><span>counter</span></span></a></div>
@@ -1148,7 +1148,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1897453153%2FFunctions%2F-251573632" anchor-label="createDefaultDatabase" id="1897453153%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-default-database.html"><span>create</span><wbr></wbr><span>Default</span><wbr></wbr><span><span>Database</span></span></a></div>
@@ -1163,7 +1163,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-509567952%2FFunctions%2F-251573632" anchor-label="createDefaultDatabaseObserver" id="-509567952%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-default-database-observer.html"><span>create</span><wbr></wbr><span>Default</span><wbr></wbr><span>Database</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -1178,7 +1178,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-375658050%2FFunctions%2F-251573632" anchor-label="endSimulation" id="-375658050%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="end-simulation.html"><span>end</span><wbr></wbr><span><span>Simulation</span></span></a></div>
@@ -1193,7 +1193,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="326135271%2FFunctions%2F-251573632" anchor-label="experimentInstance" id="326135271%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="experiment-instance.html"><span>experiment</span><wbr></wbr><span><span>Instance</span></span></a></div>
@@ -1208,7 +1208,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-225578218%2FFunctions%2F-251573632" anchor-label="getModelElement" id="-225578218%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-model-element.html"><span>get</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -1223,7 +1223,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1572200151%2FFunctions%2F-251573632" anchor-label="hasExperimentalControls" id="-1572200151%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-experimental-controls.html"><span>has</span><wbr></wbr><span>Experimental</span><wbr></wbr><span><span>Controls</span></span></a></div>
@@ -1238,7 +1238,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1966136949%2FFunctions%2F-251573632" anchor-label="hasMoreReplications" id="-1966136949%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-more-replications.html"><span>has</span><wbr></wbr><span>More</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -1253,7 +1253,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="240711002%2FFunctions%2F-251573632" anchor-label="hasNextReplication" id="240711002%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-next-replication.html"><span>has</span><wbr></wbr><span>Next</span><wbr></wbr><span><span>Replication</span></span></a></div>
@@ -1268,7 +1268,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1115609483%2FFunctions%2F-251573632" anchor-label="hasParameterSetter" id="1115609483%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-parameter-setter.html"><span>has</span><wbr></wbr><span>Parameter</span><wbr></wbr><span><span>Setter</span></span></a></div>
@@ -1283,7 +1283,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-225717918%2FFunctions%2F-251573632" anchor-label="initializeReplications" id="-225717918%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialize-replications.html"><span>initialize</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -1298,7 +1298,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-418354756%2FFunctions%2F-251573632" anchor-label="inputKeys" id="-418354756%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-keys.html"><span>input</span><wbr></wbr><span><span>Keys</span></span></a></div>
@@ -1313,7 +1313,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="976623979%2FFunctions%2F-251573632" anchor-label="inputSettings" id="976623979%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="input-settings.html"><span>input</span><wbr></wbr><span><span>Settings</span></span></a></div>
@@ -1328,7 +1328,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1360916695%2FFunctions%2F-251573632" anchor-label="modelDescriptor" id="-1360916695%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-descriptor.html"><span>model</span><wbr></wbr><span><span>Descriptor</span></span></a></div>
@@ -1343,7 +1343,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1091451764%2FFunctions%2F-251573632" anchor-label="numberOfReplications" id="1091451764%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-replications.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -1358,7 +1358,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1673240281%2FFunctions%2F-251573632" anchor-label="print" id="1673240281%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print.html"><span><span>print</span></span></a></div>
@@ -1373,7 +1373,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2147386518%2FFunctions%2F-251573632" anchor-label="randomVariable" id="-2147386518%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="random-variable.html"><span>random</span><wbr></wbr><span><span>Variable</span></span></a></div>
@@ -1388,7 +1388,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1167033811%2FFunctions%2F-251573632" anchor-label="randomVariables" id="-1167033811%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="random-variables.html"><span>random</span><wbr></wbr><span><span>Variables</span></span></a></div>
@@ -1403,7 +1403,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2079628756%2FFunctions%2F-251573632" anchor-label="removeFromModel" id="-2079628756%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-from-model.html"><span>remove</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -1418,7 +1418,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-476373498%2FFunctions%2F-251573632" anchor-label="resetStartStream" id="-476373498%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reset-start-stream.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Stream</span></span></a></div>
@@ -1433,7 +1433,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-27747468%2FFunctions%2F-251573632" anchor-label="resetStartSubStream" id="-27747468%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reset-start-sub-stream.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Sub</span><wbr></wbr><span><span>Stream</span></span></a></div>
@@ -1448,7 +1448,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1545218252%2FFunctions%2F-251573632" anchor-label="response" id="1545218252%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response.html"><span><span>response</span></span></a></div>
@@ -1463,7 +1463,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-676423605%2FFunctions%2F-251573632" anchor-label="runNextReplication" id="-676423605%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="run-next-replication.html"><span>run</span><wbr></wbr><span>Next</span><wbr></wbr><span><span>Replication</span></span></a></div>
@@ -1478,7 +1478,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-647302083%2FFunctions%2F-251573632" anchor-label="setSpatialModelForAllElements" id="-647302083%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-spatial-model-for-all-elements.html"><span>set</span><wbr></wbr><span>Spatial</span><wbr></wbr><span>Model</span><wbr></wbr><span>For</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1493,7 +1493,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1789099352%2FFunctions%2F-251573632" anchor-label="simulate" id="1789099352%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="simulate.html"><span><span>simulate</span></span></a></div>
@@ -1508,7 +1508,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1344110040%2FFunctions%2F-251573632" anchor-label="statisticalBatching" id="1344110040%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistical-batching.html"><span>statistical</span><wbr></wbr><span><span>Batching</span></span></a></div>
@@ -1523,7 +1523,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1620034288%2FFunctions%2F-251573632" anchor-label="timeWeightedResponse" id="1620034288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time-weighted-response.html"><span>time</span><wbr></wbr><span>Weighted</span><wbr></wbr><span><span>Response</span></span></a></div>
@@ -1538,7 +1538,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="875715437%2FFunctions%2F-251573632" anchor-label="toString" id="875715437%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -1553,7 +1553,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="642634016%2FFunctions%2F-251573632" anchor-label="turnOffAcrossReplicationStatisticReporting" id="642634016%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-off-across-replication-statistic-reporting.html"><span>turn</span><wbr></wbr><span>Off</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistic</span><wbr></wbr><span><span>Reporting</span></span></a></div>
@@ -1568,7 +1568,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1356848767%2FFunctions%2F-251573632" anchor-label="turnOffCSVStatisticalReports" id="-1356848767%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-off-c-s-v-statistical-reports.html"><span>turn</span><wbr></wbr><span>Off</span><wbr></wbr><span>CSVStatistical</span><wbr></wbr><span><span>Reports</span></span></a></div>
@@ -1583,7 +1583,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2146394089%2FFunctions%2F-251573632" anchor-label="turnOffReplicationCSVStatisticReporting" id="-2146394089%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-off-replication-c-s-v-statistic-reporting.html"><span>turn</span><wbr></wbr><span>Off</span><wbr></wbr><span>Replication</span><wbr></wbr><span>CSVStatistic</span><wbr></wbr><span><span>Reporting</span></span></a></div>
@@ -1598,7 +1598,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1280383246%2FFunctions%2F-251573632" anchor-label="turnOnAcrossReplicationStatisticReporting" id="-1280383246%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-on-across-replication-statistic-reporting.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistic</span><wbr></wbr><span><span>Reporting</span></span></a></div>
@@ -1613,7 +1613,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1902374611%2FFunctions%2F-251573632" anchor-label="turnOnCSVStatisticalReports" id="1902374611%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-on-c-s-v-statistical-reports.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span>CSVStatistical</span><wbr></wbr><span><span>Reports</span></span></a></div>
@@ -1628,7 +1628,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2118232965%2FFunctions%2F-251573632" anchor-label="turnOnReplicationCSVStatisticReporting" id="2118232965%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-on-replication-c-s-v-statistic-reporting.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span>Replication</span><wbr></wbr><span>CSVStatistic</span><wbr></wbr><span><span>Reporting</span></span></a></div>
@@ -1643,7 +1643,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="31877739%2FFunctions%2F-251573632" anchor-label="validateInputKeys" id="31877739%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate-input-keys.html"><span>validate</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Keys</span></span></a></div>
@@ -1658,7 +1658,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="978378644%2FFunctions%2F-251573632" anchor-label="validateResponseNames" id="978378644%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validate-response-names.html"><span>validate</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -1678,17 +1678,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

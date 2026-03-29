@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Entity</title>
     <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/ProcessModel.Entity///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><a href="../index.html">ProcessModel</a><span class="delimiter">/</span><span class="current">Entity</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Entity</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="index.html">Entity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">aName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a>, <a href="../../../ksl.modeling.spatial/-spatial-element-ifc/index.html">SpatialElementIfc</a>, <a href="../../../ksl.modeling.spatial/-velocity-ifc/index.html">VelocityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/ProcessModel.kt#L375">source</a>)</span></span></div><p class="paragraph">An entity is something that can experience processes and as such may wait in queue. It is a subclass of QObject.  The general approach is to use the process() function to define a process that a subclass of Entity can follow.  Entity instances may use resources, signals, hold queues, etc. as shared mutable state.  Entities may follow a process sequence if defined.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>a</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the entity</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-batching-entity/index.html">BatchingEntity</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../-task-processing-system/-task/index.html">Task</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="index.html">Entity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">aName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a>, <a href="../../../ksl.modeling.spatial/-spatial-element-ifc/index.html">SpatialElementIfc</a>, <a href="../../../ksl.modeling.spatial/-velocity-ifc/index.html">VelocityIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/ProcessModel.kt#L375">source</a>)</span></span></div><p class="paragraph">An entity is something that can experience processes and as such may wait in queue. It is a subclass of QObject.  The general approach is to use the process() function to define a process that a subclass of Entity can follow.  Entity instances may use resources, signals, hold queues, etc. as shared mutable state.  Entities may follow a process sequence if defined.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>a</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the entity</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-batching-entity/index.html">BatchingEntity</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../-task-processing-system/-task/index.html">Task</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../../ksl.modeling.spatial/-movable-resource/-home-base-driver/-driver/index.html">Driver</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="420429792%2FConstructors%2F-251573632" anchor-label="Entity" id="420429792%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-entity.html"><span><span>Entity</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-467490489%2FClasslikes%2F-251573632" anchor-label="Blockage" id="-467490489%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blockage/index.html"><span><span>Blockage</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="233277557%2FClasslikes%2F-251573632" anchor-label="BlockingActivity" id="233277557%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-activity/index.html"><span>Blocking</span><wbr></wbr><span><span>Activity</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-449966379%2FClasslikes%2F-251573632" anchor-label="BlockingMovement" id="-449966379%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-movement/index.html"><span>Blocking</span><wbr></wbr><span><span>Movement</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1646644601%2FClasslikes%2F-251573632" anchor-label="BlockingResourcePoolUsage" id="-1646644601%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-resource-pool-usage/index.html"><span>Blocking</span><wbr></wbr><span>Resource</span><wbr></wbr><span>Pool</span><wbr></wbr><span><span>Usage</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-119460661%2FClasslikes%2F-251573632" anchor-label="BlockingResourceUsage" id="-119460661%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-resource-usage/index.html"><span>Blocking</span><wbr></wbr><span>Resource</span><wbr></wbr><span><span>Usage</span></span></a></div>
@@ -210,7 +210,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1025832897%2FClasslikes%2F-251573632" anchor-label="BlockingTask" id="-1025832897%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-task/index.html"><span>Blocking</span><wbr></wbr><span><span>Task</span></span></a></div>
@@ -225,7 +225,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1097783390%2FClasslikes%2F-251573632" anchor-label="MovableResourcePoolRequest" id="-1097783390%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-movable-resource-pool-request/index.html"><span>Movable</span><wbr></wbr><span>Resource</span><wbr></wbr><span>Pool</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -240,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2111180122%2FClasslikes%2F-251573632" anchor-label="Request" id="2111180122%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-request/index.html"><span><span>Request</span></span></a></div>
@@ -255,7 +255,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1316880700%2FClasslikes%2F-251573632" anchor-label="ResourcePoolRequest" id="-1316880700%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-resource-pool-request/index.html"><span>Resource</span><wbr></wbr><span>Pool</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -270,7 +270,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1935263112%2FClasslikes%2F-251573632" anchor-label="ResourceRequest" id="1935263112%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-resource-request/index.html"><span>Resource</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -285,7 +285,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-141959396%2FClasslikes%2F-251573632" anchor-label="Suspension" id="-141959396%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-suspension/index.html"><span><span>Suspension</span></span></a></div>
@@ -302,9 +302,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-2108923258%2FProperties%2F-251573632" anchor-label="autoDispose" id="-2108923258%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auto-dispose.html"><span>auto</span><wbr></wbr><span><span>Dispose</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1129518258%2FProperties%2F-251573632" anchor-label="conveyorRequest" id="1129518258%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="conveyor-request.html"><span>conveyor</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2041091858%2FProperties%2F-251573632" anchor-label="currentProcess" id="-2041091858%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-process.html"><span>current</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="23904291%2FProperties%2F-251573632" anchor-label="currentProcessName" id="23904291%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-process-name.html"><span>current</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2021543286%2FProperties%2F-251573632" anchor-label="currentSuspendName" id="2021543286%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-suspend-name.html"><span>current</span><wbr></wbr><span>Suspend</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1343648857%2FProperties%2F-251573632" anchor-label="currentSuspendType" id="-1343648857%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-suspend-type.html"><span>current</span><wbr></wbr><span>Suspend</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1989516874%2FProperties%2F-251573632" anchor-label="defaultProcess" id="-1989516874%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-process.html"><span>default</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1592263555%2FProperties%2F-251573632" anchor-label="hasActiveBlockages" id="1592263555%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-active-blockages.html"><span>has</span><wbr></wbr><span>Active</span><wbr></wbr><span><span>Blockages</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1981796245%2FProperties%2F-251573632" anchor-label="hasAllocations" id="-1981796245%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-allocations.html"><span>has</span><wbr></wbr><span><span>Allocations</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-908297914%2FProperties%2F-251573632" anchor-label="hasCurrentProcess" id="-908297914%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-current-process.html"><span>has</span><wbr></wbr><span>Current</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1998146916%2FProperties%2F-251573632" anchor-label="hasPendingProcess" id="1998146916%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-pending-process.html"><span>has</span><wbr></wbr><span>Pending</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-895327916%2FProperties%2F-251573632" anchor-label="isActive" id="-895327916%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-active.html"><span>is</span><wbr></wbr><span><span>Active</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-660694650%2FProperties%2F-251573632" anchor-label="isBlockedReceiving" id="-660694650%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-blocked-receiving.html"><span>is</span><wbr></wbr><span>Blocked</span><wbr></wbr><span><span>Receiving</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="720532620%2FProperties%2F-251573632" anchor-label="isBlockedSending" id="720532620%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-blocked-sending.html"><span>is</span><wbr></wbr><span>Blocked</span><wbr></wbr><span><span>Sending</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1156979444%2FProperties%2F-251573632" anchor-label="isBlockedUntilCompletion" id="-1156979444%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-blocked-until-completion.html"><span>is</span><wbr></wbr><span>Blocked</span><wbr></wbr><span>Until</span><wbr></wbr><span><span>Completion</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-552727656%2FProperties%2F-251573632" anchor-label="isCreated" id="-552727656%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-created.html"><span>is</span><wbr></wbr><span><span>Created</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1939451725%2FProperties%2F-251573632" anchor-label="isInHoldQueue" id="-1939451725%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-in-hold-queue.html"><span>is</span><wbr></wbr><span>In</span><wbr></wbr><span>Hold</span><wbr></wbr><span><span>Queue</span></span></a></div>
@@ -559,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="277105839%2FProperties%2F-251573632" anchor-label="isProcessEnded" id="277105839%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-process-ended.html"><span>is</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Ended</span></span></a></div>
@@ -574,7 +574,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="809204915%2FProperties%2F-251573632" anchor-label="isScheduled" id="809204915%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-scheduled.html"><span>is</span><wbr></wbr><span><span>Scheduled</span></span></a></div>
@@ -589,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="577716037%2FProperties%2F-251573632" anchor-label="isSuspended" id="577716037%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-suspended.html"><span>is</span><wbr></wbr><span><span>Suspended</span></span></a></div>
@@ -604,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="289725154%2FProperties%2F-251573632" anchor-label="isWaitingForBatch" id="289725154%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-waiting-for-batch.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Batch</span></span></a></div>
@@ -619,7 +619,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2080192979%2FProperties%2F-251573632" anchor-label="isWaitingForConveyor" id="2080192979%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-waiting-for-conveyor.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Conveyor</span></span></a></div>
@@ -634,7 +634,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2133122445%2FProperties%2F-251573632" anchor-label="isWaitingForProcess" id="2133122445%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-waiting-for-process.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -649,7 +649,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="620956144%2FProperties%2F-251573632" anchor-label="isWaitingForResource" id="620956144%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-waiting-for-resource.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Resource</span></span></a></div>
@@ -664,7 +664,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2135968982%2FProperties%2F-251573632" anchor-label="isWaitingForSignal" id="2135968982%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-waiting-for-signal.html"><span>is</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Signal</span></span></a></div>
@@ -679,7 +679,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="865352972%2FProperties%2F-251573632" anchor-label="pendingProcess" id="865352972%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="pending-process.html"><span>pending</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -694,7 +694,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1573279041%2FProperties%2F-251573632" anchor-label="pendingProcessName" id="1573279041%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="pending-process-name.html"><span>pending</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -709,7 +709,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1823497470%2FProperties%2F-251573632" anchor-label="previousProcess" id="1823497470%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-process.html"><span>previous</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -724,7 +724,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1313133433%2FProperties%2F-251573632" anchor-label="processes" id="1313133433%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="processes.html"><span><span>processes</span></span></a></div>
@@ -739,7 +739,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1491038186%2FProperties%2F-251573632" anchor-label="processModel" id="1491038186%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="process-model.html"><span>process</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -754,7 +754,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1883059162%2FProperties%2F-251573632" anchor-label="processSequence" id="-1883059162%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="process-sequence.html"><span>process</span><wbr></wbr><span><span>Sequence</span></span></a></div>
@@ -769,7 +769,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1909226920%2FProperties%2F-251573632" anchor-label="processSequenceIterator" id="-1909226920%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="process-sequence-iterator.html"><span>process</span><wbr></wbr><span>Sequence</span><wbr></wbr><span><span>Iterator</span></span></a></div>
@@ -784,7 +784,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="898484411%2FProperties%2F-251573632" anchor-label="useProcessSequence" id="898484411%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="use-process-sequence.html"><span>use</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Sequence</span></span></a></div>
@@ -799,7 +799,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="992955879%2FProperties%2F-251573632" anchor-label="velocity" id="992955879%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="velocity.html"><span><span>velocity</span></span></a></div>
@@ -816,9 +816,24 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-343423456%2FFunctions%2F-251573632" anchor-label="allocationsAsString" id="-343423456%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-988463809%2FFunctions%2F-251573632" anchor-label="afterRunningProcess" id="-988463809%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-running-process.html"><span>after</span><wbr></wbr><span>Running</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-988463809%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="after-running-process.html"><span class="token function">afterRunningProcess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">completedProcess<span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Can be used by subclasses to perform some logic when (after) the current process is completed, but before deciding to execute the next process (if there is one). Called right before determineNextProcess()</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-343423456%2FFunctions%2F-251573632" anchor-label="allocationsAsString" id="-343423456%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="allocations-as-string.html"><span>allocations</span><wbr></wbr><span>As</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -832,8 +847,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1475617194%2FFunctions%2F-251573632" anchor-label="beforeRunningProcess" id="1475617194%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-running-process.html"><span>before</span><wbr></wbr><span>Running</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1475617194%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="before-running-process.html"><span class="token function">beforeRunningProcess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">process<span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses can override this method and provide logic for the supplied process that will be executed right before the process runs to is first suspension point. For example, this method could be used to make assignments to the entity before the entity starts running the process. By default, this method does nothing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-2054610862%2FFunctions%2F-251573632" anchor-label="blockagesAsString" id="-2054610862%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="blockages-as-string.html"><span>blockages</span><wbr></wbr><span>As</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -847,8 +877,53 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-793203760%2FFunctions%2F-251573632" anchor-label="determineNextProcess" id="-793203760%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="determine-next-process.html"><span>determine</span><wbr></wbr><span>Next</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-793203760%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="determine-next-process.html"><span class="token function">determineNextProcess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">completedProcess<span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If the useProcessSequence property is true, this method automatically uses the current processSequenceIterator. If the iterator has a next element it is returned, else null is returned. Subclasses may override this implementation to provide a more general approach to determining the next process to run.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="806992876%2FFunctions%2F-251573632" anchor-label="dispose" id="806992876%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dispose.html"><span><span>dispose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="806992876%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="dispose.html"><span class="token function">dispose</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">completedProcess<span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This function is called if there are no more processes to run for the entity after successfully completing a process.  This method provides subclasses the ability to release any allocations or do clean up before the entity is passed to its EntityType for handling.  By default, this method does nothing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="571551975%2FFunctions%2F-251573632" anchor-label="handleTerminatedProcess" id="571551975%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="handle-terminated-process.html"><span>handle</span><wbr></wbr><span>Terminated</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="571551975%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="handle-terminated-process.html"><span class="token function">handleTerminatedProcess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">terminatedProcess<span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses of Entity can use this method to clean up after a process is terminated for the entity. Currently, it does nothing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-50724636%2FFunctions%2F-251573632" anchor-label="holdQueue" id="-50724636%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hold-queue.html"><span>hold</span><wbr></wbr><span><span>Queue</span></span></a></div>
@@ -863,7 +938,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1772909390%2FFunctions%2F-251573632" anchor-label="isUsing" id="1772909390%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-using.html"><span>is</span><wbr></wbr><span><span>Using</span></span></a></div>
@@ -877,8 +952,53 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="922072160%2FFunctions%2F-251573632" anchor-label="moveRequestToMovableResourcePool" id="922072160%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="move-request-to-movable-resource-pool.html"><span>move</span><wbr></wbr><span>Request</span><wbr></wbr><span>To</span><wbr></wbr><span>Movable</span><wbr></wbr><span>Resource</span><wbr></wbr><span><span>Pool</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="922072160%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="move-request-to-movable-resource-pool.html"><span class="token function">moveRequestToMovableResourcePool</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="-movable-resource-pool-request/index.html">ProcessModel.Entity.MovableResourcePoolRequest</a><span class="token punctuation">, </span></span><span class="parameter ">currentQueue<span class="token operator">: </span><a href="../../-request-q/index.html">RequestQ</a><span class="token punctuation">, </span></span><span class="parameter ">pool<span class="token operator">: </span><a href="../../../ksl.modeling.spatial/-movable-resource-pool-with-q/index.html">MovableResourcePoolWithQ</a><span class="token punctuation">, </span></span><span class="parameter ">resourceSelectionRule<span class="token operator">: </span><a href="../../../ksl.modeling.spatial/-movable-resource-selection-rule-ifc/index.html">MovableResourceSelectionRuleIfc</a><span class="token punctuation">, </span></span><span class="parameter ">resumePriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">waitStats<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A request, in a request queue, is there because it's entity is suspended. This function will remove the supplied request from the specified queue and place it in the queue associated with the specified movable resource pool. If the movable resource pool has a unit of capacity available to satisfy the request, then the entity is resumed to allow the unit to be allocated. If the movable resource pool does not have a unit to satisfy the request, the entity stays suspended within the movable resource pool's queue and will be processed as a normal request for the movable resource pool.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="11993921%2FFunctions%2F-251573632" anchor-label="moveRequestToResource" id="11993921%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="move-request-to-resource.html"><span>move</span><wbr></wbr><span>Request</span><wbr></wbr><span>To</span><wbr></wbr><span><span>Resource</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="11993921%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="move-request-to-resource.html"><span class="token function">moveRequestToResource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="-resource-request/index.html">ProcessModel.Entity.ResourceRequest</a><span class="token punctuation">, </span></span><span class="parameter ">currentQueue<span class="token operator">: </span><a href="../../-request-q/index.html">RequestQ</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="../../-resource-with-q/index.html">ResourceWithQ</a><span class="token punctuation">, </span></span><span class="parameter ">resumePriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">waitStats<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A request, in a request queue, is there because it's entity is suspended. This function will remove the supplied request from the specified queue and place it in the queue associated with the specified resource. If the resource has units of capacity available to satisfy the request, then the entity is resumed to allow the units to be allocated. If the resource does not have sufficient units to satisfy the request, the entity stays suspended within the resource's queue and will be processed as a normal request for the resource.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1346857884%2FFunctions%2F-251573632" anchor-label="moveRequestToResourcePool" id="1346857884%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="move-request-to-resource-pool.html"><span>move</span><wbr></wbr><span>Request</span><wbr></wbr><span>To</span><wbr></wbr><span>Resource</span><wbr></wbr><span><span>Pool</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1346857884%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="move-request-to-resource-pool.html"><span class="token function">moveRequestToResourcePool</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="-resource-pool-request/index.html">ProcessModel.Entity.ResourcePoolRequest</a><span class="token punctuation">, </span></span><span class="parameter ">currentQueue<span class="token operator">: </span><a href="../../-request-q/index.html">RequestQ</a><span class="token punctuation">, </span></span><span class="parameter ">pool<span class="token operator">: </span><a href="../../-resource-pool-with-q/index.html">ResourcePoolWithQ</a><span class="token punctuation">, </span></span><span class="parameter ">resourceSelectionRule<span class="token operator">: </span><a href="../../-resource-selection-rule-ifc/index.html">ResourceSelectionRuleIfc</a><span class="token punctuation">, </span></span><span class="parameter ">resumePriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">waitStats<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A request, in a request queue, is there because it's entity is suspended. This function will remove the supplied request from the specified queue and place it in the queue associated with the specified resource pool. If the resource pool has units of capacity available to satisfy the request, then the entity is resumed to allow the units to be allocated. If the resource pool does not have sufficient units to satisfy the request, the entity stays suspended within the resource pool's queue and will be processed as a normal request for the resource pool.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-315671435%2FFunctions%2F-251573632" anchor-label="numberOfAllocations" id="-315671435%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-allocations.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Allocations</span></span></a></div>
@@ -892,8 +1012,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1895631487%2FFunctions%2F-251573632" anchor-label="process" id="-1895631487%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="process.html"><span><span>process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1895631487%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="process.html"><span class="token function">process</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">processName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">isDefaultProcess<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><span class="token keyword">suspend </span><a href="../../-k-s-l-process-builder/index.html">KSLProcessBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../-k-s-l-process/index.html">KSLProcess</a></div><div class="brief "><p class="paragraph">This function is used to define via a builder for a process for the entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1886050515%2FFunctions%2F-251573632" anchor-label="resourceBecameInactiveWhileWaitingInQueueWithSeizeRequest" id="1886050515%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resource-became-inactive-while-waiting-in-queue-with-seize-request.html"><span>resource</span><wbr></wbr><span>Became</span><wbr></wbr><span>Inactive</span><wbr></wbr><span>While</span><wbr></wbr><span>Waiting</span><wbr></wbr><span>In</span><wbr></wbr><span>Queue</span><wbr></wbr><span>With</span><wbr></wbr><span>Seize</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886050515%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="resource-became-inactive-while-waiting-in-queue-with-seize-request.html"><span class="token function">resourceBecameInactiveWhileWaitingInQueueWithSeizeRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">queue<span class="token operator">: </span><a href="../../-request-q/index.html">RequestQ</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="../../-resource/index.html">Resource</a><span class="token punctuation">, </span></span><span class="parameter ">request<span class="token operator">: </span><a href="-request/index.html">ProcessModel.Entity.Request</a></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="resource-became-inactive-while-waiting-in-queue-with-seize-request.html"><span class="token function">resourceBecameInactiveWhileWaitingInQueueWithSeizeRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">queue<span class="token operator">: </span><a href="../../-request-q/index.html">RequestQ</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="../../../ksl.modeling.spatial/-movable-resource/index.html">MovableResource</a><span class="token punctuation">, </span></span><span class="parameter ">request<span class="token operator">: </span><a href="-request/index.html">ProcessModel.Entity.Request</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses of entity can override this method to provide behavior if a request associated with the entity has its requested resource become inactive while its request was waiting in the request queue.  This is not a trivial thing to do since the entity will be suspended after seizing a resource.  If the entity wants to stop waiting, then the process will have to be terminated and the termination logic will need to handle what to do after the termination.  However, if the entity can wait for a different resource, it is possible to remove the request from its current queue and place the request in a different queue that supports a different (active) resource.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1488305677%2FFunctions%2F-251573632" anchor-label="resumeProcess" id="1488305677%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="resume-process.html"><span>resume</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -908,7 +1058,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="667633863%2FFunctions%2F-251573632" anchor-label="terminateProcess" id="667633863%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="terminate-process.html"><span>terminate</span><wbr></wbr><span><span>Process</span></span></a></div>
@@ -923,7 +1073,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="651311147%2FFunctions%2F-251573632" anchor-label="totalAmountAllocated" id="651311147%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-amount-allocated.html"><span>total</span><wbr></wbr><span>Amount</span><wbr></wbr><span><span>Allocated</span></span></a></div>
@@ -943,17 +1093,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

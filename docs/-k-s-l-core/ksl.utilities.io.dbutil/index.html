@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ksl.utilities.io.dbutil</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.utilities.io.dbutil////PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.utilities.io.dbutil</span></div>
   <div class="cover ">
@@ -113,9 +113,9 @@ R1.2.6        </div>
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="1668476822%2FClasslikes%2F-251573632" anchor-label="AcrossRepStatTableData" id="1668476822%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-across-rep-stat-table-data/index.html"><span>Across</span><wbr></wbr><span>Rep</span><wbr></wbr><span>Stat</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -130,7 +130,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-378428935%2FClasslikes%2F-251573632" anchor-label="AcrossRepViewData" id="-378428935%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-across-rep-view-data/index.html"><span>Across</span><wbr></wbr><span>Rep</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -145,7 +145,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1953382322%2FClasslikes%2F-251573632" anchor-label="BatchStatTableData" id="1953382322%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-batch-stat-table-data/index.html"><span>Batch</span><wbr></wbr><span>Stat</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -160,7 +160,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1069625065%2FClasslikes%2F-251573632" anchor-label="BatchStatViewData" id="1069625065%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-batch-stat-view-data/index.html"><span>Batch</span><wbr></wbr><span>Stat</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -175,7 +175,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1127998377%2FClasslikes%2F-251573632" anchor-label="ColumnMetaData" id="-1127998377%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-column-meta-data/index.html"><span>Column</span><wbr></wbr><span>Meta</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -190,7 +190,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1058835297%2FClasslikes%2F-251573632" anchor-label="ControlTableData" id="1058835297%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-control-table-data/index.html"><span>Control</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -205,7 +205,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-370278747%2FClasslikes%2F-251573632" anchor-label="DataAccessException" id="-370278747%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-data-access-exception/index.html"><span>Data</span><wbr></wbr><span>Access</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -220,7 +220,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-662001503%2FClasslikes%2F-251573632" anchor-label="Database" id="-662001503%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-database/index.html"><span><span>Database</span></span></a></div>
@@ -235,7 +235,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1431439098%2FClasslikes%2F-251573632" anchor-label="DatabaseAlreadyExistsException" id="-1431439098%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-database-already-exists-exception/index.html"><span>Database</span><wbr></wbr><span>Already</span><wbr></wbr><span>Exists</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -250,7 +250,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="86934223%2FClasslikes%2F-251573632" anchor-label="DatabaseDoesNotExistException" id="86934223%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-database-does-not-exist-exception/index.html"><span>Database</span><wbr></wbr><span>Does</span><wbr></wbr><span>Not</span><wbr></wbr><span>Exist</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -265,7 +265,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-441017925%2FClasslikes%2F-251573632" anchor-label="DatabaseIfc" id="-441017925%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-database-ifc/index.html"><span>Database</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -280,7 +280,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2052888095%2FClasslikes%2F-251573632" anchor-label="DatabaseIOIfc" id="-2052888095%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-database-i-o-ifc/index.html"><span>Database</span><wbr></wbr><span><span>IOIfc</span></span></a></div>
@@ -295,7 +295,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-952794787%2FClasslikes%2F-251573632" anchor-label="DbCreateTask" id="-952794787%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-db-create-task/index.html"><span>Db</span><wbr></wbr><span>Create</span><wbr></wbr><span><span>Task</span></span></a></div>
@@ -310,7 +310,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="423446511%2FClasslikes%2F-251573632" anchor-label="DbResultsAsText" id="423446511%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-db-results-as-text/index.html"><span>Db</span><wbr></wbr><span>Results</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Text</span></span></a></div>
@@ -325,7 +325,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="932383695%2FClasslikes%2F-251573632" anchor-label="DbSchemaInfo" id="932383695%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-db-schema-info/index.html"><span>Db</span><wbr></wbr><span>Schema</span><wbr></wbr><span><span>Info</span></span></a></div>
@@ -340,7 +340,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-466710964%2FClasslikes%2F-251573632" anchor-label="DbTableData" id="-466710964%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-db-table-data/index.html"><span>Db</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -355,7 +355,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1601405248%2FClasslikes%2F-251573632" anchor-label="DerbyDb" id="1601405248%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-derby-db/index.html"><span>Derby</span><wbr></wbr><span><span>Db</span></span></a></div>
@@ -370,7 +370,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-541101755%2FClasslikes%2F-251573632" anchor-label="DuckDb" id="-541101755%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-duck-db/index.html"><span>Duck</span><wbr></wbr><span><span>Db</span></span></a></div>
@@ -385,7 +385,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1256496992%2FClasslikes%2F-251573632" anchor-label="DuckDbDataSource" id="1256496992%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-duck-db-data-source/index.html"><span>Duck</span><wbr></wbr><span>Db</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Source</span></span></a></div>
@@ -400,7 +400,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1148319192%2FClasslikes%2F-251573632" anchor-label="EmbeddedDbIfc" id="-1148319192%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-embedded-db-ifc/index.html"><span>Embedded</span><wbr></wbr><span>Db</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -415,7 +415,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="646652858%2FClasslikes%2F-251573632" anchor-label="EmbeddedDbType" id="646652858%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-embedded-db-type/index.html"><span>Embedded</span><wbr></wbr><span>Db</span><wbr></wbr><span><span>Type</span></span></a></div>
@@ -430,7 +430,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1232840437%2FClasslikes%2F-251573632" anchor-label="ExperimentTableData" id="-1232840437%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-experiment-table-data/index.html"><span>Experiment</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -445,7 +445,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1939870847%2FClasslikes%2F-251573632" anchor-label="ExpStatRepViewData" id="-1939870847%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-exp-stat-rep-view-data/index.html"><span>Exp</span><wbr></wbr><span>Stat</span><wbr></wbr><span>Rep</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -460,7 +460,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1894517536%2FClasslikes%2F-251573632" anchor-label="FrequencyTableData" id="-1894517536%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-frequency-table-data/index.html"><span>Frequency</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -475,7 +475,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1841000168%2FClasslikes%2F-251573632" anchor-label="HistogramTableData" id="1841000168%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-histogram-table-data/index.html"><span>Histogram</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -490,7 +490,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1566849529%2FClasslikes%2F-251573632" anchor-label="KSLDatabase" id="-1566849529%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-s-l-database/index.html"><span><span>KSLDatabase</span></span></a></div>
@@ -505,7 +505,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="186268138%2FClasslikes%2F-251573632" anchor-label="KSLDatabaseNotConfigured" id="186268138%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-s-l-database-not-configured/index.html"><span>KSLDatabase</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Configured</span></span></a></div>
@@ -520,7 +520,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1969125841%2FClasslikes%2F-251573632" anchor-label="KSLDatabaseObserver" id="1969125841%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-s-l-database-observer/index.html"><span>KSLDatabase</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -535,7 +535,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1426124319%2FClasslikes%2F-251573632" anchor-label="ModelElementTableData" id="-1426124319%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-model-element-table-data/index.html"><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -550,7 +550,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-986709755%2FClasslikes%2F-251573632" anchor-label="PostgresDb" id="-986709755%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-postgres-db/index.html"><span>Postgres</span><wbr></wbr><span><span>Db</span></span></a></div>
@@ -565,7 +565,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1704521775%2FClasslikes%2F-251573632" anchor-label="PWDiffWithinRepViewData" id="-1704521775%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-w-diff-within-rep-view-data/index.html"><span>PWDiff</span><wbr></wbr><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -580,7 +580,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-58488199%2FClasslikes%2F-251573632" anchor-label="ResultSetRowIterator" id="-58488199%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-result-set-row-iterator/index.html"><span>Result</span><wbr></wbr><span>Set</span><wbr></wbr><span>Row</span><wbr></wbr><span><span>Iterator</span></span></a></div>
@@ -595,7 +595,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1702480593%2FClasslikes%2F-251573632" anchor-label="ResultSetRowMapIterator" id="1702480593%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-result-set-row-map-iterator/index.html"><span>Result</span><wbr></wbr><span>Set</span><wbr></wbr><span>Row</span><wbr></wbr><span>Map</span><wbr></wbr><span><span>Iterator</span></span></a></div>
@@ -610,7 +610,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-286957495%2FClasslikes%2F-251573632" anchor-label="RvParameterTableData" id="-286957495%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-rv-parameter-table-data/index.html"><span>Rv</span><wbr></wbr><span>Parameter</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -625,7 +625,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1432007432%2FClasslikes%2F-251573632" anchor-label="SimulationRunTableData" id="1432007432%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-simulation-run-table-data/index.html"><span>Simulation</span><wbr></wbr><span>Run</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -640,7 +640,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1784356014%2FClasslikes%2F-251573632" anchor-label="SQLiteDb" id="-1784356014%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-s-q-lite-db/index.html"><span>SQLite</span><wbr></wbr><span><span>Db</span></span></a></div>
@@ -655,7 +655,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-580953768%2FClasslikes%2F-251573632" anchor-label="TableDoesNotExistException" id="-580953768%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-table-does-not-exist-exception/index.html"><span>Table</span><wbr></wbr><span>Does</span><wbr></wbr><span>Not</span><wbr></wbr><span>Exist</span><wbr></wbr><span><span>Exception</span></span></a></div>
@@ -670,7 +670,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1653037375%2FClasslikes%2F-251573632" anchor-label="TabularData" id="1653037375%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tabular-data/index.html"><span>Tabular</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -685,7 +685,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1867326957%2FClasslikes%2F-251573632" anchor-label="TimeSeriesResponseTableData" id="-1867326957%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-time-series-response-table-data/index.html"><span>Time</span><wbr></wbr><span>Series</span><wbr></wbr><span>Response</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -700,7 +700,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1824570264%2FClasslikes%2F-251573632" anchor-label="TimeSeriesResponseViewData" id="-1824570264%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-time-series-response-view-data/index.html"><span>Time</span><wbr></wbr><span>Series</span><wbr></wbr><span>Response</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -715,7 +715,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1705872020%2FClasslikes%2F-251573632" anchor-label="WithinRepCounterStatTableData" id="-1705872020%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-within-rep-counter-stat-table-data/index.html"><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>Counter</span><wbr></wbr><span>Stat</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -730,7 +730,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="757026403%2FClasslikes%2F-251573632" anchor-label="WithinRepCounterViewData" id="757026403%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-within-rep-counter-view-data/index.html"><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>Counter</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -745,7 +745,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="778590372%2FClasslikes%2F-251573632" anchor-label="WithinRepResponseViewData" id="778590372%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-within-rep-response-view-data/index.html"><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>Response</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -760,7 +760,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1677602518%2FClasslikes%2F-251573632" anchor-label="WithinRepStatTableData" id="-1677602518%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-within-rep-stat-table-data/index.html"><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>Stat</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -775,7 +775,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-677833755%2FClasslikes%2F-251573632" anchor-label="WithinRepViewData" id="-677833755%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-within-rep-view-data/index.html"><span>Within</span><wbr></wbr><span>Rep</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -792,9 +792,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1165101725%2FFunctions%2F-251573632" anchor-label="isEven" id="1165101725%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-even.html"><span>is</span><wbr></wbr><span><span>Even</span></span></a></div>
@@ -809,7 +809,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="489130288%2FFunctions%2F-251573632" anchor-label="isOdd" id="489130288%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-odd.html"><span>is</span><wbr></wbr><span><span>Odd</span></span></a></div>
@@ -824,7 +824,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1147508362%2FFunctions%2F-251573632" anchor-label="main" id="1147508362%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="main.html"><span><span>main</span></span></a></div>
@@ -844,17 +844,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

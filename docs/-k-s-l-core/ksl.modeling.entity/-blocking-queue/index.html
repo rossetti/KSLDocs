@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>BlockingQueue</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/BlockingQueue///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><span class="current">BlockingQueue</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Blocking</span><wbr></wbr><span><span>Queue</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">BlockingQueue</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator"> : </span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token operator">&gt;</span> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>Int.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/BlockingQueue.kt#L52">source</a>)</span></span></div><p class="paragraph">A blocking queue facilitates the exchange of information between two or more entities that are experiencing processes. Note that an entity can experience one process at a time.</p><p class="paragraph">If the capacity is finite, then placing an item in the queue may cause the sender to block its current process.  Receivers of items from the queue may block if the number of items meeting their requirements are not available at the time of the request. By default, all queues are FIFO, but their disciplines can be set by the user. Instances are intended to be used to communicate between KSLProcesses via the shared mutable state of the queue.  Statistics on blocking and usage of the communication channel are automatically reported.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent of the queue</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>capacity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the capacity of the queue, by default Int.MAX_VALUE (infinite)</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the queue</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">BlockingQueue</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator"> : </span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token operator">&gt;</span> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>Int.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/BlockingQueue.kt#L52">source</a>)</span></span></div><p class="paragraph">A blocking queue facilitates the exchange of information between two or more entities that are experiencing processes. Note that an entity can experience one process at a time.</p><p class="paragraph">If the capacity is finite, then placing an item in the queue may cause the sender to block its current process.  Receivers of items from the queue may block if the number of items meeting their requirements are not available at the time of the request. By default, all queues are FIFO, but their disciplines can be set by the user. Instances are intended to be used to communicate between KSLProcesses via the shared mutable state of the queue.  Statistics on blocking and usage of the communication channel are automatically reported.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent of the queue</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>capacity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the capacity of the queue, by default Int.MAX_VALUE (infinite)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the queue</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-109928066%2FConstructors%2F-251573632" anchor-label="BlockingQueue" id="-109928066%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-blocking-queue.html"><span>Blocking</span><wbr></wbr><span><span>Queue</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="2133392781%2FClasslikes%2F-251573632" anchor-label="AmountRequest" id="2133392781%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-amount-request/index.html"><span>Amount</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -144,13 +144,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-amount-request/index.html">AmountRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">receiver<span class="token operator">: </span><a href="../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token punctuation">, </span></span><span class="parameter ">predicate<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>amountRequested<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Represents a request by an entity to receive a given amount of items from the channel that meet the criteria (predicate).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-amount-request/index.html">AmountRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">receiver<span class="token operator">: </span><a href="../-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token punctuation">, </span></span><span class="parameter ">predicate<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>amountRequested<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a></div><div class="brief "><p class="paragraph">Represents a request by an entity to receive a given amount of items from the channel that meet the criteria (predicate).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="395420530%2FClasslikes%2F-251573632" anchor-label="ChannelRequest" id="395420530%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-channel-request/index.html"><span>Channel</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1096861916%2FClasslikes%2F-251573632" anchor-label="FirstFillableRequest" id="1096861916%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-first-fillable-request/index.html"><span>First</span><wbr></wbr><span>Fillable</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="791618614%2FClasslikes%2F-251573632" anchor-label="RequestSelector" id="791618614%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-request-selector/index.html"><span>Request</span><wbr></wbr><span><span>Selector</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1799357946%2FClasslikes%2F-251573632" anchor-label="RequestSelectorIfc" id="-1799357946%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-request-selector-ifc/index.html"><span>Request</span><wbr></wbr><span>Selector</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -212,9 +212,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="2044840221%2FProperties%2F-251573632" anchor-label="availableSlots" id="2044840221%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="available-slots.html"><span>available</span><wbr></wbr><span><span>Slots</span></span></a></div>
@@ -229,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="926200335%2FProperties%2F-251573632" anchor-label="capacity" id="926200335%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="capacity.html"><span><span>capacity</span></span></a></div>
@@ -238,13 +238,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.INTEGER///PointingToDeclaration/">ControlType.INTEGER</span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">1.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="capacity.html">capacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The default size for the queue for each replication. This property cannot be changed during a replication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-i-n-t-e-g-e-r/index.html">ControlType.INTEGER</a><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">1.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">var </span><a href="capacity.html">capacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The default size for the queue for each replication. This property cannot be changed during a replication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1370186341%2FProperties%2F-251573632" anchor-label="channelQ" id="-1370186341%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="channel-q.html"><span>channel</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1715759797%2FProperties%2F-251573632" anchor-label="isChannelEmpty" id="1715759797%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-channel-empty.html"><span>is</span><wbr></wbr><span>Channel</span><wbr></wbr><span><span>Empty</span></span></a></div>
@@ -274,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1164703998%2FProperties%2F-251573632" anchor-label="isChannelNotEmpty" id="1164703998%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-channel-not-empty.html"><span>is</span><wbr></wbr><span>Channel</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Empty</span></span></a></div>
@@ -289,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1929386960%2FProperties%2F-251573632" anchor-label="isFull" id="1929386960%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-full.html"><span>is</span><wbr></wbr><span><span>Full</span></span></a></div>
@@ -304,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1018818823%2FProperties%2F-251573632" anchor-label="isNotFull" id="-1018818823%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-not-full.html"><span>is</span><wbr></wbr><span>Not</span><wbr></wbr><span><span>Full</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="892188594%2FProperties%2F-251573632" anchor-label="receiverRequestSelector" id="892188594%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="receiver-request-selector.html"><span>receiver</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Selector</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1255472167%2FProperties%2F-251573632" anchor-label="requestQ" id="1255472167%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="request-q.html"><span>request</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -343,13 +343,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="request-q.html">requestQ</a><span class="token operator">: </span><a href="../../ksl.modeling.queue/-queue-c-ifc/index.html">QueueCIfc</a><span class="token operator">&lt;</span><a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The queue that holds requests by entities to remove items from the channel because the channel does not have the requested amount of items that meet the desired selection criteria.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="request-q.html">requestQ</a><span class="token operator">: </span><a href="../../ksl.modeling.queue/-queue-c-ifc/index.html">QueueCIfc</a><span class="token operator">&lt;</span><a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The queue that holds requests by entities to remove items from the channel because the channel does not have the requested amount of items that meet the desired selection criteria.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1819139703%2FProperties%2F-251573632" anchor-label="requestQResumptionPriority" id="1819139703%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="request-q-resumption-priority.html"><span>request</span><wbr></wbr><span>QResumption</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1468324661%2FProperties%2F-251573632" anchor-label="senderQ" id="1468324661%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sender-q.html"><span>sender</span><wbr></wbr><span><span>Q</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-170568187%2FProperties%2F-251573632" anchor-label="senderQResumptionPriority" id="-170568187%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sender-q-resumption-priority.html"><span>sender</span><wbr></wbr><span>QResumption</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1001230891%2FProperties%2F-251573632" anchor-label="senderSelector" id="-1001230891%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sender-selector.html"><span>sender</span><wbr></wbr><span><span>Selector</span></span></a></div>
@@ -411,9 +411,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1862745233%2FFunctions%2F-251573632" anchor-label="containsAll" id="1862745233%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains-all.html"><span>contains</span><wbr></wbr><span><span>All</span></span></a></div>
@@ -428,7 +428,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-556235642%2FFunctions%2F-251573632" anchor-label="countByChannel" id="-556235642%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="count-by-channel.html"><span>count</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Channel</span></span></a></div>
@@ -443,7 +443,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1458832504%2FFunctions%2F-251573632" anchor-label="filterChannel" id="1458832504%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="filter-channel.html"><span>filter</span><wbr></wbr><span><span>Channel</span></span></a></div>
@@ -458,7 +458,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1427752746%2FFunctions%2F-251573632" anchor-label="receiveFromChannel" id="-1427752746%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="receive-from-channel.html"><span>receive</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Channel</span></span></a></div>
@@ -473,7 +473,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-401667317%2FFunctions%2F-251573632" anchor-label="receiveNextFromChannel" id="-401667317%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="receive-next-from-channel.html"><span>receive</span><wbr></wbr><span>Next</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Channel</span></span></a></div>
@@ -488,7 +488,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1617388733%2FFunctions%2F-251573632" anchor-label="removeAllAndTerminateChannelRequest" id="-1617388733%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-all-and-terminate-channel-request.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span>And</span><wbr></wbr><span>Terminate</span><wbr></wbr><span>Channel</span><wbr></wbr><span><span>Request</span></span></a></div>
@@ -503,7 +503,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1077796318%2FFunctions%2F-251573632" anchor-label="removeAllAndTerminateWaitingSenders" id="1077796318%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-all-and-terminate-waiting-senders.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span>And</span><wbr></wbr><span>Terminate</span><wbr></wbr><span>Waiting</span><wbr></wbr><span><span>Senders</span></span></a></div>
@@ -518,7 +518,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1047646069%2FFunctions%2F-251573632" anchor-label="removeAllFromChannel" id="1047646069%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-all-from-channel.html"><span>remove</span><wbr></wbr><span>All</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Channel</span></span></a></div>
@@ -532,23 +532,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
-<a data-name="-671887435%2FFunctions%2F-251573632" anchor-label="removeAndTerminateChannelRequest" id="-671887435%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-581500397%2FFunctions%2F-251573632" anchor-label="removeAndTerminateChannelRequest" id="-581500397%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-and-terminate-channel-request.html"><span>remove</span><wbr></wbr><span>And</span><wbr></wbr><span>Terminate</span><wbr></wbr><span>Channel</span><wbr></wbr><span><span>Request</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-671887435%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-581500397%2FFunctions%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-and-terminate-channel-request.html"><span class="token function">removeAndTerminateChannelRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">waitStats<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes the request from the queue and tells the associated entity to terminate its process.  The process that was suspended because the entity's request was placed in the queue is immediately terminated.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-and-terminate-channel-request.html"><span class="token function">removeAndTerminateChannelRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">request<span class="token operator">: </span><a href="-channel-request/index.html">BlockingQueue.ChannelRequest</a><span class="token punctuation">, </span></span><span class="parameter ">waitStats<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes the request from the queue and tells the associated entity to terminate its process.  The process that was suspended because the entity's request was placed in the queue is immediately terminated.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1679520547%2FFunctions%2F-251573632" anchor-label="removeAndTerminateWaitingSenders" id="1679520547%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-and-terminate-waiting-senders.html"><span>remove</span><wbr></wbr><span>And</span><wbr></wbr><span>Terminate</span><wbr></wbr><span>Waiting</span><wbr></wbr><span><span>Senders</span></span></a></div>
@@ -563,7 +563,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1811784276%2FFunctions%2F-251573632" anchor-label="waitTimeStatisticsOption" id="1811784276%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="wait-time-statistics-option.html"><span>wait</span><wbr></wbr><span>Time</span><wbr></wbr><span>Statistics</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -583,17 +583,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

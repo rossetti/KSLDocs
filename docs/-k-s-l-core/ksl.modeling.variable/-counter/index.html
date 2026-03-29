@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Counter</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,48 +82,50 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.variable/Counter///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.variable</a><span class="delimiter">/</span><span class="current">Counter</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Counter</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">Counter</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">initialValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">countLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-counter-ifc/index.html">CounterIfc</a>, <a href="../-counter-c-ifc/index.html">CounterCIfc</a>, <a href="../../ksl.utilities.observers/-double-pair-emitter-ifc/index.html">DoublePairEmitterIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/variable/Counter.kt#L84">source</a>)</span></span></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-aggregate-counter/index.html">AggregateCounter</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">Counter</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">initialValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">countLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">stopOnLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-counter-ifc/index.html">CounterIfc</a>, <a href="../-counter-c-ifc/index.html">CounterCIfc</a>, <a href="../../ksl.utilities.observers/-double-pair-emitter-ifc/index.html">DoublePairEmitterIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/variable/Counter.kt#L119">source</a>)</span></span></div><p class="paragraph">A Counter tracks cumulative non-negative values over the course of a simulation.</p><p class="paragraph">Unlike a standard <a href="../-variable/index.html">Variable</a>, a Counter is specifically designed for tally-based metrics (e.g., number of parts produced, number of customers served). It provides built-in support for threshold-based actions, such as stopping the simulation when a target production count is met.</p><h3 class="">Key Behaviors:</h3><ul><li><p class="paragraph"><strong>Monotonicity</strong>: Increments must be non-negative to ensure the counter represents a cumulative total.</p></li><li><p class="paragraph"><strong>Lifecycle Management</strong>: Automatically resets to <span data-unresolved-link="ksl.modeling.variable/Counter//#ksl.simulation.ModelElement#kotlin.String?#kotlin.Double#kotlin.Double#kotlin.Boolean/PointingToCallableParameters(2)/">initialValue</span> at the start of each replication to ensure experimental repeatability.</p></li><li><p class="paragraph"><strong>Threshold Signaling</strong>: When the counter reaches <a href="replication-count-limit.html">replicationCountLimit</a>, it triggers all registered <a href="../-count-action-ifc/index.html">CountActionIfc</a> callbacks.</p></li><li><p class="paragraph"><strong>Across-Replication Statistics</strong>: Automatically captures the final value of each replication for higher-level statistical analysis.</p></li></ul><h3 class="">Usage Example:</h3><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val partsProduced = Counter(this, &quot;PartsProduced&quot;, countLimit = 100.0, stopOnLimit = true)<br>// The simulation will now automatically call executive.stop() when value hits 100.0<br>partsProduced.increment()</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a> that owns this counter, typically a <a href="../../ksl.simulation/-model/index.html">Model</a>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">An optional descriptive name for the counter, used in logs and reports.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr></wbr><span><span>Value</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The value the counter starts with at the beginning of every replication. Defaults to 0.0.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>count</span><wbr></wbr><span><span>Limit</span></span></u></div></span></div><div><div class="title"><p class="paragraph">The threshold at which <a href="../-count-action-ifc/index.html">CountActionIfc</a> actions are triggered. Defaults to <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/-companion/-p-o-s-i-t-i-v-e_-i-n-f-i-n-i-t-y.html">Double.POSITIVE_INFINITY</a>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stop</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Limit</span></span></u></div></span></div><div><div class="title"><p class="paragraph">If true, a <span data-unresolved-link="ksl.modeling.variable/Counter.StoppingAction///PointingToDeclaration/">StoppingAction</span> is automatically attached to this counter, which will terminate the simulation replication once the <span data-unresolved-link="ksl.modeling.variable/Counter//#ksl.simulation.ModelElement#kotlin.String?#kotlin.Double#kotlin.Double#kotlin.Boolean/PointingToCallableParameters(3)/">countLimit</span> is reached. Note: This only applies if <span data-unresolved-link="ksl.modeling.variable/Counter//#ksl.simulation.ModelElement#kotlin.String?#kotlin.Double#kotlin.Double#kotlin.Boolean/PointingToCallableParameters(3)/">countLimit</span> is finite.</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-aggregate-counter/index.html">AggregateCounter</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
-        <div class="table"><a data-name="-1896608398%2FConstructors%2F-251573632" anchor-label="Counter" id="-1896608398%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-417221678%2FConstructors%2F-251573632" anchor-label="Counter" id="-417221678%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-counter.html"><span><span>Counter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1896608398%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-417221678%2FConstructors%2F-251573632"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">initialValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">countLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">initialValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">countLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">stopOnLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-324895329%2FProperties%2F-251573632" anchor-label="acrossReplicationStatistic" id="-324895329%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistic.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistic</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="275486528%2FProperties%2F-251573632" anchor-label="defaultReportingOption" id="275486528%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-reporting-option.html"><span>default</span><wbr></wbr><span>Reporting</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1692502654%2FProperties%2F-251573632" anchor-label="domain" id="1692502654%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="domain.html"><span><span>domain</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-915140755%2FProperties%2F-251573632" anchor-label="emissionsOn" id="-915140755%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="emissions-on.html"><span>emissions</span><wbr></wbr><span><span>On</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-561930827%2FProperties%2F-251573632" anchor-label="initialCounterLimit" id="-561930827%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-counter-limit.html"><span>initial</span><wbr></wbr><span>Counter</span><wbr></wbr><span><span>Limit</span></span></a></div>
@@ -204,13 +204,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.DOUBLE///PointingToDeclaration/">ControlType.DOUBLE</span><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialCounterLimit&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-counter-limit.html">initialCounterLimit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sets the initial value of the count limit. Only relevant prior to each replication. Changing during a replication has no effect until the next replication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-d-o-u-b-l-e/index.html">ControlType.DOUBLE</a><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialCounterLimit&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-counter-limit.html">initialCounterLimit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sets the initial value of the count limit. Only relevant prior to each replication. Changing during a replication has no effect until the next replication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="519190293%2FProperties%2F-251573632" anchor-label="initialValue" id="519190293%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-value.html"><span>initial</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -219,13 +219,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.DOUBLE///PointingToDeclaration/">ControlType.DOUBLE</span><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialValue&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-value.html">initialValue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sets the initial value of the variable. Only relevant prior to each replication. Changing during a replication has no effect until the next replication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-d-o-u-b-l-e/index.html">ControlType.DOUBLE</a><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialValue&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-value.html">initialValue</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Sets the initial value of the variable. Only relevant prior to each replication. Changing during a replication has no effect until the next replication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-808957567%2FProperties%2F-251573632" anchor-label="isLimitReached" id="-808957567%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-limit-reached.html"><span>is</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Reached</span></span></a></div>
@@ -240,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-16880850%2FProperties%2F-251573632" anchor-label="lastTimedUpdate" id="-16880850%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="last-timed-update.html"><span>last</span><wbr></wbr><span>Timed</span><wbr></wbr><span><span>Update</span></span></a></div>
@@ -254,8 +254,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1737571565%2FProperties%2F-251573632" anchor-label="myAcrossReplicationStatistic" id="-1737571565%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-across-replication-statistic.html"><span>my</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1737571565%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-across-replication-statistic.html">myAcrossReplicationStatistic</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic/index.html">Statistic</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1935678839%2FProperties%2F-251573632" anchor-label="previousTimeOfChange" id="1935678839%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-time-of-change.html"><span>previous</span><wbr></wbr><span>Time</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Change</span></span></a></div>
@@ -270,7 +285,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1360939422%2FProperties%2F-251573632" anchor-label="previousValue" id="1360939422%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-value.html"><span>previous</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -285,7 +300,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2002996160%2FProperties%2F-251573632" anchor-label="replicationCountLimit" id="-2002996160%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replication-count-limit.html"><span>replication</span><wbr></wbr><span>Count</span><wbr></wbr><span><span>Limit</span></span></a></div>
@@ -300,7 +315,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="193593134%2FProperties%2F-251573632" anchor-label="timeOfChange" id="193593134%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time-of-change.html"><span>time</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Change</span></span></a></div>
@@ -315,7 +330,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2094957346%2FProperties%2F-251573632" anchor-label="timeOfWarmUp" id="-2094957346%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time-of-warm-up.html"><span>time</span><wbr></wbr><span>Of</span><wbr></wbr><span>Warm</span><wbr></wbr><span><span>Up</span></span></a></div>
@@ -330,7 +345,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="866703303%2FProperties%2F-251573632" anchor-label="value" id="866703303%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="value.html"><span><span>value</span></span></a></div>
@@ -347,9 +362,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="760993549%2FFunctions%2F-251573632" anchor-label="addCountLimitAction" id="760993549%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-count-limit-action.html"><span>add</span><wbr></wbr><span>Count</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Action</span></span></a></div>
@@ -364,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1926693505%2FFunctions%2F-251573632" anchor-label="addCountLimitStoppingAction" id="-1926693505%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-count-limit-stopping-action.html"><span>add</span><wbr></wbr><span>Count</span><wbr></wbr><span>Limit</span><wbr></wbr><span>Stopping</span><wbr></wbr><span><span>Action</span></span></a></div>
@@ -378,8 +393,68 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1437686946%2FFunctions%2F-251573632" anchor-label="assignInitialValue" id="-1437686946%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="assign-initial-value.html"><span>assign</span><wbr></wbr><span>Initial</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437686946%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="assign-initial-value.html"><span class="token function">assignInitialValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Assigns the value of the counter to the supplied value. Ensures that time of change is 0.0 and previous value and previous time of change are the same as the current value and current time without notifying any update observers</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-125136722%2FFunctions%2F-251573632" anchor-label="assignValue" id="-125136722%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="assign-value.html"><span>assign</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-125136722%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="assign-value.html"><span class="token function">assignValue</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1684407078%2FFunctions%2F-251573632" anchor-label="beforeExperiment" id="1684407078%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-experiment.html"><span>before</span><wbr></wbr><span><span>Experiment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1684407078%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="before-experiment.html"><span class="token function">beforeExperiment</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need logic to be performed prior to an experiment. The beforeExperiment method allows model elements to be set up prior to the first replication within an experiment. It is called once before any replications occur.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2084674923%2FFunctions%2F-251573632" anchor-label="beforeReplication" id="2084674923%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-replication.html"><span>before</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2084674923%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="before-replication.html"><span class="token function">beforeReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed prior to each replication. It is called prior to each replication and can be used to initialize the model element. It is called before initialize() is called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1147780645%2FFunctions%2F-251573632" anchor-label="increment" id="-1147780645%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="increment.html"><span><span>increment</span></span></a></div>
@@ -393,8 +468,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1954838862%2FFunctions%2F-251573632" anchor-label="initialize" id="-1954838862%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1954838862%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="284994864%2FFunctions%2F-251573632" anchor-label="notifyCountLimitActions" id="284994864%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="notify-count-limit-actions.html"><span>notify</span><wbr></wbr><span>Count</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Actions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="284994864%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="notify-count-limit-actions.html"><span class="token function">notifyCountLimitActions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1345446156%2FFunctions%2F-251573632" anchor-label="removeCountLimitAction" id="-1345446156%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="remove-count-limit-action.html"><span>remove</span><wbr></wbr><span>Count</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Action</span></span></a></div>
@@ -408,8 +513,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="577550836%2FFunctions%2F-251573632" anchor-label="replicationEnded" id="577550836%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replication-ended.html"><span>replication</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="577550836%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="replication-ended.html"><span class="token function">replicationEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed when the replication ends and prior to the calling of afterReplication(). It is called when each replication ends and can be used to collect data from the model element, etc.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="165263925%2FFunctions%2F-251573632" anchor-label="resetCounter" id="165263925%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reset-counter.html"><span>reset</span><wbr></wbr><span><span>Counter</span></span></a></div>
@@ -423,23 +543,42 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1972360510%2FFunctions%2F-251573632" anchor-label="warmUp" id="-1972360510%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="warm-up.html"><span>warm</span><wbr></wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1972360510%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="warm-up.html"><span class="token function">warmUp</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed at the warm-up event during each replication. It is called once during each replication if the model element reacts to warm-up actions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

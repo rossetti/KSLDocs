@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>NHPPEventGenerator</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.nhpp/NHPPEventGenerator///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.nhpp</a><span class="delimiter">/</span><span class="current">NHPPEventGenerator</span></div>
   <div class="cover ">
     <h1 class="cover"><span>NHPPEvent</span><wbr></wbr><span><span>Generator</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">NHPPEventGenerator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">nhpp<span class="token operator">: </span><a href="../-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a><span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../../ksl.modeling.elements/-event-generator-ifc/index.html">EventGeneratorIfc</a>, <a href="../../ksl.modeling.elements/-event-generator-initialization-c-ifc/index.html">EventGeneratorInitializationCIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/nhpp/NHPPEventGenerator.kt#L46">source</a>)</span></span></div><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>generator</span><wbr></wbr><span><span>Action</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the listener for generation</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>nhpp</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the non-homogeneous Poisson process</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>max</span><wbr></wbr><span>Number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Events</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A long that supplies the maximum number of events to generate. Each time an event is to be scheduled the maximum number of events is checked. If the maximum has been reached, then the generator is turned off. The default is Long.MAX_VALUE. This parameter cannot be Long.MAX_VALUE when the time until next always returns a value of 0.0</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>time</span><wbr></wbr><span>Of</span><wbr></wbr><span>The</span><wbr></wbr><span>Last</span><wbr></wbr><span><span>Event</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A double that supplies a time to stop generating events. When the generator is created, this variable is used to set the ending time of the generator. Each time an event is to be scheduled the ending time is checked. If the time of the next event is past this time, then the generator is turned off and the event won't be scheduled. The default is Double.POSITIVE_INFINITY.</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the generator</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-n-h-p-p-piecewise-rate-function-event-generator/index.html">NHPPPiecewiseRateFunctionEventGenerator</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">NHPPEventGenerator</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">nhpp<span class="token operator">: </span><a href="../-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a><span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../../ksl.modeling.elements/-event-generator-ifc/index.html">EventGeneratorIfc</a>, <a href="../../ksl.modeling.elements/-event-generator-initialization-c-ifc/index.html">EventGeneratorInitializationCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/nhpp/NHPPEventGenerator.kt#L46">source</a>)</span></span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>generator</span><wbr></wbr><span><span>Action</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the listener for generation</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>nhpp</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the non-homogeneous Poisson process</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>max</span><wbr></wbr><span>Number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Events</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A long that supplies the maximum number of events to generate. Each time an event is to be scheduled the maximum number of events is checked. If the maximum has been reached, then the generator is turned off. The default is Long.MAX_VALUE. This parameter cannot be Long.MAX_VALUE when the time until next always returns a value of 0.0</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>time</span><wbr></wbr><span>Of</span><wbr></wbr><span>The</span><wbr></wbr><span>Last</span><wbr></wbr><span><span>Event</span></span></u></div></span></div><div><div class="title"><p class="paragraph">A double that supplies a time to stop generating events. When the generator is created, this variable is used to set the ending time of the generator. Each time an event is to be scheduled the ending time is checked. If the time of the next event is past this time, then the generator is turned off and the event won't be scheduled. The default is Double.POSITIVE_INFINITY.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the generator</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-n-h-p-p-piecewise-rate-function-event-generator/index.html">NHPPPiecewiseRateFunctionEventGenerator</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-609285153%2FConstructors%2F-251573632" anchor-label="NHPPEventGenerator" id="-609285153%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-n-h-p-p-event-generator.html"><span>NHPPEvent</span><wbr></wbr><span><span>Generator</span></span></a></div>
@@ -125,7 +125,7 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">rateFunction<span class="token operator">: </span><a href="../-invertible-cumulative-rate-function-ifc/index.html">InvertibleCumulativeRateFunctionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">lastRate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.NaN<span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">nhpp<span class="token operator">: </span><a href="../-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a><span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">nhpp<span class="token operator">: </span><a href="../-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a><span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">generatorAction<span class="token operator">: </span><a href="../../ksl.modeling.elements/-generator-action-ifc/index.html">GeneratorActionIfc</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">rateFunction<span class="token operator">: </span><a href="../-invertible-cumulative-rate-function-ifc/index.html">InvertibleCumulativeRateFunctionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">lastRate<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.NaN<span class="token punctuation">, </span></span><span class="parameter ">maxNumberOfEvents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfTheLastEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "></div></div></div>
                 </div>
               </div>
             </div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="2040287709%2FProperties%2F-251573632" anchor-label="endGeneratorAction" id="2040287709%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="end-generator-action.html"><span>end</span><wbr></wbr><span>Generator</span><wbr></wbr><span><span>Action</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1876095639%2FProperties%2F-251573632" anchor-label="endingTime" id="1876095639%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="ending-time.html"><span>ending</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-552796234%2FProperties%2F-251573632" anchor-label="eventCount" id="-552796234%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="event-count.html"><span>event</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1412057969%2FProperties%2F-251573632" anchor-label="eventPriority" id="1412057969%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="event-priority.html"><span>event</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -195,7 +195,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1611801402%2FProperties%2F-251573632" anchor-label="generatorAction" id="-1611801402%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="generator-action.html"><span>generator</span><wbr></wbr><span><span>Action</span></span></a></div>
@@ -210,7 +210,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1630895337%2FProperties%2F-251573632" anchor-label="initialEndingTime" id="-1630895337%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-ending-time.html"><span>initial</span><wbr></wbr><span>Ending</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -219,13 +219,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.DOUBLE///PointingToDeclaration/">ControlType.DOUBLE</span><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialEndingTime&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-ending-time.html">initialEndingTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Used to set the ending time when the generator is initialized at the start of each replication.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-d-o-u-b-l-e/index.html">ControlType.DOUBLE</a><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;initialEndingTime&quot;</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-ending-time.html">initialEndingTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Used to set the ending time when the generator is initialized at the start of each replication.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="602260790%2FProperties%2F-251573632" anchor-label="initialMaximumNumberOfEvents" id="602260790%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-maximum-number-of-events.html"><span>initial</span><wbr></wbr><span>Maximum</span><wbr></wbr><span>Number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Events</span></span></a></div>
@@ -240,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="185344351%2FProperties%2F-251573632" anchor-label="isDone" id="185344351%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-done.html"><span>is</span><wbr></wbr><span><span>Done</span></span></a></div>
@@ -255,7 +255,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="92518308%2FProperties%2F-251573632" anchor-label="isEventPending" id="92518308%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-event-pending.html"><span>is</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Pending</span></span></a></div>
@@ -270,7 +270,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-578772744%2FProperties%2F-251573632" anchor-label="isStarted" id="-578772744%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-started.html"><span>is</span><wbr></wbr><span><span>Started</span></span></a></div>
@@ -285,7 +285,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1043461598%2FProperties%2F-251573632" anchor-label="isSuspended" id="1043461598%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-suspended.html"><span>is</span><wbr></wbr><span><span>Suspended</span></span></a></div>
@@ -300,7 +300,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1117477450%2FProperties%2F-251573632" anchor-label="maximumNumberOfEvents" id="-1117477450%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-number-of-events.html"><span>maximum</span><wbr></wbr><span>Number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Events</span></span></a></div>
@@ -314,8 +314,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-777763391%2FProperties%2F-251573632" anchor-label="myNHPPRV" id="-777763391%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-n-h-p-p-r-v.html"><span>my</span><wbr></wbr><span><span>NHPPRV</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-777763391%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">var </span><a href="my-n-h-p-p-r-v.html">myNHPPRV</a><span class="token operator">: </span><a href="../-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="532237802%2FProperties%2F-251573632" anchor-label="myTimeBtwEvents" id="532237802%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-time-btw-events.html"><span>my</span><wbr></wbr><span>Time</span><wbr></wbr><span>Btw</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="532237802%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-time-btw-events.html">myTimeBtwEvents</a><span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-568772781%2FProperties%2F-251573632" anchor-label="rateFunction" id="-568772781%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="rate-function.html"><span>rate</span><wbr></wbr><span><span>Function</span></span></a></div>
@@ -330,7 +360,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="929644585%2FProperties%2F-251573632" anchor-label="startOnInitializeOption" id="929644585%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="start-on-initialize-option.html"><span>start</span><wbr></wbr><span>On</span><wbr></wbr><span>Initialize</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -339,7 +369,7 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.BOOLEAN///PointingToDeclaration/">ControlType.BOOLEAN</span><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;startOnInitializeOption&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="start-on-initialize-option.html">startOnInitializeOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">This flag controls whether the generator starts automatically when initialized at the beginning of a replication By default this option is true. If it is changed then it remains at the set value until changed again.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-b-o-o-l-e-a-n/index.html">ControlType.BOOLEAN</a><span class="token punctuation">, </span></span><wbr></wbr><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">&quot;startOnInitializeOption&quot;</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="start-on-initialize-option.html">startOnInitializeOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">This flag controls whether the generator starts automatically when initialized at the beginning of a replication By default this option is true. If it is changed then it remains at the set value until changed again.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -347,9 +377,54 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1089873890%2FFunctions%2F-251573632" anchor-label="resume" id="-1089873890%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1441720548%2FFunctions%2F-251573632" anchor-label="endGeneration" id="-1441720548%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="end-generation.html"><span>end</span><wbr></wbr><span><span>Generation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1441720548%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="end-generation.html"><span class="token function">endGeneration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="511133782%2FFunctions%2F-251573632" anchor-label="generate" id="511133782%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="generate.html"><span><span>generate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="511133782%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="generate.html"><span class="token function">generate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1232948453%2FFunctions%2F-251573632" anchor-label="initialize" id="-1232948453%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1232948453%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1089873890%2FFunctions%2F-251573632" anchor-label="resume" id="-1089873890%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="resume.html"><span><span>resume</span></span></a></div>
@@ -364,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-380691245%2FFunctions%2F-251573632" anchor-label="suspend" id="-380691245%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="suspend.html"><span><span>suspend</span></span></a></div>
@@ -379,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1617219062%2FFunctions%2F-251573632" anchor-label="turnOffGenerator" id="-1617219062%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-off-generator.html"><span>turn</span><wbr></wbr><span>Off</span><wbr></wbr><span><span>Generator</span></span></a></div>
@@ -394,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1964360756%2FFunctions%2F-251573632" anchor-label="turnOnGenerator" id="-1964360756%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="turn-on-generator.html"><span>turn</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Generator</span></span></a></div>
@@ -414,17 +489,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

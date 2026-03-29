@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ksl.controls.experiments</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.controls.experiments////PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.controls.experiments</span></div>
   <div class="cover ">
@@ -113,9 +113,9 @@ R1.2.6        </div>
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="527055770%2FClasslikes%2F-251573632" anchor-label="CentralCompositeDesign" id="527055770%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-central-composite-design/index.html"><span>Central</span><wbr></wbr><span>Composite</span><wbr></wbr><span><span>Design</span></span></a></div>
@@ -124,13 +124,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-central-composite-design/index.html">CentralCompositeDesign</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">twoLevelDesignItr<span class="token operator">: </span><a href="-factorial-design/-factorial-design-iterator/index.html">FactorialDesign.FactorialDesignIterator</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numFactorialReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numAxialReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numCenterReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>axialSpacing<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a>, <a href="-experimental-design-ifc/index.html">ExperimentalDesignIfc</a></div><div class="brief "><p class="paragraph">A <a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm">central composite design</a> represent a two-level factorial design that has been augmented with a center point and axial point to enable the modeling of quadratic response surface models.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-central-composite-design/index.html">CentralCompositeDesign</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>twoLevelDesignItr<span class="token operator">: </span><a href="-factorial-design/-factorial-design-iterator/index.html">FactorialDesign.FactorialDesignIterator</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numFactorialReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numAxialReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numCenterReps<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>axialSpacing<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a>, <a href="-experimental-design-ifc/index.html">ExperimentalDesignIfc</a></div><div class="brief "><p class="paragraph">A <a href="https://www.itl.nist.gov/div898/handbook/pri/section3/pri3361.htm">central composite design</a> represent a two-level factorial design that has been augmented with a center point and axial point to enable the modeling of quadratic response surface models.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1813374576%2FClasslikes%2F-251573632" anchor-label="DesignedExperiment" id="-1813374576%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-designed-experiment/index.html"><span>Designed</span><wbr></wbr><span><span>Experiment</span></span></a></div>
@@ -146,7 +146,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1812667066%2FClasslikes%2F-251573632" anchor-label="DesignPoint" id="-1812667066%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-design-point/index.html"><span>Design</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -155,13 +155,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-design-point/index.html">DesignPoint</a></div><div class="brief "><p class="paragraph">A design point is a specification of the <a href="-design-point/settings.html">settings</a> for the factors of an experiment.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-design-point/index.html">DesignPoint</a></div><div class="brief "><p class="paragraph">A design point is a specification of the <span data-unresolved-link="ksl.controls.experiments/DesignPoint//#ksl.controls.experiments.ExperimentalDesignIfc#kotlin.Int#kotlin.collections.Map[ksl.controls.experiments.Factor,kotlin.Double]#kotlin.Int#kotlin.Boolean/PointingToCallableParameters(2)/">settings</span> for the factors of an experiment.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1147035064%2FClasslikes%2F-251573632" anchor-label="DesignPointInfo" id="1147035064%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-design-point-info/index.html"><span>Design</span><wbr></wbr><span>Point</span><wbr></wbr><span><span>Info</span></span></a></div>
@@ -176,7 +176,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-946663548%2FClasslikes%2F-251573632" anchor-label="DesignPointIteratorIfc" id="-946663548%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-design-point-iterator-ifc/index.html"><span>Design</span><wbr></wbr><span>Point</span><wbr></wbr><span>Iterator</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -191,7 +191,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1207801732%2FClasslikes%2F-251573632" anchor-label="DurationSerializer" id="1207801732%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-duration-serializer/index.html"><span>Duration</span><wbr></wbr><span><span>Serializer</span></span></a></div>
@@ -206,7 +206,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="158621956%2FClasslikes%2F-251573632" anchor-label="ExperimentalDesign" id="158621956%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-experimental-design/index.html"><span>Experimental</span><wbr></wbr><span><span>Design</span></span></a></div>
@@ -221,7 +221,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-201399688%2FClasslikes%2F-251573632" anchor-label="ExperimentalDesignIfc" id="-201399688%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-experimental-design-ifc/index.html"><span>Experimental</span><wbr></wbr><span>Design</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -236,7 +236,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-861905376%2FClasslikes%2F-251573632" anchor-label="ExperimentRunParameters" id="-861905376%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-experiment-run-parameters/index.html"><span>Experiment</span><wbr></wbr><span>Run</span><wbr></wbr><span><span>Parameters</span></span></a></div>
@@ -251,7 +251,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1477795355%2FClasslikes%2F-251573632" anchor-label="Factor" id="1477795355%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-factor/index.html"><span><span>Factor</span></span></a></div>
@@ -260,13 +260,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-factor/index.html">Factor</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">values<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator"> = </span>doubleArrayOf(-1.0, 1.0)</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a></div><div class="brief "><p class="paragraph">This class represents an individual factor within a factorial design. The <span data-unresolved-link="ksl.controls.experiments/Factor/name/#/PointingToDeclaration/">name</span> of the factor must be provided and will be required to be unique when placed within a design.  The supplied values of the levels must be strictly increasing. That is, they must be unique and increasing in value.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-factor/index.html">Factor</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">values<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator"> = </span>doubleArrayOf(-1.0, 1.0)</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a></div><div class="brief "><p class="paragraph">This class represents an individual factor within a factorial design. The <span data-unresolved-link="ksl.controls.experiments/Factor//#kotlin.String#kotlin.DoubleArray/PointingToCallableParameters(0)/">name</span> of the factor must be provided and will be required to be unique when placed within a design.  The supplied values of the levels must be strictly increasing. That is, they must be unique and increasing in value.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1343044757%2FClasslikes%2F-251573632" anchor-label="FactorialDesign" id="1343044757%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-factorial-design/index.html"><span>Factorial</span><wbr></wbr><span><span>Design</span></span></a></div>
@@ -281,7 +281,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="35007732%2FClasslikes%2F-251573632" anchor-label="LinearModel" id="35007732%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-linear-model/index.html"><span>Linear</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -296,7 +296,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="548015290%2FClasslikes%2F-251573632" anchor-label="Scenario" id="548015290%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-scenario/index.html"><span><span>Scenario</span></span></a></div>
@@ -305,13 +305,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-scenario/index.html">Scenario</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>model<span class="token operator">: </span><a href="../ksl.simulation/-model/index.html">Model</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter ">numberReplications<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>model.numberOfReplications<span class="token punctuation">, </span></span><span class="parameter ">lengthOfReplication<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>model.lengthOfReplication<span class="token punctuation">, </span></span><span class="parameter ">lengthOfReplicationWarmUp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>model.lengthOfReplicationWarmUp</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a>, <a href="../ksl.simulation/-experiment-ifc/index.html">ExperimentIfc</a></div><div class="brief "><p class="paragraph">A scenario represents the specification of a model to run, with some inputs.  Each scenario will produce a simulation run. In the context of running multiple scenarios, it is important that the scenario names be unique to permit automated storage within a KSL database.  The name of the scenario is used to assign the name of the model's experiment prior to simulating the model. In this manner, each experiment can have a unique name.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-scenario/index.html">Scenario</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>model<span class="token operator">: </span><a href="../ksl.simulation/-model/index.html">Model</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()<span class="token punctuation">, </span></span><span class="parameter ">numberReplications<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>model.numberOfReplications<span class="token punctuation">, </span></span><span class="parameter ">lengthOfReplication<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>model.lengthOfReplication<span class="token punctuation">, </span></span><span class="parameter ">lengthOfReplicationWarmUp<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>model.lengthOfReplicationWarmUp<span class="token punctuation">, </span></span><span class="parameter ">modelConfiguration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.utilities/-identity/index.html">Identity</a>, <a href="../ksl.simulation/-experiment-ifc/index.html">ExperimentIfc</a></div><div class="brief "><p class="paragraph">A scenario represents the specification of a model to run, with some inputs.  Each scenario will produce a simulation run. In the context of running multiple scenarios, it is important that the scenario names be unique to permit automated storage within a KSL database.  The name of the scenario is used to assign the name of the model's experiment prior to simulating the model. In this manner, each experiment can have a unique name.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="2116145322%2FClasslikes%2F-251573632" anchor-label="ScenarioRunner" id="2116145322%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-scenario-runner/index.html"><span>Scenario</span><wbr></wbr><span><span>Runner</span></span></a></div>
@@ -326,7 +326,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1921340271%2FClasslikes%2F-251573632" anchor-label="ScenarioSetupIfc" id="-1921340271%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-scenario-setup-ifc/index.html"><span>Scenario</span><wbr></wbr><span>Setup</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -341,7 +341,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-748185804%2FClasslikes%2F-251573632" anchor-label="SimulationRun" id="-748185804%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-simulation-run/index.html"><span>Simulation</span><wbr></wbr><span><span>Run</span></span></a></div>
@@ -356,7 +356,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-898720493%2FClasslikes%2F-251573632" anchor-label="SimulationRunner" id="-898720493%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-simulation-runner/index.html"><span>Simulation</span><wbr></wbr><span><span>Runner</span></span></a></div>
@@ -371,7 +371,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1223516515%2FClasslikes%2F-251573632" anchor-label="TwoLevelFactor" id="1223516515%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-two-level-factor/index.html"><span>Two</span><wbr></wbr><span>Level</span><wbr></wbr><span><span>Factor</span></span></a></div>
@@ -386,7 +386,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1664117325%2FClasslikes%2F-251573632" anchor-label="TwoLevelFactorialDesign" id="1664117325%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-two-level-factorial-design/index.html"><span>Two</span><wbr></wbr><span>Level</span><wbr></wbr><span>Factorial</span><wbr></wbr><span><span>Design</span></span></a></div>
@@ -403,9 +403,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="475585724%2FFunctions%2F-251573632" anchor-label="main" id="475585724%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="main.html"><span><span>main</span></span></a></div>
@@ -420,7 +420,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1068389442%2FFunctions%2F-251573632" anchor-label="toDataFrame" id="-1068389442%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-data-frame.html"><span>to</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -440,17 +440,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

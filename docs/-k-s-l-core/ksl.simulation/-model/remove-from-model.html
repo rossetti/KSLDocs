@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>removeFromModel</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,45 +82,51 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="member" id="content" pageIds="KSLCore::ksl.simulation/Model/removeFromModel/#ksl.simulation.ModelElement/PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simulation</a><span class="delimiter">/</span><a href="index.html">Model</a><span class="delimiter">/</span><span class="current">removeFromModel</span></div>
   <div class="cover ">
     <h1 class="cover"><span>remove</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Model</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-from-model.html"><span class="token function">removeFromModel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../-model-element/index.html">ModelElement</a></span></span><span class="token punctuation">)</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/Model.kt#L623">source</a>)</span></span></div><p class="paragraph">Causes the specified model element to be removed from the model regardless of its location within the model hierarchy. Any model elements attached to the supplied model element will also be removed.</p><p class="paragraph">Recursively removes the model element and the children of the model element and all their children, etc. The children will no longer have a parent and will no longer have a model.  This can only be done when the simulation that contains the model is not running.</p><p class="paragraph">This method has very serious side effects. After invoking this method:</p><ol><li><p class="paragraph">All children of the model element will have been removed from the model.</p></li><li><p class="paragraph">The model element will be removed from its parent's model, element list and from the model. The getParentModelElement() method will return null. In other words, the model element will no longer be connected to a parent model element.</p></li><li><p class="paragraph">The model element and all its children will no longer be connected. In other words, there is no longer a parent/child relationship between the model element and its former children.</p></li><li><p class="paragraph">This model element and all of its children will no longer belong to a model.</p></li><li><p class="paragraph">The removed elements are no longer part of their former model's model element map.</p></li><li><p class="paragraph">Warm up and timed update listeners are set to null.</p></li><li><p class="paragraph">Any reference to a spatial model is set to null.</p></li><li><p class="paragraph">All observers of the model element are detached.</p></li><li><p class="paragraph">All child model elements are removed. It will no longer have any children.</p></li></ol><p class="paragraph">Since it has been removed from the model, it and its children will no longer participate in any of the standard model element actions, e.g., initialize(), afterReplication(), etc.</p><p class="paragraph">Notes: 1) This method removes from the list of model elements. Thus, if a client attempts to use this method, via code iterating the list, a concurrent modification exception will occur.</p><ol><li><p class="paragraph">The user is responsible for ensuring that other references to the model element are correctly handled.  If references to the model element exist within other data structures/collections, then the user is responsible for appropriately addressing those references. This is especially important for any observers of the removed model element.  The observers will be notified that the model element is being removed. It is up to the observer to correctly react to the removal. If the observer is a subclass of ModelElementObserver, then implementing the removedFromModel() method can be used. If the observer is a general Observer, then use REMOVED_FROM_MODEL to check if the element is being removed.</p></li></ol></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-from-model.html"><span class="token function">removeFromModel</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">element<span class="token operator">: </span><a href="../-model-element/index.html">ModelElement</a></span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/Model.kt#L629">source</a>)</span></span></div><p class="paragraph">Causes the specified model element to be removed from the model regardless of its location within the model hierarchy. Any model elements attached to the supplied model element will also be removed.</p><p class="paragraph">Recursively removes the model element and the children of the model element and all their children, etc. The children will no longer have a parent and will no longer have a model.  This can only be done when the simulation that contains the model is not running.</p><p class="paragraph">This method has very serious side effects. After invoking this method:</p><ol><li><p class="paragraph">All children of the model element will have been removed from the model.</p></li><li><p class="paragraph">The model element will be removed from its parent's model, element list and from the model. The getParentModelElement() method will return null. In other words, the model element will no longer be connected to a parent model element.</p></li><li><p class="paragraph">The model element and all its children will no longer be connected. In other words, there is no longer a parent/child relationship between the model element and its former children.</p></li><li><p class="paragraph">This model element and all of its children will no longer belong to a model.</p></li><li><p class="paragraph">The removed elements are no longer part of their former model's model element map.</p></li><li><p class="paragraph">Warm up and timed update listeners are set to null.</p></li><li><p class="paragraph">Any reference to a spatial model is set to null.</p></li><li><p class="paragraph">All observers of the model element are detached.</p></li><li><p class="paragraph">All child model elements are removed. It will no longer have any children.</p></li></ol><p class="paragraph">Since it has been removed from the model, it and its children will no longer participate in any of the standard model element actions, e.g., initialize(), afterReplication(), etc.</p><p class="paragraph">Notes: 1) This method removes from the list of model elements. Thus, if a client attempts to use this method, via code iterating the list, a concurrent modification exception will occur.</p><ol><li><p class="paragraph">The user is responsible for ensuring that other references to the model element are correctly handled.  If references to the model element exist within other data structures/collections, then the user is responsible for appropriately addressing those references. This is especially important for any observers of the removed model element.  The observers will be notified that the model element is being removed. It is up to the observer to correctly react to the removal. If the observer is a subclass of ModelElementObserver, then implementing the removedFromModel() method can be used. If the observer is a general Observer, then use REMOVED_FROM_MODEL to check if the element is being removed.</p></li></ol></div></div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

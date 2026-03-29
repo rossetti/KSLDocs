@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>SimulationReporter</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simulation/SimulationReporter///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simulation</a><span class="delimiter">/</span><span class="current">SimulationReporter</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Simulation</span><wbr></wbr><span><span>Reporter</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SimulationReporter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theModel<span class="token operator">: </span><a href="../-model/index.html">Model</a></span></span><span class="token punctuation">)</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/SimulationReporter.kt#L66">source</a>)</span></span></div><p class="paragraph">This class facilitates simulation output reporting. There are two main reporting functions: within replication statistics and across replication statistics.  The class automatically reports within replication and across replication statistics to comma-separated value files by attaching observers to the model.  If you do not want this automated output, then you should use the appropriate turnOffXXX methods.</p><p class="paragraph">This class attaches a CSVReplicationReport to the model for collection purposes. If the simulation is run multiple times, then statistical data continues to be observed by the CSVReplicationReport, unless it is turned off. Thus, data across many experiments can be captured in this manner. This produces a comma-separated value file containing all the end-of- * replication statistical summaries for every counter and response variable in the model.</p><p class="paragraph">There are a number of options available if you want to capture across replication statistics.</p><p class="paragraph">The class uses a CSVExperimentReport to observe the model. This produces a comma-separated value file containing all across replication statistical summaries for every counter and response variable in the model.</p><p class="paragraph">Use any of the writeAcrossReplicationX() methods. These methods will write across replication summary statistics to files, standard output, LaTeX, CSV, etc.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SimulationReporter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theModel<span class="token operator">: </span><a href="../-model/index.html">Model</a></span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/SimulationReporter.kt#L66">source</a>)</span></span></div><p class="paragraph">This class facilitates simulation output reporting. There are two main reporting functions: within replication statistics and across replication statistics.  The class automatically reports within replication and across replication statistics to comma-separated value files by attaching observers to the model.  If you do not want this automated output, then you should use the appropriate turnOffXXX methods.</p><p class="paragraph">This class attaches a CSVReplicationReport to the model for collection purposes. If the simulation is run multiple times, then statistical data continues to be observed by the CSVReplicationReport, unless it is turned off. Thus, data across many experiments can be captured in this manner. This produces a comma-separated value file containing all the end-of- * replication statistical summaries for every counter and response variable in the model.</p><p class="paragraph">There are a number of options available if you want to capture across replication statistics.</p><p class="paragraph">The class uses a CSVExperimentReport to observe the model. This produces a comma-separated value file containing all across replication statistical summaries for every counter and response variable in the model.</p><p class="paragraph">Use any of the writeAcrossReplicationX() methods. These methods will write across replication summary statistics to files, standard output, LaTeX, CSV, etc.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="677136064%2FConstructors%2F-251573632" anchor-label="SimulationReporter" id="677136064%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-simulation-reporter.html"><span>Simulation</span><wbr></wbr><span><span>Reporter</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1555403421%2FProperties%2F-251573632" anchor-label="counters" id="1555403421%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="counters.html"><span><span>counters</span></span></a></div>
@@ -150,7 +150,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1796924844%2FProperties%2F-251573632" anchor-label="frequencies" id="1796924844%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frequencies.html"><span><span>frequencies</span></span></a></div>
@@ -165,7 +165,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-870061499%2FProperties%2F-251573632" anchor-label="histograms" id="-870061499%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="histograms.html"><span><span>histograms</span></span></a></div>
@@ -180,7 +180,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1710626412%2FProperties%2F-251573632" anchor-label="responses" id="-1710626412%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="responses.html"><span><span>responses</span></span></a></div>
@@ -197,9 +197,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="838510072%2FFunctions%2F-251573632" anchor-label="acrossReplicationCSVStatistics" id="838510072%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-c-s-v-statistics.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>CSVStatistics</span></span></a></div>
@@ -208,13 +208,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="across-replication-c-s-v-statistics.html"><span class="token function">acrossReplicationCSVStatistics</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Uses a StringBuilder to hold the across replication statistics formatted as comma-separated values with an appropriate header</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="across-replication-c-s-v-statistics.html"><span class="token function">acrossReplicationCSVStatistics</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Uses a StringBuilder to hold the across replication statistics formatted as comma-separated values with an appropriate header</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1364477552%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticReporter" id="1364477552%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistic-reporter.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistic</span><wbr></wbr><span><span>Reporter</span></span></a></div>
@@ -229,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="331472822%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatistics" id="331472822%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -238,13 +238,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics.html"><span class="token function">acrossReplicationStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a><span class="token operator"> = </span>StringBuilder()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Fills the StringBuilder with across replication statistics</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics.html"><span class="token function">acrossReplicationStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a><span class="token operator"> = </span>StringBuilder()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Fills the StringBuilder with across replication statistics</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="991740273%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticsAsDataFrame" id="991740273%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics-as-data-frame.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="586296871%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticsAsLaTeXDocument" id="586296871%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics-as-la-te-x-document.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>As</span><wbr></wbr><span>La</span><wbr></wbr><span>Te</span><wbr></wbr><span><span>XDocument</span></span></a></div>
@@ -268,13 +268,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-document.html"><span class="token function">acrossReplicationStatisticsAsLaTeXDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the across replication statistics as a LaTeX document</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-document.html"><span class="token function">acrossReplicationStatisticsAsLaTeXDocument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the across replication statistics as a LaTeX document</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="2083734109%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticsAsLaTeXTables" id="2083734109%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics-as-la-te-x-tables.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>As</span><wbr></wbr><span>La</span><wbr></wbr><span>Te</span><wbr></wbr><span><span>XTables</span></span></a></div>
@@ -283,13 +283,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-tables.html"><span class="token function">acrossReplicationStatisticsAsLaTeXTables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of StringBuilder representing LaTeX tables</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-tables.html"><span class="token function">acrossReplicationStatisticsAsLaTeXTables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of StringBuilder representing LaTeX tables</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-538229513%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticsAsLaTeXTabular" id="-538229513%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics-as-la-te-x-tabular.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>As</span><wbr></wbr><span>La</span><wbr></wbr><span>Te</span><wbr></wbr><span><span>XTabular</span></span></a></div>
@@ -298,13 +298,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-tabular.html"><span class="token function">acrossReplicationStatisticsAsLaTeXTabular</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets shortened across replication statistics for response variables as a LaTeX tabular. Each StringBuilder in the list represents a tabular with a maximum number of rows</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="across-replication-statistics-as-la-te-x-tabular.html"><span class="token function">acrossReplicationStatisticsAsLaTeXTabular</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxRows<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">60</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Gets shortened across replication statistics for response variables as a LaTeX tabular. Each StringBuilder in the list represents a tabular with a maximum number of rows</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-450086632%2FFunctions%2F-251573632" anchor-label="acrossReplicationStatisticsList" id="-450086632%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-statistics-list.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Statistics</span><wbr></wbr><span><span>List</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1730228571%2FFunctions%2F-251573632" anchor-label="fillAcrossReplicationStatistics" id="1730228571%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fill-across-replication-statistics.html"><span>fill</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1836121951%2FFunctions%2F-251573632" anchor-label="fillCounterAcrossReplicationStatistics" id="1836121951%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fill-counter-across-replication-statistics.html"><span>fill</span><wbr></wbr><span>Counter</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1257058717%2FFunctions%2F-251573632" anchor-label="fillResponseReplicationStatistics" id="1257058717%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="fill-response-replication-statistics.html"><span>fill</span><wbr></wbr><span>Response</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-851557433%2FFunctions%2F-251573632" anchor-label="frequencyTextResults" id="-851557433%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frequency-text-results.html"><span>frequency</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Results</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1525343183%2FFunctions%2F-251573632" anchor-label="halfWidthSummaryReport" id="-1525343183%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="half-width-summary-report.html"><span>half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Report</span></span></a></div>
@@ -388,13 +388,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="half-width-summary-report.html"><span class="token function">halfWidthSummaryReport</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">confLevel<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="half-width-summary-report.html"><span class="token function">halfWidthSummaryReport</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">confLevel<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1611703345%2FFunctions%2F-251573632" anchor-label="histogramTextResults" id="-1611703345%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="histogram-text-results.html"><span>histogram</span><wbr></wbr><span>Text</span><wbr></wbr><span><span>Results</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="759022461%2FFunctions%2F-251573632" anchor-label="printAcrossReplicationCSVStatistics" id="759022461%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print-across-replication-c-s-v-statistics.html"><span>print</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>CSVStatistics</span></span></a></div>
@@ -424,7 +424,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1765235037%2FFunctions%2F-251573632" anchor-label="printAcrossReplicationSummaryStatistics" id="1765235037%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print-across-replication-summary-statistics.html"><span>print</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="90625120%2FFunctions%2F-251573632" anchor-label="printFullAcrossReplicationStatistics" id="90625120%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print-full-across-replication-statistics.html"><span>print</span><wbr></wbr><span>Full</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1075791158%2FFunctions%2F-251573632" anchor-label="printHalfWidthSummaryReport" id="1075791158%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print-half-width-summary-report.html"><span>print</span><wbr></wbr><span>Half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Report</span></span></a></div>
@@ -469,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1490621252%2FFunctions%2F-251573632" anchor-label="writeAcrossReplicationCSVStatistics" id="1490621252%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-across-replication-c-s-v-statistics.html"><span>write</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>CSVStatistics</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="576793188%2FFunctions%2F-251573632" anchor-label="writeAcrossReplicationSummaryStatistics" id="576793188%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-across-replication-summary-statistics.html"><span>write</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="516338945%2FFunctions%2F-251573632" anchor-label="writeAcrossReplicationSummaryStatisticsAsLaTeX" id="516338945%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-across-replication-summary-statistics-as-la-te-x.html"><span>write</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Summary</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>As</span><wbr></wbr><span>La</span><wbr></wbr><span>Te</span><wbr></wbr><span><span>X</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="940911687%2FFunctions%2F-251573632" anchor-label="writeFullAcrossReplicationStatistics" id="940911687%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-full-across-replication-statistics.html"><span>write</span><wbr></wbr><span>Full</span><wbr></wbr><span>Across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1002411557%2FFunctions%2F-251573632" anchor-label="writeHalfWidthSummaryReport" id="1002411557%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-half-width-summary-report.html"><span>write</span><wbr></wbr><span>Half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Report</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1866190929%2FFunctions%2F-251573632" anchor-label="writeHalfWidthSummaryReportAsMarkDown" id="-1866190929%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-half-width-summary-report-as-mark-down.html"><span>write</span><wbr></wbr><span>Half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Summary</span><wbr></wbr><span>Report</span><wbr></wbr><span>As</span><wbr></wbr><span>Mark</span><wbr></wbr><span><span>Down</span></span></a></div>
@@ -564,17 +564,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

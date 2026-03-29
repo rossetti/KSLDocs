@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MovableResource</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.spatial/MovableResource///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.spatial</a><span class="delimiter">/</span><span class="current">MovableResource</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Movable</span><wbr></wbr><span><span>Resource</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">MovableResource</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">initLocation<span class="token operator">: </span><a href="../-location-ifc/index.html">LocationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">defaultVelocity<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.entity/-resource/index.html">Resource</a>, <a href="../-movable-resource-ifc/index.html">MovableResourceIfc</a>, <a href="../-moveable-resource-c-ifc/index.html">MoveableResourceCIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/spatial/MovableResource.kt#L38">source</a>)</span></span></div><p class="paragraph">A movable resource is a single unit capacity resource that resides within a spatial model and thus can be moved.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>init</span><wbr></wbr><span><span>Location</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the initial starting location of the resource within the spatial model</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>default</span><wbr></wbr><span><span>Velocity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the default velocity for movement within the spatial model</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the resource</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-movable-resource-with-q/index.html">MovableResourceWithQ</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">MovableResource</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">initLocation<span class="token operator">: </span><a href="../-location-ifc/index.html">LocationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">defaultVelocity<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.entity/-resource/index.html">Resource</a>, <a href="../-movable-resource-ifc/index.html">MovableResourceIfc</a>, <a href="../-moveable-resource-c-ifc/index.html">MoveableResourceCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/spatial/MovableResource.kt#L38">source</a>)</span></span></div><p class="paragraph">A movable resource is a single unit capacity resource that resides within a spatial model and thus can be moved.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>init</span><wbr></wbr><span><span>Location</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the initial starting location of the resource within the spatial model</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>default</span><wbr></wbr><span><span>Velocity</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the default velocity for movement within the spatial model</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the resource</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-movable-resource-with-q/index.html">MovableResourceWithQ</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-1995057003%2FConstructors%2F-251573632" anchor-label="MovableResource" id="-1995057003%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-movable-resource.html"><span>Movable</span><wbr></wbr><span><span>Resource</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-923798419%2FClasslikes%2F-251573632" anchor-label="Companion" id="-923798419%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -149,12 +149,27 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1923785169%2FClasslikes%2F-251573632" anchor-label="HomeBaseDriver" id="1923785169%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-home-base-driver/index.html"><span>Home</span><wbr></wbr><span>Base</span><wbr></wbr><span><span>Driver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1923785169%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-home-base-driver/index.html">HomeBaseDriver</a> : <a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1113988166%2FProperties%2F-251573632" anchor-label="capacity" id="-1113988166%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="capacity.html"><span><span>capacity</span></span></a></div>
@@ -169,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-739554344%2FProperties%2F-251573632" anchor-label="currentLocation" id="-739554344%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-location.html"><span>current</span><wbr></wbr><span><span>Location</span></span></a></div>
@@ -184,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1866936309%2FProperties%2F-251573632" anchor-label="fracTimeMoving" id="-1866936309%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frac-time-moving.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Moving</span></span></a></div>
@@ -199,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-345923678%2FProperties%2F-251573632" anchor-label="fracTimeMovingEmpty" id="-345923678%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frac-time-moving-empty.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span>Moving</span><wbr></wbr><span><span>Empty</span></span></a></div>
@@ -214,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-160773728%2FProperties%2F-251573632" anchor-label="fracTimeTransporting" id="-160773728%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="frac-time-transporting.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Transporting</span></span></a></div>
@@ -229,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1418713316%2FProperties%2F-251573632" anchor-label="hasHomeBase" id="-1418713316%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-home-base.html"><span>has</span><wbr></wbr><span>Home</span><wbr></wbr><span><span>Base</span></span></a></div>
@@ -244,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="827073764%2FProperties%2F-251573632" anchor-label="homeBase" id="827073764%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="home-base.html"><span>home</span><wbr></wbr><span><span>Base</span></span></a></div>
@@ -258,8 +273,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="433375324%2FProperties%2F-251573632" anchor-label="homeBaseDriver" id="433375324%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="home-base-driver.html"><span>home</span><wbr></wbr><span>Base</span><wbr></wbr><span><span>Driver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="433375324%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="home-base-driver.html">homeBaseDriver</a><span class="token operator">: </span><a href="-home-base-driver/index.html">MovableResource.HomeBaseDriver</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1865687560%2FProperties%2F-251573632" anchor-label="initialCapacity" id="1865687560%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-capacity.html"><span>initial</span><wbr></wbr><span><span>Capacity</span></span></a></div>
@@ -268,13 +298,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><span data-unresolved-link="ksl.controls/ControlType.INTEGER///PointingToDeclaration/">ControlType.INTEGER</span><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>upperBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">1.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-capacity.html">initialCapacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The initial capacity of the resource at the start of the replication. The initial capacity must be greater than 0.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@set:</span><a href="../../ksl.controls/-k-s-l-control/index.html"><span class="token annotation builtin">KSLControl</span></a><span class="token punctuation">(</span><span>controlType<span class="token operator"> = </span><a href="../../ksl.controls/-control-type/-i-n-t-e-g-e-r/index.html">ControlType.INTEGER</a><span class="token punctuation">, </span></span><wbr></wbr><span>lowerBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">0.0</span></span><span class="token punctuation">, </span></span><wbr></wbr><span>upperBound<span class="token operator"> = </span><span class="breakable-word"><span class="token constant">1.0</span></span></span><wbr></wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-capacity.html">initialCapacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The initial capacity of the resource at the start of the replication. The initial capacity must be greater than 0.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-488217806%2FProperties%2F-251573632" anchor-label="initialHomeBase" id="-488217806%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-home-base.html"><span>initial</span><wbr></wbr><span>Home</span><wbr></wbr><span><span>Base</span></span></a></div>
@@ -289,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-906143891%2FProperties%2F-251573632" anchor-label="initialLocation" id="-906143891%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-location.html"><span>initial</span><wbr></wbr><span><span>Location</span></span></a></div>
@@ -304,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="157975580%2FProperties%2F-251573632" anchor-label="isMoving" id="157975580%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-moving.html"><span>is</span><wbr></wbr><span><span>Moving</span></span></a></div>
@@ -319,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2124598833%2FProperties%2F-251573632" anchor-label="isMovingEmpty" id="2124598833%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-moving-empty.html"><span>is</span><wbr></wbr><span>Moving</span><wbr></wbr><span><span>Empty</span></span></a></div>
@@ -334,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1080252769%2FProperties%2F-251573632" anchor-label="isReturningHome" id="-1080252769%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-returning-home.html"><span>is</span><wbr></wbr><span>Returning</span><wbr></wbr><span><span>Home</span></span></a></div>
@@ -349,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="309508230%2FProperties%2F-251573632" anchor-label="isTracked" id="309508230%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-tracked.html"><span>is</span><wbr></wbr><span><span>Tracked</span></span></a></div>
@@ -364,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-883987215%2FProperties%2F-251573632" anchor-label="isTransporting" id="-883987215%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-transporting.html"><span>is</span><wbr></wbr><span><span>Transporting</span></span></a></div>
@@ -379,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1987907457%2FProperties%2F-251573632" anchor-label="modelElement" id="1987907457%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-element.html"><span>model</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -393,8 +423,98 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-424845569%2FProperties%2F-251573632" anchor-label="myFracTimeMoving" id="-424845569%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-frac-time-moving.html"><span>my</span><wbr></wbr><span>Frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Moving</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-424845569%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-frac-time-moving.html">myFracTimeMoving</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="510937390%2FProperties%2F-251573632" anchor-label="myFracTimeMovingEmpty" id="510937390%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-frac-time-moving-empty.html"><span>my</span><wbr></wbr><span>Frac</span><wbr></wbr><span>Time</span><wbr></wbr><span>Moving</span><wbr></wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="510937390%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-frac-time-moving-empty.html">myFracTimeMovingEmpty</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="632115604%2FProperties%2F-251573632" anchor-label="myFracTimeTransporting" id="632115604%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-frac-time-transporting.html"><span>my</span><wbr></wbr><span>Frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Transporting</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="632115604%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-frac-time-transporting.html">myFracTimeTransporting</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1634936608%2FProperties%2F-251573632" anchor-label="myHomeQ" id="1634936608%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-home-q.html"><span>my</span><wbr></wbr><span>Home</span><wbr></wbr><span><span>Q</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1634936608%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-home-q.html">myHomeQ</a><span class="token operator">: </span><a href="../../ksl.modeling.entity/-request-q/index.html">RequestQ</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1989735056%2FProperties%2F-251573632" anchor-label="mySpatialElement" id="1989735056%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-spatial-element.html"><span>my</span><wbr></wbr><span>Spatial</span><wbr></wbr><span><span>Element</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1989735056%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-spatial-element.html">mySpatialElement</a><span class="token operator">: </span><a href="../-spatial-element/index.html">SpatialElement</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1146884373%2FProperties%2F-251573632" anchor-label="myVelocity" id="-1146884373%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-velocity.html"><span>my</span><wbr></wbr><span><span>Velocity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1146884373%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-velocity.html">myVelocity</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1142791724%2FProperties%2F-251573632" anchor-label="observableComponent" id="1142791724%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="observable-component.html"><span>observable</span><wbr></wbr><span><span>Component</span></span></a></div>
@@ -409,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1949437464%2FProperties%2F-251573632" anchor-label="previousLocation" id="-1949437464%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-location.html"><span>previous</span><wbr></wbr><span><span>Location</span></span></a></div>
@@ -424,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="872177383%2FProperties%2F-251573632" anchor-label="spatialID" id="872177383%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="spatial-i-d.html"><span>spatial</span><wbr></wbr><span><span>ID</span></span></a></div>
@@ -439,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1983477271%2FProperties%2F-251573632" anchor-label="spatialName" id="1983477271%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="spatial-name.html"><span>spatial</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -454,7 +574,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-889771710%2FProperties%2F-251573632" anchor-label="status" id="-889771710%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="status.html"><span><span>status</span></span></a></div>
@@ -469,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-349431561%2FProperties%2F-251573632" anchor-label="velocity" id="-349431561%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="velocity.html"><span><span>velocity</span></span></a></div>
@@ -484,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-488833869%2FProperties%2F-251573632" anchor-label="velocityRV" id="-488833869%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="velocity-r-v.html"><span>velocity</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -501,9 +621,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="185963599%2FFunctions%2F-251573632" anchor-label="attachObserver" id="185963599%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="attach-observer.html"><span>attach</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -518,7 +638,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2044154278%2FFunctions%2F-251573632" anchor-label="countObservers" id="2044154278%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="count-observers.html"><span>count</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -533,7 +653,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1924967013%2FFunctions%2F-251573632" anchor-label="detachAllObservers" id="1924967013%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-all-observers.html"><span>detach</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -548,7 +668,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1174859619%2FFunctions%2F-251573632" anchor-label="detachObserver" id="-1174859619%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-observer.html"><span>detach</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -563,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1748649610%2FFunctions%2F-251573632" anchor-label="homeQStatistics" id="-1748649610%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="home-q-statistics.html"><span>home</span><wbr></wbr><span><span>QStatistics</span></span></a></div>
@@ -577,8 +697,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="810117092%2FFunctions%2F-251573632" anchor-label="initialize" id="810117092%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="810117092%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1846850860%2FFunctions%2F-251573632" anchor-label="initializeSpatialElement" id="1846850860%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialize-spatial-element.html"><span>initialize</span><wbr></wbr><span>Spatial</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -593,7 +728,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="773197826%2FFunctions%2F-251573632" anchor-label="isAttached" id="773197826%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-attached.html"><span>is</span><wbr></wbr><span><span>Attached</span></span></a></div>
@@ -608,7 +743,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1622825023%2FFunctions%2F-251573632" anchor-label="sendToHomeBase" id="-1622825023%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="send-to-home-base.html"><span>send</span><wbr></wbr><span>To</span><wbr></wbr><span>Home</span><wbr></wbr><span><span>Base</span></span></a></div>
@@ -628,17 +763,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ksl.utilities.distributions</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.utilities.distributions////PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.utilities.distributions</span></div>
   <div class="cover ">
@@ -113,9 +113,9 @@ R1.2.6        </div>
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-258065381%2FClasslikes%2F-251573632" anchor-label="Bernoulli" id="-258065381%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bernoulli/index.html"><span><span>Bernoulli</span></span></a></div>
@@ -130,7 +130,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1317145395%2FClasslikes%2F-251573632" anchor-label="Beta" id="1317145395%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-beta/index.html"><span><span>Beta</span></span></a></div>
@@ -145,7 +145,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1432345100%2FClasslikes%2F-251573632" anchor-label="Binomial" id="-1432345100%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-binomial/index.html"><span><span>Binomial</span></span></a></div>
@@ -160,7 +160,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="326339906%2FClasslikes%2F-251573632" anchor-label="CDFIfc" id="326339906%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-c-d-f-ifc/index.html"><span><span>CDFIfc</span></span></a></div>
@@ -175,7 +175,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="363046991%2FClasslikes%2F-251573632" anchor-label="CentralMVNDistribution" id="363046991%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-central-m-v-n-distribution/index.html"><span>Central</span><wbr></wbr><span><span>MVNDistribution</span></span></a></div>
@@ -190,7 +190,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1569936393%2FClasslikes%2F-251573632" anchor-label="CentralMVTDistribution" id="1569936393%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-central-m-v-t-distribution/index.html"><span>Central</span><wbr></wbr><span><span>MVTDistribution</span></span></a></div>
@@ -205,7 +205,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2074972348%2FClasslikes%2F-251573632" anchor-label="ChiSquaredDistribution" id="2074972348%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-chi-squared-distribution/index.html"><span>Chi</span><wbr></wbr><span>Squared</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -220,7 +220,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-287602945%2FClasslikes%2F-251573632" anchor-label="Constant" id="-287602945%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-constant/index.html"><span><span>Constant</span></span></a></div>
@@ -235,7 +235,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1147777748%2FClasslikes%2F-251573632" anchor-label="ContinuousDistributionIfc" id="-1147777748%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-continuous-distribution-ifc/index.html"><span>Continuous</span><wbr></wbr><span>Distribution</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -250,7 +250,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-904334260%2FClasslikes%2F-251573632" anchor-label="DEmpiricalCDF" id="-904334260%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-empirical-c-d-f/index.html"><span>DEmpirical</span><wbr></wbr><span><span>CDF</span></span></a></div>
@@ -259,13 +259,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-d-empirical-c-d-f/index.html">DEmpiricalCDF</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">values<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">cdf<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-distribution-ifc/index.html">DiscreteDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">This class provides a representation for a discrete distribution with arbitrary values and assigned probabilities to each value. Allows the specification of the distribution via a pair of arrays containing the values = {v1, v2, ..., vn} and the cumulative probabilities cdf = {c1, c2, ..., 1.0}</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-d-empirical-c-d-f/index.html">DEmpiricalCDF</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">values<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">cdf<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-distribution-ifc/index.html">DiscreteDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a></div><div class="brief "><p class="paragraph">This class provides a representation for a discrete distribution with arbitrary values and assigned probabilities to each value. Allows the specification of the distribution via a pair of arrays containing the values = {v1, v2, ..., vn} and the cumulative probabilities cdf = {c1, c2, ..., 1.0}</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1107125610%2FClasslikes%2F-251573632" anchor-label="DiscreteDistributionIfc" id="-1107125610%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-discrete-distribution-ifc/index.html"><span>Discrete</span><wbr></wbr><span>Distribution</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -280,7 +280,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="123353029%2FClasslikes%2F-251573632" anchor-label="DiscretePMFInRangeDistributionIfc" id="123353029%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-discrete-p-m-f-in-range-distribution-ifc/index.html"><span>Discrete</span><wbr></wbr><span>PMFIn</span><wbr></wbr><span>Range</span><wbr></wbr><span>Distribution</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -295,7 +295,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-961556705%2FClasslikes%2F-251573632" anchor-label="Distribution" id="-961556705%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-distribution/index.html"><span><span>Distribution</span></span></a></div>
@@ -310,7 +310,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="312163445%2FClasslikes%2F-251573632" anchor-label="DistributionFunctionIfc" id="312163445%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-distribution-function-ifc/index.html"><span>Distribution</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -325,7 +325,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="452000381%2FClasslikes%2F-251573632" anchor-label="DistributionIfc" id="452000381%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-distribution-ifc/index.html"><span>Distribution</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -340,7 +340,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="666506045%2FClasslikes%2F-251573632" anchor-label="DomainIfc" id="666506045%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-domain-ifc/index.html"><span>Domain</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -355,7 +355,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1383135091%2FClasslikes%2F-251573632" anchor-label="DUniform" id="1383135091%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-uniform/index.html"><span><span>DUniform</span></span></a></div>
@@ -370,7 +370,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="170566490%2FClasslikes%2F-251573632" anchor-label="Exponential" id="170566490%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-exponential/index.html"><span><span>Exponential</span></span></a></div>
@@ -385,7 +385,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1427625650%2FClasslikes%2F-251573632" anchor-label="FirstOrderLossFunctionIfc" id="1427625650%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-first-order-loss-function-ifc/index.html"><span>First</span><wbr></wbr><span>Order</span><wbr></wbr><span>Loss</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -400,7 +400,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-740876872%2FClasslikes%2F-251573632" anchor-label="Gamma" id="-740876872%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-gamma/index.html"><span><span>Gamma</span></span></a></div>
@@ -415,7 +415,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1730159223%2FClasslikes%2F-251573632" anchor-label="GeneralizedBeta" id="1730159223%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-generalized-beta/index.html"><span>Generalized</span><wbr></wbr><span><span>Beta</span></span></a></div>
@@ -430,7 +430,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="848295774%2FClasslikes%2F-251573632" anchor-label="Geometric" id="848295774%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-geometric/index.html"><span><span>Geometric</span></span></a></div>
@@ -445,7 +445,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="729903899%2FClasslikes%2F-251573632" anchor-label="IncompleteBetaFunctionFraction" id="729903899%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-incomplete-beta-function-fraction/index.html"><span>Incomplete</span><wbr></wbr><span>Beta</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Fraction</span></span></a></div>
@@ -460,7 +460,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1451708722%2FClasslikes%2F-251573632" anchor-label="InverseCDFIfc" id="-1451708722%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-inverse-c-d-f-ifc/index.html"><span>Inverse</span><wbr></wbr><span><span>CDFIfc</span></span></a></div>
@@ -475,7 +475,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1536230278%2FClasslikes%2F-251573632" anchor-label="InvertibleCDFIfc" id="-1536230278%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-invertible-c-d-f-ifc/index.html"><span>Invertible</span><wbr></wbr><span><span>CDFIfc</span></span></a></div>
@@ -490,7 +490,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="4662894%2FClasslikes%2F-251573632" anchor-label="KolmogorovSmirnovDist" id="4662894%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-kolmogorov-smirnov-dist/index.html"><span>Kolmogorov</span><wbr></wbr><span>Smirnov</span><wbr></wbr><span><span>Dist</span></span></a></div>
@@ -505,7 +505,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1921121165%2FClasslikes%2F-251573632" anchor-label="Laplace" id="1921121165%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-laplace/index.html"><span><span>Laplace</span></span></a></div>
@@ -520,7 +520,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="981779395%2FClasslikes%2F-251573632" anchor-label="Logistic" id="981779395%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-logistic/index.html"><span><span>Logistic</span></span></a></div>
@@ -535,7 +535,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="91387633%2FClasslikes%2F-251573632" anchor-label="LogLikelihoodIfc" id="91387633%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-log-likelihood-ifc/index.html"><span>Log</span><wbr></wbr><span>Likelihood</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -550,7 +550,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-673426501%2FClasslikes%2F-251573632" anchor-label="LogLogistic" id="-673426501%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-log-logistic/index.html"><span>Log</span><wbr></wbr><span><span>Logistic</span></span></a></div>
@@ -559,13 +559,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-log-logistic/index.html">LogLogistic</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">theScale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-log-logistic/index.html">LogLogistic</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">scale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1747458484%2FClasslikes%2F-251573632" anchor-label="Lognormal" id="1747458484%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lognormal/index.html"><span><span>Lognormal</span></span></a></div>
@@ -574,13 +574,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lognormal/index.html">Lognormal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">theVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Models the lognormal distribution This distribution is commonly used to model the time of a task</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lognormal/index.html">Lognormal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">variance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Models the lognormal distribution This distribution is commonly used to model the time of a task</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-106893640%2FClasslikes%2F-251573632" anchor-label="LossFunctionDistributionIfc" id="-106893640%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-loss-function-distribution-ifc/index.html"><span>Loss</span><wbr></wbr><span>Function</span><wbr></wbr><span>Distribution</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -595,7 +595,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1417743810%2FClasslikes%2F-251573632" anchor-label="MeanIfc" id="-1417743810%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-mean-ifc/index.html"><span>Mean</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -610,7 +610,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1167008245%2FClasslikes%2F-251573632" anchor-label="MixtureDistribution" id="-1167008245%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-mixture-distribution/index.html"><span>Mixture</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -625,7 +625,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="58058128%2FClasslikes%2F-251573632" anchor-label="MomentsIfc" id="58058128%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-moments-ifc/index.html"><span>Moments</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -640,7 +640,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="792832291%2FClasslikes%2F-251573632" anchor-label="MVCDF" id="792832291%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-m-v-c-d-f/index.html"><span><span>MVCDF</span></span></a></div>
@@ -655,7 +655,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1829461441%2FClasslikes%2F-251573632" anchor-label="NegativeBinomial" id="-1829461441%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-negative-binomial/index.html"><span>Negative</span><wbr></wbr><span><span>Binomial</span></span></a></div>
@@ -664,13 +664,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-negative-binomial/index.html">NegativeBinomial</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theProbSuccess<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.5</span><span class="token punctuation">, </span></span><span class="parameter ">theNumSuccesses<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-p-m-f-in-range-distribution-ifc/index.html">DiscretePMFInRangeDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">The number of failures before the rth success in a sequence of independent Bernoulli trials with probability p of success on each trial.  The range of this random variable is {0, 1, 2, ....}</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-negative-binomial/index.html">NegativeBinomial</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">probSuccess<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.5</span><span class="token punctuation">, </span></span><span class="parameter ">numSuccesses<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-p-m-f-in-range-distribution-ifc/index.html">DiscretePMFInRangeDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">The number of failures before the rth success in a sequence of independent Bernoulli trials with probability p of success on each trial.  The range of this random variable is {0, 1, 2, ....}</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-6036580%2FClasslikes%2F-251573632" anchor-label="Normal" id="-6036580%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-normal/index.html"><span><span>Normal</span></span></a></div>
@@ -679,13 +679,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-normal/index.html">Normal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">theVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Models normally distributed random variables</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-normal/index.html">Normal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">variance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Models normally distributed random variables</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="591771791%2FClasslikes%2F-251573632" anchor-label="PDFIfc" id="591771791%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-d-f-ifc/index.html"><span><span>PDFIfc</span></span></a></div>
@@ -700,7 +700,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2104283988%2FClasslikes%2F-251573632" anchor-label="PearsonType5" id="2104283988%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pearson-type5/index.html"><span>Pearson</span><wbr></wbr><span><span>Type5</span></span></a></div>
@@ -715,7 +715,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2135303795%2FClasslikes%2F-251573632" anchor-label="PearsonType6" id="2135303795%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pearson-type6/index.html"><span>Pearson</span><wbr></wbr><span><span>Type6</span></span></a></div>
@@ -724,13 +724,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pearson-type6/index.html">PearsonType6</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theShape1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">2.0</span><span class="token punctuation">, </span></span><span class="parameter ">theShape2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">3.0</span><span class="token punctuation">, </span></span><span class="parameter ">theScale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">Represents a Pearson Type VI distribution, see Law (2007) Simulation Modeling and Analysis, McGraw-Hill, pg 294</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-pearson-type6/index.html">PearsonType6</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">2.0</span><span class="token punctuation">, </span></span><span class="parameter ">shape2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">3.0</span><span class="token punctuation">, </span></span><span class="parameter ">scale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">Represents a Pearson Type VI distribution, see Law (2007) Simulation Modeling and Analysis, McGraw-Hill, pg 294</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="693616934%2FClasslikes%2F-251573632" anchor-label="PMFIfc" id="693616934%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-m-f-ifc/index.html"><span><span>PMFIfc</span></span></a></div>
@@ -745,7 +745,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2087209322%2FClasslikes%2F-251573632" anchor-label="Poisson" id="-2087209322%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-poisson/index.html"><span><span>Poisson</span></span></a></div>
@@ -754,13 +754,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-poisson/index.html">Poisson</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-p-m-f-in-range-distribution-ifc/index.html">DiscretePMFInRangeDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">Represents a Poisson random variable. A Poisson random variable represents the number of occurrences of an event with time or space.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-poisson/index.html">Poisson</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-discrete-p-m-f-in-range-distribution-ifc/index.html">DiscretePMFInRangeDistributionIfc</a>, <a href="-loss-function-distribution-ifc/index.html">LossFunctionDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a></div><div class="brief "><p class="paragraph">Represents a Poisson random variable. A Poisson random variable represents the number of occurrences of an event with time or space.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-487371744%2FClasslikes%2F-251573632" anchor-label="ProbInRangeIfc" id="-487371744%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-prob-in-range-ifc/index.html"><span>Prob</span><wbr></wbr><span>In</span><wbr></wbr><span>Range</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -775,7 +775,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1064117852%2FClasslikes%2F-251573632" anchor-label="ProbPoint" id="-1064117852%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-prob-point/index.html"><span>Prob</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -790,7 +790,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-987721484%2FClasslikes%2F-251573632" anchor-label="PWCEmpiricalCDF" id="-987721484%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-w-c-empirical-c-d-f/index.html"><span>PWCEmpirical</span><wbr></wbr><span><span>CDF</span></span></a></div>
@@ -805,7 +805,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1724506258%2FClasslikes%2F-251573632" anchor-label="SecondOrderLossFunctionIfc" id="1724506258%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-second-order-loss-function-ifc/index.html"><span>Second</span><wbr></wbr><span>Order</span><wbr></wbr><span>Loss</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -820,7 +820,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-728175925%2FClasslikes%2F-251573632" anchor-label="ShiftedContinuousDistribution" id="-728175925%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-shifted-continuous-distribution/index.html"><span>Shifted</span><wbr></wbr><span>Continuous</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -829,13 +829,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-shifted-continuous-distribution/index.html">ShiftedContinuousDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theShift<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">distribution<span class="token operator">: </span><a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a></div><div class="brief "><p class="paragraph">This class models a continuous distribution that has been shifted by a positive constant.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-shifted-continuous-distribution/index.html">ShiftedContinuousDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shift<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">distribution<span class="token operator">: </span><a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a></div><div class="brief "><p class="paragraph">This class models a continuous distribution that has been shifted by a positive constant.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1502368986%2FClasslikes%2F-251573632" anchor-label="ShiftedDistribution" id="1502368986%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-shifted-distribution/index.html"><span>Shifted</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -844,13 +844,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-shifted-distribution/index.html">ShiftedDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theDistribution<span class="token operator">: </span><a href="-distribution-ifc/index.html">DistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">theShift<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a></div><div class="brief "><p class="paragraph">Represents a Distribution that has been Shifted (translated to the right) The shift must be >= 0.0</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-shifted-distribution/index.html">ShiftedDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>distribution<span class="token operator">: </span><a href="-distribution-ifc/index.html">DistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">shift<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a></div><div class="brief "><p class="paragraph">Represents a Distribution that has been Shifted (translated to the right) The shift must be >= 0.0</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-241532417%2FClasslikes%2F-251573632" anchor-label="ShiftedLossFunctionDistribution" id="-241532417%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-shifted-loss-function-distribution/index.html"><span>Shifted</span><wbr></wbr><span>Loss</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -865,7 +865,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-382538038%2FClasslikes%2F-251573632" anchor-label="StudentT" id="-382538038%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-student-t/index.html"><span>Student</span><wbr></wbr><span><span>T</span></span></a></div>
@@ -874,13 +874,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-student-t/index.html">StudentT</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theDegreesOfFreedom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">The Student T distribution</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-student-t/index.html">StudentT</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">degreesOfFreedom<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">The Student T distribution</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1506271316%2FClasslikes%2F-251573632" anchor-label="Triangular" id="-1506271316%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-triangular/index.html"><span><span>Triangular</span></span></a></div>
@@ -889,13 +889,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-triangular/index.html">Triangular</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theMin<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">theMode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">theMax<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Represents the Triangular distribution with parameters - minimum value, maximum value and most likely value</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-triangular/index.html">Triangular</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">min<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">mode<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">max<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">Represents the Triangular distribution with parameters - minimum value, maximum value and most likely value</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="95647837%2FClasslikes%2F-251573632" anchor-label="TruncatedDistribution" id="95647837%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-truncated-distribution/index.html"><span>Truncated</span><wbr></wbr><span><span>Distribution</span></span></a></div>
@@ -904,13 +904,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-truncated-distribution/index.html">TruncatedDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theDistribution<span class="token operator">: </span><a href="-distribution-ifc/index.html">DistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">theCDFLowerLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">theCDFUpperLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">theLowerLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">theUpperLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">Constructs a truncated distribution based on the provided distribution</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-truncated-distribution/index.html">TruncatedDistribution</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">distribution<span class="token operator">: </span><a href="-distribution-ifc/index.html">DistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">cdfLowerLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">cdfUpperLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">lowerLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">upperLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">Constructs a truncated distribution based on the provided distribution</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="267834202%2FClasslikes%2F-251573632" anchor-label="TruncatedNormal" id="267834202%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-truncated-normal/index.html"><span>Truncated</span><wbr></wbr><span><span>Normal</span></span></a></div>
@@ -919,13 +919,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-truncated-normal/index.html">TruncatedNormal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">normalMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">normalVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">interval<span class="token operator">: </span><a href="../ksl.utilities/-interval/index.html">Interval</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">Creates a truncated normal distribution over the supplied <a href="-truncated-normal/interval.html">interval</a>. The supplied mean <a href="-truncated-normal/normal-mean.html">normalMean</a> and variance <a href="-truncated-normal/normal-variance.html">normalVariance</a> is the mean of the not truncated normal distribution. The supplied mean must be contained within the supplied interval.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-truncated-normal/index.html">TruncatedNormal</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">normalMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">normalVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">interval<span class="token operator">: </span><a href="../ksl.utilities/-interval/index.html">Interval</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a></div><div class="brief "><p class="paragraph">Creates a truncated normal distribution over the supplied <span data-unresolved-link="ksl.utilities.distributions/TruncatedNormal//#kotlin.Double#kotlin.Double#ksl.utilities.Interval#kotlin.String?/PointingToCallableParameters(2)/">interval</span>. The supplied mean <span data-unresolved-link="ksl.utilities.distributions/TruncatedNormal//#kotlin.Double#kotlin.Double#ksl.utilities.Interval#kotlin.String?/PointingToCallableParameters(0)/">normalMean</span> and variance <span data-unresolved-link="ksl.utilities.distributions/TruncatedNormal//#kotlin.Double#kotlin.Double#ksl.utilities.Interval#kotlin.String?/PointingToCallableParameters(1)/">normalVariance</span> is the mean of the not truncated normal distribution. The supplied mean must be contained within the supplied interval.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1760631551%2FClasslikes%2F-251573632" anchor-label="Tukey" id="-1760631551%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tukey/index.html"><span><span>Tukey</span></span></a></div>
@@ -940,7 +940,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-446212917%2FClasslikes%2F-251573632" anchor-label="Uniform" id="-446212917%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-uniform/index.html"><span><span>Uniform</span></span></a></div>
@@ -955,7 +955,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1585957866%2FClasslikes%2F-251573632" anchor-label="VarianceIfc" id="1585957866%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-variance-ifc/index.html"><span>Variance</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -970,7 +970,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-545280815%2FClasslikes%2F-251573632" anchor-label="Weibull" id="-545280815%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-weibull/index.html"><span><span>Weibull</span></span></a></div>
@@ -979,7 +979,7 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull/index.html">Weibull</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theShape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">theScale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">This class defines a Weibull distribution</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-weibull/index.html">Weibull</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">shape<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">scale<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-distribution/index.html">Distribution</a>, <a href="-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a>, <a href="-inverse-c-d-f-ifc/index.html">InverseCDFIfc</a>, <a href="../ksl.utilities.random.rvariable/-get-r-variable-ifc/index.html">GetRVariableIfc</a>, <a href="../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a>, <a href="-moments-ifc/index.html">MomentsIfc</a></div><div class="brief "><p class="paragraph">This class defines a Weibull distribution</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -987,9 +987,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="4533151%2FFunctions%2F-251573632" anchor-label="cdf" id="4533151%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cdf.html"><span><span>cdf</span></span></a></div>
@@ -1004,7 +1004,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="191384588%2FFunctions%2F-251573632" anchor-label="enumerateQuantiles" id="191384588%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="enumerate-quantiles.html"><span>enumerate</span><wbr></wbr><span><span>Quantiles</span></span></a></div>
@@ -1019,7 +1019,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-867457149%2FFunctions%2F-251573632" anchor-label="main" id="-867457149%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="main.html"><span><span>main</span></span></a></div>
@@ -1034,7 +1034,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-124394703%2FFunctions%2F-251573632" anchor-label="probabilities" id="-124394703%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="probabilities.html"><span><span>probabilities</span></span></a></div>
@@ -1049,7 +1049,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1104661803%2FFunctions%2F-251573632" anchor-label="testCDF" id="1104661803%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="test-c-d-f.html"><span>test</span><wbr></wbr><span><span>CDF</span></span></a></div>
@@ -1064,7 +1064,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-596274946%2FFunctions%2F-251573632" anchor-label="testCDF1" id="-596274946%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="test-c-d-f1.html"><span>test</span><wbr></wbr><span><span>CDF1</span></span></a></div>
@@ -1079,7 +1079,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="216398603%2FFunctions%2F-251573632" anchor-label="testQuantile" id="216398603%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="test-quantile.html"><span>test</span><wbr></wbr><span><span>Quantile</span></span></a></div>
@@ -1094,7 +1094,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2095672224%2FFunctions%2F-251573632" anchor-label="values" id="-2095672224%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="values.html"><span><span>values</span></span></a></div>
@@ -1114,17 +1114,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

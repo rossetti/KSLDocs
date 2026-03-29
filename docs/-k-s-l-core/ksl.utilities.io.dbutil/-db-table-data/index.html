@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>DbTableData</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.io.dbutil/DbTableData///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.io.dbutil</a><span class="delimiter">/</span><span class="current">DbTableData</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Db</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">DbTableData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tblName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>keyFields<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>autoIncField<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../-tabular-data/index.html">TabularData</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/dbutil/DbTableData.kt#L45">source</a>)</span></span></div><p class="paragraph">DbTableData represents a base class for constructing data classes that work with instances of DatabaseIfc.  Specifically, DbTableData provide the ability to push data into a table. Thus, subclasses of DbTableData must provide information about the primary key of the table and whether the key is an auto-increment type field.</p><p class="paragraph">Example usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">data class Person(var id: Int, var name:String, var age:Int): DbTableData(&quot;Persons&quot;, listOf(&quot;id&quot;), true)<br>db.selectDbDataInto(::Person)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Ideally, the data class should be defined with 'var' properties that have default values. This facilitates the creation of instances.  Any 'val' properties are not recognized as table fields because they are not mutable.  You can have 'val' properties in the primary constructor or in the class body; however, they will not be processed as table fields.</p><p class="paragraph">Assume that db holds an instance to a database that has a table called, Persons, with the fields (id, name and age) as the sole columns, in that order. The data will be extracted from the database table and instances of the data class created and filled with the data from the table. As long as the data class properties match in order and with compatible types with the fields/columns of the database, then the instances will be created and filled.</p><p class="paragraph">The <span data-unresolved-link="ksl.utilities.io.dbutil/DbTableData/tableName/#/PointingToDeclaration/">tableName</span> should be a valid table name within a database if used with a database.</p><p class="paragraph">The property <a href="key-fields.html">keyFields</a> holds the names of the fields involved within the primary key. There must be at least one field supplied. That is the list must not be empty. And, if the auto-increment property is set to true, there must be one and only one element in the list.</p><p class="paragraph">The property <a href="auto-inc-field.html">autoIncField</a> indicates if the referenced table has an auto-increment field as the primary key.  This information can be used when pushing data from the data class into the database to ignore the property listed in the constructor of the data class.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.collections/-observation-data-db/index.html">ObservationDataDb</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-experiment-table-data/index.html">ExperimentTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-simulation-run-table-data/index.html">SimulationRunTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-model-element-table-data/index.html">ModelElementTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-control-table-data/index.html">ControlTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-rv-parameter-table-data/index.html">RvParameterTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-within-rep-stat-table-data/index.html">WithinRepStatTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-within-rep-counter-stat-table-data/index.html">WithinRepCounterStatTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-across-rep-stat-table-data/index.html">AcrossRepStatTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-batch-stat-table-data/index.html">BatchStatTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-histogram-table-data/index.html">HistogramTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-frequency-table-data/index.html">FrequencyTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-time-series-response-table-data/index.html">TimeSeriesResponseTableData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-metric-data/index.html">MetricData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-score-data/index.html">ScoreData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-value-data/index.html">ValueData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-overall-value-data/index.html">OverallValueData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-alternative-rank-frequency-data/index.html">AlternativeRankFrequencyData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-error-matrix-record/index.html">ErrorMatrixRecord</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-histogram-bin-record/index.html">HistogramBinRecord</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-frequency-record/index.html">FrequencyRecord</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-result-data/index.html">MCBResultData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-interval-data/index.html">MCBIntervalData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-screening-interval-data/index.html">MCBScreeningIntervalData</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-statistic-data-db/index.html">StatisticDataDb</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-string-frequency-record/index.html">StringFrequencyRecord</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">DbTableData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tblName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>keyFields<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>autoIncField<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span> : <a href="../-tabular-data/index.html">TabularData</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/io/dbutil/DbTableData.kt#L45">source</a>)</span></span></div><p class="paragraph">DbTableData represents a base class for constructing data classes that work with instances of DatabaseIfc.  Specifically, DbTableData provide the ability to push data into a table. Thus, subclasses of DbTableData must provide information about the primary key of the table and whether the key is an auto-increment type field.</p><p class="paragraph">Example usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">data class Person(var id: Int, var name:String, var age:Int): DbTableData(&quot;Persons&quot;, listOf(&quot;id&quot;), true)<br>db.selectDbDataInto(::Person)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Ideally, the data class should be defined with 'var' properties that have default values. This facilitates the creation of instances.  Any 'val' properties are not recognized as table fields because they are not mutable.  You can have 'val' properties in the primary constructor or in the class body; however, they will not be processed as table fields.</p><p class="paragraph">Assume that db holds an instance to a database that has a table called, Persons, with the fields (id, name and age) as the sole columns, in that order. The data will be extracted from the database table and instances of the data class created and filled with the data from the table. As long as the data class properties match in order and with compatible types with the fields/columns of the database, then the instances will be created and filled.</p><p class="paragraph">The <a href="../-tabular-data/table-name.html">tableName</a> should be a valid table name within a database if used with a database.</p><p class="paragraph">The property <span data-unresolved-link="ksl.utilities.io.dbutil/DbTableData//#kotlin.String#kotlin.collections.List[kotlin.String]#kotlin.Boolean/PointingToCallableParameters(1)/">keyFields</span> holds the names of the fields involved within the primary key. There must be at least one field supplied. That is the list must not be empty. And, if the auto-increment property is set to true, there must be one and only one element in the list.</p><p class="paragraph">The property <span data-unresolved-link="ksl.utilities.io.dbutil/DbTableData//#kotlin.String#kotlin.collections.List[kotlin.String]#kotlin.Boolean/PointingToCallableParameters(2)/">autoIncField</span> indicates if the referenced table has an auto-increment field as the primary key.  This information can be used when pushing data from the data class into the database to ignore the property listed in the constructor of the data class.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.collections/-observation-data-db/index.html">ObservationDataDb</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-experiment-table-data/index.html">ExperimentTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-simulation-run-table-data/index.html">SimulationRunTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-model-element-table-data/index.html">ModelElementTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-control-table-data/index.html">ControlTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-rv-parameter-table-data/index.html">RvParameterTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-within-rep-stat-table-data/index.html">WithinRepStatTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-within-rep-counter-stat-table-data/index.html">WithinRepCounterStatTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-across-rep-stat-table-data/index.html">AcrossRepStatTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-batch-stat-table-data/index.html">BatchStatTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-histogram-table-data/index.html">HistogramTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-frequency-table-data/index.html">FrequencyTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-time-series-response-table-data/index.html">TimeSeriesResponseTableData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-metric-data/index.html">MetricData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-score-data/index.html">ScoreData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-value-data/index.html">ValueData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-overall-value-data/index.html">OverallValueData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.moda/-alternative-rank-frequency-data/index.html">AlternativeRankFrequencyData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-error-matrix-record/index.html">ErrorMatrixRecord</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-histogram-bin-record/index.html">HistogramBinRecord</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-frequency-record/index.html">FrequencyRecord</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-result-data/index.html">MCBResultData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-interval-data/index.html">MCBIntervalData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-m-c-b-screening-interval-data/index.html">MCBScreeningIntervalData</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-statistic-data-db/index.html">StatisticDataDb</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.utilities.statistic/-string-frequency-record/index.html">StringFrequencyRecord</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-1246599022%2FConstructors%2F-251573632" anchor-label="DbTableData" id="-1246599022%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-db-table-data.html"><span>Db</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="882686926%2FClasslikes%2F-251573632" anchor-label="Companion" id="882686926%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-385426296%2FProperties%2F-251573632" anchor-label="autoIncField" id="-385426296%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="auto-inc-field.html"><span>auto</span><wbr></wbr><span>Inc</span><wbr></wbr><span><span>Field</span></span></a></div>
@@ -163,13 +163,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="auto-inc-field.html">autoIncField</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="auto-inc-field.html">autoIncField</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1489669007%2FProperties%2F-251573632" anchor-label="keyFields" id="1489669007%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="key-fields.html"><span>key</span><wbr></wbr><span><span>Fields</span></span></a></div>
@@ -184,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-20161393%2FProperties%2F-251573632" anchor-label="numInsertFields" id="-20161393%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-insert-fields.html"><span>num</span><wbr></wbr><span>Insert</span><wbr></wbr><span><span>Fields</span></span></a></div>
@@ -199,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-657316737%2FProperties%2F-251573632" anchor-label="numUpdateFields" id="-657316737%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="num-update-fields.html"><span>num</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Fields</span></span></a></div>
@@ -216,9 +216,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1475396564%2FFunctions%2F-251573632" anchor-label="createTableSQLStatement" id="1475396564%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-table-s-q-l-statement.html"><span>create</span><wbr></wbr><span>Table</span><wbr></wbr><span><span>SQLStatement</span></span></a></div>
@@ -227,13 +227,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-table-s-q-l-statement.html"><span class="token function">createTableSQLStatement</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Creates a string representation of a CREATE TABLE SQL statement that could create a table that would hold the data associated with the DbTableData. The resulting string maps the property KTypes to suitable SQL types via <a href="-companion/to-s-q-l-type-string.html">DbTableData.toSQLTypeString</a>. If there is a primary key specification, it is captured in the CREATE TABLE statement.  Any NOT NULL specifications are also captured. There will not be any foreign key specifications because DbTableData does not specify them.  Also, since there is no SQL standard for an auto-increment primary key, the <a href="auto-inc-field.html">autoIncField</a> specification is ignored. The purpose here is to get a quick and dirty table representation. If additional specifications are required the user could formulate ALTER TABLE statements or better yet use one of the many libraries available for more advanced SQL work. If <span data-unresolved-link="ksl.utilities.io.dbutil/DbTableData/schemaName/#/PointingToDeclaration/">schemaName</span> is supplied, then the CREATE TABLE statement begins with &quot;CREATE TABLE schemaName.tableName &quot;. If the schema name is not specified, the statement begins with &quot;CREATE TABLE tableName &quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-table-s-q-l-statement.html"><span class="token function">createTableSQLStatement</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Creates a string representation of a CREATE TABLE SQL statement that could create a table that would hold the data associated with the DbTableData. The resulting string maps the property KTypes to suitable SQL types via <a href="-companion/to-s-q-l-type-string.html">DbTableData.toSQLTypeString</a>. If there is a primary key specification, it is captured in the CREATE TABLE statement.  Any NOT NULL specifications are also captured. There will not be any foreign key specifications because DbTableData does not specify them.  Also, since there is no SQL standard for an auto-increment primary key, the <span data-unresolved-link="ksl.utilities.io.dbutil/DbTableData//#kotlin.String#kotlin.collections.List[kotlin.String]#kotlin.Boolean/PointingToCallableParameters(2)/">autoIncField</span> specification is ignored. The purpose here is to get a quick and dirty table representation. If additional specifications are required the user could formulate ALTER TABLE statements or better yet use one of the many libraries available for more advanced SQL work. If <a href="../-tabular-data/schema-name.html">schemaName</a> is supplied, then the CREATE TABLE statement begins with &quot;CREATE TABLE schemaName.tableName &quot;. If the schema name is not specified, the statement begins with &quot;CREATE TABLE tableName &quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-541232612%2FFunctions%2F-251573632" anchor-label="extractKeyPropertyValuesByName" id="-541232612%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-key-property-values-by-name.html"><span>extract</span><wbr></wbr><span>Key</span><wbr></wbr><span>Property</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -248,7 +248,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-504801069%2FFunctions%2F-251573632" anchor-label="extractKeyValues" id="-504801069%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-key-values.html"><span>extract</span><wbr></wbr><span>Key</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -263,7 +263,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1695735509%2FFunctions%2F-251573632" anchor-label="extractNonAutoIncPropertyValuesByName" id="-1695735509%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-non-auto-inc-property-values-by-name.html"><span>extract</span><wbr></wbr><span>Non</span><wbr></wbr><span>Auto</span><wbr></wbr><span>Inc</span><wbr></wbr><span>Property</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -278,7 +278,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-25560197%2FFunctions%2F-251573632" anchor-label="extractNonKeyPropertyValuesByName" id="-25560197%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-non-key-property-values-by-name.html"><span>extract</span><wbr></wbr><span>Non</span><wbr></wbr><span>Key</span><wbr></wbr><span>Property</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -293,7 +293,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="176325972%2FFunctions%2F-251573632" anchor-label="extractPropertyValues" id="176325972%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-property-values.html"><span>extract</span><wbr></wbr><span>Property</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -308,7 +308,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1001477200%2FFunctions%2F-251573632" anchor-label="extractUpdatableFieldNames" id="1001477200%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-updatable-field-names.html"><span>extract</span><wbr></wbr><span>Updatable</span><wbr></wbr><span>Field</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -323,7 +323,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1427540251%2FFunctions%2F-251573632" anchor-label="extractUpdateValues" id="1427540251%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="extract-update-values.html"><span>extract</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -338,7 +338,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-433963149%2FFunctions%2F-251573632" anchor-label="hasAutoIncrementField" id="-433963149%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="has-auto-increment-field.html"><span>has</span><wbr></wbr><span>Auto</span><wbr></wbr><span>Increment</span><wbr></wbr><span><span>Field</span></span></a></div>
@@ -353,7 +353,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-624493361%2FFunctions%2F-251573632" anchor-label="insertDataSQLStatement" id="-624493361%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="insert-data-s-q-l-statement.html"><span>insert</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>SQLStatement</span></span></a></div>
@@ -368,7 +368,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2132375512%2FFunctions%2F-251573632" anchor-label="setAutoIncField" id="-2132375512%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-auto-inc-field.html"><span>set</span><wbr></wbr><span>Auto</span><wbr></wbr><span>Inc</span><wbr></wbr><span><span>Field</span></span></a></div>
@@ -383,7 +383,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="266836159%2FFunctions%2F-251573632" anchor-label="updateDataSQLStatement" id="266836159%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="update-data-s-q-l-statement.html"><span>update</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>SQLStatement</span></span></a></div>
@@ -403,17 +403,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

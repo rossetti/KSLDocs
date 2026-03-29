@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ksl.utilities.distributions.fitting.scoring</title>
     <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,26 +82,28 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting.scoring////PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.utilities.distributions.fitting.scoring</span></div>
   <div class="cover ">
@@ -113,9 +113,9 @@ R1.2.6        </div>
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-2108514529%2FClasslikes%2F-251573632" anchor-label="AdjustedPPCorrelationScoringModel" id="-2108514529%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-adjusted-p-p-correlation-scoring-model/index.html"><span>Adjusted</span><wbr></wbr><span>PPCorrelation</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -130,7 +130,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1938153279%2FClasslikes%2F-251573632" anchor-label="AdjustedQQCorrelationScoringModel" id="1938153279%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-adjusted-q-q-correlation-scoring-model/index.html"><span>Adjusted</span><wbr></wbr><span>QQCorrelation</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -145,7 +145,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-689471124%2FClasslikes%2F-251573632" anchor-label="AkaikeInfoCriterionScoringModel" id="-689471124%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-akaike-info-criterion-scoring-model/index.html"><span>Akaike</span><wbr></wbr><span>Info</span><wbr></wbr><span>Criterion</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -160,7 +160,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="577927318%2FClasslikes%2F-251573632" anchor-label="AndersonDarlingScoringModel" id="577927318%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-anderson-darling-scoring-model/index.html"><span>Anderson</span><wbr></wbr><span>Darling</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -175,7 +175,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1615035982%2FClasslikes%2F-251573632" anchor-label="BayesianInfoCriterionScoringModel" id="1615035982%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bayesian-info-criterion-scoring-model/index.html"><span>Bayesian</span><wbr></wbr><span>Info</span><wbr></wbr><span>Criterion</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -190,7 +190,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-193229608%2FClasslikes%2F-251573632" anchor-label="ChiSquaredScoringModel" id="-193229608%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-chi-squared-scoring-model/index.html"><span>Chi</span><wbr></wbr><span>Squared</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -205,7 +205,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1572272829%2FClasslikes%2F-251573632" anchor-label="CramerVonMisesScoringModel" id="-1572272829%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-cramer-von-mises-scoring-model/index.html"><span>Cramer</span><wbr></wbr><span>Von</span><wbr></wbr><span>Mises</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -220,7 +220,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="608901203%2FClasslikes%2F-251573632" anchor-label="KSScoringModel" id="608901203%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-k-s-scoring-model/index.html"><span>KSScoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -235,7 +235,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="591972310%2FClasslikes%2F-251573632" anchor-label="MallowsL2ScoringModel" id="591972310%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-mallows-l2-scoring-model/index.html"><span>Mallows</span><wbr></wbr><span>L2Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -250,7 +250,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2146863494%2FClasslikes%2F-251573632" anchor-label="ParameterMSEModel" id="-2146863494%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-parameter-m-s-e-model/index.html"><span>Parameter</span><wbr></wbr><span><span>MSEModel</span></span></a></div>
@@ -265,7 +265,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="603777441%2FClasslikes%2F-251573632" anchor-label="PDFScoringModel" id="603777441%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-d-f-scoring-model/index.html"><span>PDFScoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -280,7 +280,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-626763247%2FClasslikes%2F-251573632" anchor-label="PPCorrelationScoringModel" id="-626763247%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-p-correlation-scoring-model/index.html"><span>PPCorrelation</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -295,7 +295,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1004681070%2FClasslikes%2F-251573632" anchor-label="PPSSEScoringModel" id="1004681070%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-p-s-s-e-scoring-model/index.html"><span>PPSSEScoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -310,7 +310,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-875062735%2FClasslikes%2F-251573632" anchor-label="QQCorrelationScoringModel" id="-875062735%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-q-q-correlation-scoring-model/index.html"><span>QQCorrelation</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -325,7 +325,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-806905970%2FClasslikes%2F-251573632" anchor-label="QQSSEScoringModel" id="-806905970%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-q-q-s-s-e-scoring-model/index.html"><span>QQSSEScoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -340,7 +340,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1484035290%2FClasslikes%2F-251573632" anchor-label="SquaredErrorScoringModel" id="1484035290%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-squared-error-scoring-model/index.html"><span>Squared</span><wbr></wbr><span>Error</span><wbr></wbr><span>Scoring</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -360,17 +360,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

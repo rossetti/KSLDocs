@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>HistogramIfc</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.statistic/HistogramIfc///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.statistic</a><span class="delimiter">/</span><span class="current">HistogramIfc</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Histogram</span><wbr></wbr><span><span>Ifc</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">HistogramIfc</a> : <a href="../-collector-ifc/index.html">CollectorIfc</a>, <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../-statistic-ifc/index.html">StatisticIfc</a>, <a href="../-get-c-s-v-statistic-ifc/index.html">GetCSVStatisticIfc</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="../-abstract-statistic/index.html">AbstractStatistic</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/statistic/HistogramIfc.kt#L34">source</a>)</span></span></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-cached-histogram/index.html">CachedHistogram</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-histogram/index.html">Histogram</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">HistogramIfc</a> : <a href="../-collector-ifc/index.html">CollectorIfc</a>, <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../-statistic-ifc/index.html">StatisticIfc</a>, <a href="../-get-c-s-v-statistic-ifc/index.html">GetCSVStatisticIfc</a>, <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="../-abstract-statistic/index.html">AbstractStatistic</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/statistic/HistogramIfc.kt#L34">source</a>)</span></span></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-cached-histogram/index.html">CachedHistogram</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-histogram/index.html">Histogram</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1702097090%2FProperties%2F-251573632" anchor-label="binAreas" id="-1702097090%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-areas.html"><span>bin</span><wbr></wbr><span><span>Areas</span></span></a></div>
@@ -131,7 +131,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-532586037%2FProperties%2F-251573632" anchor-label="binArray" id="-532586037%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-array.html"><span>bin</span><wbr></wbr><span><span>Array</span></span></a></div>
@@ -146,7 +146,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1158235538%2FProperties%2F-251573632" anchor-label="binCounts" id="1158235538%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-counts.html"><span>bin</span><wbr></wbr><span><span>Counts</span></span></a></div>
@@ -161,7 +161,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="414248179%2FProperties%2F-251573632" anchor-label="binFractions" id="414248179%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-fractions.html"><span>bin</span><wbr></wbr><span><span>Fractions</span></span></a></div>
@@ -176,7 +176,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2050794577%2FProperties%2F-251573632" anchor-label="bins" id="2050794577%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bins.html"><span><span>bins</span></span></a></div>
@@ -191,7 +191,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="435690377%2FProperties%2F-251573632" anchor-label="binWidths" id="435690377%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-widths.html"><span>bin</span><wbr></wbr><span><span>Widths</span></span></a></div>
@@ -206,7 +206,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1559250981%2FProperties%2F-251573632" anchor-label="breakPoints" id="-1559250981%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="break-points.html"><span>break</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -221,7 +221,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-803128262%2FProperties%2F-251573632" anchor-label="densityEstimates" id="-803128262%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="density-estimates.html"><span>density</span><wbr></wbr><span><span>Estimates</span></span></a></div>
@@ -236,7 +236,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-395055252%2FProperties%2F-251573632" anchor-label="firstBinLowerLimit" id="-395055252%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="first-bin-lower-limit.html"><span>first</span><wbr></wbr><span>Bin</span><wbr></wbr><span>Lower</span><wbr></wbr><span><span>Limit</span></span></a></div>
@@ -251,7 +251,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-380344845%2FProperties%2F-251573632" anchor-label="lastBinUpperLimit" id="-380344845%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="last-bin-upper-limit.html"><span>last</span><wbr></wbr><span>Bin</span><wbr></wbr><span>Upper</span><wbr></wbr><span><span>Limit</span></span></a></div>
@@ -266,7 +266,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1889178620%2FProperties%2F-251573632" anchor-label="lowerLimits" id="-1889178620%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="lower-limits.html"><span>lower</span><wbr></wbr><span><span>Limits</span></span></a></div>
@@ -281,7 +281,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1281906318%2FProperties%2F-251573632" anchor-label="midPoints" id="-1281906318%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mid-points.html"><span>mid</span><wbr></wbr><span><span>Points</span></span></a></div>
@@ -296,7 +296,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="79102344%2FProperties%2F-251573632" anchor-label="numberBins" id="79102344%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-bins.html"><span>number</span><wbr></wbr><span><span>Bins</span></span></a></div>
@@ -311,7 +311,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-911346960%2FProperties%2F-251573632" anchor-label="overFlowCount" id="-911346960%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="over-flow-count.html"><span>over</span><wbr></wbr><span>Flow</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -326,7 +326,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-383936174%2FProperties%2F-251573632" anchor-label="totalCount" id="-383936174%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-count.html"><span>total</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -341,7 +341,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1025154380%2FProperties%2F-251573632" anchor-label="underFlowCount" id="-1025154380%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="under-flow-count.html"><span>under</span><wbr></wbr><span>Flow</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -356,7 +356,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1620625987%2FProperties%2F-251573632" anchor-label="upperLimits" id="1620625987%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="upper-limits.html"><span>upper</span><wbr></wbr><span><span>Limits</span></span></a></div>
@@ -373,9 +373,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-224266854%2FFunctions%2F-251573632" anchor-label="asString" id="-224266854%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="as-string.html"><span>as</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -390,7 +390,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1444205650%2FFunctions%2F-251573632" anchor-label="bin" id="1444205650%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin.html"><span><span>bin</span></span></a></div>
@@ -405,7 +405,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2115423626%2FFunctions%2F-251573632" anchor-label="binCount" id="-2115423626%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-count.html"><span>bin</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -420,7 +420,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1288165490%2FFunctions%2F-251573632" anchor-label="binFraction" id="-1288165490%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-fraction.html"><span>bin</span><wbr></wbr><span><span>Fraction</span></span></a></div>
@@ -435,7 +435,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1465519305%2FFunctions%2F-251573632" anchor-label="binNumber" id="-1465519305%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-number.html"><span>bin</span><wbr></wbr><span><span>Number</span></span></a></div>
@@ -450,7 +450,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1991782752%2FFunctions%2F-251573632" anchor-label="binProbabilities" id="-1991782752%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="bin-probabilities.html"><span>bin</span><wbr></wbr><span><span>Probabilities</span></span></a></div>
@@ -465,7 +465,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-941841843%2FFunctions%2F-251573632" anchor-label="createPWCEmpiricalCDF" id="-941841843%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-p-w-c-empirical-c-d-f.html"><span>create</span><wbr></wbr><span>PWCEmpirical</span><wbr></wbr><span><span>CDF</span></span></a></div>
@@ -480,7 +480,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1858182439%2FFunctions%2F-251573632" anchor-label="createPWCEmpiricalRV" id="-1858182439%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-p-w-c-empirical-r-v.html"><span>create</span><wbr></wbr><span>PWCEmpirical</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -495,7 +495,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="222150934%2FFunctions%2F-251573632" anchor-label="cumulativeBinCount" id="222150934%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cumulative-bin-count.html"><span>cumulative</span><wbr></wbr><span>Bin</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -510,7 +510,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1341587596%2FFunctions%2F-251573632" anchor-label="cumulativeBinFraction" id="-1341587596%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cumulative-bin-fraction.html"><span>cumulative</span><wbr></wbr><span>Bin</span><wbr></wbr><span><span>Fraction</span></span></a></div>
@@ -525,7 +525,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="951696104%2FFunctions%2F-251573632" anchor-label="cumulativeCount" id="951696104%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cumulative-count.html"><span>cumulative</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -540,7 +540,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-82317226%2FFunctions%2F-251573632" anchor-label="cumulativeFraction" id="-82317226%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cumulative-fraction.html"><span>cumulative</span><wbr></wbr><span><span>Fraction</span></span></a></div>
@@ -555,7 +555,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-330902432%2FFunctions%2F-251573632" anchor-label="expectedCounts" id="-330902432%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="expected-counts.html"><span>expected</span><wbr></wbr><span><span>Counts</span></span></a></div>
@@ -570,7 +570,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1221147157%2FFunctions%2F-251573632" anchor-label="findBin" id="1221147157%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="find-bin.html"><span>find</span><wbr></wbr><span><span>Bin</span></span></a></div>
@@ -585,7 +585,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-69913361%2FFunctions%2F-251573632" anchor-label="histogramData" id="-69913361%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="histogram-data.html"><span>histogram</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -600,7 +600,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="82890973%2FFunctions%2F-251573632" anchor-label="histogramPlot" id="82890973%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="histogram-plot.html"><span>histogram</span><wbr></wbr><span><span>Plot</span></span></a></div>
@@ -615,7 +615,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1000607639%2FFunctions%2F-251573632" anchor-label="toDataFrame" id="1000607639%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="../../ksl.utilities.io/to-data-frame.html"><span>to</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -635,17 +635,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

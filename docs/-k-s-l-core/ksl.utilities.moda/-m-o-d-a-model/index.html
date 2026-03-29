@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MODAModel</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.moda/MODAModel///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.moda</a><span class="delimiter">/</span><span class="current">MODAModel</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>MODAModel</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">MODAModel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricDefinitions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../-metric-ifc/index.html">MetricIfc</a><span class="token punctuation">, </span><a href="../-value-function-ifc/index.html">ValueFunctionIfc</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/moda/MODAModel.kt#L26">source</a>)</span></span></div><p class="paragraph">Defines a base class for creating multi-objective decision analysis (MODA) models.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-additive-m-o-d-a-model/index.html">AdditiveMODAModel</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">MODAModel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">metricDefinitions<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../-metric-ifc/index.html">MetricIfc</a><span class="token punctuation">, </span><a href="../-value-function-ifc/index.html">ValueFunctionIfc</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/moda/MODAModel.kt#L26">source</a>)</span></span></div><p class="paragraph">Defines a base class for creating multi-objective decision analysis (MODA) models.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-additive-m-o-d-a-model/index.html">AdditiveMODAModel</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-1224820267%2FConstructors%2F-251573632" anchor-label="MODAModel" id="-1224820267%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-m-o-d-a-model.html"><span><span>MODAModel</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-1953211893%2FClasslikes%2F-251573632" anchor-label="Companion" id="-1953211893%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="-1907368528%2FProperties%2F-251573632" anchor-label="alternatives" id="-1907368528%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternatives.html"><span><span>alternatives</span></span></a></div>
@@ -169,7 +169,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1392176864%2FProperties%2F-251573632" anchor-label="defaultRankingMethod" id="-1392176864%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-ranking-method.html"><span>default</span><wbr></wbr><span>Ranking</span><wbr></wbr><span><span>Method</span></span></a></div>
@@ -183,8 +183,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1108078160%2FProperties%2F-251573632" anchor-label="metricFunctionMap" id="-1108078160%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="metric-function-map.html"><span>metric</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1108078160%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="metric-function-map.html">metricFunctionMap</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="../-metric-ifc/index.html">MetricIfc</a><span class="token punctuation">, </span><a href="../-value-function-ifc/index.html">ValueFunctionIfc</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-151736543%2FProperties%2F-251573632" anchor-label="metrics" id="-151736543%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metrics.html"><span><span>metrics</span></span></a></div>
@@ -198,12 +213,27 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="69646628%2FProperties%2F-251573632" anchor-label="myAlternatives" id="69646628%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-alternatives.html"><span>my</span><wbr></wbr><span><span>Alternatives</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="69646628%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-alternatives.html">myAlternatives</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../-metric-ifc/index.html">MetricIfc</a><span class="token punctuation">, </span><a href="../-score/index.html">Score</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="1206477724%2FFunctions%2F-251573632" anchor-label="alternativeAverageRanking" id="1206477724%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-average-ranking.html"><span>alternative</span><wbr></wbr><span>Average</span><wbr></wbr><span><span>Ranking</span></span></a></div>
@@ -218,7 +248,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1463852479%2FFunctions%2F-251573632" anchor-label="alternativeFirstRankCounts" id="-1463852479%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-first-rank-counts.html"><span>alternative</span><wbr></wbr><span>First</span><wbr></wbr><span>Rank</span><wbr></wbr><span><span>Counts</span></span></a></div>
@@ -233,7 +263,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1750665031%2FFunctions%2F-251573632" anchor-label="alternativeFirstRankMetricFrequencies" id="1750665031%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-first-rank-metric-frequencies.html"><span>alternative</span><wbr></wbr><span>First</span><wbr></wbr><span>Rank</span><wbr></wbr><span>Metric</span><wbr></wbr><span><span>Frequencies</span></span></a></div>
@@ -248,7 +278,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1324632317%2FFunctions%2F-251573632" anchor-label="alternativeMetricRankFrequencies" id="-1324632317%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-metric-rank-frequencies.html"><span>alternative</span><wbr></wbr><span>Metric</span><wbr></wbr><span>Rank</span><wbr></wbr><span><span>Frequencies</span></span></a></div>
@@ -263,7 +293,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1878248241%2FFunctions%2F-251573632" anchor-label="alternativeOverallValueData" id="-1878248241%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-overall-value-data.html"><span>alternative</span><wbr></wbr><span>Overall</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -278,7 +308,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1902356524%2FFunctions%2F-251573632" anchor-label="alternativeRankedByMultiObjectiveValue" id="-1902356524%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-ranked-by-multi-objective-value.html"><span>alternative</span><wbr></wbr><span>Ranked</span><wbr></wbr><span>By</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Objective</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -293,7 +323,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-320317049%2FFunctions%2F-251573632" anchor-label="alternativeRankFrequencyData" id="-320317049%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-rank-frequency-data.html"><span>alternative</span><wbr></wbr><span>Rank</span><wbr></wbr><span>Frequency</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -308,7 +338,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1474926798%2FFunctions%2F-251573632" anchor-label="alternativeRankingsAsDataFrame" id="1474926798%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-rankings-as-data-frame.html"><span>alternative</span><wbr></wbr><span>Rankings</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -323,7 +353,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-102768560%2FFunctions%2F-251573632" anchor-label="alternativeRanksAsDataFrame" id="-102768560%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-ranks-as-data-frame.html"><span>alternative</span><wbr></wbr><span>Ranks</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -338,7 +368,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1329401144%2FFunctions%2F-251573632" anchor-label="alternativeResultsAsDataFrame" id="-1329401144%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-results-as-data-frame.html"><span>alternative</span><wbr></wbr><span>Results</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -353,7 +383,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="463901447%2FFunctions%2F-251573632" anchor-label="alternativeScoreData" id="463901447%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-score-data.html"><span>alternative</span><wbr></wbr><span>Score</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -368,7 +398,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1318525967%2FFunctions%2F-251573632" anchor-label="alternativeScoresAsDataFrame" id="-1318525967%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-scores-as-data-frame.html"><span>alternative</span><wbr></wbr><span>Scores</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -383,7 +413,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1201624432%2FFunctions%2F-251573632" anchor-label="alternativeValueData" id="-1201624432%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-value-data.html"><span>alternative</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -398,7 +428,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-620191472%2FFunctions%2F-251573632" anchor-label="alternativeValuesAsDataFrame" id="-620191472%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-values-as-data-frame.html"><span>alternative</span><wbr></wbr><span>Values</span><wbr></wbr><span>As</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Frame</span></span></a></div>
@@ -413,7 +443,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="479916622%2FFunctions%2F-251573632" anchor-label="alternativeValuesByMetric" id="479916622%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="alternative-values-by-metric.html"><span>alternative</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Metric</span></span></a></div>
@@ -428,7 +458,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1796253743%2FFunctions%2F-251573632" anchor-label="clearAlternatives" id="-1796253743%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="clear-alternatives.html"><span>clear</span><wbr></wbr><span><span>Alternatives</span></span></a></div>
@@ -443,7 +473,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2063340146%2FFunctions%2F-251573632" anchor-label="defineAlternatives" id="2063340146%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="define-alternatives.html"><span>define</span><wbr></wbr><span><span>Alternatives</span></span></a></div>
@@ -458,7 +488,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1633701931%2FFunctions%2F-251573632" anchor-label="defineMetrics" id="1633701931%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="define-metrics.html"><span>define</span><wbr></wbr><span><span>Metrics</span></span></a></div>
@@ -473,7 +503,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1368923214%2FFunctions%2F-251573632" anchor-label="metricRankByAlternative" id="1368923214%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metric-rank-by-alternative.html"><span>metric</span><wbr></wbr><span>Rank</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Alternative</span></span></a></div>
@@ -488,7 +518,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1054359791%2FFunctions%2F-251573632" anchor-label="metricRanks" id="-1054359791%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metric-ranks.html"><span>metric</span><wbr></wbr><span><span>Ranks</span></span></a></div>
@@ -503,7 +533,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1876428656%2FFunctions%2F-251573632" anchor-label="metricScores" id="1876428656%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metric-scores.html"><span>metric</span><wbr></wbr><span><span>Scores</span></span></a></div>
@@ -518,7 +548,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="453385487%2FFunctions%2F-251573632" anchor-label="metricValues" id="453385487%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="metric-values.html"><span>metric</span><wbr></wbr><span><span>Values</span></span></a></div>
@@ -533,7 +563,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1943317487%2FFunctions%2F-251573632" anchor-label="multiObjectiveValue" id="-1943317487%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="multi-objective-value.html"><span>multi</span><wbr></wbr><span>Objective</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -548,7 +578,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1719783024%2FFunctions%2F-251573632" anchor-label="multiObjectiveValuesByAlternative" id="-1719783024%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="multi-objective-values-by-alternative.html"><span>multi</span><wbr></wbr><span>Objective</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Alternative</span></span></a></div>
@@ -563,7 +593,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1902977481%2FFunctions%2F-251573632" anchor-label="print" id="-1902977481%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print.html"><span><span>print</span></span></a></div>
@@ -578,7 +608,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1634344738%2FFunctions%2F-251573632" anchor-label="ranksByMetric" id="1634344738%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="ranks-by-metric.html"><span>ranks</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Metric</span></span></a></div>
@@ -593,7 +623,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1340829678%2FFunctions%2F-251573632" anchor-label="scoresByMetric" id="1340829678%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="scores-by-metric.html"><span>scores</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Metric</span></span></a></div>
@@ -608,7 +638,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1377525080%2FFunctions%2F-251573632" anchor-label="scoreStatisticsByMetric" id="-1377525080%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="score-statistics-by-metric.html"><span>score</span><wbr></wbr><span>Statistics</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Metric</span></span></a></div>
@@ -623,7 +653,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1414768877%2FFunctions%2F-251573632" anchor-label="sortedMultiObjectiveValuesByAlternative" id="1414768877%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sorted-multi-objective-values-by-alternative.html"><span>sorted</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Objective</span><wbr></wbr><span>Values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Alternative</span></span></a></div>
@@ -638,7 +668,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="446626672%2FFunctions%2F-251573632" anchor-label="topAlternativesByFirstRankCounts" id="446626672%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="top-alternatives-by-first-rank-counts.html"><span>top</span><wbr></wbr><span>Alternatives</span><wbr></wbr><span>By</span><wbr></wbr><span>First</span><wbr></wbr><span>Rank</span><wbr></wbr><span><span>Counts</span></span></a></div>
@@ -653,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-642392745%2FFunctions%2F-251573632" anchor-label="topAlternativesByMultiObjectiveValue" id="-642392745%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="top-alternatives-by-multi-objective-value.html"><span>top</span><wbr></wbr><span>Alternatives</span><wbr></wbr><span>By</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Objective</span><wbr></wbr><span><span>Value</span></span></a></div>
@@ -668,7 +698,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="990675178%2FFunctions%2F-251573632" anchor-label="toString" id="990675178%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -683,7 +713,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1885782700%2FFunctions%2F-251573632" anchor-label="valuesByAlternative" id="-1885782700%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="values-by-alternative.html"><span>values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Alternative</span></span></a></div>
@@ -698,7 +728,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="168774413%2FFunctions%2F-251573632" anchor-label="valuesByMetric" id="168774413%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="values-by-metric.html"><span>values</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Metric</span></span></a></div>
@@ -718,17 +748,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

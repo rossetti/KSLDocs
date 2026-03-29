@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>WelchDataFileAnalyzer</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.observers.welch/WelchDataFileAnalyzer///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.observers.welch</a><span class="delimiter">/</span><span class="current">WelchDataFileAnalyzer</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Welch</span><wbr></wbr><span>Data</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Analyzer</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">WelchDataFileAnalyzer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bean<span class="token operator">: </span><a href="../-welch-file-meta-data-bean/index.html">WelchFileMetaDataBean</a></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities.observers/-observable-ifc/index.html">ObservableIfc</a><span class="token operator">&lt;</span><a href="index.html">WelchDataFileAnalyzer</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/observers/welch/WelchDataFileAnalyzer.kt#L63">source</a>)</span></span></div><p class="paragraph">This class knows how to process data collected by the WelchDataFileCollector class and produce &quot;Welch Data&quot;. That is for every observation, this file will average across the replications and compute the average across the replications and compute the cumulative sum over the averages.</p><p class="paragraph">It can make &quot;wpdf&quot; files which are binary DataOutputStream files holding the Welch average and the cumulative average for each of the observations.</p><p class="paragraph">wpdf = Welch Plot Data File</p><p class="paragraph">It can make a csv file that holds the Welch average and cumulative average</p><p class="paragraph">An Observer can be attached.  It will be notified when a call to get() occurs. getLastDataPoint(), getLastObservationIndex(), and getLastReplicationIndex() can be used by the observer to determine the value, observation number, and replication of the observation after notification.</p><p class="paragraph">Unless specifically redirected, files produced by the operation of this class are stored in the same directory (getBaseDirectory()) that the wdf is stored as specified by the supplied WelchFileMetaDataBean information.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">WelchDataFileAnalyzer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bean<span class="token operator">: </span><a href="../-welch-file-meta-data-bean/index.html">WelchFileMetaDataBean</a></span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities.observers/-observable-ifc/index.html">ObservableIfc</a><span class="token operator">&lt;</span><a href="index.html">WelchDataFileAnalyzer</a><span class="token operator">&gt; </span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/observers/welch/WelchDataFileAnalyzer.kt#L63">source</a>)</span></span></div><p class="paragraph">This class knows how to process data collected by the WelchDataFileCollector class and produce &quot;Welch Data&quot;. That is for every observation, this file will average across the replications and compute the average across the replications and compute the cumulative sum over the averages.</p><p class="paragraph">It can make &quot;wpdf&quot; files which are binary DataOutputStream files holding the Welch average and the cumulative average for each of the observations.</p><p class="paragraph">wpdf = Welch Plot Data File</p><p class="paragraph">It can make a csv file that holds the Welch average and cumulative average</p><p class="paragraph">An Observer can be attached.  It will be notified when a call to get() occurs. getLastDataPoint(), getLastObservationIndex(), and getLastReplicationIndex() can be used by the observer to determine the value, observation number, and replication of the observation after notification.</p><p class="paragraph">Unless specifically redirected, files produced by the operation of this class are stored in the same directory (getBaseDirectory()) that the wdf is stored as specified by the supplied WelchFileMetaDataBean information.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-377940523%2FConstructors%2F-251573632" anchor-label="WelchDataFileAnalyzer" id="-377940523%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-welch-data-file-analyzer.html"><span>Welch</span><wbr></wbr><span>Data</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Analyzer</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="1004171371%2FClasslikes%2F-251573632" anchor-label="Companion" id="1004171371%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1708547915%2FProperties%2F-251573632" anchor-label="averageTimePerObservation" id="1708547915%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="average-time-per-observation.html"><span>average</span><wbr></wbr><span>Time</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Observation</span></span></a></div>
@@ -169,7 +169,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1247946888%2FProperties%2F-251573632" anchor-label="baseDirectory" id="1247946888%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="base-directory.html"><span>base</span><wbr></wbr><span><span>Directory</span></span></a></div>
@@ -184,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1904372258%2FProperties%2F-251573632" anchor-label="baseFileName" id="-1904372258%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="base-file-name.html"><span>base</span><wbr></wbr><span>File</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -199,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2105917332%2FProperties%2F-251573632" anchor-label="lastDataPoint" id="2105917332%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="last-data-point.html"><span>last</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -214,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1001502159%2FProperties%2F-251573632" anchor-label="minNumObservationsInReplications" id="1001502159%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="min-num-observations-in-replications.html"><span>min</span><wbr></wbr><span>Num</span><wbr></wbr><span>Observations</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -229,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1193556588%2FProperties%2F-251573632" anchor-label="observationCounts" id="-1193556588%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="observation-counts.html"><span>observation</span><wbr></wbr><span><span>Counts</span></span></a></div>
@@ -244,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1352664770%2FProperties%2F-251573632" anchor-label="replicationAverages" id="1352664770%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replication-averages.html"><span>replication</span><wbr></wbr><span><span>Averages</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1657736694%2FProperties%2F-251573632" anchor-label="responseName" id="-1657736694%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-name.html"><span>response</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -274,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1757446330%2FProperties%2F-251573632" anchor-label="timePerObservation" id="1757446330%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time-per-observation.html"><span>time</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Observation</span></span></a></div>
@@ -289,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-125588282%2FProperties%2F-251573632" anchor-label="welchFileMetaDataBean" id="-125588282%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="welch-file-meta-data-bean.html"><span>welch</span><wbr></wbr><span>File</span><wbr></wbr><span>Meta</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>Bean</span></span></a></div>
@@ -306,9 +306,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-962095213%2FFunctions%2F-251573632" anchor-label="acrossReplicationAverage" id="-962095213%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-average.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Average</span></span></a></div>
@@ -323,7 +323,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1447121400%2FFunctions%2F-251573632" anchor-label="acrossReplicationData" id="1447121400%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="across-replication-data.html"><span>across</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -338,7 +338,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1309031869%2FFunctions%2F-251573632" anchor-label="attachObserver" id="1309031869%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="attach-observer.html"><span>attach</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -353,7 +353,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1277811081%2FFunctions%2F-251573632" anchor-label="batchWelchAverages" id="-1277811081%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="batch-welch-averages.html"><span>batch</span><wbr></wbr><span>Welch</span><wbr></wbr><span><span>Averages</span></span></a></div>
@@ -368,7 +368,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-558848920%2FFunctions%2F-251573632" anchor-label="countObservers" id="-558848920%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="count-observers.html"><span>count</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -383,7 +383,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-72263518%2FFunctions%2F-251573632" anchor-label="createCSVWelchDataFile" id="-72263518%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-c-s-v-welch-data-file.html"><span>create</span><wbr></wbr><span>CSVWelch</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>File</span></span></a></div>
@@ -398,7 +398,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="183610403%2FFunctions%2F-251573632" anchor-label="createCSVWelchPlotDataFile" id="183610403%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-c-s-v-welch-plot-data-file.html"><span>create</span><wbr></wbr><span>CSVWelch</span><wbr></wbr><span>Plot</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>File</span></span></a></div>
@@ -413,7 +413,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1423130269%2FFunctions%2F-251573632" anchor-label="createWelchPlotDataFile" id="-1423130269%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="create-welch-plot-data-file.html"><span>create</span><wbr></wbr><span>Welch</span><wbr></wbr><span>Plot</span><wbr></wbr><span>Data</span><wbr></wbr><span><span>File</span></span></a></div>
@@ -428,7 +428,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="446394524%2FFunctions%2F-251573632" anchor-label="cumulativeWelchAverages" id="446394524%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cumulative-welch-averages.html"><span>cumulative</span><wbr></wbr><span>Welch</span><wbr></wbr><span><span>Averages</span></span></a></div>
@@ -443,7 +443,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1363856423%2FFunctions%2F-251573632" anchor-label="detachAllObservers" id="1363856423%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-all-observers.html"><span>detach</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -458,7 +458,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1220851375%2FFunctions%2F-251573632" anchor-label="detachObserver" id="1220851375%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-observer.html"><span>detach</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -473,7 +473,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2088004460%2FFunctions%2F-251573632" anchor-label="get" id="-2088004460%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get.html"><span><span>get</span></span></a></div>
@@ -488,7 +488,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1710961194%2FFunctions%2F-251573632" anchor-label="isAttached" id="1710961194%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-attached.html"><span>is</span><wbr></wbr><span><span>Attached</span></span></a></div>
@@ -503,7 +503,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1555589446%2FFunctions%2F-251573632" anchor-label="lastObservationIndex" id="-1555589446%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="last-observation-index.html"><span>last</span><wbr></wbr><span>Observation</span><wbr></wbr><span><span>Index</span></span></a></div>
@@ -518,7 +518,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1261022810%2FFunctions%2F-251573632" anchor-label="lastReplicationIndex" id="1261022810%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="last-replication-index.html"><span>last</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Index</span></span></a></div>
@@ -533,7 +533,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-207093105%2FFunctions%2F-251573632" anchor-label="numberOfReplications" id="-207093105%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-replications.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Replications</span></span></a></div>
@@ -548,7 +548,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="940895025%2FFunctions%2F-251573632" anchor-label="position" id="940895025%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="position.html"><span><span>position</span></span></a></div>
@@ -563,7 +563,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="319784206%2FFunctions%2F-251573632" anchor-label="recommendDeletionPoint" id="319784206%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="recommend-deletion-point.html"><span>recommend</span><wbr></wbr><span>Deletion</span><wbr></wbr><span><span>Point</span></span></a></div>
@@ -578,7 +578,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1380677020%2FFunctions%2F-251573632" anchor-label="recommendDeletionPointUsingBatching" id="1380677020%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="recommend-deletion-point-using-batching.html"><span>recommend</span><wbr></wbr><span>Deletion</span><wbr></wbr><span>Point</span><wbr></wbr><span>Using</span><wbr></wbr><span><span>Batching</span></span></a></div>
@@ -593,7 +593,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-299186874%2FFunctions%2F-251573632" anchor-label="set" id="-299186874%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set.html"><span><span>set</span></span></a></div>
@@ -608,7 +608,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="947527306%2FFunctions%2F-251573632" anchor-label="toString" id="947527306%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -623,7 +623,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="959035977%2FFunctions%2F-251573632" anchor-label="welchAverages" id="959035977%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="welch-averages.html"><span>welch</span><wbr></wbr><span><span>Averages</span></span></a></div>
@@ -638,7 +638,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="166840754%2FFunctions%2F-251573632" anchor-label="welchAveragesNE" id="166840754%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="welch-averages-n-e.html"><span>welch</span><wbr></wbr><span>Averages</span><wbr></wbr><span><span>NE</span></span></a></div>
@@ -653,7 +653,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="323713466%2FFunctions%2F-251573632" anchor-label="writeCSVWelchData" id="323713466%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-c-s-v-welch-data.html"><span>write</span><wbr></wbr><span>CSVWelch</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -668,7 +668,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-905983813%2FFunctions%2F-251573632" anchor-label="writeCSVWelchPlotData" id="-905983813%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-c-s-v-welch-plot-data.html"><span>write</span><wbr></wbr><span>CSVWelch</span><wbr></wbr><span>Plot</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -683,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="916524506%2FFunctions%2F-251573632" anchor-label="writeWelchPlotData" id="916524506%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-welch-plot-data.html"><span>write</span><wbr></wbr><span>Welch</span><wbr></wbr><span>Plot</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -703,17 +703,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

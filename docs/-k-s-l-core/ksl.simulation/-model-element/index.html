@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ModelElement</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simulation/ModelElement///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simulation</a><span class="delimiter">/</span><span class="current">ModelElement</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Model</span><wbr></wbr><span><span>Element</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">ModelElement</a> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../../ksl.modeling.variable/-parent-name-ifc/index.html">ParentNameIfc</a>, <a href="../../ksl.utilities/-get-time-ifc/index.html">GetTimeIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/ModelElement.kt#L54">source</a>)</span></span></div><p class="paragraph">The internal constructor for creating model elements. A model element is some construct that is an element of a model. Model elements are added to the main model when they are constructed by supplying a <span data-unresolved-link="ksl.simulation/ModelElement/parent/#/PointingToDeclaration/">parent</span> model element. The constructed model element becomes a child to the parent in the model element hierarchy. This constructor is internal because of the interaction with the class Model, which serves as the parent to all model elements.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name.  If not provided, then a name is provided automatically by using the class type of the element and a unique number.</p></div></div></div></div></div><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.controls.testing/-van/index.html">Van</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-event-generator/index.html">EventGenerator</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-r-empirical-list/index.html">REmpiricalList</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-element/index.html">RandomElement</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-empirical-map/index.html">RandomEmpiricalMap</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-list/index.html">RandomList</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-map/index.html">RandomMap</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-schedule/index.html">Schedule</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-abstract-resource-pool/index.html">AbstractResourcePool</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-blocking-queue/index.html">BlockingQueue</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-capacity-schedule/index.html">CapacitySchedule</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-conveyor/index.html">Conveyor</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-signal/index.html">Signal</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-dispatcher/index.html">TaskDispatcher</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-processor-performance/index.html">TaskProcessorPerformance</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-processor/index.html">TaskProcessor</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.nhpp/-n-h-p-p-event-generator/index.html">NHPPEventGenerator</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.nhpp/-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.queue/-queue/index.html">Queue</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-disposal-station/index.html">DisposalStation</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-s-resource/index.html">SResource</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-station/index.html">Station</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-bernoulli-variable/index.html">BernoulliVariable</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-counter/index.html">Counter</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-histogram-response/index.html">HistogramResponse</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-historical-variable/index.html">HistoricalVariable</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-integer-frequency-response/index.html">IntegerFrequencyResponse</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-level-response/index.html">LevelResponse</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-batching-element/index.html">ResponseBatchingElement</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-interval/index.html">ResponseInterval</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-schedule/index.html">ResponseSchedule</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-t-w-batching-element/index.html">TWBatchingElement</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-time-series-response/index.html">TimeSeriesResponse</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-variable/index.html">Variable</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.observers/-control-variate-data-collector/index.html">ControlVariateDataCollector</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-model/index.html">Model</a></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-statistical-batching-element/index.html">StatisticalBatchingElement</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">ModelElement</a> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a>, <a href="../../ksl.modeling.variable/-parent-name-ifc/index.html">ParentNameIfc</a>, <a href="../../ksl.utilities/-get-time-ifc/index.html">GetTimeIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/ModelElement.kt#L55">source</a>)</span></span></div><p class="paragraph">The internal constructor for creating model elements. A model element is some construct that is an element of a model. Model elements are added to the main model when they are constructed by supplying a <a href="parent.html">parent</a> model element. The constructed model element becomes a child to the parent in the model element hierarchy. This constructor is internal because of the interaction with the class Model, which serves as the parent to all model elements.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name.  If not provided, then a name is provided automatically by using the class type of the element and a unique number.</p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.controls.testing/-van/index.html">Van</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-event-generator/index.html">EventGenerator</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-r-empirical-list/index.html">REmpiricalList</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-element/index.html">RandomElement</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-empirical-map/index.html">RandomEmpiricalMap</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-list/index.html">RandomList</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-random-map/index.html">RandomMap</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.elements/-schedule/index.html">Schedule</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-abstract-resource-pool/index.html">AbstractResourcePool</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-blocking-queue/index.html">BlockingQueue</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-capacity-schedule/index.html">CapacitySchedule</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-conveyor/index.html">Conveyor</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-process-model/-process-activator/index.html">ProcessActivator</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-signal/index.html">Signal</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-dispatcher/index.html">TaskDispatcher</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-processor-performance/index.html">TaskProcessorPerformance</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.entity/-task-processing-system/-task-processor/index.html">TaskProcessor</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.nhpp/-n-h-p-p-event-generator/index.html">NHPPEventGenerator</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.nhpp/-n-h-p-p-time-btw-event-r-v/index.html">NHPPTimeBtwEventRV</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.queue/-queue/index.html">Queue</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-disposal-station/index.html">DisposalStation</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-s-resource/index.html">SResource</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.station/-station/index.html">Station</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-bernoulli-variable/index.html">BernoulliVariable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-counter/index.html">Counter</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-histogram-response/index.html">HistogramResponse</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-historical-variable/index.html">HistoricalVariable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-integer-frequency-response/index.html">IntegerFrequencyResponse</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-level-response/index.html">LevelResponse</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-batching-element/index.html">ResponseBatchingElement</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-interval/index.html">ResponseInterval</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-response-schedule/index.html">ResponseSchedule</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-t-w-batching-element/index.html">TWBatchingElement</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-time-series-response/index.html">TimeSeriesResponse</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.variable/-variable/index.html">Variable</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.observers/-control-variate-data-collector/index.html">ControlVariateDataCollector</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-model/index.html">Model</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-statistical-batching-element/index.html">StatisticalBatchingElement</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="-753948776%2FConstructors%2F-251573632" anchor-label="ModelElement" id="-753948776%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-model-element.html"><span>Model</span><wbr></wbr><span><span>Element</span></span></a></div>
@@ -125,7 +125,7 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The main constructor for creating model elements. A model element is some construct that is an element of a model. Model elements are added to the main model when they are constructed by supplying a <span data-unresolved-link="ksl.simulation/ModelElement/&amp;lt;init&amp;gt;/#ksl.simulation.ModelElement#kotlin.String?/PointingToCallableParameters(0)/">parent</span> model element. The constructed model element becomes a child to the parent in the model element hierarchy.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The main constructor for creating model elements. A model element is some construct that is an element of a model. Model elements are added to the main model when they are constructed by supplying a <span data-unresolved-link="ksl.simulation/ModelElement//#ksl.simulation.ModelElement#kotlin.String?/PointingToCallableParameters(0)/">parent</span> model element. The constructed model element becomes a child to the parent in the model element hierarchy.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-220905214%2FClasslikes%2F-251573632" anchor-label="Companion" id="-220905214%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -149,8 +149,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1646507998%2FClasslikes%2F-251573632" anchor-label="EventAction" id="1646507998%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-event-action/index.html"><span>Event</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1646507998%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-event-action/index.html">EventAction</a><span class="token operator">&lt;</span><a href="-event-action/index.html">T</a><span class="token operator">&gt;</span> : <a href="-event-action-ifc/index.html">ModelElement.EventActionIfc</a><span class="token operator">&lt;</span><a href="-event-action/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">A convenience base class for creating event actions associated with the model element. The class has the ability to schedule its action.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1349182814%2FClasslikes%2F-251573632" anchor-label="EventActionIfc" id="1349182814%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-event-action-ifc/index.html"><span>Event</span><wbr></wbr><span>Action</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -164,8 +179,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1813686039%2FClasslikes%2F-251573632" anchor-label="EventBuilderIfc" id="-1813686039%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-event-builder-ifc/index.html"><span>Event</span><wbr></wbr><span>Builder</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1813686039%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">interface </span><a href="-event-builder-ifc/index.html">EventBuilderIfc</a><span class="token operator">&lt;</span><a href="-event-builder-ifc/index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-813482029%2FClasslikes%2F-251573632" anchor-label="EventScheduler" id="-813482029%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-event-scheduler/index.html"><span>Event</span><wbr></wbr><span><span>Scheduler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-813482029%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-event-scheduler/index.html">EventScheduler</a><span class="token operator">&lt;</span><a href="-event-scheduler/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="-event-action-ifc/index.html">ModelElement.EventActionIfc</a><span class="token operator">&lt;</span><a href="-event-scheduler/index.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-event-builder-ifc/index.html">ModelElement.EventBuilderIfc</a><span class="token operator">&lt;</span><a href="-event-scheduler/index.html">T</a><span class="token operator">&gt; </span>, <a href="-time-unit-ifc/index.html">ModelElement.TimeUnitIfc</a><span class="token operator">&lt;</span><a href="-event-scheduler/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Uses the builder pattern to create and schedule the event and the action that is associated with the event</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1967802293%2FClasslikes%2F-251573632" anchor-label="ModelElementComparator" id="-1967802293%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-model-element-comparator/index.html"><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Comparator</span></span></a></div>
@@ -174,13 +219,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-model-element-comparator/index.html">ModelElementComparator</a></div><div class="brief "><p class="paragraph">A Comparator for comparing model elements based on getId()</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-model-element-comparator/index.html">ModelElementComparator</a> : <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Comparator.html">Comparator</a><span class="token operator">&lt;</span><a href="index.html">ModelElement</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">A Comparator for comparing model elements based on getId()</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1857704770%2FClasslikes%2F-251573632" anchor-label="QObject" id="-1857704770%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-q-object/index.html"><span><span>QObject</span></span></a></div>
@@ -195,7 +240,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="821707902%2FClasslikes%2F-251573632" anchor-label="QObjectIfc" id="821707902%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-q-object-ifc/index.html"><span>QObject</span><wbr></wbr><span><span>Ifc</span></span></a></div>
@@ -210,7 +255,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1511495490%2FClasslikes%2F-251573632" anchor-label="Status" id="1511495490%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-status/index.html"><span><span>Status</span></span></a></div>
@@ -224,8 +269,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="315458459%2FClasslikes%2F-251573632" anchor-label="TimedEventAction" id="315458459%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-timed-event-action/index.html"><span>Timed</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="315458459%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-timed-event-action/index.html">TimedEventAction</a><span class="token operator">&lt;</span><a href="-timed-event-action/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">theTimeBtwEvents<span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a></span></span><span class="token punctuation">)</span> : <a href="-event-action/index.html">ModelElement.EventAction</a><span class="token operator">&lt;</span><a href="-timed-event-action/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">A convenience base class for creating event actions associated with the model element. The class has the ability to schedule its action according to a repeating time between events.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="319012195%2FClasslikes%2F-251573632" anchor-label="TimeUnit" id="319012195%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-time-unit/index.html"><span>Time</span><wbr></wbr><span><span>Unit</span></span></a></div>
@@ -239,12 +299,27 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1980577209%2FClasslikes%2F-251573632" anchor-label="TimeUnitIfc" id="1980577209%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-time-unit-ifc/index.html"><span>Time</span><wbr></wbr><span>Unit</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1980577209%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">interface </span><a href="-time-unit-ifc/index.html">TimeUnitIfc</a><span class="token operator">&lt;</span><a href="-time-unit-ifc/index.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A Tagging interface to force the builder to specify time timeUnits after calling the in() method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1056544173%2FProperties%2F-251573632" anchor-label="afterExperimentOption" id="1056544173%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="after-experiment-option.html"><span>after</span><wbr></wbr><span>Experiment</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -259,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1834320070%2FProperties%2F-251573632" anchor-label="afterReplicationOption" id="-1834320070%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="after-replication-option.html"><span>after</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -274,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2129768750%2FProperties%2F-251573632" anchor-label="beforeExperimentOption" id="2129768750%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="before-experiment-option.html"><span>before</span><wbr></wbr><span>Experiment</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -289,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1370870745%2FProperties%2F-251573632" anchor-label="beforeReplicationOption" id="1370870745%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="before-replication-option.html"><span>before</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -304,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1556197456%2FProperties%2F-251573632" anchor-label="currentStatus" id="1556197456%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="current-status.html"><span>current</span><wbr></wbr><span><span>Status</span></span></a></div>
@@ -318,8 +393,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1444776514%2FProperties%2F-251573632" anchor-label="defaultRNStream" id="-1444776514%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-r-n-stream.html"><span>default</span><wbr></wbr><span><span>RNStream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1444776514%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="default-r-n-stream.html">defaultRNStream</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-ifc/index.html">RNStreamIfc</a></div><div class="brief "><p class="paragraph">A global uniform random number source</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1225070803%2FProperties%2F-251573632" anchor-label="executive" id="1225070803%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="executive.html"><span><span>executive</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1225070803%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="executive.html">executive</a><span class="token operator">: </span><a href="../-executive/index.html">Executive</a></div><div class="brief "><p class="paragraph">the executive that is executing the events</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="622694596%2FProperties%2F-251573632" anchor-label="id" id="622694596%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="id.html"><span><span>id</span></span></a></div>
@@ -333,8 +438,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1807666158%2FProperties%2F-251573632" anchor-label="individualElementWarmUpLength" id="-1807666158%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="individual-element-warm-up-length.html"><span>individual</span><wbr></wbr><span>Element</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Length</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1807666158%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">var </span><a href="individual-element-warm-up-length.html">individualElementWarmUpLength</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The length of time from the start of the simulation to the warm-up event. Sets the length of the warm-up for this model element.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1902908054%2FProperties%2F-251573632" anchor-label="initializationOption" id="-1902908054%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialization-option.html"><span>initialization</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -349,7 +469,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1560831417%2FProperties%2F-251573632" anchor-label="label" id="-1560831417%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="label.html"><span><span>label</span></span></a></div>
@@ -364,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1533396391%2FProperties%2F-251573632" anchor-label="leftTraversalCount" id="1533396391%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="left-traversal-count.html"><span>left</span><wbr></wbr><span>Traversal</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -379,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-945499214%2FProperties%2F-251573632" anchor-label="model" id="-945499214%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model.html"><span><span>model</span></span></a></div>
@@ -394,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-621810216%2FProperties%2F-251573632" anchor-label="modelElementsAsString" id="-621810216%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="model-elements-as-string.html"><span>model</span><wbr></wbr><span>Elements</span><wbr></wbr><span>As</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -409,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-332557328%2FProperties%2F-251573632" anchor-label="monteCarloOption" id="-332557328%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="monte-carlo-option.html"><span>monte</span><wbr></wbr><span>Carlo</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -423,8 +543,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1052807879%2FProperties%2F-251573632" anchor-label="myModelElements" id="1052807879%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-model-elements.html"><span>my</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1052807879%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-model-elements.html">myModelElements</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="index.html">ModelElement</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A collection containing the first level children of this model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-612908210%2FProperties%2F-251573632" anchor-label="mySpatialModel" id="-612908210%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-spatial-model.html"><span>my</span><wbr></wbr><span>Spatial</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-612908210%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">var </span><a href="my-spatial-model.html">mySpatialModel</a><span class="token operator">: </span><a href="../../ksl.modeling.spatial/-spatial-model/index.html">SpatialModel</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1984644908%2FProperties%2F-251573632" anchor-label="name" id="-1984644908%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="name.html"><span><span>name</span></span></a></div>
@@ -439,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-440957285%2FProperties%2F-251573632" anchor-label="numberOfModelElements" id="-440957285%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-of-model-elements.html"><span>number</span><wbr></wbr><span>Of</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -453,8 +603,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1360087725%2FProperties%2F-251573632" anchor-label="out" id="1360087725%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="--out--.html"><span><span>out</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1360087725%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="--out--.html">out</a><span class="token operator">: </span><a href="../../ksl.utilities.io/-log-print-writer/index.html">LogPrintWriter</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1987293973%2FProperties%2F-251573632" anchor-label="parent" id="1987293973%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="parent.html"><span><span>parent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1987293973%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="parent.html">parent</a><span class="token operator">: </span><a href="index.html">ModelElement</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">the parent of this model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1736859958%2FProperties%2F-251573632" anchor-label="parentName" id="-1736859958%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="parent-name.html"><span>parent</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -469,7 +649,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1552946986%2FProperties%2F-251573632" anchor-label="previousStatus" id="-1552946986%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="previous-status.html"><span>previous</span><wbr></wbr><span><span>Status</span></span></a></div>
@@ -484,7 +664,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1608226172%2FProperties%2F-251573632" anchor-label="replicationEndedOption" id="1608226172%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="replication-ended-option.html"><span>replication</span><wbr></wbr><span>Ended</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -499,7 +679,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-116802898%2FProperties%2F-251573632" anchor-label="rightTraversalCount" id="-116802898%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="right-traversal-count.html"><span>right</span><wbr></wbr><span>Traversal</span><wbr></wbr><span><span>Count</span></span></a></div>
@@ -514,7 +694,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-561861094%2FProperties%2F-251573632" anchor-label="spatialModel" id="-561861094%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="spatial-model.html"><span>spatial</span><wbr></wbr><span><span>Model</span></span></a></div>
@@ -529,7 +709,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1873108466%2FProperties%2F-251573632" anchor-label="streamProvider" id="-1873108466%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="stream-provider.html"><span>stream</span><wbr></wbr><span><span>Provider</span></span></a></div>
@@ -544,7 +724,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="136072914%2FProperties%2F-251573632" anchor-label="time" id="136072914%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time.html"><span><span>time</span></span></a></div>
@@ -558,8 +738,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1435678629%2FProperties%2F-251573632" anchor-label="timedUpdateEvent" id="1435678629%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="timed-update-event.html"><span>timed</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1435678629%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">var </span><a href="timed-update-event.html">timedUpdateEvent</a><span class="token operator">: </span><a href="../-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-nothing/index.html">Nothing</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A reference to the TimedUpdate event.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1344810474%2FProperties%2F-251573632" anchor-label="timedUpdateInterval" id="-1344810474%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="timed-update-interval.html"><span>timed</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Interval</span></span></a></div>
@@ -574,7 +769,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="384859110%2FProperties%2F-251573632" anchor-label="timedUpdateOption" id="384859110%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="timed-update-option.html"><span>timed</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -589,7 +784,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2136136169%2FProperties%2F-251573632" anchor-label="timedUpdatePriority" id="-2136136169%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="timed-update-priority.html"><span>timed</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -603,8 +798,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="752538369%2FProperties%2F-251573632" anchor-label="warmUpEvent" id="752538369%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="warm-up-event.html"><span>warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="752538369%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">var </span><a href="warm-up-event.html">warmUpEvent</a><span class="token operator">: </span><a href="../-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-nothing/index.html">Nothing</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A reference to the warm-up event</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="165766700%2FProperties%2F-251573632" anchor-label="warmUpIndicator" id="165766700%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="warm-up-indicator.html"><span>warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Indicator</span></span></a></div>
@@ -619,7 +829,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="682347530%2FProperties%2F-251573632" anchor-label="warmUpOption" id="682347530%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="warm-up-option.html"><span>warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -634,7 +844,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="282393915%2FProperties%2F-251573632" anchor-label="warmUpPriority" id="282393915%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="warm-up-priority.html"><span>warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Priority</span></span></a></div>
@@ -651,9 +861,39 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="257638797%2FFunctions%2F-251573632" anchor-label="attachModelElementObserver" id="257638797%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1622411166%2FFunctions%2F-251573632" anchor-label="afterExperiment" id="-1622411166%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-experiment.html"><span>after</span><wbr></wbr><span><span>Experiment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1622411166%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="after-experiment.html"><span class="token function">afterExperiment</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed after an experiment has been completed It is called after all replications are done and can be used to collect data from the model element, etc.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1642442833%2FFunctions%2F-251573632" anchor-label="afterReplication" id="-1642442833%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-replication.html"><span>after</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1642442833%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="after-replication.html"><span class="token function">afterReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed after each replication. It is called after replicationEnded() has been called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="257638797%2FFunctions%2F-251573632" anchor-label="attachModelElementObserver" id="257638797%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="attach-model-element-observer.html"><span>attach</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -667,8 +907,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1415252131%2FFunctions%2F-251573632" anchor-label="beforeExperiment" id="1415252131%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-experiment.html"><span>before</span><wbr></wbr><span><span>Experiment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1415252131%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="before-experiment.html"><span class="token function">beforeExperiment</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need logic to be performed prior to an experiment. The beforeExperiment method allows model elements to be set up prior to the first replication within an experiment. It is called once before any replications occur.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1964161138%2FFunctions%2F-251573632" anchor-label="beforeReplication" id="-1964161138%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="before-replication.html"><span>before</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1964161138%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="before-replication.html"><span class="token function">beforeReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed prior to each replication. It is called prior to each replication and can be used to initialize the model element. It is called before initialize() is called.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1839960996%2FFunctions%2F-251573632" anchor-label="BernoulliPicker" id="1839960996%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bernoulli-picker.html"><span>Bernoulli</span><wbr></wbr><span><span>Picker</span></span></a></div>
@@ -683,7 +953,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-888032942%2FFunctions%2F-251573632" anchor-label="BernoulliRV" id="-888032942%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-bernoulli-r-v.html"><span>Bernoulli</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -698,7 +968,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1062377473%2FFunctions%2F-251573632" anchor-label="BetaRV" id="-1062377473%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-beta-r-v.html"><span>Beta</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -713,7 +983,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="702861862%2FFunctions%2F-251573632" anchor-label="BinomialRV" id="702861862%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-binomial-r-v.html"><span>Binomial</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -728,7 +998,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1828060981%2FFunctions%2F-251573632" anchor-label="cancelTimedUpdateEvent" id="-1828060981%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cancel-timed-update-event.html"><span>cancel</span><wbr></wbr><span>Timed</span><wbr></wbr><span>Update</span><wbr></wbr><span><span>Event</span></span></a></div>
@@ -743,7 +1013,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1588073957%2FFunctions%2F-251573632" anchor-label="cancelWarmUpEvent" id="-1588073957%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cancel-warm-up-event.html"><span>cancel</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Event</span></span></a></div>
@@ -758,7 +1028,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-590438754%2FFunctions%2F-251573632" anchor-label="checkWarmUpOption" id="-590438754%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="check-warm-up-option.html"><span>check</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Option</span></span></a></div>
@@ -773,7 +1043,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-310264879%2FFunctions%2F-251573632" anchor-label="ConstantRV" id="-310264879%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-constant-r-v.html"><span>Constant</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -788,7 +1058,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1280850852%2FFunctions%2F-251573632" anchor-label="countModelElementObservers" id="1280850852%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="count-model-element-observers.html"><span>count</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -803,7 +1073,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2030089697%2FFunctions%2F-251573632" anchor-label="day" id="-2030089697%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="day.html"><span><span>day</span></span></a></div>
@@ -818,7 +1088,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="988283064%2FFunctions%2F-251573632" anchor-label="DEmpiricalList" id="988283064%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-empirical-list.html"><span>DEmpirical</span><wbr></wbr><span><span>List</span></span></a></div>
@@ -833,7 +1103,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="157844151%2FFunctions%2F-251573632" anchor-label="DEmpiricalRV" id="157844151%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-empirical-r-v.html"><span>DEmpirical</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -848,7 +1118,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2056359837%2FFunctions%2F-251573632" anchor-label="detachAllModelElementObservers" id="-2056359837%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-all-model-element-observers.html"><span>detach</span><wbr></wbr><span>All</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Observers</span></span></a></div>
@@ -863,7 +1133,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-14024065%2FFunctions%2F-251573632" anchor-label="detachModelElementObserver" id="-14024065%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="detach-model-element-observer.html"><span>detach</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Observer</span></span></a></div>
@@ -878,7 +1148,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1063138670%2FFunctions%2F-251573632" anchor-label="DPopulation" id="1063138670%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-population.html"><span><span>DPopulation</span></span></a></div>
@@ -893,7 +1163,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="609204610%2FFunctions%2F-251573632" anchor-label="DUniformList" id="609204610%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-uniform-list.html"><span>DUniform</span><wbr></wbr><span><span>List</span></span></a></div>
@@ -908,7 +1178,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2050339926%2FFunctions%2F-251573632" anchor-label="DUniformRV" id="-2050339926%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-d-uniform-r-v.html"><span>DUniform</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -923,7 +1193,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1736441729%2FFunctions%2F-251573632" anchor-label="EmpiricalRV" id="1736441729%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-empirical-r-v.html"><span>Empirical</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -938,7 +1208,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-275058445%2FFunctions%2F-251573632" anchor-label="ExponentialRV" id="-275058445%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-exponential-r-v.html"><span>Exponential</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -953,7 +1223,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="900821491%2FFunctions%2F-251573632" anchor-label="findModelElementWithWarmUpEvent" id="900821491%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="find-model-element-with-warm-up-event.html"><span>find</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span>With</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span><span>Event</span></span></a></div>
@@ -968,7 +1238,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1713108422%2FFunctions%2F-251573632" anchor-label="GammaRV" id="-1713108422%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-gamma-r-v.html"><span>Gamma</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -983,7 +1253,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1921613659%2FFunctions%2F-251573632" anchor-label="GeneralizedBetaRV" id="-1921613659%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-generalized-beta-r-v.html"><span>Generalized</span><wbr></wbr><span>Beta</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -998,7 +1268,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1987363473%2FFunctions%2F-251573632" anchor-label="GeometricRV" id="-1987363473%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-geometric-r-v.html"><span>Geometric</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1012,8 +1282,83 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1084756064%2FFunctions%2F-251573632" anchor-label="getAllCounters" id="-1084756064%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-counters.html"><span>get</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Counters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084756064%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-all-counters.html"><span class="token function">getAllCounters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-counter/index.html">Counter</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying all the Counters that are contained by any model elements within this model element. In other words, any Counters that are in the model element hierarchy below this model element.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1449313746%2FFunctions%2F-251573632" anchor-label="getAllModelElements" id="1449313746%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-model-elements.html"><span>get</span><wbr></wbr><span>All</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449313746%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-all-model-elements.html"><span class="token function">getAllModelElements</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">list<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="index.html">ModelElement</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Gets all model elements that are contained within this model element in parent-child order within the hierarchy</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="29493907%2FFunctions%2F-251573632" anchor-label="getAllRandomElements" id="29493907%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-random-elements.html"><span>get</span><wbr></wbr><span>All</span><wbr></wbr><span>Random</span><wbr></wbr><span><span>Elements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="29493907%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-all-random-elements.html"><span class="token function">getAllRandomElements</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.elements/-random-element-ifc/index.html">RandomElementIfc</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying all the RandomElementIfc and subclasses of RandomElementIfc that are contained by any model elements within this model element. In other words, any RandomElementIfc instances that are in the model element hierarchy below this model element.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1690354280%2FFunctions%2F-251573632" anchor-label="getAllResponseVariables" id="-1690354280%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-response-variables.html"><span>get</span><wbr></wbr><span>All</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1690354280%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-all-response-variables.html"><span class="token function">getAllResponseVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-response/index.html">Response</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying all the response variables that are contained by any model elements within this model element. In other words, any response variables that are in the model element hierarchy below this model element.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1022787339%2FFunctions%2F-251573632" anchor-label="getAllVariables" id="-1022787339%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-all-variables.html"><span>get</span><wbr></wbr><span>All</span><wbr></wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1022787339%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-all-variables.html"><span class="token function">getAllVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-variable/index.html">Variable</a><span class="token operator">?</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying all the variables that are contained by any model elements within this model element. In other words, any variables that are in the model element hierarchy below this model element.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-569217949%2FFunctions%2F-251573632" anchor-label="getModelElementsAsString" id="-569217949%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-model-elements-as-string.html"><span>get</span><wbr></wbr><span>Model</span><wbr></wbr><span>Elements</span><wbr></wbr><span>As</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -1022,13 +1367,88 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-model-elements-as-string.html"><span class="token function">getModelElementsAsString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a><span class="token punctuation">, </span></span><span class="parameter ">n<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the supplied StringBuilder carrying a string representation of the model element and its child model elements Useful for realizing the model element hierarchy.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-model-elements-as-string.html"><span class="token function">getModelElementsAsString</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a><span class="token punctuation">, </span></span><span class="parameter ">n<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the supplied StringBuilder carrying a string representation of the model element and its child model elements Useful for realizing the model element hierarchy.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="511266596%2FFunctions%2F-251573632" anchor-label="getThisElementsCounters" id="511266596%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-this-elements-counters.html"><span>get</span><wbr></wbr><span>This</span><wbr></wbr><span>Elements</span><wbr></wbr><span><span>Counters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="511266596%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-this-elements-counters.html"><span class="token function">getThisElementsCounters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-counter/index.html">Counter</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying the Counters that are contained only by this model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="410334414%2FFunctions%2F-251573632" anchor-label="getThisElementsModelElements" id="410334414%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-this-elements-model-elements.html"><span>get</span><wbr></wbr><span>This</span><wbr></wbr><span>Elements</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="410334414%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-this-elements-model-elements.html"><span class="token function">getThisElementsModelElements</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">list<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="index.html">ModelElement</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A list containing the (child) model elements of only this model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="672904636%2FFunctions%2F-251573632" anchor-label="getThisElementsRandomVariables" id="672904636%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-this-elements-random-variables.html"><span>get</span><wbr></wbr><span>This</span><wbr></wbr><span>Elements</span><wbr></wbr><span>Random</span><wbr></wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="672904636%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-this-elements-random-variables.html"><span class="token function">getThisElementsRandomVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying only the random variables associated carrying this element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-379451364%2FFunctions%2F-251573632" anchor-label="getThisElementsResponseVariables" id="-379451364%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-this-elements-response-variables.html"><span>get</span><wbr></wbr><span>This</span><wbr></wbr><span>Elements</span><wbr></wbr><span>Response</span><wbr></wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-379451364%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-this-elements-response-variables.html"><span class="token function">getThisElementsResponseVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-response/index.html">Response</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying the response variables that are contained only by this model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1095197366%2FFunctions%2F-251573632" anchor-label="getThisElementsVariables" id="1095197366%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-this-elements-variables.html"><span>get</span><wbr></wbr><span>This</span><wbr></wbr><span>Elements</span><wbr></wbr><span><span>Variables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1095197366%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="get-this-elements-variables.html"><span class="token function">getThisElementsVariables</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">c<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-collection/index.html">MutableCollection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.variable/-variable/index.html">Variable</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills up the provided collection carrying only the variables associated carrying this element</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1876680814%2FFunctions%2F-251573632" anchor-label="getWarmUpEventTime" id="1876680814%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="get-warm-up-event-time.html"><span>get</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Time</span></span></a></div>
@@ -1043,7 +1463,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1613397093%2FFunctions%2F-251573632" anchor-label="hour" id="-1613397093%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hour.html"><span><span>hour</span></span></a></div>
@@ -1058,7 +1478,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-328194857%2FFunctions%2F-251573632" anchor-label="Hyper2ExponentialRV" id="-328194857%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-hyper2-exponential-r-v.html"><span>Hyper2Exponential</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1073,7 +1493,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-705692929%2FFunctions%2F-251573632" anchor-label="initializationOrder" id="-705692929%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialization-order.html"><span>initialization</span><wbr></wbr><span><span>Order</span></span></a></div>
@@ -1082,13 +1502,28 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="initialization-order.html"><span class="token function">initializationOrder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills a StringBuilder carrying the model element names in the order that they will be initialized</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="initialization-order.html"><span class="token function">initializationOrder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sb<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fills a StringBuilder carrying the model element names in the order that they will be initialized</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1124969967%2FFunctions%2F-251573632" anchor-label="initialize" id="1124969967%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1124969967%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-845452666%2FFunctions%2F-251573632" anchor-label="isAnyWarmUpEventScheduled" id="-845452666%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-any-warm-up-event-scheduled.html"><span>is</span><wbr></wbr><span>Any</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Scheduled</span></span></a></div>
@@ -1103,7 +1538,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1763486148%2FFunctions%2F-251573632" anchor-label="isModelElementObserverAttached" id="1763486148%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-model-element-observer-attached.html"><span>is</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span>Observer</span><wbr></wbr><span><span>Attached</span></span></a></div>
@@ -1118,7 +1553,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1555283923%2FFunctions%2F-251573632" anchor-label="isStatus" id="1555283923%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-status.html"><span>is</span><wbr></wbr><span><span>Status</span></span></a></div>
@@ -1133,7 +1568,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1480703950%2FFunctions%2F-251573632" anchor-label="isTimedUpdateEventScheduled" id="-1480703950%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-timed-update-event-scheduled.html"><span>is</span><wbr></wbr><span>Timed</span><wbr></wbr><span>Update</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Scheduled</span></span></a></div>
@@ -1148,7 +1583,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1880293502%2FFunctions%2F-251573632" anchor-label="isWarmUpEventScheduled" id="-1880293502%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-warm-up-event-scheduled.html"><span>is</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Scheduled</span></span></a></div>
@@ -1163,7 +1598,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1393020692%2FFunctions%2F-251573632" anchor-label="JohnsonBRV" id="1393020692%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-johnson-b-r-v.html"><span>Johnson</span><wbr></wbr><span><span>BRV</span></span></a></div>
@@ -1178,7 +1613,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1015794491%2FFunctions%2F-251573632" anchor-label="LaplaceRV" id="-1015794491%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-laplace-r-v.html"><span>Laplace</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1193,7 +1628,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-129964689%2FFunctions%2F-251573632" anchor-label="LogisticRV" id="-129964689%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-logistic-r-v.html"><span>Logistic</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1208,7 +1643,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1564727081%2FFunctions%2F-251573632" anchor-label="LogLogisticRV" id="-1564727081%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-log-logistic-r-v.html"><span>Log</span><wbr></wbr><span>Logistic</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1223,7 +1658,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="325757630%2FFunctions%2F-251573632" anchor-label="LognormalRV" id="325757630%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-lognormal-r-v.html"><span>Lognormal</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1238,7 +1673,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="508441818%2FFunctions%2F-251573632" anchor-label="millisecond" id="508441818%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="millisecond.html"><span><span>millisecond</span></span></a></div>
@@ -1253,7 +1688,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-518381333%2FFunctions%2F-251573632" anchor-label="minute" id="-518381333%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="minute.html"><span><span>minute</span></span></a></div>
@@ -1268,7 +1703,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="397507613%2FFunctions%2F-251573632" anchor-label="MixtureRV" id="397507613%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-mixture-r-v.html"><span>Mixture</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1282,8 +1717,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-545908539%2FFunctions%2F-251573632" anchor-label="montecarlo" id="-545908539%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="montecarlo.html"><span><span>montecarlo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-545908539%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="montecarlo.html"><span class="token function">montecarlo</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed after before replication. It is called after beforeReplication but prior to afterReplication() and can be used to perform pure monte-carlo (non-event type) simulations carrying the model element</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-679650954%2FFunctions%2F-251573632" anchor-label="NormalRV" id="-679650954%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-normal-r-v.html"><span>Normal</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1297,8 +1747,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-763026070%2FFunctions%2F-251573632" anchor-label="notifyModelElementObservers" id="-763026070%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="notify-model-element-observers.html"><span>notify</span><wbr></wbr><span>Model</span><wbr></wbr><span>Element</span><wbr></wbr><span><span>Observers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-763026070%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="notify-model-element-observers.html"><span class="token function">notifyModelElementObservers</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newValue<span class="token operator">: </span><a href="-status/index.html">ModelElement.Status</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Notify the observers</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1168342718%2FFunctions%2F-251573632" anchor-label="PearsonType5RV" id="1168342718%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pearson-type5-r-v.html"><span>Pearson</span><wbr></wbr><span><span>Type5RV</span></span></a></div>
@@ -1313,7 +1778,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1607450916%2FFunctions%2F-251573632" anchor-label="PearsonType6RV" id="1607450916%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-pearson-type6-r-v.html"><span>Pearson</span><wbr></wbr><span><span>Type6RV</span></span></a></div>
@@ -1328,7 +1793,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2030089929%2FFunctions%2F-251573632" anchor-label="PoissonRV" id="-2030089929%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-poisson-r-v.html"><span>Poisson</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1343,7 +1808,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1632977025%2FFunctions%2F-251573632" anchor-label="PWCEmpiricalRV" id="1632977025%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-p-w-c-empirical-r-v.html"><span>PWCEmpirical</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1357,8 +1822,68 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="-1767387867%2FFunctions%2F-251573632" anchor-label="registerConditionalActions" id="-1767387867%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="register-conditional-actions.html"><span>register</span><wbr></wbr><span>Conditional</span><wbr></wbr><span><span>Actions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1767387867%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="register-conditional-actions.html"><span class="token function">registerConditionalActions</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need to register conditional actions prior to a replication with the executive. It is called once before each replication, right after the method initialize() is called. The user can use the executive property to access the Executive</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1856205376%2FFunctions%2F-251573632" anchor-label="removedFromModel" id="-1856205376%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="removed-from-model.html"><span>removed</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1856205376%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="removed-from-model.html"><span class="token function">removedFromModel</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed when a model element is removed from a model</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="308395889%2FFunctions%2F-251573632" anchor-label="replicationEnded" id="308395889%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replication-ended.html"><span>replication</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="308395889%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="replication-ended.html"><span class="token function">replicationEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed when the replication ends and prior to the calling of afterReplication(). It is called when each replication ends and can be used to collect data from the model element, etc.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1380382169%2FFunctions%2F-251573632" anchor-label="schedule" id="1380382169%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="schedule.html"><span><span>schedule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1380382169%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt; </span><a href="schedule.html"><span class="token function">schedule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">action<span class="token operator">: </span><a href="-event-action-ifc/index.html">ModelElement.EventActionIfc</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-event-builder-ifc/index.html">ModelElement.EventBuilderIfc</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates an EventScheduler which can be used to create and schedule events on the simulation calendar reactingWith a fluency pattern.</p></div><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt; </span><a href="schedule.html"><span class="token function">schedule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">eventAction<span class="token operator">: </span><a href="-event-action-ifc/index.html">ModelElement.EventActionIfc</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeToEvent<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="schedule.html">T</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt; </span><a href="schedule.html"><span class="token function">schedule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">eventAction<span class="token operator">: </span><a href="-event-action-ifc/index.html">ModelElement.EventActionIfc</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeToEvent<span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a><span class="token punctuation">, </span></span><span class="parameter ">message<span class="token operator">: </span><a href="schedule.html">T</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-k-s-l-event/index.html">KSLEvent</a><span class="token operator">&lt;</span><a href="schedule.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Allows event actions to be scheduled by model elements</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1765314933%2FFunctions%2F-251573632" anchor-label="second" id="-1765314933%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="second.html"><span><span>second</span></span></a></div>
@@ -1373,7 +1898,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-747882239%2FFunctions%2F-251573632" anchor-label="setAfterExperimentOptionForModelElements" id="-747882239%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-after-experiment-option-for-model-elements.html"><span>set</span><wbr></wbr><span>After</span><wbr></wbr><span>Experiment</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1388,7 +1913,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1081846014%2FFunctions%2F-251573632" anchor-label="setAfterReplicationOptionForModelElements" id="-1081846014%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-after-replication-option-for-model-elements.html"><span>set</span><wbr></wbr><span>After</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1403,7 +1928,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1312905738%2FFunctions%2F-251573632" anchor-label="setBeforeExperimentOptionForModelElements" id="-1312905738%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-before-experiment-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Before</span><wbr></wbr><span>Experiment</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1418,7 +1943,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1417705299%2FFunctions%2F-251573632" anchor-label="setBeforeReplicationOptionForModelElements" id="-1417705299%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-before-replication-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Before</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1433,7 +1958,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-139278414%2FFunctions%2F-251573632" anchor-label="setInitializationOptionForModelElements" id="-139278414%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-initialization-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Initialization</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1448,7 +1973,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-755921736%2FFunctions%2F-251573632" anchor-label="setMonteCarloOptionForModelElements" id="-755921736%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-monte-carlo-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Monte</span><wbr></wbr><span>Carlo</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1463,7 +1988,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2043769404%2FFunctions%2F-251573632" anchor-label="setReplicationEndedOptionForModelElements" id="-2043769404%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-replication-ended-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Replication</span><wbr></wbr><span>Ended</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1478,7 +2003,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1866991738%2FFunctions%2F-251573632" anchor-label="setTimedUpdateOptionForModelElements" id="1866991738%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-timed-update-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Timed</span><wbr></wbr><span>Update</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1493,7 +2018,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1853659054%2FFunctions%2F-251573632" anchor-label="setWarmUpOptionForModelElements" id="-1853659054%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="set-warm-up-option-for-model-elements.html"><span>set</span><wbr></wbr><span>Warm</span><wbr></wbr><span>Up</span><wbr></wbr><span>Option</span><wbr></wbr><span>For</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Elements</span></span></a></div>
@@ -1508,7 +2033,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-910921590%2FFunctions%2F-251573632" anchor-label="ShiftedGeometricRV" id="-910921590%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-shifted-geometric-r-v.html"><span>Shifted</span><wbr></wbr><span>Geometric</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1523,7 +2048,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="430494525%2FFunctions%2F-251573632" anchor-label="ShiftedRV" id="430494525%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-shifted-r-v.html"><span>Shifted</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1537,8 +2062,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1256679088%2FFunctions%2F-251573632" anchor-label="stopReplication" id="1256679088%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stop-replication.html"><span>stop</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1256679088%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="stop-replication.html"><span class="token function">stopReplication</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">msg<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Causes the current replication to stop processing events.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="136072914%2FFunctions%2F-251573632" anchor-label="time" id="136072914%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="time.html"><span><span>time</span></span></a></div>
@@ -1552,8 +2092,23 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="1528184155%2FFunctions%2F-251573632" anchor-label="timedUpdate" id="1528184155%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="timed-update.html"><span>timed</span><wbr></wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1528184155%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="timed-update.html"><span class="token function">timedUpdate</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed at each timed update event during each replication. It is called for each timed update during each replication if the model element reacts to timed update actions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1462198035%2FFunctions%2F-251573632" anchor-label="toString" id="1462198035%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -1568,7 +2123,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1779425397%2FFunctions%2F-251573632" anchor-label="TriangularRV" id="-1779425397%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-triangular-r-v.html"><span>Triangular</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1583,7 +2138,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1755905334%2FFunctions%2F-251573632" anchor-label="TruncatedNormalRV" id="1755905334%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-truncated-normal-r-v.html"><span>Truncated</span><wbr></wbr><span>Normal</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1598,7 +2153,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-622011464%2FFunctions%2F-251573632" anchor-label="TruncatedRV" id="-622011464%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-truncated-r-v.html"><span>Truncated</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1613,7 +2168,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-172557972%2FFunctions%2F-251573632" anchor-label="UniformRV" id="-172557972%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-uniform-r-v.html"><span>Uniform</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1627,8 +2182,38 @@ R1.2.6        </div>
               </div>
             </div>
           </div>
+<a data-name="530944982%2FFunctions%2F-251573632" anchor-label="update" id="530944982%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update.html"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="530944982%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The update method can be called at reactor defined points to indicate that the model element has been changed in some fashion that the update status observers need notification. This method ensures that each contained model element that requires an update action will perform its actions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-284592001%2FFunctions%2F-251573632" anchor-label="warmUp" id="-284592001%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="warm-up.html"><span>warm</span><wbr></wbr><span><span>Up</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-284592001%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="warm-up.html"><span class="token function">warmUp</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed at the warm-up event during each replication. It is called once during each replication if the model element reacts to warm-up actions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="22498187%2FFunctions%2F-251573632" anchor-label="week" id="22498187%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="week.html"><span><span>week</span></span></a></div>
@@ -1643,7 +2228,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1617860863%2FFunctions%2F-251573632" anchor-label="WeibullRV" id="-1617860863%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-weibull-r-v.html"><span>Weibull</span><wbr></wbr><span><span>RV</span></span></a></div>
@@ -1663,17 +2248,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

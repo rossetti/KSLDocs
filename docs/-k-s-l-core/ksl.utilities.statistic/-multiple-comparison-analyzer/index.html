@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>MultipleComparisonAnalyzer</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
 <script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
@@ -25,20 +25,18 @@
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-    <nav class="navigation theme-dark" id="navigation-wrapper">
-            <a class="library-name--link" href="../../../index.html">
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
                     KSLCore
             </a>
         <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
@@ -46,10 +44,10 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.6        </div>
+R1.2.7        </div>
         <div class="navigation-controls">
-        <div class="filter-section filter-section_loading" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active=""
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
                         data-filter=":/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
@@ -59,9 +57,9 @@ R1.2.6        </div>
                         aria-expanded="false"
                         aria-label="Toggle source sets"
                 ></button>
-                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
-                    <div class="dropdown--header"><span>Platform filter</span>
-                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
                             <i class="ui-kit-icon ui-kit-icon_cross"></i>
                         </button>
                     </div>
@@ -76,7 +74,7 @@ R1.2.6        </div>
                 </ul>
                 <div class="dropdown--overlay"></div>
             </div>
-        </div>
+        </ul>
             <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
                     type="button">Switch theme
             </button>
@@ -84,39 +82,41 @@ R1.2.6        </div>
                 API
             </div>
         </div>
-    </nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
-                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
-                        data-role="dropdown-listbox">
-                        <div class="dropdown--header">
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
                             <span>
                                     KSLCore
                             </span>
-                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
-                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
-                            </button>
-                        </div>
-                        <div class="sidebar--inner" id="sideMenu"></div>
-                    </ul>
-                    <div class="dropdown--overlay"></div>
-                </div>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div id="main">
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
 <div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.statistic/MultipleComparisonAnalyzer///PointingToDeclaration//-251573632">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.statistic</a><span class="delimiter">/</span><span class="current">MultipleComparisonAnalyzer</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Multiple</span><wbr></wbr><span>Comparison</span><wbr></wbr><span><span>Analyzer</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MultipleComparisonAnalyzer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dataMap<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/statistic/MultipleComparisonAnalyzer.kt#L147">source</a>)</span></span></div><p class="paragraph">Holds data to perform multiple comparisons Performs pairwise comparisons and computes pairwise differences and variances.</p><p class="paragraph">The user must supply the data samples over which the comparison will be made. This is supplied in a Map with the key representing a name (identifier) for the data and an array representing the observations. This class computes all the pairwise differences and the variances of the differences in the form of tabulated statistics.</p><h4 class="">Parameters</h4><div class="table"><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>data</span><wbr></wbr><span><span>Map</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the map holding the data</p></div></div></div></div><div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response that is being analyzed</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">MultipleComparisonAnalyzer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dataMap<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">responseName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities/-identity-ifc/index.html">IdentityIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/statistic/MultipleComparisonAnalyzer.kt#L147">source</a>)</span></span></div><p class="paragraph">Holds data to perform multiple comparisons Performs pairwise comparisons and computes pairwise differences and variances.</p><p class="paragraph">The user must supply the data samples over which the comparison will be made. This is supplied in a Map with the key representing a name (identifier) for the data and an array representing the observations. This class computes all the pairwise differences and the variances of the differences in the form of tabulated statistics.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>data</span><wbr></wbr><span><span>Map</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the map holding the data</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>response</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the response that is being analyzed</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
-        <h2 class="">Constructors</h2>
+        <h2 class="tableheader">Constructors</h2>
         <div class="table"><a data-name="777125266%2FConstructors%2F-251573632" anchor-label="MultipleComparisonAnalyzer" id="777125266%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-multiple-comparison-analyzer.html"><span>Multiple</span><wbr></wbr><span>Comparison</span><wbr></wbr><span><span>Analyzer</span></span></a></div>
@@ -133,9 +133,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="TYPE">
-        <h2 class="">Types</h2>
+        <h2 class="tableheader">Types</h2>
         <div class="table"><a data-name="-737116121%2FClasslikes%2F-251573632" anchor-label="Companion" id="-737116121%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
@@ -152,9 +152,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
+        <h2 class="tableheader">Properties</h2>
         <div class="table"><a data-name="1249524766%2FProperties%2F-251573632" anchor-label="allDataAsArray" id="1249524766%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-data-as-array.html"><span>all</span><wbr></wbr><span>Data</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Array</span></span></a></div>
@@ -169,7 +169,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="873563943%2FProperties%2F-251573632" anchor-label="allDiffBtwItemsAndMaxOfRest" id="873563943%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-diff-btw-items-and-max-of-rest.html"><span>all</span><wbr></wbr><span>Diff</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Items</span><wbr></wbr><span>And</span><wbr></wbr><span>Max</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Rest</span></span></a></div>
@@ -184,7 +184,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-789780359%2FProperties%2F-251573632" anchor-label="allDiffBtwItemsAndMinOfRest" id="-789780359%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="all-diff-btw-items-and-min-of-rest.html"><span>all</span><wbr></wbr><span>Diff</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Items</span><wbr></wbr><span>And</span><wbr></wbr><span>Min</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Rest</span></span></a></div>
@@ -199,7 +199,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1169640797%2FProperties%2F-251573632" anchor-label="averagesOfData" id="-1169640797%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="averages-of-data.html"><span>averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -214,7 +214,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1927358551%2FProperties%2F-251573632" anchor-label="averagesOfDifferences" id="1927358551%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="averages-of-differences.html"><span>averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -229,7 +229,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1397313250%2FProperties%2F-251573632" anchor-label="dataNames" id="1397313250%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="data-names.html"><span>data</span><wbr></wbr><span><span>Names</span></span></a></div>
@@ -244,7 +244,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1806109391%2FProperties%2F-251573632" anchor-label="defaultIndifferenceZone" id="-1806109391%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-indifference-zone.html"><span>default</span><wbr></wbr><span>Indifference</span><wbr></wbr><span><span>Zone</span></span></a></div>
@@ -259,7 +259,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1472986455%2FProperties%2F-251573632" anchor-label="defaultLevel" id="1472986455%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-level.html"><span>default</span><wbr></wbr><span><span>Level</span></span></a></div>
@@ -274,7 +274,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1120190905%2FProperties%2F-251573632" anchor-label="indexOfMaximumAverageOfData" id="1120190905%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index-of-maximum-average-of-data.html"><span>index</span><wbr></wbr><span>Of</span><wbr></wbr><span>Maximum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -289,7 +289,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="520088005%2FProperties%2F-251573632" anchor-label="indexOfMaximumOfAveragesOfDifferences" id="520088005%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index-of-maximum-of-averages-of-differences.html"><span>index</span><wbr></wbr><span>Of</span><wbr></wbr><span>Maximum</span><wbr></wbr><span>Of</span><wbr></wbr><span>Averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -304,7 +304,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1704573223%2FProperties%2F-251573632" anchor-label="indexOfMinimumAverageOfData" id="1704573223%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index-of-minimum-average-of-data.html"><span>index</span><wbr></wbr><span>Of</span><wbr></wbr><span>Minimum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -319,7 +319,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1804660659%2FProperties%2F-251573632" anchor-label="indexOfMinimumOfAveragesOfDifferences" id="1804660659%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index-of-minimum-of-averages-of-differences.html"><span>index</span><wbr></wbr><span>Of</span><wbr></wbr><span>Minimum</span><wbr></wbr><span>Of</span><wbr></wbr><span>Averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -334,7 +334,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="55459356%2FProperties%2F-251573632" anchor-label="maximumAverageOfData" id="55459356%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-average-of-data.html"><span>maximum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -349,7 +349,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-481327512%2FProperties%2F-251573632" anchor-label="maximumOfAveragesOfDifferences" id="-481327512%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="maximum-of-averages-of-differences.html"><span>maximum</span><wbr></wbr><span>Of</span><wbr></wbr><span>Averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -364,7 +364,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="675982064%2FProperties%2F-251573632" anchor-label="maxVarianceOfDifferences" id="675982064%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-variance-of-differences.html"><span>max</span><wbr></wbr><span>Variance</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -379,7 +379,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="2123768426%2FProperties%2F-251573632" anchor-label="mcbMaxIntervals" id="2123768426%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -394,7 +394,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1712615622%2FProperties%2F-251573632" anchor-label="mcbMaxIntervalsAsMap" id="1712615622%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals-as-map.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -409,7 +409,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1557383959%2FProperties%2F-251573632" anchor-label="mcbMaxIntervalsAsSB" id="-1557383959%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals-as-s-b.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>SB</span></span></a></div>
@@ -418,13 +418,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mcb-max-intervals-as-s-b.html">mcbMaxIntervalsAsSB</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB maximum intervals based on default indifference zone setting</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mcb-max-intervals-as-s-b.html">mcbMaxIntervalsAsSB</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB maximum intervals based on default indifference zone setting</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="471361496%2FProperties%2F-251573632" anchor-label="mcbMinIntervals" id="471361496%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -439,7 +439,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1676304408%2FProperties%2F-251573632" anchor-label="mcbMinIntervalsAsMap" id="1676304408%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals-as-map.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -454,7 +454,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2112744617%2FProperties%2F-251573632" anchor-label="mcbMinIntervalsAsSB" id="-2112744617%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals-as-s-b.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>SB</span></span></a></div>
@@ -463,13 +463,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mcb-min-intervals-as-s-b.html">mcbMinIntervalsAsSB</a><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB minimum intervals</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="mcb-min-intervals-as-s-b.html">mcbMinIntervalsAsSB</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB minimum intervals</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="639841674%2FProperties%2F-251573632" anchor-label="minimumAverageOfData" id="639841674%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="minimum-average-of-data.html"><span>minimum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -484,7 +484,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="803245142%2FProperties%2F-251573632" anchor-label="minimumOfAveragesOfDifferences" id="803245142%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="minimum-of-averages-of-differences.html"><span>minimum</span><wbr></wbr><span>Of</span><wbr></wbr><span>Averages</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -499,7 +499,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-647634502%2FProperties%2F-251573632" anchor-label="nameOfMaximumAverageOfData" id="-647634502%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="name-of-maximum-average-of-data.html"><span>name</span><wbr></wbr><span>Of</span><wbr></wbr><span>Maximum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -514,7 +514,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="899424608%2FProperties%2F-251573632" anchor-label="nameOfMaximumAverageOfDifferences" id="899424608%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="name-of-maximum-average-of-differences.html"><span>name</span><wbr></wbr><span>Of</span><wbr></wbr><span>Maximum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -529,7 +529,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-63252184%2FProperties%2F-251573632" anchor-label="nameOfMinimumAverageOfData" id="-63252184%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="name-of-minimum-average-of-data.html"><span>name</span><wbr></wbr><span>Of</span><wbr></wbr><span>Minimum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -544,7 +544,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-514551246%2FProperties%2F-251573632" anchor-label="nameOfMinimumAverageOfDifferences" id="-514551246%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="name-of-minimum-average-of-differences.html"><span>name</span><wbr></wbr><span>Of</span><wbr></wbr><span>Minimum</span><wbr></wbr><span>Average</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -559,7 +559,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1450979676%2FProperties%2F-251573632" anchor-label="namesOfPairedDifferences" id="1450979676%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="names-of-paired-differences.html"><span>names</span><wbr></wbr><span>Of</span><wbr></wbr><span>Paired</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -574,7 +574,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-749277802%2FProperties%2F-251573632" anchor-label="numberDatasets" id="-749277802%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="number-datasets.html"><span>number</span><wbr></wbr><span><span>Datasets</span></span></a></div>
@@ -589,7 +589,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="998547521%2FProperties%2F-251573632" anchor-label="pairedDifferenceStatistics" id="998547521%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="paired-difference-statistics.html"><span>paired</span><wbr></wbr><span>Difference</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -604,7 +604,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1475332407%2FProperties%2F-251573632" anchor-label="statistics" id="1475332407%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistics.html"><span><span>statistics</span></span></a></div>
@@ -619,7 +619,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="934278429%2FProperties%2F-251573632" anchor-label="variancesOfData" id="934278429%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="variances-of-data.html"><span>variances</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -634,7 +634,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-226817891%2FProperties%2F-251573632" anchor-label="variancesOfDifferences" id="-226817891%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="variances-of-differences.html"><span>variances</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Differences</span></span></a></div>
@@ -651,9 +651,9 @@ R1.2.6        </div>
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
+        <h2 class="tableheader">Functions</h2>
         <div class="table"><a data-name="-1615145550%2FFunctions%2F-251573632" anchor-label="assignData" id="-1615145550%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="assign-data.html"><span>assign</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -668,7 +668,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1949419071%2FFunctions%2F-251573632" anchor-label="average" id="-1949419071%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="average.html"><span><span>average</span></span></a></div>
@@ -683,7 +683,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1141897539%2FFunctions%2F-251573632" anchor-label="averageDifference" id="1141897539%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="average-difference.html"><span>average</span><wbr></wbr><span><span>Difference</span></span></a></div>
@@ -698,7 +698,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1548512457%2FFunctions%2F-251573632" anchor-label="confidenceIntervalsOfData" id="1548512457%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="confidence-intervals-of-data.html"><span>confidence</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -713,7 +713,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1063521254%2FFunctions%2F-251573632" anchor-label="confidenceIntervalsOfDifferenceData" id="1063521254%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="confidence-intervals-of-difference-data.html"><span>confidence</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>Of</span><wbr></wbr><span>Difference</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -728,7 +728,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-2041060655%2FFunctions%2F-251573632" anchor-label="confidenceIntervalsOnData" id="-2041060655%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="confidence-intervals-on-data.html"><span>confidence</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -737,13 +737,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="confidence-intervals-on-data.html"><span class="token function">confidenceIntervalsOnData</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for the confidence intervals on the datasets at the provided level</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="confidence-intervals-on-data.html"><span class="token function">confidenceIntervalsOnData</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for the confidence intervals on the datasets at the provided level</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1455843346%2FFunctions%2F-251573632" anchor-label="confidenceIntervalsOnDifferenceData" id="-1455843346%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="confidence-intervals-on-difference-data.html"><span>confidence</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>On</span><wbr></wbr><span>Difference</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -752,13 +752,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="confidence-intervals-on-difference-data.html"><span class="token function">confidenceIntervalsOnDifferenceData</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for the confidence intervals on the differences for the datasets at the provided level</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="confidence-intervals-on-difference-data.html"><span class="token function">confidenceIntervalsOnDifferenceData</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for the confidence intervals on the differences for the datasets at the provided level</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="758349289%2FFunctions%2F-251573632" anchor-label="contains" id="758349289%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains.html"><span><span>contains</span></span></a></div>
@@ -773,7 +773,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1782103884%2FFunctions%2F-251573632" anchor-label="data" id="-1782103884%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="data.html"><span><span>data</span></span></a></div>
@@ -788,7 +788,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1094977226%2FFunctions%2F-251573632" anchor-label="diffBtwItemAndMaxOfRest" id="-1094977226%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="diff-btw-item-and-max-of-rest.html"><span>diff</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Item</span><wbr></wbr><span>And</span><wbr></wbr><span>Max</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Rest</span></span></a></div>
@@ -803,7 +803,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1374779530%2FFunctions%2F-251573632" anchor-label="diffBtwItemAndMinOfRest" id="-1374779530%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="diff-btw-item-and-min-of-rest.html"><span>diff</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Item</span><wbr></wbr><span>And</span><wbr></wbr><span>Min</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Rest</span></span></a></div>
@@ -818,7 +818,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1170474835%2FFunctions%2F-251573632" anchor-label="differenceSummaryStatistics" id="1170474835%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="difference-summary-statistics.html"><span>difference</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -827,13 +827,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="difference-summary-statistics.html"><span class="token function">differenceSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for a summary report on the pairwise differences</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="difference-summary-statistics.html"><span class="token function">differenceSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for a summary report on the pairwise differences</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="852358725%2FFunctions%2F-251573632" anchor-label="halfWidthDifferenceSummaryStatistics" id="852358725%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="half-width-difference-summary-statistics.html"><span>half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Difference</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -842,13 +842,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="half-width-difference-summary-statistics.html"><span class="token function">halfWidthDifferenceSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for a half-width report on the pairwise differences</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="half-width-difference-summary-statistics.html"><span class="token function">halfWidthDifferenceSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A StringBuilder representation for a half-width report on the pairwise differences</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1185925800%2FFunctions%2F-251573632" anchor-label="halfWidthSummaryStatistics" id="1185925800%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="half-width-summary-statistics.html"><span>half</span><wbr></wbr><span>Width</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -857,13 +857,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="half-width-summary-statistics.html"><span class="token function">halfWidthSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A half-width summary report on the statistics for each data set</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="half-width-summary-statistics.html"><span class="token function">halfWidthSummaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">level<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultLevel</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">A half-width summary report on the statistics for each data set</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-1032977320%2FFunctions%2F-251573632" anchor-label="indexOfName" id="-1032977320%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="index-of-name.html"><span>index</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Name</span></span></a></div>
@@ -878,7 +878,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1706994848%2FFunctions%2F-251573632" anchor-label="maxScreeningIntervals" id="-1706994848%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-screening-intervals.html"><span>max</span><wbr></wbr><span>Screening</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -893,7 +893,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="437646916%2FFunctions%2F-251573632" anchor-label="mcbIntervalData" id="437646916%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-interval-data.html"><span>mcb</span><wbr></wbr><span>Interval</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -908,7 +908,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-479037632%2FFunctions%2F-251573632" anchor-label="mcbMaxInterval" id="-479037632%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-interval.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span><span>Interval</span></span></a></div>
@@ -923,7 +923,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1975342874%2FFunctions%2F-251573632" anchor-label="mcbMaxIntervals" id="1975342874%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -938,7 +938,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-366854594%2FFunctions%2F-251573632" anchor-label="mcbMaxIntervalsAsMap" id="-366854594%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals-as-map.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -953,7 +953,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1709470981%2FFunctions%2F-251573632" anchor-label="mcbMaxIntervalsAsSB" id="-1709470981%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-max-intervals-as-s-b.html"><span>mcb</span><wbr></wbr><span>Max</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>SB</span></span></a></div>
@@ -962,13 +962,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mcb-max-intervals-as-s-b.html"><span class="token function">mcbMaxIntervalsAsSB</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultIndifferenceZone</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB maximum intervals</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mcb-max-intervals-as-s-b.html"><span class="token function">mcbMaxIntervalsAsSB</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultIndifferenceZone</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB maximum intervals</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="-404883950%2FFunctions%2F-251573632" anchor-label="mcbMinInterval" id="-404883950%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-interval.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span><span>Interval</span></span></a></div>
@@ -983,7 +983,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="807392364%2FFunctions%2F-251573632" anchor-label="mcbMinIntervals" id="807392364%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -998,7 +998,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="917718060%2FFunctions%2F-251573632" anchor-label="mcbMinIntervalsAsMap" id="917718060%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals-as-map.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Map</span></span></a></div>
@@ -1013,7 +1013,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="964366157%2FFunctions%2F-251573632" anchor-label="mcbMinIntervalsAsSB" id="964366157%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-min-intervals-as-s-b.html"><span>mcb</span><wbr></wbr><span>Min</span><wbr></wbr><span>Intervals</span><wbr></wbr><span>As</span><wbr></wbr><span><span>SB</span></span></a></div>
@@ -1022,13 +1022,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mcb-min-intervals-as-s-b.html"><span class="token function">mcbMinIntervalsAsSB</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultIndifferenceZone</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB minimum intervals</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mcb-min-intervals-as-s-b.html"><span class="token function">mcbMinIntervalsAsSB</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">delta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultIndifferenceZone</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the MCB minimum intervals</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="732071122%2FFunctions%2F-251573632" anchor-label="mcbResultData" id="732071122%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-result-data.html"><span>mcb</span><wbr></wbr><span>Result</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -1043,7 +1043,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1107050115%2FFunctions%2F-251573632" anchor-label="mcbScreeningIntervalData" id="1107050115%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="mcb-screening-interval-data.html"><span>mcb</span><wbr></wbr><span>Screening</span><wbr></wbr><span>Interval</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -1058,7 +1058,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1981697458%2FFunctions%2F-251573632" anchor-label="minScreeningIntervals" id="-1981697458%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="min-screening-intervals.html"><span>min</span><wbr></wbr><span>Screening</span><wbr></wbr><span><span>Intervals</span></span></a></div>
@@ -1073,7 +1073,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-940564326%2FFunctions%2F-251573632" anchor-label="observationData" id="-940564326%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="observation-data.html"><span>observation</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -1088,7 +1088,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1710285947%2FFunctions%2F-251573632" anchor-label="pairedDifference" id="-1710285947%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="paired-difference.html"><span>paired</span><wbr></wbr><span><span>Difference</span></span></a></div>
@@ -1103,7 +1103,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="786665443%2FFunctions%2F-251573632" anchor-label="pairedDifferenceStatistic" id="786665443%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="paired-difference-statistic.html"><span>paired</span><wbr></wbr><span>Difference</span><wbr></wbr><span><span>Statistic</span></span></a></div>
@@ -1118,7 +1118,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1787923885%2FFunctions%2F-251573632" anchor-label="print" id="-1787923885%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="print.html"><span><span>print</span></span></a></div>
@@ -1133,7 +1133,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1578654444%2FFunctions%2F-251573632" anchor-label="resultsAsDatabase" id="1578654444%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="results-as-database.html"><span>results</span><wbr></wbr><span>As</span><wbr></wbr><span><span>Database</span></span></a></div>
@@ -1148,7 +1148,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1505337171%2FFunctions%2F-251573632" anchor-label="screenForMaximum" id="-1505337171%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="screen-for-maximum.html"><span>screen</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Maximum</span></span></a></div>
@@ -1163,7 +1163,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-920954853%2FFunctions%2F-251573632" anchor-label="screenForMinimum" id="-920954853%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="screen-for-minimum.html"><span>screen</span><wbr></wbr><span>For</span><wbr></wbr><span><span>Minimum</span></span></a></div>
@@ -1178,7 +1178,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="1074310045%2FFunctions%2F-251573632" anchor-label="secondStageSampleSizeNM" id="1074310045%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="second-stage-sample-size-n-m.html"><span>second</span><wbr></wbr><span>Stage</span><wbr></wbr><span>Sample</span><wbr></wbr><span>Size</span><wbr></wbr><span><span>NM</span></span></a></div>
@@ -1193,7 +1193,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1759474828%2FFunctions%2F-251573632" anchor-label="statistic" id="-1759474828%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistic.html"><span><span>statistic</span></span></a></div>
@@ -1208,7 +1208,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1762983517%2FFunctions%2F-251573632" anchor-label="statisticData" id="-1762983517%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="statistic-data.html"><span>statistic</span><wbr></wbr><span><span>Data</span></span></a></div>
@@ -1223,7 +1223,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="344599592%2FFunctions%2F-251573632" anchor-label="stdErrorOfDifference" id="344599592%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="std-error-of-difference.html"><span>std</span><wbr></wbr><span>Error</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Difference</span></span></a></div>
@@ -1238,7 +1238,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-894334794%2FFunctions%2F-251573632" anchor-label="summaryStatistics" id="-894334794%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="summary-statistics.html"><span>summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -1247,13 +1247,13 @@ R1.2.6        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="summary-statistics.html"><span class="token function">summaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the statistics associated for each data set</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="summary-statistics.html"><span class="token function">summaryStatistics</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.text/-string-builder/index.html">StringBuilder</a></div><div class="brief "><p class="paragraph">Returns a StringBuilder representation of the statistics associated for each data set</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
 <a data-name="1168451406%2FFunctions%2F-251573632" anchor-label="toString" id="1168451406%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
@@ -1268,7 +1268,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1326171973%2FFunctions%2F-251573632" anchor-label="variance" id="-1326171973%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="variance.html"><span><span>variance</span></span></a></div>
@@ -1283,7 +1283,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="195184884%2FFunctions%2F-251573632" anchor-label="varianceOfDifference" id="195184884%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="variance-of-difference.html"><span>variance</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Difference</span></span></a></div>
@@ -1298,7 +1298,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-1379543413%2FFunctions%2F-251573632" anchor-label="writeDataAsCSVFile" id="-1379543413%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-data-as-c-s-v-file.html"><span>write</span><wbr></wbr><span>Data</span><wbr></wbr><span>As</span><wbr></wbr><span><span>CSVFile</span></span></a></div>
@@ -1313,7 +1313,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-561360117%2FFunctions%2F-251573632" anchor-label="writeSummaryDifferenceStatistics" id="-561360117%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-summary-difference-statistics.html"><span>write</span><wbr></wbr><span>Summary</span><wbr></wbr><span>Difference</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -1328,7 +1328,7 @@ R1.2.6        </div>
             </div>
           </div>
 <a data-name="-729066002%2FFunctions%2F-251573632" anchor-label="writeSummaryStatistics" id="-729066002%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row" data-filterable-current=":/main" data-filterable-set=":/main">
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="write-summary-statistics.html"><span>write</span><wbr></wbr><span>Summary</span><wbr></wbr><span><span>Statistics</span></span></a></div>
@@ -1348,17 +1348,21 @@ R1.2.6        </div>
   </div>
 </div>
     <div class="footer">
-        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
-        <span>© 2025 Copyright</span>
-        <span class="pull-right">
-            <span>Generated by </span>
-            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
-                <span>dokka</span>
-            </a>
-        </span>
-    </div>
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
