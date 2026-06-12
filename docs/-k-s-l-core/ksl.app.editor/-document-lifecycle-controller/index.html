@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>DocumentLifecycleController</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.app.editor/DocumentLifecycleController///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.app.editor</a><span class="delimiter">/</span><span class="current">DocumentLifecycleController</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Document</span><wbr></wbr><span>Lifecycle</span><wbr></wbr><span><span>Controller</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">DocumentLifecycleController</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/app/editor/DocumentLifecycleController.kt#L77">source</a>)</span></span></div><p class="paragraph">Substrate-level document-lifecycle bookkeeping shared by every configuration-shaped app: which file backs the in-memory document (or <code class="lang-kotlin">null</code> for an unsaved fresh document) and whether the in-memory state differs from that file.</p><p class="paragraph">Pre-decomposition, each of the four app controllers (Single, Scenario, Experiment, Simopt) reimplemented this with identical mechanics — <code class="lang-kotlin">currentFile: StateFlow&lt;Path?&gt;</code> + <code class="lang-kotlin">isDirty: StateFlow&lt;Boolean&gt;</code> + a <code class="lang-kotlin">markDirty()</code> private mutator that flips the flag.  This type captures that shared pair so each app controller can compose one rather than re-declare four.</p><h2 class="">What this owns</h2><ul><li><p class="paragraph">The file-binding flow (<a href="current-file.html">currentFile</a>).</p></li><li><p class="paragraph">The dirty-flag flow (<a href="is-dirty.html">isDirty</a>).</p></li><li><p class="paragraph">Idempotent mutators that flip those flows in the four     semantically distinct ways an app controller needs them     flipped: <a href="mark-dirty.html">markDirty</a>, <a href="mark-saved.html">markSaved</a>, <a href="bind-file.html">bindFile</a>, <a href="clear-dirty.html">clearDirty</a>,     <a href="reset.html">reset</a>.</p></li></ul><h2 class="">What this deliberately does NOT own</h2><ul><li><p class="paragraph"><code class="strong lang-kotlin"><strong>editedSinceLastRun</strong></code><strong> / &quot;stale result&quot; flags.</strong>  These     cross-flow with the run lifecycle and stay with each app     controller (or move to a substrate <code class="lang-kotlin">RunLifecycleController</code>     in a later sub-phase).</p></li><li><p class="paragraph"><strong>Side-effect fan-out on dirty flip</strong> — refreshers for step     completion, validation, model-aware staleness, etc. are     app-specific orchestration.  Host controllers call     <a href="mark-dirty.html">markDirty</a> and then fan their own side effects.</p></li><li><p class="paragraph"><strong>Config-payload typing.</strong>  This controller never touches     the config object — only the path and the boolean.  The     load/save methods that produce or consume a typed config live     on the app controller, which delegates to this type for the     file/dirty bookkeeping at the appropriate moments.</p></li></ul><h2 class="">Semantics of the five mutators</h2><div class="table--container"><table><thead><tr><th>Method</th><th><code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">currentFile</code></th><th><code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">isDirty</code></th><th>Typical caller</th></tr></thead><tbody><tr><td><a href="mark-dirty.html">markDirty</a></td><td>unchanged</td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">true</code></td><td>every editing mutator</td></tr><tr><td><a href="mark-saved.html">markSaved</a></td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">path</code></td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">false</code></td><td>after a successful save</td></tr><tr><td><a href="bind-file.html">bindFile</a></td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">path</code></td><td>unchanged</td><td>after a load whose mismatched / warning state the caller wants to keep flagged</td></tr><tr><td><a href="clear-dirty.html">clearDirty</a></td><td>unchanged</td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">false</code></td><td>after a load whose loaded state matches the file</td></tr><tr><td><a href="reset.html">reset</a></td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">null</code></td><td>→ <code class="org.jetbrains.dokka.pages.commenttable@51be940b lang-kotlin">false</code></td><td>New document / reset to fresh</td></tr></tbody></table></div><p class="paragraph">Substrate-level API — usable by any UI shell.  Plain class — no background work owned, no scope, not <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-auto-closeable/index.html">AutoCloseable</a>.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="397796225%2FConstructors%2F-251573632" anchor-label="DocumentLifecycleController" id="397796225%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-document-lifecycle-controller.html"><span>Document</span><wbr></wbr><span>Lifecycle</span><wbr></wbr><span><span>Controller</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="397796225%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1696933783%2FProperties%2F-251573632" anchor-label="currentFile" id="1696933783%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-file.html"><span>current</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1696933783%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="current-file.html">currentFile</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Path of the file currently bound to the in-memory document, or <code class="lang-kotlin">null</code> when the document has never been saved or has been <a href="reset.html">reset</a>.  Updated by <a href="mark-saved.html">markSaved</a>, <a href="bind-file.html">bindFile</a>, and <a href="reset.html">reset</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1251584068%2FProperties%2F-251573632" anchor-label="isDirty" id="1251584068%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-dirty.html"><span>is</span><wbr></wbr><span><span>Dirty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1251584068%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-dirty.html">isDirty</a><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/StateFlow///PointingToDeclaration/">StateFlow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph"><code class="lang-kotlin">true</code> when the in-memory document differs from the file on disk (or, when no file is bound, from a fresh document). Updated by <a href="mark-dirty.html">markDirty</a>, <a href="mark-saved.html">markSaved</a>, <a href="clear-dirty.html">clearDirty</a>, and <a href="reset.html">reset</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-2106252124%2FFunctions%2F-251573632" anchor-label="bindFile" id="-2106252124%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bind-file.html"><span>bind</span><wbr></wbr><span><span>File</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2106252124%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="bind-file.html"><span class="token function">bindFile</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Bind <a href="bind-file.html">path</a> as the file backing this document without changing the dirty flag.  Use this when the load path has produced an in-memory state that may legitimately differ from the file (e.g. a legacy-decode that surfaces a warning, or an Open whose decoded state was intentionally edited before binding).  Hosts that load-and-immediately-clean call <a href="bind-file.html">bindFile</a> then <a href="clear-dirty.html">clearDirty</a> — or call <a href="mark-saved.html">markSaved</a> which combines both.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-295070935%2FFunctions%2F-251573632" anchor-label="clearDirty" id="-295070935%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-dirty.html"><span>clear</span><wbr></wbr><span><span>Dirty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-295070935%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-dirty.html"><span class="token function">clearDirty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Clear the dirty flag without changing the bound file.  Use after <a href="bind-file.html">bindFile</a> when the loaded state matches the file exactly, or whenever the host wants to assert &quot;the in-memory state is now equivalent to whatever the bound file holds.&quot;</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1027771111%2FFunctions%2F-251573632" anchor-label="markDirty" id="1027771111%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mark-dirty.html"><span>mark</span><wbr></wbr><span><span>Dirty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1027771111%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mark-dirty.html"><span class="token function">markDirty</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Idempotently mark the document dirty.  No-op when already dirty (no spurious StateFlow emission).  Hosts fan their own side effects (e.g. an <code class="lang-kotlin">editedSinceLastRun</code> flag flip, validation refresh, last-result clearing) off this call; this method only flips the dirty flag.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2083820255%2FFunctions%2F-251573632" anchor-label="markSaved" id="-2083820255%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mark-saved.html"><span>mark</span><wbr></wbr><span><span>Saved</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2083820255%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mark-saved.html"><span class="token function">markSaved</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Bind <a href="mark-saved.html">path</a> as the file backing this document AND mark the document clean.  Called after a successful Save or Save As — the in-memory state now matches what's on disk at <a href="mark-saved.html">path</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1334707875%2FFunctions%2F-251573632" anchor-label="reset" id="-1334707875%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset.html"><span><span>reset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1334707875%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Reset to a fresh, unbound, clean document.  Called by the app controller's <code class="lang-kotlin">newDocument</code> / <code class="lang-kotlin">resetConfiguration</code> entry point after the per-app state has been reset.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

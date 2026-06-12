@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SupplyChainModel</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain/SupplyChainModel///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.supplychain</a><span class="delimiter">/</span><span class="current">SupplyChainModel</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Supply</span><wbr></wbr><span>Chain</span><wbr></wbr><span><span>Model</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">SupplyChainModel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/SupplyChainModel.kt#L21">source</a>)</span></span></div><p class="paragraph">A model element that hosts a supply-chain submodel. Acts as the umbrella within which <a href="-demand/index.html">Demand</a>s and <a href="-order/index.html">Order</a>s live, mirroring how <a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a> hosts <code class="lang-kotlin">Entity</code>. Multiple <a href="index.html">SupplyChainModel</a> instances can coexist within a single KSL <a href="../../ksl.simulation/-model/index.html">ksl.simulation.Model</a>.</p><p class="paragraph">Extends <a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a> so supply-chain elements can also participate in process-oriented modeling (entities, resources, KSL processes).</p><p class="paragraph">Demands and orders are created via <a href="create-demand.html">createDemand</a> and <code class="lang-kotlin">createOrderPlaceholder</code>; their constructors are not exposed.</p><p class="paragraph">See <code class="lang-kotlin">sc.inventorylayer.Demand</code> See <code class="lang-kotlin">sc.inventorylayer.Order</code></p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="1134847618%2FConstructors%2F-251573632" anchor-label="SupplyChainModel" id="1134847618%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-supply-chain-model.html"><span>Supply</span><wbr></wbr><span>Chain</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1134847618%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-728686569%2FClasslikes%2F-251573632" anchor-label="Demand" id="-728686569%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-demand/index.html"><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-728686569%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-demand/index.html">Demand</a> : <a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a></div><div class="brief "><p class="paragraph">A demand for a quantity of an <a href="../-item-type/index.html">ItemType</a>. Flows through the supply chain via a state machine; see <a href="-demand-state/index.html">DemandState</a>. Listeners can be attached to react to state transitions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1302566609%2FClasslikes%2F-251573632" anchor-label="DemandLoad" id="1302566609%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-demand-load/index.html"><span>Demand</span><wbr></wbr><span><span>Load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1302566609%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-demand-load/index.html">DemandLoad</a> : <a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a></div><div class="brief "><p class="paragraph">A bundle of demands all destined for the same <a href="../-demand-sender-ifc/index.html">DemandSenderIfc</a>. Used by transportlayer load-builders and load carriers. Created only via <a href="create-demand-load.html">SupplyChainModel.createDemandLoad</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1334826822%2FClasslikes%2F-251573632" anchor-label="DemandState" id="-1334826822%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-demand-state/index.html"><span>Demand</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1334826822%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-demand-state/index.html">DemandState</a></div><div class="brief "><p class="paragraph">State in the demand lifecycle. State subclasses encapsulate the legal transitions; an attempted illegal transition throws <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-illegal-state-exception/index.html">IllegalStateException</a> via <a href="-demand-state/unsupported.html">unsupported</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1121708722%2FClasslikes%2F-251573632" anchor-label="Order" id="1121708722%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-order/index.html"><span><span>Order</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1121708722%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-order/index.html">Order</a> : <a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a></div><div class="brief "><p class="paragraph">A replenishment order containing one or more <a href="-demand/index.html">Demand</a>s for distinct <a href="../-item-type/index.html">ItemType</a>s. Like <a href="-demand/index.html">Demand</a>, an order moves through a state machine (see <a href="-order-state/index.html">OrderState</a>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1540540159%2FClasslikes%2F-251573632" anchor-label="OrderState" id="1540540159%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-order-state/index.html"><span>Order</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1540540159%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-order-state/index.html">OrderState</a></div><div class="brief "><p class="paragraph">State in the order lifecycle. State subclasses encapsulate the legal transitions; an attempted illegal transition throws <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-illegal-state-exception/index.html">IllegalStateException</a> via <a href="-order-state/unsupported.html">unsupported</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1826002020%2FProperties%2F-251573632" anchor-label="backLogged" id="1826002020%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="back-logged.html"><span>back</span><wbr></wbr><span><span>Logged</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1826002020%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="back-logged.html">backLogged</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand is in the backlog awaiting future supply.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="201946044%2FProperties%2F-251573632" anchor-label="cancelled" id="201946044%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cancelled.html"><span><span>cancelled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="201946044%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cancelled.html">cancelled</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand was cancelled.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1019915241%2FProperties%2F-251573632" anchor-label="delivered" id="1019915241%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delivered.html"><span><span>delivered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1019915241%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="delivered.html">delivered</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been delivered.  Not terminal: the destination's delivery endpoint then transitions either to <a href="stored.html">stored</a> (the normal storing case) or back to <a href="shipped.html">shipped</a> (multi-hop pass- through, e.g. a cross-dock re-shipping toward the next hop).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2111976853%2FProperties%2F-251573632" anchor-label="filled" id="-2111976853%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="filled.html"><span><span>filled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2111976853%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="filled.html">filled</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been filled.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-68989957%2FProperties%2F-251573632" anchor-label="inPreparation" id="-68989957%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="in-preparation.html"><span>in</span><wbr></wbr><span><span>Preparation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-68989957%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="in-preparation.html">inPreparation</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand is being prepared to be sent or negotiated.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1578899875%2FProperties%2F-251573632" anchor-label="inProcess" id="1578899875%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="in-process.html"><span>in</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1578899875%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="in-process.html">inProcess</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand is being filled.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1323663506%2FProperties%2F-251573632" anchor-label="negotiating" id="1323663506%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="negotiating.html"><span><span>negotiating</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1323663506%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="negotiating.html">negotiating</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand is being negotiated.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="85495958%2FProperties%2F-251573632" anchor-label="orderBackLogged" id="85495958%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-back-logged.html"><span>order</span><wbr></wbr><span>Back</span><wbr></wbr><span><span>Logged</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="85495958%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-back-logged.html">orderBackLogged</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1101125302%2FProperties%2F-251573632" anchor-label="orderCancelled" id="-1101125302%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-cancelled.html"><span>order</span><wbr></wbr><span><span>Cancelled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1101125302%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-cancelled.html">orderCancelled</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1086509843%2FProperties%2F-251573632" anchor-label="orderCreated" id="1086509843%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-created.html"><span>order</span><wbr></wbr><span><span>Created</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086509843%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-created.html">orderCreated</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div><div class="brief "><p class="paragraph">Just created, no demands yet.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-283156105%2FProperties%2F-251573632" anchor-label="orderDelivered" id="-283156105%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-delivered.html"><span>order</span><wbr></wbr><span><span>Delivered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-283156105%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-delivered.html">orderDelivered</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-233197667%2FProperties%2F-251573632" anchor-label="orderFilled" id="-233197667%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-filled.html"><span>order</span><wbr></wbr><span><span>Filled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-233197667%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-filled.html">orderFilled</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1655081609%2FProperties%2F-251573632" anchor-label="orderInPreparation" id="1655081609%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-in-preparation.html"><span>order</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Preparation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1655081609%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-in-preparation.html">orderInPreparation</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div><div class="brief "><p class="paragraph">Has at least one demand; not yet sent.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="275828529%2FProperties%2F-251573632" anchor-label="orderInProcess" id="275828529%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-in-process.html"><span>order</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="275828529%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-in-process.html">orderInProcess</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1092416864%2FProperties%2F-251573632" anchor-label="orderNegotiating" id="-1092416864%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-negotiating.html"><span>order</span><wbr></wbr><span><span>Negotiating</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1092416864%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-negotiating.html">orderNegotiating</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-670271618%2FProperties%2F-251573632" anchor-label="orderReceived" id="-670271618%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-received.html"><span>order</span><wbr></wbr><span><span>Received</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-670271618%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-received.html">orderReceived</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1863809151%2FProperties%2F-251573632" anchor-label="orderRejected" id="-1863809151%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-rejected.html"><span>order</span><wbr></wbr><span><span>Rejected</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1863809151%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-rejected.html">orderRejected</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1468518745%2FProperties%2F-251573632" anchor-label="orderSent" id="-1468518745%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-sent.html"><span>order</span><wbr></wbr><span><span>Sent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1468518745%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-sent.html">orderSent</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1647578360%2FProperties%2F-251573632" anchor-label="orderShipped" id="-1647578360%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-shipped.html"><span>order</span><wbr></wbr><span><span>Shipped</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1647578360%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-shipped.html">orderShipped</a><span class="token operator">: </span><a href="-order-state/index.html">SupplyChainModel.OrderState</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2004162252%2FProperties%2F-251573632" anchor-label="received" id="2004162252%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="received.html"><span><span>received</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2004162252%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="received.html">received</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand is ready to be processed at a filler.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="810624719%2FProperties%2F-251573632" anchor-label="rejected" id="810624719%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rejected.html"><span><span>rejected</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="810624719%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="rejected.html">rejected</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been rejected.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="683713781%2FProperties%2F-251573632" anchor-label="sent" id="683713781%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sent.html"><span><span>sent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="683713781%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="sent.html">sent</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been sent to a filler.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="239809018%2FProperties%2F-251573632" anchor-label="shipped" id="239809018%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="shipped.html"><span><span>shipped</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="239809018%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="shipped.html">shipped</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been shipped.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1171181750%2FProperties%2F-251573632" anchor-label="stored" id="-1171181750%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stored.html"><span><span>stored</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1171181750%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stored.html">stored</a><span class="token operator">: </span><a href="-demand-state/index.html">SupplyChainModel.DemandState</a></div><div class="brief "><p class="paragraph">Demand has been integrated into the destination's inventory (or otherwise finalised at the destination).  Terminal state. Accounting listeners (e.g. an <code class="lang-kotlin">Inventory</code>'s replenishment handler) fire on this transition rather than on <a href="delivered.html">delivered</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-2131776951%2FFunctions%2F-251573632" anchor-label="createDemand" id="-2131776951%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-demand.html"><span>create</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2131776951%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-demand.html"><span class="token function">createDemand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">itemType<span class="token operator">: </span><a href="../-item-type/index.html">ItemType</a><span class="token punctuation">, </span></span><span class="parameter ">amountDemanded<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">demandName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-demand/index.html">SupplyChainModel.Demand</a></div><div class="brief "><p class="paragraph">Creates a new demand within this supply-chain model. The demand starts in <a href="in-preparation.html">inPreparation</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1233163423%2FFunctions%2F-251573632" anchor-label="createDemandLoad" id="1233163423%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-demand-load.html"><span>create</span><wbr></wbr><span>Demand</span><wbr></wbr><span><span>Load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1233163423%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="create-demand-load.html"><span class="token function">createDemandLoad</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">loadName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-demand-load/index.html">SupplyChainModel.DemandLoad</a></div><div class="brief "><p class="paragraph">Creates a new <a href="-demand-load/index.html">DemandLoad</a> within this supply-chain model. Used by transportlayer load builders and load carriers.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1555620182%2FFunctions%2F-251573632" anchor-label="createOrder" id="-1555620182%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-order.html"><span>create</span><wbr></wbr><span><span>Order</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1555620182%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-order.html"><span class="token function">createOrder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">orderName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">allowBackLogging<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">allowPartialShipping<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">allowCancelling<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-order/index.html">SupplyChainModel.Order</a></div><div class="brief "><p class="paragraph">Creates a new order within this supply-chain model. Starts in <a href="order-created.html">orderCreated</a>; add demands via <a href="-order/add-demand.html">Order.addDemand</a> before sending.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

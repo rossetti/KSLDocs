@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>LeadTimeDemandFiller</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain.inventory/LeadTimeDemandFiller///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.supplychain.inventory</a><span class="delimiter">/</span><span class="current">LeadTimeDemandFiller</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Lead</span><wbr></wbr><span>Time</span><wbr></wbr><span>Demand</span><wbr></wbr><span><span>Filler</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">LeadTimeDemandFiller</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.supplychain/-demand-filler-abstract/index.html">DemandFillerAbstract</a>, <a href="../../ksl.modeling.supplychain/-external-demand-supplier/index.html">ExternalDemandSupplier</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/inventory/LeadTimeDemandFiller.kt#L26">source</a>)</span></span></div><p class="paragraph">Concrete <a href="../../ksl.modeling.supplychain/-demand-filler-abstract/index.html">DemandFillerAbstract</a> that fills demands after a per-item-type lead-time delay. Once filled, demands are either handed to the inherited <span data-unresolved-link="ksl.modeling.supplychain.inventory/LeadTimeDemandFiller/demandCarrier/#/PointingToDeclaration/">demandCarrier</span> (if set) or immediately transition through ship and deliver with no delay.</p><p class="paragraph">Lead-time distributions are registered via <a href="add-lead-time.html">addLeadTime</a>; each distribution becomes a <a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a> child of this filler.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element (typically a <a href="../../ksl.modeling.supplychain/-supply-chain-model/index.html">SupplyChainModel</a>)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">optional model-element name</p><p class="paragraph">See <code class="lang-kotlin">sc.inventorylayer.LeadTimeDemandFiller</code></p></div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-lead-time-order-filler/-inner-demand-filler/index.html">InnerDemandFiller</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-1170868492%2FConstructors%2F-251573632" anchor-label="LeadTimeDemandFiller" id="-1170868492%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lead-time-demand-filler.html"><span>Lead</span><wbr></wbr><span>Time</span><wbr></wbr><span>Demand</span><wbr></wbr><span><span>Filler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1170868492%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-956193566%2FClasslikes%2F-251573632" anchor-label="LeadTimeAction" id="-956193566%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lead-time-action/index.html"><span>Lead</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-956193566%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-lead-time-action/index.html">LeadTimeAction</a> : <a href="../../ksl.simulation/-model-element/-event-action/index.html">ModelElement.EventAction</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Protected so subclasses (e.g., <a href="../-lead-time-order-filler/-inner-demand-filler/index.html">LeadTimeOrderFiller.InnerDemandFiller</a>) can call its <code class="lang-kotlin">schedule</code> from their own <code class="lang-kotlin">fillDemand</code> override.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="482214216%2FProperties%2F-251573632" anchor-label="itemTypes" id="482214216%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="item-types.html"><span>item</span><wbr></wbr><span><span>Types</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="482214216%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="item-types.html">itemTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">All item types this filler is willing to fill.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1493830375%2FProperties%2F-251573632" anchor-label="leadTimeEventAction" id="1493830375%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lead-time-event-action.html"><span>lead</span><wbr></wbr><span>Time</span><wbr></wbr><span>Event</span><wbr></wbr><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1493830375%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="lead-time-event-action.html">leadTimeEventAction</a><span class="token operator">: </span><a href="-lead-time-action/index.html">LeadTimeDemandFiller.LeadTimeAction</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1953868014%2FProperties%2F-251573632" anchor-label="myAggregateLeadTime" id="-1953868014%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-aggregate-lead-time.html"><span>my</span><wbr></wbr><span>Aggregate</span><wbr></wbr><span>Lead</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1953868014%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-aggregate-lead-time.html">myAggregateLeadTime</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response/index.html">Response</a></div><div class="brief "><p class="paragraph">Aggregate &quot;lead time observed&quot; tally.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2019640297%2FProperties%2F-251573632" anchor-label="myAggregateNumInProcess" id="-2019640297%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-aggregate-num-in-process.html"><span>my</span><wbr></wbr><span>Aggregate</span><wbr></wbr><span>Num</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Process</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2019640297%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-aggregate-num-in-process.html">myAggregateNumInProcess</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a></div><div class="brief "><p class="paragraph">Aggregate &quot;number in process&quot; across all item types.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-14700858%2FProperties%2F-251573632" anchor-label="myLeadTimeByType" id="-14700858%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-lead-time-by-type.html"><span>my</span><wbr></wbr><span>Lead</span><wbr></wbr><span>Time</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-14700858%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-lead-time-by-type.html">myLeadTimeByType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span><a href="../../ksl.modeling.variable/-response/index.html">Response</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Per-item-type &quot;lead time observed&quot; tally.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2070595632%2FProperties%2F-251573632" anchor-label="myLeadTimes" id="2070595632%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-lead-times.html"><span>my</span><wbr></wbr><span>Lead</span><wbr></wbr><span><span>Times</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2070595632%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-lead-times.html">myLeadTimes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span><a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Lead-time random variables keyed by item type. LinkedHashMap preserves insertion order (porting plan §4.3 — Java used HashMap).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="921543051%2FProperties%2F-251573632" anchor-label="myNumInProcessByType" id="921543051%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-num-in-process-by-type.html"><span>my</span><wbr></wbr><span>Num</span><wbr></wbr><span>In</span><wbr></wbr><span>Process</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="921543051%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">val </span><a href="my-num-in-process-by-type.html">myNumInProcessByType</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-map/index.html">MutableMap</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span><a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Per-item-type &quot;number currently in process&quot; time-weighted statistic.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-861524168%2FFunctions%2F-251573632" anchor-label="addLeadTime" id="-861524168%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-lead-time.html"><span>add</span><wbr></wbr><span>Lead</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-861524168%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="add-lead-time.html"><span class="token function">addLeadTime</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">itemType<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span></span><span class="parameter ">distribution<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Register or replace the lead-time distribution for <a href="add-lead-time.html">itemType</a>. Re-registering an existing item type updates the underlying <a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a>'s <code class="lang-kotlin">initialRandomSource</code> (preserving statistic identity); a new item type creates fresh <a href="../../ksl.modeling.variable/-random-variable/index.html">RandomVariable</a> / <a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a> / <a href="../../ksl.modeling.variable/-response/index.html">Response</a> children of this filler.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1157799751%2FFunctions%2F-251573632" anchor-label="canFillItemType" id="1157799751%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="can-fill-item-type.html"><span>can</span><wbr></wbr><span>Fill</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1157799751%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="can-fill-item-type.html"><span class="token function">canFillItemType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if this filler can fill demands of <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/can-fill-item-type.html">type</a>.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="can-fill-item-type.html"><span class="token function">canFillItemType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if this filler can fill demands of <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/can-fill-item-type.html">demand</a>'s item type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1965824924%2FFunctions%2F-251573632" anchor-label="demandFilled" id="-1965824924%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-filled.html"><span>demand</span><wbr></wbr><span><span>Filled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1965824924%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="demand-filled.html"><span class="token function">demandFilled</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Hook for subclasses. Called after <a href="demand-filled.html">demand</a> reaches the filled state via this filler's lead-time event. Default behavior is <a href="ship-demand.html">shipDemand</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="855043203%2FFunctions%2F-251573632" anchor-label="determineRequestStatus" id="855043203%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="determine-request-status.html"><span>determine</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="855043203%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="determine-request-status.html"><span class="token function">determineRequestStatus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-status-code/index.html">DemandStatusCode</a></div><div class="brief "><p class="paragraph">The status <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/determine-request-status.html">demand</a> would receive if filled now. Only valid at the current simulation time.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1812992803%2FFunctions%2F-251573632" anchor-label="fillDemand" id="1812992803%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fill-demand.html"><span>fill</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1812992803%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="fill-demand.html"><span class="token function">fillDemand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fill a previously received demand. Must be called at the same simulation time as the receipt — no time may elapse between <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/receive.html">receive</a> and <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/fill-demand.html">fillDemand</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1193631681%2FFunctions%2F-251573632" anchor-label="getLeadTime" id="-1193631681%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-lead-time.html"><span>get</span><wbr></wbr><span>Lead</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1193631681%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-lead-time.html"><span class="token function">getLeadTime</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">itemType<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the underlying random source for <a href="get-lead-time.html">itemType</a>, or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-918873579%2FFunctions%2F-251573632" anchor-label="negotiate" id="-918873579%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="negotiate.html"><span><span>negotiate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-918873579%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="negotiate.html"><span class="token function">negotiate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-message-ifc/index.html">DemandMessageIfc</a></div><div class="brief "><p class="paragraph">Returns a <a href="../../ksl.modeling.supplychain/-demand-message-ifc/index.html">DemandMessageIfc</a> describing what would happen if <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/negotiate.html">demand</a> were sent now, or null if negotiation is not supported.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="708591504%2FFunctions%2F-251573632" anchor-label="receive" id="708591504%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="receive.html"><span><span>receive</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="708591504%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="receive.html"><span class="token function">receive</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Receive <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/receive.html">demand</a> and place it in <a href="../../ksl.modeling.supplychain/-supply-chain-model/received.html">SupplyChainModel.received</a>, or reject by transitioning to <a href="../../ksl.modeling.supplychain/-supply-chain-model/rejected.html">SupplyChainModel.rejected</a>. The filler may set the demand's <a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/status.html">SupplyChainModel.Demand.status</a> to indicate the rejection reason but is not required to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-425171281%2FFunctions%2F-251573632" anchor-label="removeLeadTime" id="-425171281%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-lead-time.html"><span>remove</span><wbr></wbr><span>Lead</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-425171281%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-lead-time.html"><span class="token function">removeLeadTime</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">itemType<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Remove <a href="remove-lead-time.html">itemType</a> from this filler. Best invoked between replications: if a fill event is in flight for this item type it is not cancelled. Matches Java behavior.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1794486966%2FFunctions%2F-251573632" anchor-label="shipDemand" id="-1794486966%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ship-demand.html"><span>ship</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1794486966%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="ship-demand.html"><span class="token function">shipDemand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Hand <a href="ship-demand.html">demand</a> to the configured <span data-unresolved-link="ksl.modeling.supplychain.inventory/LeadTimeDemandFiller/demandCarrier/#/PointingToDeclaration/">demandCarrier</span>, or — if no carrier is set — transition directly through ship -> deliver with no delay.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1678433824%2FFunctions%2F-251573632" anchor-label="willReject" id="1678433824%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="will-reject.html"><span>will</span><wbr></wbr><span><span>Reject</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1678433824%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="will-reject.html"><span class="token function">willReject</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/will-reject.html">demand</a> would be rejected if filled now.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

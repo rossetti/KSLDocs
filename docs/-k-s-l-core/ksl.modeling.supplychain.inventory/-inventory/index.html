@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>Inventory</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain.inventory/Inventory///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.supplychain.inventory</a><span class="delimiter">/</span><span class="current">Inventory</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Inventory</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">Inventory</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">itemType<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span></span><span class="parameter ">policy<span class="token operator">: </span><a href="../-inventory-policy-abstract/index.html">InventoryPolicyAbstract</a><span class="token punctuation">, </span></span><span class="parameter ">initialOnHand<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">mayPartiallyFill<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.supplychain/-demand-filler-abstract/index.html">DemandFillerAbstract</a>, <a href="../../ksl.modeling.supplychain/-inventory-ifc/index.html">InventoryIfc</a>, <a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a>, <a href="../../ksl.modeling.supplychain/-inventory-statistics-ifc/index.html">InventoryStatisticsIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/inventory/Inventory.kt#L39">source</a>)</span></span></div><p class="paragraph">A stocking point for a single <a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a>. Holds inventory, fills customer demands, requests replenishment from a supplier, and optionally backlogs demands it cannot fill immediately.</p><p class="paragraph">Construct with an <a href="../-inventory-policy-abstract/index.html">InventoryPolicyAbstract</a> that controls when replenishment is requested. A <a href="../-back-log-policy-abstract/index.html">BackLogPolicyAbstract</a> is attached separately by constructing one with this inventory as its parent — the backlog policy's <code class="lang-kotlin">init</code> block establishes the bidirectional link via <span data-unresolved-link="ksl.modeling.supplychain.inventory/Inventory/setBackLogPolicy/#ksl.modeling.supplychain.inventory.BackLogPolicyAbstract/PointingToDeclaration/">setBackLogPolicy</span>.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element (must be reachable to a     SupplyChainModel so replenishment demands can be created)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>item</span><wbr></wbr><span><span>Type</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the single <a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a> this inventory carries</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>policy</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the replenishment policy</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Hand</span></span></u></div></span></div><div><div class="title"><p class="paragraph">initial stock at the start of each replication</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>may</span><wbr></wbr><span>Partially</span><wbr></wbr><span><span>Fill</span></span></u></div></span></div><div><div class="title"><p class="paragraph">whether the inventory may partially fill     an incoming demand</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">optional model-element name</p><p class="paragraph">See <code class="lang-kotlin">sc.inventorylayer.Inventory</code></p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-448939166%2FConstructors%2F-251573632" anchor-label="Inventory" id="-448939166%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-inventory.html"><span><span>Inventory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-448939166%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">itemType<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token punctuation">, </span></span><span class="parameter ">policy<span class="token operator">: </span><a href="../-inventory-policy-abstract/index.html">InventoryPolicyAbstract</a><span class="token punctuation">, </span></span><span class="parameter ">initialOnHand<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">mayPartiallyFill<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1680024017%2FClasslikes%2F-251573632" anchor-label="Companion" id="1680024017%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1680024017%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1058203585%2FProperties%2F-251573632" anchor-label="allowBackLogging" id="1058203585%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="allow-back-logging.html"><span>allow</span><wbr></wbr><span>Back</span><wbr></wbr><span><span>Logging</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1058203585%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="allow-back-logging.html">allowBackLogging</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether incoming customer demands may be backlogged here.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1926598954%2FProperties%2F-251573632" anchor-label="amountOnHand" id="1926598954%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="amount-on-hand.html"><span>amount</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Hand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1926598954%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="amount-on-hand.html">amountOnHand</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Units currently on hand.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-678687565%2FProperties%2F-251573632" anchor-label="amountOnOrder" id="-678687565%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="amount-on-order.html"><span>amount</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Order</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-678687565%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="amount-on-order.html">amountOnOrder</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Units currently on order (in replenishment).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="430945483%2FProperties%2F-251573632" anchor-label="amountPending" id="430945483%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="amount-pending.html"><span>amount</span><wbr></wbr><span><span>Pending</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="430945483%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="amount-pending.html">amountPending</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="22207615%2FProperties%2F-251573632" anchor-label="backLogInfo" id="22207615%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="back-log-info.html"><span>back</span><wbr></wbr><span>Log</span><wbr></wbr><span><span>Info</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="22207615%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="back-log-info.html">backLogInfo</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-back-log-info-ifc/index.html">BackLogInfoIfc</a></div><div class="brief "><p class="paragraph">The inventory's backlog info.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-8598405%2FProperties%2F-251573632" anchor-label="backLogPolicy" id="-8598405%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="back-log-policy.html"><span>back</span><wbr></wbr><span>Log</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-8598405%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="back-log-policy.html">backLogPolicy</a><span class="token operator">: </span><a href="../-back-log-policy-abstract/index.html">BackLogPolicyAbstract</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Currently attached backlog policy, or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1318647382%2FProperties%2F-251573632" anchor-label="backLogStatistics" id="-1318647382%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="back-log-statistics.html"><span>back</span><wbr></wbr><span>Log</span><wbr></wbr><span><span>Statistics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1318647382%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="back-log-statistics.html">backLogStatistics</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-back-log-statistics-ifc/index.html">BackLogStatisticsIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1985750712%2FProperties%2F-251573632" anchor-label="demandArrivalListener" id="-1985750712%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-arrival-listener.html"><span>demand</span><wbr></wbr><span>Arrival</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1985750712%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="demand-arrival-listener.html">demandArrivalListener</a><span class="token operator">: </span><a href="../-inventory-demand-arrival-listener-ifc/index.html">InventoryDemandArrivalListenerIfc</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1934916757%2FProperties%2F-251573632" anchor-label="demandFiller" id="1934916757%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-filler.html"><span>demand</span><wbr></wbr><span><span>Filler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1934916757%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="demand-filler.html">demandFiller</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-filler-ifc/index.html">DemandFillerIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Direct filler override; if set, used instead of <a href="../../ksl.modeling.supplychain/-demand-sender-ifc/demand-filler-finder.html">demandFillerFinder</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1966386929%2FProperties%2F-251573632" anchor-label="demandFillerFinder" id="-1966386929%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-filler-finder.html"><span>demand</span><wbr></wbr><span>Filler</span><wbr></wbr><span><span>Finder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1966386929%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="demand-filler-finder.html">demandFillerFinder</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-filler-finder-ifc/index.html">DemandFillerFinderIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Finder used to locate a filler for each generated demand.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2006473662%2FProperties%2F-251573632" anchor-label="demandSizeAcrossReplications" id="2006473662%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-size-across-replications.html"><span>demand</span><wbr></wbr><span>Size</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2006473662%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="demand-size-across-replications.html">demandSizeAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1973763869%2FProperties%2F-251573632" anchor-label="demandSizeResponse" id="-1973763869%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-size-response.html"><span>demand</span><wbr></wbr><span>Size</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1973763869%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="demand-size-response.html">demandSizeResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-8109547%2FProperties%2F-251573632" anchor-label="demandSizeWithinReplication" id="-8109547%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="demand-size-within-replication.html"><span>demand</span><wbr></wbr><span>Size</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-8109547%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="demand-size-within-replication.html">demandSizeWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-696158863%2FProperties%2F-251573632" anchor-label="firstFillRateAcrossReplications" id="-696158863%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="first-fill-rate-across-replications.html"><span>first</span><wbr></wbr><span>Fill</span><wbr></wbr><span>Rate</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-696158863%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="first-fill-rate-across-replications.html">firstFillRateAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-994849194%2FProperties%2F-251573632" anchor-label="firstFillRateResponse" id="-994849194%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="first-fill-rate-response.html"><span>first</span><wbr></wbr><span>Fill</span><wbr></wbr><span>Rate</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-994849194%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="first-fill-rate-response.html">firstFillRateResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-788027902%2FProperties%2F-251573632" anchor-label="firstFillRateWithinReplication" id="-788027902%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="first-fill-rate-within-replication.html"><span>first</span><wbr></wbr><span>Fill</span><wbr></wbr><span>Rate</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-788027902%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="first-fill-rate-within-replication.html">firstFillRateWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1754585352%2FProperties%2F-251573632" anchor-label="initialOnHand" id="-1754585352%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initial-on-hand.html"><span>initial</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Hand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1754585352%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="initial-on-hand.html">initialOnHand</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="343256284%2FProperties%2F-251573632" anchor-label="inventoryPolicy" id="343256284%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inventory-policy.html"><span>inventory</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="343256284%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="inventory-policy.html">inventoryPolicy</a><span class="token operator">: </span><a href="../-inventory-policy-abstract/index.html">InventoryPolicyAbstract</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="716272466%2FProperties%2F-251573632" anchor-label="inventoryPolicyParameters" id="716272466%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inventory-policy-parameters.html"><span>inventory</span><wbr></wbr><span>Policy</span><wbr></wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="716272466%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="inventory-policy-parameters.html">inventoryPolicyParameters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-834990971%2FProperties%2F-251573632" anchor-label="inventoryPosition" id="-834990971%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inventory-position.html"><span>inventory</span><wbr></wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-834990971%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="inventory-position.html">inventoryPosition</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph"><a href="../../ksl.modeling.supplychain/-inventory-ifc/amount-on-hand.html">amountOnHand</a> + <a href="../../ksl.modeling.supplychain/-inventory-ifc/amount-on-order.html">amountOnOrder</a> − backlog, the usual inventory-position metric used by reorder policies.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2110299901%2FProperties%2F-251573632" anchor-label="itemType" id="-2110299901%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="item-type.html"><span>item</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2110299901%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="item-type.html">itemType</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="571467300%2FProperties%2F-251573632" anchor-label="itemTypes" id="571467300%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="item-types.html"><span>item</span><wbr></wbr><span><span>Types</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="571467300%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="item-types.html">itemTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">All item types this filler is willing to fill.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-923549191%2FProperties%2F-251573632" anchor-label="lostSaleCounter" id="-923549191%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="lost-sale-counter.html"><span>lost</span><wbr></wbr><span>Sale</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-923549191%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="lost-sale-counter.html">lostSaleCounter</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Counter of lost-sale events (per-replication, post-warmup). Fires when a stockout demand is rejected (either because the demand is non-backloggable, or because this inventory is not configured to allow backlogging).  Subset of <a href="stockout-counter.html">stockoutCounter</a> — a stockout that gets backlogged is not a lost sale.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="535226222%2FProperties%2F-251573632" anchor-label="mayPartiallyFillDemands" id="535226222%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="may-partially-fill-demands.html"><span>may</span><wbr></wbr><span>Partially</span><wbr></wbr><span>Fill</span><wbr></wbr><span><span>Demands</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="535226222%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="may-partially-fill-demands.html">mayPartiallyFillDemands</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1022678524%2FProperties%2F-251573632" anchor-label="onHandAcrossReplications" id="1022678524%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-hand-across-replications.html"><span>on</span><wbr></wbr><span>Hand</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1022678524%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="on-hand-across-replications.html">onHandAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-308195167%2FProperties%2F-251573632" anchor-label="onHandResponse" id="-308195167%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-hand-response.html"><span>on</span><wbr></wbr><span>Hand</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-308195167%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="on-hand-response.html">onHandResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Read-only response views for external observers and aggregates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1068533783%2FProperties%2F-251573632" anchor-label="onHandWithinReplication" id="1068533783%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-hand-within-replication.html"><span>on</span><wbr></wbr><span>Hand</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1068533783%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="on-hand-within-replication.html">onHandWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-170690347%2FProperties%2F-251573632" anchor-label="onOrderAcrossReplications" id="-170690347%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-order-across-replications.html"><span>on</span><wbr></wbr><span>Order</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-170690347%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="on-order-across-replications.html">onOrderAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1892942150%2FProperties%2F-251573632" anchor-label="onOrderResponse" id="-1892942150%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-order-response.html"><span>on</span><wbr></wbr><span>Order</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1892942150%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="on-order-response.html">onOrderResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2138416670%2FProperties%2F-251573632" anchor-label="onOrderWithinReplication" id="2138416670%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="on-order-within-replication.html"><span>on</span><wbr></wbr><span>Order</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2138416670%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="on-order-within-replication.html">onOrderWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-617693858%2FProperties%2F-251573632" anchor-label="orderAmountAcrossReplications" id="-617693858%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-amount-across-replications.html"><span>order</span><wbr></wbr><span>Amount</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-617693858%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="order-amount-across-replications.html">orderAmountAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1232033149%2FProperties%2F-251573632" anchor-label="orderAmountResponse" id="-1232033149%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-amount-response.html"><span>order</span><wbr></wbr><span>Amount</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1232033149%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-amount-response.html">orderAmountResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1154165877%2FProperties%2F-251573632" anchor-label="orderAmountWithinReplication" id="1154165877%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-amount-within-replication.html"><span>order</span><wbr></wbr><span>Amount</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1154165877%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="order-amount-within-replication.html">orderAmountWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1318357028%2FProperties%2F-251573632" anchor-label="orderCounterAcrossReplications" id="-1318357028%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-counter-across-replications.html"><span>order</span><wbr></wbr><span>Counter</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1318357028%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="order-counter-across-replications.html">orderCounterAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-316665668%2FProperties%2F-251573632" anchor-label="orderCounterCounter" id="-316665668%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-counter-counter.html"><span>order</span><wbr></wbr><span>Counter</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-316665668%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-counter-counter.html">orderCounterCounter</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="854469175%2FProperties%2F-251573632" anchor-label="orderCounterWithinReplication" id="854469175%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-counter-within-replication.html"><span>order</span><wbr></wbr><span>Counter</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="854469175%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="order-counter-within-replication.html">orderCounterWithinReplication</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Current count of replenishment orders observed this replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2081483571%2FProperties%2F-251573632" anchor-label="permitBackLogging" id="-2081483571%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="permit-back-logging.html"><span>permit</span><wbr></wbr><span>Back</span><wbr></wbr><span><span>Logging</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2081483571%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="permit-back-logging.html">permitBackLogging</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether replenishment demands this inventory sends may be backlogged.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="183039799%2FProperties%2F-251573632" anchor-label="permitPartialFilling" id="183039799%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="permit-partial-filling.html"><span>permit</span><wbr></wbr><span>Partial</span><wbr></wbr><span><span>Filling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="183039799%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="permit-partial-filling.html">permitPartialFilling</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether replenishment demands this inventory sends may be partially filled.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1258652231%2FProperties%2F-251573632" anchor-label="replenishmentArrivalListener" id="1258652231%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replenishment-arrival-listener.html"><span>replenishment</span><wbr></wbr><span>Arrival</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1258652231%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="replenishment-arrival-listener.html">replenishmentArrivalListener</a><span class="token operator">: </span><a href="../-inventory-demand-arrival-listener-ifc/index.html">InventoryDemandArrivalListenerIfc</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="601262711%2FProperties%2F-251573632" anchor-label="replenishmentRejectionListener" id="601262711%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replenishment-rejection-listener.html"><span>replenishment</span><wbr></wbr><span>Rejection</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601262711%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="replenishment-rejection-listener.html">replenishmentRejectionListener</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-rejection-listener/index.html">DemandRejectionListener</a></div><div class="brief "><p class="paragraph">Policy-level reaction invoked when a replenishment this inventory sent is rejected by its filler.  Defaults to an <a href="../-inventory-replenishment-rejection-listener/index.html">InventoryReplenishmentRejectionListener</a> whose dispatch methods throw (fail-loud).  Replace it <strong>before simulating</strong> with a subclass that handles rejection gracefully — to retry, route to an alternate supplier, or record-and-continue.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="646870712%2FProperties%2F-251573632" anchor-label="replenishmentRequester" id="646870712%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replenishment-requester.html"><span>replenishment</span><wbr></wbr><span><span>Requester</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="646870712%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="replenishment-requester.html">replenishmentRequester</a><span class="token operator">: </span><a href="../-replenishment-requester-ifc/index.html">ReplenishmentRequesterIfc</a><span class="token operator">?</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1340366054%2FProperties%2F-251573632" anchor-label="stockoutCounter" id="1340366054%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stockout-counter.html"><span>stockout</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1340366054%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stockout-counter.html">stockoutCounter</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Counter of stockout events (per-replication, post-warmup).  A stockout fires every time a customer demand arrives and finds <code class="lang-kotlin">amountOnHand &lt; remainingDemand</code>, regardless of whether the demand is then backlogged or rejected.  Drives the stockout-cost line in the cost model.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1516189613%2FProperties%2F-251573632" anchor-label="stockOutIndicatorAcrossReplications" id="1516189613%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stock-out-indicator-across-replications.html"><span>stock</span><wbr></wbr><span>Out</span><wbr></wbr><span>Indicator</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1516189613%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="stock-out-indicator-across-replications.html">stockOutIndicatorAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1874324370%2FProperties%2F-251573632" anchor-label="stockOutIndicatorResponse" id="1874324370%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stock-out-indicator-response.html"><span>stock</span><wbr></wbr><span>Out</span><wbr></wbr><span>Indicator</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1874324370%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stock-out-indicator-response.html">stockOutIndicatorResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-578114490%2FProperties%2F-251573632" anchor-label="stockOutIndicatorWithinReplication" id="-578114490%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stock-out-indicator-within-replication.html"><span>stock</span><wbr></wbr><span>Out</span><wbr></wbr><span>Indicator</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-578114490%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="stock-out-indicator-within-replication.html">stockOutIndicatorWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="601451674%2FProperties%2F-251573632" anchor-label="timeBtwDemandsAcrossReplications" id="601451674%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-demands-across-replications.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Demands</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601451674%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="time-btw-demands-across-replications.html">timeBtwDemandsAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="137753791%2FProperties%2F-251573632" anchor-label="timeBtwDemandsResponse" id="137753791%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-demands-response.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Demands</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="137753791%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="time-btw-demands-response.html">timeBtwDemandsResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2024777145%2FProperties%2F-251573632" anchor-label="timeBtwDemandsWithinReplication" id="2024777145%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-demands-within-replication.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Demands</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2024777145%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="time-btw-demands-within-replication.html">timeBtwDemandsWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="368940455%2FProperties%2F-251573632" anchor-label="timeBtwOrdersAcrossReplications" id="368940455%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-orders-across-replications.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Orders</span><wbr></wbr><span>Across</span><wbr></wbr><span><span>Replications</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="368940455%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="time-btw-orders-across-replications.html">timeBtwOrdersAcrossReplications</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-statistic-ifc/index.html">StatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1733990924%2FProperties%2F-251573632" anchor-label="timeBtwOrdersResponse" id="1733990924%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-orders-response.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Orders</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1733990924%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="time-btw-orders-response.html">timeBtwOrdersResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1307859188%2FProperties%2F-251573632" anchor-label="timeBtwOrdersWithinReplication" id="-1307859188%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-btw-orders-within-replication.html"><span>time</span><wbr></wbr><span>Btw</span><wbr></wbr><span>Orders</span><wbr></wbr><span>Within</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1307859188%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="time-btw-orders-within-replication.html">timeBtwOrdersWithinReplication</a><span class="token operator">: </span><a href="../../ksl.utilities.statistic/-weighted-statistic-ifc/index.html">WeightedStatisticIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="772850827%2FProperties%2F-251573632" anchor-label="timeLastDemandArrived" id="772850827%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-last-demand-arrived.html"><span>time</span><wbr></wbr><span>Last</span><wbr></wbr><span>Demand</span><wbr></wbr><span><span>Arrived</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="772850827%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="time-last-demand-arrived.html">timeLastDemandArrived</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="364591068%2FProperties%2F-251573632" anchor-label="totalArrivedDemand" id="364591068%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-arrived-demand.html"><span>total</span><wbr></wbr><span>Arrived</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="364591068%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="total-arrived-demand.html">totalArrivedDemand</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1152495208%2FProperties%2F-251573632" anchor-label="totalUnitsOrdered" id="1152495208%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-units-ordered.html"><span>total</span><wbr></wbr><span>Units</span><wbr></wbr><span><span>Ordered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1152495208%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="total-units-ordered.html">totalUnitsOrdered</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Total units ordered upstream across all replenishment requests in the replication (post-warmup).  Incremented by <code class="lang-kotlin">qty</code> at each <code class="lang-kotlin">requestReplenishment(qty)</code> call.  Drives variable-quantity ordering-cost formulations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-164643015%2FProperties%2F-251573632" anchor-label="totalUnitsShort" id="-164643015%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-units-short.html"><span>total</span><wbr></wbr><span>Units</span><wbr></wbr><span><span>Short</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-164643015%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="total-units-short.html">totalUnitsShort</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Total units short across all stockout events in the replication (post-warmup).  Incremented by <code class="lang-kotlin">remainingDemand − amountOnHand</code> at each stockout.  Drives the unit-shortage-cost line.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1153778626%2FFunctions%2F-251573632" anchor-label="attachAggregateInventoryResponse" id="-1153778626%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="attach-aggregate-inventory-response.html"><span>attach</span><wbr></wbr><span>Aggregate</span><wbr></wbr><span>Inventory</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1153778626%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="attach-aggregate-inventory-response.html"><span class="token function">attachAggregateInventoryResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">r<span class="token operator">: </span><a href="../-aggregate-inventory-response-ifc/index.html">AggregateInventoryResponseIfc</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1033169431%2FFunctions%2F-251573632" anchor-label="canFillItemType" id="1033169431%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="can-fill-item-type.html"><span>can</span><wbr></wbr><span>Fill</span><wbr></wbr><span>Item</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1033169431%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="can-fill-item-type.html"><span class="token function">canFillItemType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if this filler can fill demands of <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/can-fill-item-type.html">type</a>.</p></div><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="can-fill-item-type.html"><span class="token function">canFillItemType</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if this filler can fill demands of <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/can-fill-item-type.html">demand</a>'s item type.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-816878544%2FFunctions%2F-251573632" anchor-label="detachAggregateInventoryResponse" id="-816878544%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="detach-aggregate-inventory-response.html"><span>detach</span><wbr></wbr><span>Aggregate</span><wbr></wbr><span>Inventory</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-816878544%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="detach-aggregate-inventory-response.html"><span class="token function">detachAggregateInventoryResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">r<span class="token operator">: </span><a href="../-aggregate-inventory-response-ifc/index.html">AggregateInventoryResponseIfc</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1604881113%2FFunctions%2F-251573632" anchor-label="determineRequestStatus" id="-1604881113%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="determine-request-status.html"><span>determine</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1604881113%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="determine-request-status.html"><span class="token function">determineRequestStatus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-status-code/index.html">DemandStatusCode</a></div><div class="brief "><p class="paragraph">The status <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/determine-request-status.html">demand</a> would receive if filled now. Only valid at the current simulation time.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1553822151%2FFunctions%2F-251573632" anchor-label="fillDemand" id="1553822151%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fill-demand.html"><span>fill</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1553822151%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="fill-demand.html"><span class="token function">fillDemand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Fill a previously received demand. Must be called at the same simulation time as the receipt — no time may elapse between <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/receive.html">receive</a> and <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/fill-demand.html">fillDemand</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-75766016%2FFunctions%2F-251573632" anchor-label="initialize" id="-75766016%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-75766016%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Resets availability to <span data-unresolved-link="ksl.modeling.supplychain/DemandFillerAbstract//#ksl.simulation.ModelElement#kotlin.Boolean#kotlin.String?/PointingToCallableParameters(1)/">initialAvailability</span> before each replication. The Java original had a typo (<code class="lang-kotlin">intialize</code>) so it never actually overrode the framework hook; this port fixes the override.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-172165354%2FFunctions%2F-251573632" anchor-label="mightRequest" id="-172165354%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="might-request.html"><span>might</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-172165354%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="might-request.html"><span class="token function">mightRequest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if this sender may produce demands of <a href="../../ksl.modeling.supplychain/-demand-sender-ifc/might-request.html">type</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1342875919%2FFunctions%2F-251573632" anchor-label="negotiate" id="-1342875919%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="negotiate.html"><span><span>negotiate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1342875919%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="negotiate.html"><span class="token function">negotiate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-message-ifc/index.html">DemandMessageIfc</a></div><div class="brief "><p class="paragraph">Returns a <a href="../../ksl.modeling.supplychain/-demand-message-ifc/index.html">DemandMessageIfc</a> describing what would happen if <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/negotiate.html">demand</a> were sent now, or null if negotiation is not supported.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1222116204%2FFunctions%2F-251573632" anchor-label="receive" id="1222116204%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="receive.html"><span><span>receive</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1222116204%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="receive.html"><span class="token function">receive</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Receive <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/receive.html">demand</a> and place it in <a href="../../ksl.modeling.supplychain/-supply-chain-model/received.html">SupplyChainModel.received</a>, or reject by transitioning to <a href="../../ksl.modeling.supplychain/-supply-chain-model/rejected.html">SupplyChainModel.rejected</a>. The filler may set the demand's <a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/status.html">SupplyChainModel.Demand.status</a> to indicate the rejection reason but is not required to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1053381335%2FFunctions%2F-251573632" anchor-label="setInitialPolicyParameters" id="1053381335%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-initial-policy-parameters.html"><span>set</span><wbr></wbr><span>Initial</span><wbr></wbr><span>Policy</span><wbr></wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1053381335%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-initial-policy-parameters.html"><span class="token function">setInitialPolicyParameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parameters<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-767805203%2FFunctions%2F-251573632" anchor-label="setInventoryPolicy" id="-767805203%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-inventory-policy.html"><span>set</span><wbr></wbr><span>Inventory</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-767805203%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-inventory-policy.html"><span class="token function">setInventoryPolicy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">newPolicy<span class="token operator">: </span><a href="../-inventory-policy-abstract/index.html">InventoryPolicyAbstract</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-971984769%2FFunctions%2F-251573632" anchor-label="setInventoryPolicyParameters" id="-971984769%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-inventory-policy-parameters.html"><span>set</span><wbr></wbr><span>Inventory</span><wbr></wbr><span>Policy</span><wbr></wbr><span><span>Parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-971984769%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-inventory-policy-parameters.html"><span class="token function">setInventoryPolicyParameters</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parameters<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="70690677%2FFunctions%2F-251573632" anchor-label="snapshotCostObservables" id="70690677%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.modeling.supplychain.cost/snapshot-cost-observables.html"><span>snapshot</span><wbr></wbr><span>Cost</span><wbr></wbr><span><span>Observables</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="70690677%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">Inventory</a><span class="token punctuation">.</span><a href="../../ksl.modeling.supplychain.cost/snapshot-cost-observables.html"><span class="token function">snapshotCostObservables</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.supplychain.cost/-inventory-cost-observables/index.html">InventoryCostObservables</a></div><div class="brief "><p class="paragraph">Capture an <a href="../../ksl.modeling.supplychain.cost/-inventory-cost-observables/index.html">InventoryCostObservables</a> snapshot of this inventory's current within-replication state.  Intended to be called from a cost calculator's <code class="lang-kotlin">ModelElementObserver.replicationEnded(this)</code> callback, when KSL guarantees the within-replication statistics are stable for the post-warmup window.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="692234340%2FFunctions%2F-251573632" anchor-label="toString" id="692234340%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="692234340%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Includes the model name, the id, the model element name, the parent name, and parent id</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1419263172%2FFunctions%2F-251573632" anchor-label="willReject" id="1419263172%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="will-reject.html"><span>will</span><wbr></wbr><span><span>Reject</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1419263172%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="will-reject.html"><span class="token function">willReject</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if <a href="../../ksl.modeling.supplychain/-demand-filler-ifc/will-reject.html">demand</a> would be rejected if filled now.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

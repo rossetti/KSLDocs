@@ -44,7 +44,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.2.7        </div>
+R1.3        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
@@ -111,7 +111,7 @@ R1.2.7        </div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Model</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>simulationName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span><span class="token string">&quot;Simulation&quot;</span><span class="token punctuation">, </span></span><span class="parameter ">pathToOutputDirectory<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/nio/file/Path.html">Path</a><span class="token operator"> = </span>KSL.createSubDirectory(simulationName.replace(&quot; &quot;, &quot;_&quot;) + &quot;_OutputDir&quot;)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>autoCSVReports<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventCalendar<span class="token operator">: </span><a href="../../ksl.calendar/-calendar-ifc/index.html">CalendarIfc</a><span class="token operator"> = </span>PriorityQueueEventCalendar()</span></span><span class="token punctuation">)</span> : <a href="../-model-element/index.html">ModelElement</a>, <a href="../-experiment-ifc/index.html">ExperimentIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simulation/Model.kt#L75">source</a>)</span></span></div><p class="paragraph">A simulation model is a representation of a system for the purpose of recreating the system's behavior over time. A KSL model consists of many model elements that represent the components of the system. The user create a model to contain model elements and adds the model elements prior to executing the simulation.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">    val model = Model(&quot;Drive Through Pharmacy&quot;, autoCSVReports = true)<br>    model.numberOfReplications = 30<br>    model.lengthOfReplication = 20000.0<br>    model.lengthOfReplicationWarmUp = 5000.0<br>    // add DriveThroughPharmacy to the main model<br>    val dtp = DriveThroughPharmacy(model, 1)<br>    dtp.arrivalRV.initialRandomSource = ExponentialRV(6.0, 1)<br>    dtp.serviceRV.initialRandomSource = ExponentialRV(3.0, 2)<br>    model.simulate()<br>    model.print()</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>simulation</span><wbr></wbr><span><span>Name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the simulation model. This name must be unique within the context of the elements in this model. A unique name is assigned by default.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>path</span><wbr></wbr><span>To</span><wbr></wbr><span>Output</span><wbr></wbr><span><span>Directory</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the path specifying the location where simulation output files will be stored. By default, this is the simulation name augmented by &quot;_OutputDir&quot;.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span><span>CSVReports</span></span></u></div></span></div><div><div class="title"><p class="paragraph">if true the simulation output results will automatically be stored in comma separated value files. The default is false.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>event</span><wbr></wbr><span><span>Calendar</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the event calendar to use for holding events. By default, this is a <a href="../../ksl.calendar/-priority-queue-event-calendar/index.html">PriorityQueueEventCalendar</a>.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
-    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="tableheader">Constructors</h2>
@@ -213,6 +213,21 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
+<a data-name="-1699076364%2FProperties%2F-251573632" anchor-label="autoExperimentCSVReports" id="-1699076364%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="auto-experiment-c-s-v-reports.html"><span>auto</span><wbr></wbr><span>Experiment</span><wbr></wbr><span><span>CSVReports</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1699076364%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-experiment-c-s-v-reports.html">autoExperimentCSVReports</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">When <code class="lang-kotlin">true</code>, <a href="simulate.html">simulate</a> turns on the across-replication CSV report before running, regardless of <span data-unresolved-link="ksl.simulation/Model//#kotlin.String#java.nio.file.Path#kotlin.Boolean#ksl.calendar.CalendarIfc/PointingToCallableParameters(2)/">autoCSVReports</span>. Independent counterpart of <a href="auto-replication-c-s-v-reports.html">autoReplicationCSVReports</a>. Default <code class="lang-kotlin">false</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="734596093%2FProperties%2F-251573632" anchor-label="autoPrintSummaryReport" id="734596093%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -224,6 +239,21 @@ R1.2.7        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-print-summary-report.html">autoPrintSummaryReport</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If this property is true, then the console printed summary report will automatically be printed to the console when the simulation run is completed. The default is false.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1580175371%2FProperties%2F-251573632" anchor-label="autoReplicationCSVReports" id="1580175371%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="auto-replication-c-s-v-reports.html"><span>auto</span><wbr></wbr><span>Replication</span><wbr></wbr><span><span>CSVReports</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1580175371%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="auto-replication-c-s-v-reports.html">autoReplicationCSVReports</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">When <code class="lang-kotlin">true</code>, <a href="simulate.html">simulate</a> turns on the per-replication CSV report before running, regardless of <span data-unresolved-link="ksl.simulation/Model//#kotlin.String#java.nio.file.Path#kotlin.Boolean#ksl.calendar.CalendarIfc/PointingToCallableParameters(2)/">autoCSVReports</span>.  Independent switch for callers that want exactly one kind of CSV output — notably GUI hosts surfacing per-kind output toggles to the analyst.  Default <code class="lang-kotlin">false</code>; the existing <span data-unresolved-link="ksl.simulation/Model//#kotlin.String#java.nio.file.Path#kotlin.Boolean#ksl.calendar.CalendarIfc/PointingToCallableParameters(2)/">autoCSVReports</span> shortcut still implies both CSV reports when set.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -333,21 +363,6 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
-<a data-name="312706341%2FProperties%2F-251573632" anchor-label="description" id="312706341%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
-            <div class="main-subrow keyValue ">
-              <div class=""><span class="inline-flex">
-                  <div><a href="description.html"><span><span>description</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="312706341%2FProperties%2F-251573632"></span>
-                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                  </span></span></div>
-              <div>
-                <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="description.html">description</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">A user defined string that describes the model.</p></div></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
 <a data-name="431287440%2FProperties%2F-251573632" anchor-label="elapsedExecutionTime" id="431287440%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -388,7 +403,37 @@ R1.2.7        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="experimental-controls.html">experimentalControls</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Holds values for each controllable parameter of the simulation model.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="experimental-controls.html">experimentalControls</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Holds values for each numeric controllable parameter of the simulation model. Applied during <span data-unresolved-link="ksl.simulation/Model/setUpExperiment/#/PointingToDeclaration/">ksl.simulation.Model.setUpExperiment</span> via <code class="lang-kotlin">controls().setControlsFromMap()</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1453643181%2FProperties%2F-251573632" anchor-label="experimentalJsonControls" id="-1453643181%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="experimental-json-controls.html"><span>experimental</span><wbr></wbr><span>Json</span><wbr></wbr><span><span>Controls</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1453643181%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="experimental-json-controls.html">experimentalJsonControls</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Holds JSON control overrides for the simulation model, staged for deferred application at the start of each experiment.  Applied during <span data-unresolved-link="ksl.simulation/Model/setUpExperiment/#/PointingToDeclaration/">ksl.simulation.Model.setUpExperiment</span> via <code class="lang-kotlin">controls().setJsonControlsFromMap()</code>. An empty map means no JSON controls are overridden.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1223578806%2FProperties%2F-251573632" anchor-label="experimentalStringControls" id="-1223578806%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="experimental-string-controls.html"><span>experimental</span><wbr></wbr><span>String</span><wbr></wbr><span><span>Controls</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1223578806%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="experimental-string-controls.html">experimentalStringControls</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Holds string control overrides for the simulation model, staged for deferred application at the start of each experiment.  Applied during <span data-unresolved-link="ksl.simulation/Model/setUpExperiment/#/PointingToDeclaration/">ksl.simulation.Model.setUpExperiment</span> via <code class="lang-kotlin">controls().setStringControlsFromMap()</code>. An empty map means no string controls are overridden.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -648,6 +693,21 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
+<a data-name="-1937409710%2FProperties%2F-251573632" anchor-label="lifeCycleEmitters" id="-1937409710%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="life-cycle-emitters.html"><span>life</span><wbr></wbr><span>Cycle</span><wbr></wbr><span><span>Emitters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1937409710%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="life-cycle-emitters.html">lifeCycleEmitters</a><span class="token operator">: </span><a href="../-simulation-life-cycle-emitters/index.html">SimulationLifeCycleEmitters</a></div><div class="brief "><p class="paragraph">Typed emitters for the four simulation lifecycle boundaries.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="1894624390%2FProperties%2F-251573632" anchor-label="listOfAcrossReplicationStatistics" id="1894624390%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -689,6 +749,21 @@ R1.2.7        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="maximum-allowed-execution-time-per-replication.html">maximumAllowedExecutionTimePerReplication</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a></div><div class="brief "><p class="paragraph">The maximum allowable execution time &quot;wall&quot; clock time for an individual replication to complete processing in nanoseconds. Set the maximum allotted (suggested) execution (real) clock for a replication. This is a proposed value because the execution time requirement is only checked after the completion of each replication After it is discovered that cumulative time for executing the replication has exceeded the maximum time, then the process will be ended (perhaps) not completing other replications.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-261716055%2FProperties%2F-251573632" anchor-label="modelCatalog" id="-261716055%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="model-catalog.html"><span>model</span><wbr></wbr><span><span>Catalog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-261716055%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="model-catalog.html">modelCatalog</a><span class="token operator">: </span><a href="../-model-catalog/index.html">ModelCatalog</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The author-curated catalog of nominated inputs and outputs, or <code class="lang-kotlin">null</code> when nothing was nominated.  Recomputed on each access by rolling up every element's <a href="../-model-element/specify-catalog.html">ModelElement.specifyCatalog</a> and applying the <a href="curate-catalog.html">curateCatalog</a> blocks; flows into <a href="model-descriptor.html">modelDescriptor</a> as <a href="../-model-descriptor/catalog.html">ModelDescriptor.catalog</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -808,7 +883,7 @@ R1.2.7        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="output-directory.html">outputDirectory</a><span class="token operator">: </span><a href="../../ksl.utilities.io/-output-directory/index.html">OutputDirectory</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="output-directory.html">outputDirectory</a><span class="token operator">: </span><a href="../../ksl.utilities.io/-output-directory/index.html">OutputDirectory</a></div><div class="brief "><p class="paragraph">The output directory for the simulation, created lazily on first access. Deferring construction means runs that never produce file output (for example, parallel simulation-optimization evaluations, or per-point and per-scenario models that immediately redirect their output) never open a <code class="lang-kotlin">kslOutput.txt</code> log file and never hold its file handle. The property stays reassignable: assigning a value before the first read replaces the default outright, so no default log file is ever opened. The base directory <code class="lang-kotlin">pathToOutputDirectory</code> is still created eagerly at construction; only the OutputDirectory (and its log file) is deferred.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -1087,6 +1162,36 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
+<a data-name="1901103643%2FFunctions%2F-251573632" anchor-label="buildReport" id="1901103643%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities.io.report.extensions/build-report.html"><span>build</span><wbr></wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901103643%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">Model</a><span class="token punctuation">.</span><a href="../../ksl.utilities.io.report.extensions/build-report.html"><span class="token function">buildReport</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>simulationName<span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../ksl.utilities.io.report.dsl/-report-builder/index.html">ReportBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{}</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.io.report.ast/-report-node/-document/index.html">ReportNode.Document</a></div><div class="brief "><p class="paragraph">Convenience extension on <a href="index.html">Model</a> that builds a <a href="../../ksl.utilities.io.report.ast/-report-node/-document/index.html">ReportNode.Document</a> in a single call, automatically wiring the model's <a href="../-simulation-reporter/index.html">SimulationReporter</a> and time-series responses into a complete results report.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-257821746%2FFunctions%2F-251573632" anchor-label="catalogIssues" id="-257821746%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="catalog-issues.html"><span>catalog</span><wbr></wbr><span><span>Issues</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-257821746%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="catalog-issues.html"><span class="token function">catalogIssues</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Problems noticed while assembling the catalog — invalid element-level nominations that were skipped (e.g. a library element nominating a renamed response).  Empty when the roll-up was clean.  Useful for diagnosing a reusable element's <code class="lang-kotlin">specifyCatalog</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-1407134725%2FFunctions%2F-251573632" anchor-label="changeRunParameters" id="-1407134725%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -1177,6 +1282,21 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
+<a data-name="-1526725628%2FFunctions%2F-251573632" anchor-label="curateCatalog" id="-1526725628%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="curate-catalog.html"><span>curate</span><wbr></wbr><span><span>Catalog</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1526725628%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="curate-catalog.html"><span class="token function">curateCatalog</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><a href="../-catalog-curation-scope/index.html">CatalogCurationScope</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Curate the model's catalog at assembly time: add, override, remove, or clear nominations on top of what the element <a href="../-model-element/specify-catalog.html">ModelElement.specifyCatalog</a> roll-up produced.  Use it to add model-specific nominations, relabel an element's nomination (re-nominating a key replaces it — the model-level metadata wins), or prune a catalog that a heavily-reused element has over-populated:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="-375658050%2FFunctions%2F-251573632" anchor-label="endSimulation" id="-375658050%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -1187,7 +1307,7 @@ R1.2.7        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="end-simulation.html"><span class="token function">endSimulation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">msg<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Causes the simulation to end after the current replication is completed</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="end-simulation.html"><span class="token function">endSimulation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">msg<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Signals the iterative-process loop to stop <strong>after the current replication has finished</strong>.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -1233,6 +1353,36 @@ R1.2.7        </div>
               <div>
                 <div class="title">
                   <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="has-experimental-controls.html"><span class="token function">hasExperimentalControls</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="911175713%2FFunctions%2F-251573632" anchor-label="hasExperimentalJsonControls" id="911175713%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-experimental-json-controls.html"><span>has</span><wbr></wbr><span>Experimental</span><wbr></wbr><span>Json</span><wbr></wbr><span><span>Controls</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="911175713%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="has-experimental-json-controls.html"><span class="token function">hasExperimentalJsonControls</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-670321256%2FFunctions%2F-251573632" anchor-label="hasExperimentalStringControls" id="-670321256%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-experimental-string-controls.html"><span>has</span><wbr></wbr><span>Experimental</span><wbr></wbr><span>String</span><wbr></wbr><span><span>Controls</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-670321256%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="has-experimental-string-controls.html"><span class="token function">hasExperimentalStringControls</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -1337,7 +1487,7 @@ R1.2.7        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="model-descriptor.html"><span class="token function">modelDescriptor</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-model-descriptor/index.html">ModelDescriptor</a></div><div class="brief "><p class="paragraph">Constructs a data class that describes the model.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="model-descriptor.html"><span class="token function">modelDescriptor</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-model-descriptor/index.html">ModelDescriptor</a></div><div class="brief "><p class="paragraph">Constructs a data class that describes the model's current configuration.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -1537,6 +1687,23 @@ R1.2.7        </div>
               </div>
             </div>
           </div>
+<a data-name="1142503605%2FFunctions%2F-251573632" anchor-label="toReport" id="1142503605%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.utilities.io.report.extensions/to-report.html"><span>to</span><wbr></wbr><span><span>Report</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1142503605%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">Model</a><span class="token punctuation">.</span><a href="../../ksl.utilities.io.report.extensions/to-report.html"><span class="token function">toReport</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">title<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>simulationName<span class="token punctuation">, </span></span><span class="parameter ">confidenceLevel<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.95</span><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../ksl.utilities.io.report.dsl/-report-builder/index.html">ReportBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>{
+        simulationResults(simulationReporter, this@toReport, confidenceLevel)
+    }</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.io.report.ast/-report-node/-document/index.html">ReportNode.Document</a></div><div class="brief "><p class="paragraph">Builds a complete <a href="../../ksl.utilities.io.report.ast/-report-node/-document/index.html">ReportNode.Document</a> for this model using the standard simulation results structure (experiment metadata, across-replication statistics, histograms, frequencies, and time-series responses).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
 <a data-name="875715437%2FFunctions%2F-251573632" anchor-label="toString" id="875715437%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
           <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
             <div class="main-subrow keyValue ">
@@ -1667,7 +1834,7 @@ R1.2.7        </div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="validate-response-names.html"><span class="token function">validateResponseNames</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Validates the provided set of response names are associated with the model's responses (Response, TWResponse or Counter).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="validate-response-names.html"><span class="token function">validateResponseNames</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">responseNames<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Validates the provided set of response names are associated with the model's responses (<a href="../../ksl.modeling.variable/-response/index.html">ksl.modeling.variable.Response</a>, <a href="../../ksl.modeling.variable/-t-w-response/index.html">ksl.modeling.variable.TWResponse</a>, or <a href="../../ksl.modeling.variable/-counter/index.html">ksl.modeling.variable.Counter</a>).</p></div></div></div>
                 </div>
               </div>
             </div>

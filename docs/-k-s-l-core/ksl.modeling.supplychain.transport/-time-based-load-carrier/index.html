@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>TimeBasedLoadCarrier</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain.transport/TimeBasedLoadCarrier///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.supplychain.transport</a><span class="delimiter">/</span><span class="current">TimeBasedLoadCarrier</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Time</span><wbr></wbr><span>Based</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Carrier</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">TimeBasedLoadCarrier</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>supplyChainModel<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/index.html">SupplyChainModel</a><span class="token punctuation">, </span></span><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token operator"> = </span>supplyChainModel<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../-time-based-demand-carrier/index.html">TimeBasedDemandCarrier</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/transport/TimeBasedLoadCarrier.kt#L30">source</a>)</span></span></div><p class="paragraph">Demand carrier that buffers per-destination demands in <a href="../-demand-load-builder/index.html">DemandLoadBuilder</a>s and ships them as <a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand-load/index.html">SupplyChainModel.DemandLoad</a>s. Inherits per-destination random transport times from <a href="../-time-based-demand-carrier/index.html">TimeBasedDemandCarrier</a>; load formation strategy is delegated to the builders.</p><p class="paragraph">When <a href="react-to-load-builders-flag.html">reactToLoadBuildersFlag</a> is true, the carrier ships every load a builder forms automatically; otherwise loads sit in the builder's load queue and must be drained explicitly via <a href="ship-loads.html">shipLoads</a> (or by scheduling a periodic shipping event).</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>supply</span><wbr></wbr><span>Chain</span><wbr></wbr><span><span>Model</span></span></u></div></span></div><div><div class="title"><p class="paragraph">model that owns the created loads (passed     through when building new DemandLoadBuilders)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">parent model element; defaults to <span data-unresolved-link="ksl.modeling.supplychain.transport/TimeBasedLoadCarrier//#ksl.modeling.supplychain.SupplyChainModel#ksl.simulation.ModelElement#kotlin.String?/PointingToCallableParameters(0)/">supplyChainModel</span></p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">optional model-element name</p><p class="paragraph">See <code class="lang-kotlin">sc.transportlayer.TimeBasedLoadCarrier</code></p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-446804126%2FConstructors%2F-251573632" anchor-label="TimeBasedLoadCarrier" id="-446804126%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-time-based-load-carrier.html"><span>Time</span><wbr></wbr><span>Based</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Carrier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-446804126%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">supplyChainModel<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/index.html">SupplyChainModel</a><span class="token punctuation">, </span></span><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token operator"> = </span>supplyChainModel<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="2024992591%2FProperties%2F-251573632" anchor-label="reactToLoadBuildersFlag" id="2024992591%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="react-to-load-builders-flag.html"><span>react</span><wbr></wbr><span>To</span><wbr></wbr><span>Load</span><wbr></wbr><span>Builders</span><wbr></wbr><span><span>Flag</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2024992591%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="react-to-load-builders-flag.html">reactToLoadBuildersFlag</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, every load formed automatically by an attached <a href="../-demand-load-builder/index.html">DemandLoadBuilder</a> is shipped immediately via <a href="load-formed.html">loadFormed</a>. Default false (loads sit in the builder's outgoing queue until drained).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1743120303%2FProperties%2F-251573632" anchor-label="shipmentCounter" id="-1743120303%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="shipment-counter.html"><span>shipment</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1743120303%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="shipment-counter.html">shipmentCounter</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Read-only view of the aggregate shipment counter.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1047882288%2FProperties%2F-251573632" anchor-label="supplyChainModel" id="-1047882288%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="supply-chain-model.html"><span>supply</span><wbr></wbr><span>Chain</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1047882288%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="supply-chain-model.html">supplyChainModel</a><span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/index.html">SupplyChainModel</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1717911948%2FFunctions%2F-251573632" anchor-label="allLoadBuilders" id="-1717911948%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="all-load-builders.html"><span>all</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Builders</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1717911948%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="all-load-builders.html"><span class="token function">allLoadBuilders</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Snapshot of all load builders attached to this carrier, in assignment order.  Used by the network cost model to walk per-builder per-item on-hand statistics for the <code class="lang-kotlin">shipmentBuildingHoldingCost</code> line.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="802197298%2FFunctions%2F-251573632" anchor-label="assignLoadBuilder" id="802197298%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="assign-load-builder.html"><span>assign</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="802197298%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="assign-load-builder.html"><span class="token function">assignLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></div><div class="brief "><p class="paragraph">Create and assign a default load builder for <a href="assign-load-builder.html">destination</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="assign-load-builder.html"><span class="token function">assignLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">loadBuilder<span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Attach a pre-built <a href="assign-load-builder.html">loadBuilder</a> for <a href="assign-load-builder.html">destination</a>. Wires up the built-in <a href="../-demand-load-formed-listener-ifc/index.html">DemandLoadFormedListenerIfc</a> so the carrier can react to formed loads, and creates the per-destination shipment counter.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">fun </span><a href="assign-load-builder.html"><span class="token function">assignLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter ">itemTypes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.supplychain/-item-type/index.html">ItemType</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></div><div class="brief "><p class="paragraph">Create and assign a load builder for <a href="assign-load-builder.html">destination</a>, with the supplied model-element name and (optional) per-item on-hand tracking.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2071780574%2FFunctions%2F-251573632" anchor-label="containsLoadBuilder" id="2071780574%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="contains-load-builder.html"><span>contains</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2071780574%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="contains-load-builder.html"><span class="token function">containsLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True iff <a href="contains-load-builder.html">destination</a> has an assigned load builder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-95777193%2FFunctions%2F-251573632" anchor-label="formLoadByCount" id="-95777193%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="form-load-by-count.html"><span>form</span><wbr></wbr><span>Load</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-95777193%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="form-load-by-count.html"><span class="token function">formLoadByCount</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">numDemands<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1874807708%2FFunctions%2F-251573632" anchor-label="formLoadByCube" id="1874807708%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="form-load-by-cube.html"><span>form</span><wbr></wbr><span>Load</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Cube</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1874807708%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="form-load-by-cube.html"><span class="token function">formLoadByCube</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">minCube<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxCube<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-375428615%2FFunctions%2F-251573632" anchor-label="formLoadByWeight" id="-375428615%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="form-load-by-weight.html"><span>form</span><wbr></wbr><span>Load</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Weight</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-375428615%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="form-load-by-weight.html"><span class="token function">formLoadByWeight</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">minWeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxWeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="241267719%2FFunctions%2F-251573632" anchor-label="getDemandShipmentCounter" id="241267719%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-demand-shipment-counter.html"><span>get</span><wbr></wbr><span>Demand</span><wbr></wbr><span>Shipment</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="241267719%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-demand-shipment-counter.html"><span class="token function">getDemandShipmentCounter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sender<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-destination shipment counter for the cost model.  A load carrier's shipment unit is a <strong>load</strong>, so this returns the count of loads dispatched to <a href="get-demand-shipment-counter.html">sender</a> — the same counter as <a href="get-shipment-counter.html">getShipmentCounter</a> — overriding the parent's per-demand counter, which a load carrier never increments.  This is what lets the per-edge <a href="../../ksl.modeling.supplychain.cost/-edge-outbound-cost-calculator/index.html">ksl.modeling.supplychain.cost.EdgeOutboundCostCalculator</a> / <a href="../../ksl.modeling.supplychain.cost/-edge-inbound-cost-calculator/index.html">ksl.modeling.supplychain.cost.EdgeInboundCostCalculator</a> see load formation (Loading / Shipping / Unloading per dispatched load), mirroring the <a href="total-load-weight-accumulator.html">totalLoadWeightAccumulator</a> / <a href="total-load-cube-accumulator.html">totalLoadCubeAccumulator</a> overrides.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-698088151%2FFunctions%2F-251573632" anchor-label="getLoadBuilder" id="-698088151%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-load-builder.html"><span>get</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-698088151%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-load-builder.html"><span class="token function">getLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></div><div class="brief "><p class="paragraph">Returns the load builder previously assigned to <a href="get-load-builder.html">destination</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1111717680%2FFunctions%2F-251573632" anchor-label="getNumberOfDemandShipments" id="1111717680%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-number-of-demand-shipments.html"><span>get</span><wbr></wbr><span>Number</span><wbr></wbr><span>Of</span><wbr></wbr><span>Demand</span><wbr></wbr><span><span>Shipments</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1111717680%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="get-number-of-demand-shipments.html"><span class="token function">getNumberOfDemandShipments</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sender<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Per-destination count of loads dispatched to <a href="get-number-of-demand-shipments.html">sender</a>, or 0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1887427484%2FFunctions%2F-251573632" anchor-label="getShipmentCounter" id="1887427484%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-shipment-counter.html"><span>get</span><wbr></wbr><span>Shipment</span><wbr></wbr><span><span>Counter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1887427484%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-shipment-counter.html"><span class="token function">getShipmentCounter</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-destination shipment counter, or null if not assigned.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1163887008%2FFunctions%2F-251573632" anchor-label="loadFormed" id="1163887008%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load-formed.html"><span>load</span><wbr></wbr><span><span>Formed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1163887008%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">fun </span><a href="load-formed.html"><span class="token function">loadFormed</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">builder<span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Default reaction to a load formation: ship all queued loads in <a href="load-formed.html">builder</a>. Subclasses may override.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1604756215%2FFunctions%2F-251573632" anchor-label="setCountLimit" id="1604756215%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-count-limit.html"><span>set</span><wbr></wbr><span>Count</span><wbr></wbr><span><span>Limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1604756215%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-count-limit.html"><span class="token function">setCountLimit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">countLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="886166131%2FFunctions%2F-251573632" anchor-label="setCubeFormingLimits" id="886166131%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-cube-forming-limits.html"><span>set</span><wbr></wbr><span>Cube</span><wbr></wbr><span>Forming</span><wbr></wbr><span><span>Limits</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="886166131%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-cube-forming-limits.html"><span class="token function">setCubeFormingLimits</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">minCube<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxCube<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-668410148%2FFunctions%2F-251573632" anchor-label="setDefaultLoadFormingOption" id="-668410148%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-default-load-forming-option.html"><span>set</span><wbr></wbr><span>Default</span><wbr></wbr><span>Load</span><wbr></wbr><span>Forming</span><wbr></wbr><span><span>Option</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-668410148%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-default-load-forming-option.html"><span class="token function">setDefaultLoadFormingOption</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">option<span class="token operator">: </span><a href="../-demand-load-builder/-load-forming-option/index.html">DemandLoadBuilder.LoadFormingOption</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="68509491%2FFunctions%2F-251573632" anchor-label="setLoadFormingRule" id="68509491%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-load-forming-rule.html"><span>set</span><wbr></wbr><span>Load</span><wbr></wbr><span>Forming</span><wbr></wbr><span><span>Rule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="68509491%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-load-forming-rule.html"><span class="token function">setLoadFormingRule</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">rule<span class="token operator">: </span><a href="../-demand-load-forming-rule-ifc/index.html">DemandLoadFormingRuleIfc</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="975817206%2FFunctions%2F-251573632" anchor-label="setWeightFormingLimits" id="975817206%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-weight-forming-limits.html"><span>set</span><wbr></wbr><span>Weight</span><wbr></wbr><span>Forming</span><wbr></wbr><span><span>Limits</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="975817206%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-weight-forming-limits.html"><span class="token function">setWeightFormingLimits</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">destination<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a><span class="token punctuation">, </span></span><span class="parameter ">minWeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">maxWeight<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2036585414%2FFunctions%2F-251573632" anchor-label="shipFromLoadBuilder" id="2036585414%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ship-from-load-builder.html"><span>ship</span><wbr></wbr><span>From</span><wbr></wbr><span>Load</span><wbr></wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2036585414%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">fun </span><a href="ship-from-load-builder.html"><span class="token function">shipFromLoadBuilder</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">builder<span class="token operator">: </span><a href="../-demand-load-builder/index.html">DemandLoadBuilder</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Drain <a href="ship-from-load-builder.html">builder</a>'s load queue, scheduling per-destination delivery events from the inherited per-sender transport times. If <a href="../-time-based-demand-carrier/immediate-transport-flag.html">immediateTransportFlag</a> is true and no transport time has been set for the destination, the load ships and delivers in the current instant.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-472538302%2FFunctions%2F-251573632" anchor-label="shipLoads" id="-472538302%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ship-loads.html"><span>ship</span><wbr></wbr><span><span>Loads</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-472538302%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="ship-loads.html"><span class="token function">shipLoads</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Drain every builder's load queue and ship the loads to their destinations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-695874847%2FFunctions%2F-251573632" anchor-label="totalLoadCubeAccumulator" id="-695874847%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-load-cube-accumulator.html"><span>total</span><wbr></wbr><span>Load</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Accumulator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-695874847%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="total-load-cube-accumulator.html"><span class="token function">totalLoadCubeAccumulator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sender<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-destination cumulative cube of all LOADS shipped to <a href="total-load-cube-accumulator.html">sender</a> in the current replication (post-warmup), or null if <a href="total-load-cube-accumulator.html">sender</a> has no assigned load builder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1416642652%2FFunctions%2F-251573632" anchor-label="totalLoadWeightAccumulator" id="-1416642652%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="total-load-weight-accumulator.html"><span>total</span><wbr></wbr><span>Load</span><wbr></wbr><span>Weight</span><wbr></wbr><span><span>Accumulator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1416642652%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="total-load-weight-accumulator.html"><span class="token function">totalLoadWeightAccumulator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sender<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-demand-sender-ifc/index.html">DemandSenderIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-destination cumulative weight of all LOADS shipped to <a href="total-load-weight-accumulator.html">sender</a> in the current replication (post-warmup), or null if <a href="total-load-weight-accumulator.html">sender</a> has no assigned load builder.  Each dispatched load contributes <code class="lang-kotlin">load.weight</code> (the sum of its constituent demand weights).  Overrides the parent's per-demand accumulator — the load carrier's shipment unit is a load, not a demand.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="882706916%2FFunctions%2F-251573632" anchor-label="transportDemand" id="882706916%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="transport-demand.html"><span>transport</span><wbr></wbr><span><span>Demand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="882706916%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="transport-demand.html"><span class="token function">transportDemand</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">demand<span class="token operator">: </span><a href="../../ksl.modeling.supplychain/-supply-chain-model/-demand/index.html">SupplyChainModel.Demand</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Buffer the demand by handing it to its destination's load builder. Throws if <a href="transport-demand.html">demand</a>'s sender has no builder.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

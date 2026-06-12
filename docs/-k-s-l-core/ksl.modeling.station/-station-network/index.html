@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>StationNetwork</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.station/StationNetwork///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.station</a><span class="delimiter">/</span><span class="current">StationNetwork</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Station</span><wbr></wbr><span><span>Network</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">StationNetwork</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-station-network-c-ifc/index.html">StationNetworkCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/station/StationNetwork.kt#L99">source</a>)</span></span></div><p class="paragraph">A StationNetwork is a container that models a queueing network as a graph of receivers (stations) connected by senders/routers. It owns the network-level responses that essentially every queueing model re-derives by hand — the number in the system, the total time in the system, and the number completed — and it provides a name registry, named boundary ports (ingress/egress), and a lifecycle event stream so that the network is an open, observable system.</p><p class="paragraph">Stations are created through the helper functions (<a href="source.html">source</a>, <a href="single-q-station.html">singleQStation</a>, <a href="activity-station.html">activityStation</a>, <a href="sink.html">sink</a>) so that each station is parented to the network, named consistently, and registered for lookup and validation. The helpers are intentionally plain functions; a type-safe builder DSL is layered on top of them separately.</p><p class="paragraph">Expose <a href="../-station-network-c-ifc/index.html">StationNetworkCIfc</a> to clients that only need to observe the network.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the model element serving as this network's parent</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the name of the network</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-608345440%2FConstructors%2F-251573632" anchor-label="StationNetwork" id="-608345440%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-station-network.html"><span>Station</span><wbr></wbr><span><span>Network</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-608345440%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="563211966%2FProperties%2F-251573632" anchor-label="classNames" id="563211966%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="class-names.html"><span>class</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="563211966%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="class-names.html">classNames</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The registered QObject class names within the network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1092148869%2FProperties%2F-251573632" anchor-label="holdingsAtRunEnd" id="-1092148869%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="holdings-at-run-end.html"><span>holdings</span><wbr></wbr><span>At</span><wbr></wbr><span>Run</span><wbr></wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1092148869%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="holdings-at-run-end.html">holdingsAtRunEnd</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div><div class="brief "><p class="paragraph">Diagnostic: the number of entities still holding allocations at the end of each replication. Non-zero typically reflects work-in-process at the end of a terminating run (normal); a steadily growing value across replications suggests a leak (an entity that seized but never released — surfaced more precisely by the exit-time validation in sinks/transfers/joins/separates).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1732169798%2FProperties%2F-251573632" anchor-label="nodeNames" id="1732169798%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="node-names.html"><span>node</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1732169798%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="node-names.html">nodeNames</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The registered node names within this network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1827631977%2FProperties%2F-251573632" anchor-label="numCompleted" id="1827631977%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-completed.html"><span>num</span><wbr></wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1827631977%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-completed.html">numCompleted</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">The number of QObject instances that have left the network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-120045550%2FProperties%2F-251573632" anchor-label="numInSystem" id="-120045550%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-in-system.html"><span>num</span><wbr></wbr><span>In</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-120045550%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-in-system.html">numInSystem</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">The number of QObject instances currently within the network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-812159150%2FProperties%2F-251573632" anchor-label="systemTime" id="-812159150%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="system-time.html"><span>system</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-812159150%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="system-time.html">systemTime</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div><div class="brief "><p class="paragraph">The total time that a QObject instance spends from creation to leaving the network.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1296684510%2FFunctions%2F-251573632" anchor-label="activityStation" id="-1296684510%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="activity-station.html"><span>activity</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1296684510%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="activity-station.html"><span class="token function">activityStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">activityTime<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token operator"> = </span>ConstantRV.ZERO<span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-activity-station/index.html">ActivityStation</a></div><div class="brief "><p class="paragraph">Creates an <a href="../-activity-station/index.html">ActivityStation</a> (pure delay, no resource contention) parented to the network and registered under <a href="activity-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1767957490%2FFunctions%2F-251573632" anchor-label="allocationsOf" id="-1767957490%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="allocations-of.html"><span>allocations</span><wbr></wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1767957490%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="allocations-of.html"><span class="token function">allocationsOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">qObject<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-allocation/index.html">Allocation</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The allocations <a href="allocations-of.html">qObject</a> currently holds, in seize order (possibly empty).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1831388947%2FFunctions%2F-251573632" anchor-label="arcs" id="-1831388947%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="arcs.html"><span><span>arcs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1831388947%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="arcs.html"><span class="token function">arcs</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-network-arc/index.html">NetworkArc</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The directed connections between registered nodes (best-effort static graph).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1374107438%2FFunctions%2F-251573632" anchor-label="attachNetworkObserver" id="1374107438%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="attach-network-observer.html"><span>attach</span><wbr></wbr><span>Network</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1374107438%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="attach-network-observer.html"><span class="token function">attachNetworkObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">observer<span class="token operator">: </span><a href="../-network-observer/index.html">NetworkObserver</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Attaches an observer for the network's lifecycle events.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1593257820%2FFunctions%2F-251573632" anchor-label="batchStation" id="-1593257820%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="batch-station.html"><span>batch</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1593257820%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="batch-station.html"><span class="token function">batchStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">batchSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-batch-station/index.html">BatchStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-batch-station/index.html">BatchStation</a> that forms batches of <a href="batch-station.html">batchSize</a> instances, parented to the network and registered under <a href="batch-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1876552075%2FFunctions%2F-251573632" anchor-label="blockingStation" id="1876552075%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="blocking-station.html"><span>blocking</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1876552075%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="blocking-station.html"><span class="token function">blockingStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">bufferCapacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">activityTime<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-blocking-station/index.html">BlockingStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-blocking-station/index.html">BlockingStation</a> (finite buffer, block-after-service), parented to the network and registered under <a href="blocking-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1893292245%2FFunctions%2F-251573632" anchor-label="classNumCompleted" id="1893292245%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="class-num-completed.html"><span>class</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1893292245%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="class-num-completed.html"><span class="token function">classNumCompleted</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">className<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The per-class number completed, or null if <a href="../-station-network-c-ifc/class-num-completed.html">className</a> is not registered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-521986548%2FFunctions%2F-251573632" anchor-label="classSystemTime" id="-521986548%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="class-system-time.html"><span>class</span><wbr></wbr><span>System</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-521986548%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="class-system-time.html"><span class="token function">classSystemTime</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">className<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The per-class total time in the system, or null if <a href="../-station-network-c-ifc/class-system-time.html">className</a> is not registered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1226871940%2FFunctions%2F-251573632" anchor-label="detachNetworkObserver" id="-1226871940%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="detach-network-observer.html"><span>detach</span><wbr></wbr><span>Network</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1226871940%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="detach-network-observer.html"><span class="token function">detachNetworkObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">observer<span class="token operator">: </span><a href="../-network-observer/index.html">NetworkObserver</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Detaches a previously attached observer.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2023736826%2FFunctions%2F-251573632" anchor-label="forkStation" id="-2023736826%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fork-station.html"><span>fork</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2023736826%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="fork-station.html"><span class="token function">forkStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">join<span class="token operator">: </span><a href="../-join-station/index.html">JoinStation</a><span class="token punctuation">, </span></span><span class="parameter ">childCount<span class="token operator">: </span><a href="../-child-count-ifc/index.html">ChildCountIfc</a><span class="token punctuation">, </span></span><span class="parameter ">childFactory<span class="token operator">: </span><a href="../-child-factory-ifc/index.html">ChildFactoryIfc</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">childReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-fork-station/index.html">ForkStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-fork-station/index.html">ForkStation</a> (the send side of a fork-join pair) tied to a paired <a href="fork-station.html">join</a>, parented to the network and registered under <a href="fork-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1935037452%2FFunctions%2F-251573632" anchor-label="gateStation" id="1935037452%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gate-station.html"><span>gate</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1935037452%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="gate-station.html"><span class="token function">gateStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">initiallyOpen<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-gate-station/index.html">GateStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-gate-station/index.html">GateStation</a> (holds instances while closed), parented to the network and registered under <a href="gate-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="344227012%2FFunctions%2F-251573632" anchor-label="ingress" id="344227012%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ingress.html"><span><span>ingress</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="344227012%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="ingress.html"><span class="token function">ingress</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">firstReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-ingress-station/index.html">IngressStation</a></div><div class="brief "><p class="paragraph">Creates an <a href="../-ingress-station/index.html">IngressStation</a> (a non-generating entry port for transferred or externally created instances), parented to the network and registered under <a href="ingress.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1417381854%2FFunctions%2F-251573632" anchor-label="initialize" id="1417381854%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1417381854%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="823028089%2FFunctions%2F-251573632" anchor-label="joinStation" id="823028089%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="join-station.html"><span>join</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="823028089%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="join-station.html"><span class="token function">joinStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-join-station/index.html">JoinStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-join-station/index.html">JoinStation</a> (the receive side of a fork-join pair), parented to the network and registered under <a href="join-station.html">name</a>. Route to a specific input with the <code class="lang-kotlin">&quot;name#0&quot;</code> (parent) or <code class="lang-kotlin">&quot;name#1&quot;</code> (child) target syntax.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1560565704%2FFunctions%2F-251573632" anchor-label="matchStation" id="1560565704%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="match-station.html"><span>match</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1560565704%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="match-station.html"><span class="token function">matchStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">numInputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">keyExtractor<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-match-station/index.html">MatchStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-match-station/index.html">MatchStation</a> (assembles one instance from each input, optionally by a matching key). Wired through its <a href="../-match-station/input.html">MatchStation.input</a> endpoints, so it is network-parented but not a single routing node.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="472746934%2FFunctions%2F-251573632" anchor-label="nhppSource" id="472746934%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="nhpp-source.html"><span>nhpp</span><wbr></wbr><span><span>Source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="472746934%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="nhpp-source.html"><span class="token function">nhppSource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">rateFunction<span class="token operator">: </span><a href="../../ksl.modeling.nhpp/-piecewise-rate-function/index.html">PiecewiseRateFunction</a><span class="token punctuation">, </span></span><span class="parameter ">firstReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">maxArrivals<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">marking<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-n-h-p-p-source/index.html">NHPPSource</a></div><div class="brief "><p class="paragraph">Creates an <a href="../-n-h-p-p-source/index.html">NHPPSource</a> (non-homogeneous Poisson arrival source driven by a piecewise rate function), parented to the network and registered under <a href="nhpp-source.html">name</a>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="nhpp-source.html"><span class="token function">nhppSource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">durations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">rates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">firstReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">maxArrivals<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">marking<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-n-h-p-p-source/index.html">NHPPSource</a></div><div class="brief "><p class="paragraph">Convenience overload that creates an <a href="../-n-h-p-p-source/index.html">NHPPSource</a> from parallel <a href="nhpp-source.html">durations</a> and <a href="nhpp-source.html">rates</a> arrays (piecewise-constant rate function), parented to the network and registered under <a href="nhpp-source.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1265049112%2FFunctions%2F-251573632" anchor-label="node" id="1265049112%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="node.html"><span><span>node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1265049112%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="node.html"><span class="token function">node</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Returns the registered node with the given <a href="node.html">name</a> or null if not present.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1589389808%2FFunctions%2F-251573632" anchor-label="nWayStation" id="1589389808%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="n-way-station.html"><span>n</span><wbr></wbr><span>Way</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1589389808%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="n-way-station.html"><span class="token function">nWayStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">numQueues<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">activityTime<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">selectionRule<span class="token operator">: </span><a href="../-n-way-queue-selection-rule-ifc/index.html">NWayQueueSelectionRuleIfc</a><span class="token operator"> = </span>PriorityQueueSelection()<span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-n-way-station/index.html">NWayStation</a></div><div class="brief "><p class="paragraph">Creates an <a href="../-n-way-station/index.html">NWayStation</a> (several input queues sharing one server group), parented to the network and registered under <a href="n-way-station.html">name</a>. Wire upstream nodes to the station's <a href="../-n-way-station/input.html">NWayStation.input</a> endpoints.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-297581805%2FFunctions%2F-251573632" anchor-label="processStation" id="-297581805%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../ksl.modeling.station.integration/process-station.html"><span>process</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-297581805%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">StationNetwork</a><span class="token punctuation">.</span><a href="../../ksl.modeling.station.integration/process-station.html"><span class="token function">processStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">activity<span class="token operator">: </span><span class="token keyword">suspend </span><a href="../../ksl.modeling.entity/-k-s-l-process-builder/index.html">KSLProcessBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.station.integration/-process-station/index.html">ProcessStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../../ksl.modeling.station.integration/-process-station/index.html">ProcessStation</a> in this network whose activity is the supplied process <a href="../../ksl.modeling.station.integration/process-station.html">activity</a>, registered under <a href="../../ksl.modeling.station.integration/process-station.html">name</a>. Wire upstream nodes to it like any receiver.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1075986576%2FFunctions%2F-251573632" anchor-label="register" id="-1075986576%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="register.html"><span><span>register</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1075986576%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="register.html"><span class="token function">register</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">node<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a node (receiver) under a name that is unique within the network. The creation helpers call this automatically; supply a custom receiver or router here to make it part of the network's graph and validation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-929493090%2FFunctions%2F-251573632" anchor-label="registerClass" id="-929493090%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="register-class.html"><span>register</span><wbr></wbr><span><span>Class</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-929493090%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="register-class.html"><span class="token function">registerClass</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">qObjectClass<span class="token operator">: </span><a href="../-q-object-class/index.html">QObjectClass</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a QObject class for per-class statistics. The creation helpers call this automatically when a class is supplied to a source. Registering the same class (same name and type id) more than once is a no-op; registering a conflicting class is an error.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="163054594%2FFunctions%2F-251573632" anchor-label="registerRoute" id="163054594%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="register-route.html"><span>register</span><wbr></wbr><span><span>Route</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="163054594%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="register-route.html"><span class="token function">registerRoute</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">route<span class="token operator">: </span><a href="../-route/index.html">Route</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Registers a <a href="../-route/index.html">Route</a> so its step-to-step connections are included in the network graph and so its non-terminal steps are exempt from the dangling check (their onward routing is carried dynamically on each instance). The route also becomes lookup-able by name via <a href="register-route.html">route</a>. The creation/registration helpers register class routes automatically.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-366758665%2FFunctions%2F-251573632" anchor-label="releaseStation" id="-366758665%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="release-station.html"><span>release</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-366758665%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="release-station.html"><span class="token function">releaseStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="../-s-resource/index.html">SResource</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-release-station/index.html">ReleaseStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-release-station/index.html">ReleaseStation</a> that releases this entity's oldest outstanding allocation on <a href="release-station.html">resource</a>, parented to the network and registered under <a href="release-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="691677728%2FFunctions%2F-251573632" anchor-label="replicationEnded" id="691677728%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replication-ended.html"><span>replication</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="691677728%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="replication-ended.html"><span class="token function">replicationEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed when the replication ends and prior to the calling of afterReplication(). It is called when each replication ends and can be used to collect data from the model element, etc.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-399535303%2FFunctions%2F-251573632" anchor-label="resource" id="-399535303%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resource.html"><span><span>resource</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-399535303%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="resource.html"><span class="token function">resource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-s-resource/index.html">SResource</a></div><div class="brief "><p class="paragraph">Creates a free-standing <a href="../-s-resource/index.html">SResource</a> of <a href="resource.html">capacity</a> units parented to the network. The resource is not a routing node; pass it to <a href="seize-station.html">seizeStation</a> / <a href="release-station.html">releaseStation</a> for Arena-style atomic seize/release.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1671107331%2FFunctions%2F-251573632" anchor-label="resourcePool" id="-1671107331%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resource-pool.html"><span>resource</span><wbr></wbr><span><span>Pool</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1671107331%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="resource-pool.html"><span class="token function">resourcePool</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-s-resource-pool/index.html">SResourcePool</a></div><div class="brief "><p class="paragraph">Creates a shared <a href="../-s-resource-pool/index.html">SResourcePool</a> of <a href="resource-pool.html">capacity</a> units parented to the network. The pool is not a routing node; pass it to <a href="resource-pool-station.html">resourcePoolStation</a>s that share it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-28902870%2FFunctions%2F-251573632" anchor-label="resourcePoolStation" id="-28902870%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="resource-pool-station.html"><span>resource</span><wbr></wbr><span>Pool</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-28902870%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="resource-pool-station.html"><span class="token function">resourcePoolStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">pool<span class="token operator">: </span><a href="../-s-resource-pool/index.html">SResourcePool</a><span class="token punctuation">, </span></span><span class="parameter ">activityTime<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token operator"> = </span>ConstantRV.ZERO<span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-resource-pool-station/index.html">ResourcePoolStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-resource-pool-station/index.html">ResourcePoolStation</a> that seizes from a shared <a href="resource-pool-station.html">pool</a>, parented to the network and registered under <a href="resource-pool-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1651058849%2FFunctions%2F-251573632" anchor-label="route" id="1651058849%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="route.html"><span><span>route</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1651058849%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="route.html"><span class="token function">route</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-route/index.html">Route</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Looks up a registered <a href="../-route/index.html">Route</a> by its <a href="../-route/route-name.html">Route.routeName</a> or null if not registered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-945314311%2FFunctions%2F-251573632" anchor-label="seizeStation" id="-945314311%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="seize-station.html"><span>seize</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-945314311%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="seize-station.html"><span class="token function">seizeStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">resource<span class="token operator">: </span><a href="../-s-resource/index.html">SResource</a><span class="token punctuation">, </span></span><span class="parameter ">amount<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-seize-station/index.html">SeizeStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-seize-station/index.html">SeizeStation</a> that acquires <a href="seize-station.html">amount</a> units of <a href="seize-station.html">resource</a> (or queues the entity if not available), parented to the network and registered under <a href="seize-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="381210784%2FFunctions%2F-251573632" anchor-label="separateStation" id="381210784%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="separate-station.html"><span>separate</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="381210784%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="separate-station.html"><span class="token function">separateStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-separate-station/index.html">SeparateStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-separate-station/index.html">SeparateStation</a> that recovers batch members, parented to the network and registered under <a href="separate-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1273058939%2FFunctions%2F-251573632" anchor-label="singleQStation" id="-1273058939%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="single-q-station.html"><span>single</span><wbr></wbr><span><span>QStation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1273058939%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="single-q-station.html"><span class="token function">singleQStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">activityTime<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token operator"> = </span>ConstantRV.ZERO<span class="token punctuation">, </span></span><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">nextReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-single-q-station/index.html">SingleQStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-single-q-station/index.html">SingleQStation</a> (single queue, simple resource) parented to the network and registered under <a href="single-q-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1104239081%2FFunctions%2F-251573632" anchor-label="sink" id="1104239081%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sink.html"><span><span>sink</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1104239081%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="sink.html"><span class="token function">sink</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sink-station/index.html">SinkStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-sink-station/index.html">SinkStation</a> (egress that disposes of received instances) parented to the network and registered under <a href="sink.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="416847110%2FFunctions%2F-251573632" anchor-label="source" id="416847110%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="source.html"><span><span>source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="416847110%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="source.html"><span class="token function">source</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">interArrivalRV<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">firstReceiver<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token operator"> = </span>NotImplementedReceiver<span class="token punctuation">, </span></span><span class="parameter ">timeUntilFirstRV<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token operator"> = </span>interArrivalRV<span class="token punctuation">, </span></span><span class="parameter ">maxArrivals<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">qObjectClass<span class="token operator">: </span><a href="../-q-object-class/index.html">QObjectClass</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">marking<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-source-station/index.html">SourceStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-source-station/index.html">SourceStation</a> that generates arriving QObject instances and injects them into the network. The created station is registered under <a href="source.html">name</a> and returned for further wiring.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="133439344%2FFunctions%2F-251573632" anchor-label="transferStation" id="133439344%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="transfer-station.html"><span>transfer</span><wbr></wbr><span><span>Station</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="133439344%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="transfer-station.html"><span class="token function">transferStation</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">target<span class="token operator">: </span><a href="../-q-object-receiver-ifc/index.html">QObjectReceiverIfc</a><span class="token punctuation">, </span></span><span class="parameter ">transferDelay<span class="token operator">: </span><a href="../../ksl.utilities/-get-value-ifc/index.html">GetValueIfc</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">transform<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-transfer-station/index.html">TransferStation</a></div><div class="brief "><p class="paragraph">Creates a <a href="../-transfer-station/index.html">TransferStation</a> that hands instances off to <a href="transfer-station.html">target</a> (typically another network's ingress), parented to this network and registered under <a href="transfer-station.html">name</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-196624574%2FFunctions%2F-251573632" anchor-label="verifyNoAllocations" id="-196624574%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="verify-no-allocations.html"><span>verify</span><wbr></wbr><span>No</span><wbr></wbr><span><span>Allocations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-196624574%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="verify-no-allocations.html"><span class="token function">verifyNoAllocations</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">qObject<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/-q-object/index.html">ModelElement.QObject</a><span class="token punctuation">, </span></span><span class="parameter ">at<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Throws if <a href="verify-no-allocations.html">qObject</a> has any outstanding allocations. Called at exit points (sinks, transfers, join child-absorbs, separate batch-wrappers) — the entity must release everything it holds before leaving the network or being destroyed. The error names <a href="verify-no-allocations.html">qObject</a> and the resources it still holds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>AgentModel</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.3        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.agent/AgentModel///PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.agent</a><span class="delimiter">/</span><span class="current">AgentModel</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Agent</span><wbr></wbr><span><span>Model</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">AgentModel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.entity/-process-model/index.html">ProcessModel</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/agent/AgentModel.kt#L80">source</a>)</span></span></div><p class="paragraph">Container for an agent-based modeling layer that runs alongside KSL's process view. Following the precedent of <a href="../../ksl.modeling.entity/-task-processing-system/index.html">ksl.modeling.entity.TaskProcessingSystem</a>, an <code class="lang-kotlin">AgentModel</code> ships two kinds of agent — transient and permanent — plus the supporting machinery (a shared message bus, inner-class <a href="-statechart/index.html">Statechart</a> and <a href="-agent-mailbox/index.html">AgentMailbox</a>) that lets both kinds work uniformly.</p><p class="paragraph">Transient and permanent split:</p><ul><li><p class="paragraph"><a href="-agent/index.html">Agent</a>: a transient <code class="lang-kotlin">Entity</code>-based actor (an <code class="lang-kotlin">inner class</code>).     A <code class="lang-kotlin">QObject</code> under the hood, not a <code class="lang-kotlin">ModelElement</code>, so it can be     constructed <i>during</i> a replication. No automatic per-agent     statistics. Use for arrival-driven populations, swarms, dynamic     coalitions.</p></li><li><p class="paragraph"><a href="-permanent-agent/index.html">PermanentAgent</a>: a <code class="lang-kotlin">ModelElement</code>-derived setup-time actor.     Constructed before <code class="lang-kotlin">simulate()</code> runs. Full KSL lifecycle hooks     and can register per-agent <code class="lang-kotlin">Response</code>/<code class="lang-kotlin">TWResponse</code> statistics.     Use for structural cast members, named role-holders, anything     where you want individual stats.</p></li></ul><p class="paragraph">Both implement <a href="../-agent-like/index.html">AgentLike</a> (mailbox + name + currentTime) so the same <a href="-statechart/index.html">Statechart</a> and <a href="-agent-mailbox/index.html">AgentMailbox</a> machinery serves both.</p><p class="paragraph">Messaging:</p><ul><li><p class="paragraph">A single <code class="lang-kotlin">BlockingQueue</code> <i>message bus</i> is pre-allocated at     <code class="lang-kotlin">AgentModel</code> construction. All sends route through it; mailboxes     are POJOs that filter by recipient reference. This is what makes     transient agents possible — agent construction no longer creates     a <code class="lang-kotlin">ModelElement</code> child.</p></li><li><p class="paragraph">Per-mailbox queue statistics are not collected automatically.     Permanent agents can register their own <code class="lang-kotlin">Response</code>/<code class="lang-kotlin">TWResponse</code>     observers if they want individual stats (see the     ksl.modeling.entity.TaskProcessingSystem.TaskProcessorPerformance     pattern).</p></li></ul><p class="paragraph">Statechart:</p><ul><li><p class="paragraph"><a href="-statechart/index.html">Statechart</a> is an <code class="lang-kotlin">inner class</code> of <code class="lang-kotlin">AgentModel</code>, not a     <code class="lang-kotlin">ModelElement</code>. It uses the outer's <code class="lang-kotlin">protected schedule(...)</code> and     <code class="lang-kotlin">executive</code> to schedule timeout events and register conditional     actions. Lifecycle (start/stop on replication boundaries) is     driven by <code class="lang-kotlin">AgentModel.initialize()</code> / <code class="lang-kotlin">afterReplication()</code> for     transient <code class="lang-kotlin">Agent</code>s, and by each <code class="lang-kotlin">PermanentAgent</code> /     <code class="lang-kotlin">AgentResource</code>'s own lifecycle hooks for the permanent case.</p></li></ul><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the agent model</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="-1855751569%2FConstructors%2F-251573632" anchor-label="AgentModel" id="-1855751569%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent-model.html"><span>Agent</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1855751569%2FConstructors%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1463302945%2FClasslikes%2F-251573632" anchor-label="Agent" id="1463302945%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent/index.html"><span><span>Agent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1463302945%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-agent/index.html">Agent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">aName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.entity/-process-model/-entity/index.html">ProcessModel.Entity</a>, <a href="../-agent-like/index.html">AgentLike</a></div><div class="brief "><p class="paragraph">An autonomous, reactive actor. An <code class="lang-kotlin">Agent</code> is a <a href="../../ksl.modeling.entity/-process-model/-entity/index.html">ProcessModel.Entity</a> (and therefore a <code class="lang-kotlin">QObject</code>, not a <code class="lang-kotlin">ModelElement</code>), so instances can be constructed at any time — including during a running replication. Each agent gets a POJO <a href="-agent/mailbox.html">mailbox</a> for receiving messages and may optionally have a <a href="-agent/statechart.html">statechart</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1059365870%2FClasslikes%2F-251573632" anchor-label="AgentGenerator" id="1059365870%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent-generator/index.html"><span>Agent</span><wbr></wbr><span><span>Generator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1059365870%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-agent-generator/index.html">AgentGenerator</a><span class="token operator">&lt;</span><a href="-agent-generator/index.html">A</a><span class="token operator"> : </span><a href="-agent/index.html">AgentModel.Agent</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">agentFactory<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="-agent-generator/index.html">A</a><span class="token punctuation">, </span></span><span class="parameter ">timeUntilFirst<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">timeBetween<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">maxAgents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator"> = </span>Long.MAX_VALUE<span class="token punctuation">, </span></span><span class="parameter ">timeOfLast<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.POSITIVE_INFINITY<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>activationPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY + 1<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.modeling.elements/-event-generator/index.html">EventGenerator</a></div><div class="brief "><p class="paragraph">Schedules the creation of agents over time and activates each agent's default process. Mirror of <a href="../../ksl.modeling.entity/-process-model/-entity-generator/index.html">ksl.modeling.entity.ProcessModel.EntityGenerator</a> but produces <a href="-agent/index.html">Agent</a> instances. The agent must have <code class="lang-kotlin">defaultProcess</code> configured.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1515581741%2FClasslikes%2F-251573632" anchor-label="AgentMailbox" id="1515581741%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent-mailbox/index.html"><span>Agent</span><wbr></wbr><span><span>Mailbox</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1515581741%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-agent-mailbox/index.html">AgentMailbox</a><span class="token operator">&lt;</span><a href="-agent-mailbox/index.html">M</a><span class="token operator"> : </span><a href="../-agent-message/index.html">AgentMessage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A typed mailbox that holds <a href="../-agent-message/index.html">AgentMessage</a> values for a single <a href="../-agent-like/index.html">AgentLike</a> owner.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="133723441%2FClasslikes%2F-251573632" anchor-label="AgentPerformance" id="133723441%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent-performance/index.html"><span>Agent</span><wbr></wbr><span><span>Performance</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="133723441%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-agent-performance/index.html">AgentPerformance</a> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a></div><div class="brief "><p class="paragraph">Per-agent statistics observer for a <a href="-permanent-agent/index.html">PermanentAgent</a>. Modeled on <a href="../../ksl.modeling.entity/-task-processing-system/-task-processor-performance/index.html">ksl.modeling.entity.TaskProcessingSystem.TaskProcessorPerformance</a>: a <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a> that subscribes to a specific mailbox via <a href="-mailbox-observer/index.html">MailboxObserver</a> (and optionally a statechart via <a href="-statechart-observer/index.html">StatechartObserver</a>) and publishes standard KSL <a href="../../ksl.modeling.variable/-response/index.html">Response</a>/<a href="../../ksl.modeling.variable/-t-w-response/index.html">TWResponse</a> instances.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-493653970%2FClasslikes%2F-251573632" anchor-label="AgentRegistryObserver" id="-493653970%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-agent-registry-observer/index.html"><span>Agent</span><wbr></wbr><span>Registry</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-493653970%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-agent-registry-observer/index.html">AgentRegistryObserver</a></div><div class="brief "><p class="paragraph">Observer hook notified when an agent — <a href="-agent/index.html">Agent</a> (setup-time <i>or</i> transient/runtime), <a href="-permanent-agent/index.html">PermanentAgent</a>, or <a href="../-agent-resource/index.html">AgentResource</a> — is constructed and registered with this model. Its purpose is to hand external/integration/reporting code a reference to every agent that comes into existence, <i>including transient agents created during a replication that are not in the </i><a href="agents.html"><i>agents</i></a><i> registry and could not otherwise be referenced</i>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1994065289%2FClasslikes%2F-251573632" anchor-label="Context" id="-1994065289%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-context/index.html"><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1994065289%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-context/index.html">Context</a><span class="token operator">&lt;</span><a href="-context/index.html">A</a><span class="token operator"> : </span><a href="../-agent-like/index.html">AgentLike</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a></div><div class="brief "><p class="paragraph">A typed collection of agents with optional <a href="../-projection/index.html">Projection</a>s attached. Modeled on Repast Simphony's context concept: membership lives here, <i>structure</i> (positions, edges, networks) lives in attached projections.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1724456924%2FClasslikes%2F-251573632" anchor-label="MailboxObserver" id="1724456924%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mailbox-observer/index.html"><span>Mailbox</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1724456924%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-mailbox-observer/index.html">MailboxObserver</a><span class="token operator">&lt;</span><a href="-mailbox-observer/index.html">M</a><span class="token operator"> : </span><a href="../-agent-message/index.html">AgentMessage</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Observer hook for an <a href="-agent-mailbox/index.html">AgentMailbox</a>. Called for every successful delivery (whether the message was queued or handed off directly to a waiting receiver) and for every successful consumption (whether via <code class="lang-kotlin">tryTake</code>, <code class="lang-kotlin">consume</code>, or <code class="lang-kotlin">Waiter</code> match). Used by <a href="-agent-performance/index.html">AgentPerformance</a> to gather mailbox traffic statistics without coupling the mailbox to the statistics machinery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="992835173%2FClasslikes%2F-251573632" anchor-label="PermanentAgent" id="992835173%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-permanent-agent/index.html"><span>Permanent</span><wbr></wbr><span><span>Agent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="992835173%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-permanent-agent/index.html">PermanentAgent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-agent-like/index.html">AgentLike</a></div><div class="brief "><p class="paragraph">A setup-time agent that <i>is</i> a <code class="lang-kotlin">ModelElement</code>. Use when you need KSL lifecycle hooks (<code class="lang-kotlin">initialize</code>, <code class="lang-kotlin">warmUp</code>, <code class="lang-kotlin">afterReplication</code>) on the agent itself, or want to own per-agent <code class="lang-kotlin">Response</code>/<code class="lang-kotlin">TWResponse</code> statistics. Modeled on <a href="../../ksl.modeling.entity/-task-processing-system/-task-processor/index.html">ksl.modeling.entity.TaskProcessingSystem.TaskProcessor</a>: a ModelElement wrapper that holds its own POJO mailbox and statechart and drives their lifecycle through its own hooks.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-63870545%2FClasslikes%2F-251573632" anchor-label="Statechart" id="-63870545%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-statechart/index.html"><span><span>Statechart</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-63870545%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-statechart/index.html">Statechart</a></div><div class="brief "><p class="paragraph">A flat statechart attached to an <a href="../-agent-like/index.html">AgentLike</a> owner. Behavior consists of a finite set of named states; the chart is always in exactly one state once started.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1233778041%2FClasslikes%2F-251573632" anchor-label="StatechartObserver" id="1233778041%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-statechart-observer/index.html"><span>Statechart</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1233778041%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-statechart-observer/index.html">StatechartObserver</a></div><div class="brief "><p class="paragraph">Observer hook for a <a href="-statechart/index.html">Statechart</a>. Fires on every state entry, state exit, and completed transition. Used by <a href="-agent-performance/index.html">AgentPerformance</a> to gather statechart-state statistics (time-in-state, entry counts, transition counts).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="472301373%2FProperties%2F-251573632" anchor-label="agentCount" id="472301373%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agent-count.html"><span>agent</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="472301373%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="agent-count.html">agentCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-533726279%2FProperties%2F-251573632" anchor-label="agents" id="-533726279%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="agents.html"><span><span>agents</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-533726279%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="agents.html">agents</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-agent-like/index.html">AgentLike</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">All setup-time agents (Agent, PermanentAgent, AgentResource) registered with this model. Transient <code class="lang-kotlin">Agent</code>s created <i>during</i> a replication are not added to this list — they manage their own lifecycle via the immediate-start path in <code class="lang-kotlin">statechart { }</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1134668521%2FProperties%2F-251573632" anchor-label="registryObserverCount" id="-1134668521%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="registry-observer-count.html"><span>registry</span><wbr></wbr><span>Observer</span><wbr></wbr><span><span>Count</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1134668521%2FProperties%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="registry-observer-count.html">registryObserverCount</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Number of currently-attached <a href="-agent-registry-observer/index.html">AgentRegistryObserver</a>s (for diagnostics).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1144829129%2FFunctions%2F-251573632" anchor-label="afterReplication" id="-1144829129%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="after-replication.html"><span>after</span><wbr></wbr><span><span>Replication</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1144829129%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="after-replication.html"><span class="token function">afterReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">It is essential that subclasses that override this function call the super. This ensures that suspended entities are cleaned up after a replication</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1088598191%2FFunctions%2F-251573632" anchor-label="attachRegistryObserver" id="-1088598191%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="attach-registry-observer.html"><span>attach</span><wbr></wbr><span>Registry</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088598191%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="attach-registry-observer.html"><span class="token function">attachRegistryObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">observer<span class="token operator">: </span><a href="-agent-registry-observer/index.html">AgentModel.AgentRegistryObserver</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Register an <a href="-agent-registry-observer/index.html">AgentRegistryObserver</a> to be notified when any agent (setup-time or transient) is constructed and registered with this model. Typically attached at setup time. See <a href="-agent-registry-observer/index.html">AgentRegistryObserver</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1223632799%2FFunctions%2F-251573632" anchor-label="detachRegistryObserver" id="1223632799%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="detach-registry-observer.html"><span>detach</span><wbr></wbr><span>Registry</span><wbr></wbr><span><span>Observer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1223632799%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="detach-registry-observer.html"><span class="token function">detachRegistryObserver</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">observer<span class="token operator">: </span><a href="-agent-registry-observer/index.html">AgentModel.AgentRegistryObserver</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Remove a previously-attached <a href="-agent-registry-observer/index.html">AgentRegistryObserver</a>. No-op if not attached.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1588425321%2FFunctions%2F-251573632" anchor-label="dispose" id="-1588425321%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dispose.html"><span><span>dispose</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1588425321%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="dispose.html"><span class="token function">dispose</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><a href="../../ksl.modeling.entity/-process-model/-entity/index.html">ProcessModel.Entity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">When an entity is disposed (e.g., a transient <a href="-agent/index.html">Agent</a> whose process completed and is being reclaimed), stop its statechart so its subscriptions are torn down promptly rather than waiting for the end-of-replication sweep.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="601616247%2FFunctions%2F-251573632" anchor-label="initialize" id="601616247%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="601616247%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1031290410%2FFunctions%2F-251573632" anchor-label="removeAgent" id="1031290410%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-agent.html"><span>remove</span><wbr></wbr><span><span>Agent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1031290410%2FFunctions%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-agent.html"><span class="token function">removeAgent</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">agent<span class="token operator">: </span><a href="../-agent-like/index.html">AgentLike</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
