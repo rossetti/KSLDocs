@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ParticleSwarmSolver</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.4        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.solvers.algorithms.pso/ParticleSwarmSolver///PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.solvers.algorithms.pso</a><span class="delimiter">/</span><span class="current">ParticleSwarmSolver</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Particle</span><wbr></wbr><span>Swarm</span><wbr></wbr><span><span>Solver</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ParticleSwarmSolver</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>RNStreamProvider()<span class="token punctuation">, </span></span><span class="parameter ">swarmSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultSwarmSize<span class="token punctuation">, </span></span><span class="parameter ">inertiaSchedule<span class="token operator">: </span><a href="../-inertia-weight-schedule-ifc/index.html">InertiaWeightScheduleIfc</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cognitiveCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultCognitiveCoefficient<span class="token punctuation">, </span></span><span class="parameter ">socialCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultSocialCoefficient<span class="token punctuation">, </span></span><span class="parameter ">boundaryHandler<span class="token operator">: </span><a href="../-boundary-handler-ifc/index.html">BoundaryHandlerIfc</a><span class="token operator"> = </span>ClampToBounds()<span class="token punctuation">, </span></span><span class="parameter ">velocityInitializer<span class="token operator">: </span><a href="../-velocity-initializer-ifc/index.html">VelocityInitializerIfc</a><span class="token operator"> = </span>ZeroVelocity()<span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>psoDefaultMaxIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../../ksl.simopt.solvers/-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/solvers/algorithms/pso/ParticleSwarmSolver.kt#L69">source</a>)</span></span></div><p class="paragraph">A global-best (gbest) Particle Swarm Optimization (PSO) solver for simulation optimization.</p><p class="paragraph">Each call to <a href="main-iteration.html">mainIteration</a> performs one swarm move: every particle's velocity is updated from its inertia, its pull toward its personal best, and its pull toward the single shared global best; the velocity is clamped to a per-coordinate maximum; the particle's continuous position is advanced and brought back within the input ranges by the <span data-unresolved-link="ksl.simopt.solvers.algorithms.pso/ParticleSwarmSolver//#ksl.simopt.problem.ProblemDefinition#ksl.simopt.evaluator.EvaluatorIfc#kotlin.Int#ksl.utilities.random.rng.RNStreamProviderIfc#kotlin.Int#ksl.simopt.solvers.algorithms.pso.InertiaWeightScheduleIfc?#kotlin.Double#kotlin.Double#ksl.simopt.solvers.algorithms.pso.BoundaryHandlerIfc#ksl.simopt.solvers.algorithms.pso.VelocityInitializerIfc#kotlin.Int#ksl.simopt.solvers.ReplicationPerEvaluationIfc#ksl.simopt.evaluator.SolutionEqualityIfc#kotlin.String?/PointingToCallableParameters(8)/">boundaryHandler</span>; and the whole swarm is then evaluated in a <strong>single batch</strong> oracle call (via the inherited <a href="../../ksl.simopt.solvers/-solver/request-evaluations.html">requestEvaluations</a>), so a parallel evaluator fans the particles across workers with no concurrency code here. Per particle, the personal best is refreshed and the global best (the inherited <a href="../../ksl.simopt.solvers/-solver/current-solution.html">currentSolution</a>, hence <a href="../../ksl.simopt.solvers/-solver/best-solution.html">bestSolution</a>) is updated.</p><p class="paragraph">Particles move in continuous space; only the evaluated position is snapped to granularity (via <a href="../../ksl.simopt.problem/-problem-definition/to-input-map.html">ProblemDefinition.toInputMap</a>), avoiding granularity lock-in. All randomness is drawn through the solver's single random number stream (<a href="../../ksl.simopt.solvers.algorithms/-stochastic-solver/rn-stream.html">rnStream</a>), so a run is reproducible for a fixed stream number.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>problem</span><wbr></wbr><span><span>Definition</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the problem being solved</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>evaluator</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the evaluator responsible for assessing the quality of solutions</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Num</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the random number stream number; 0 (the default) means the next available stream</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Provider</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the provider of random number streams; defaults to a fresh RNStreamProvider</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>swarm</span><wbr></wbr><span><span>Size</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the number of particles in the swarm</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>inertia</span><wbr></wbr><span><span>Schedule</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the inertia-weight schedule; when omitted (null) a <a href="../-linear-decreasing-inertia/index.html">LinearDecreasingInertia</a> is created whose <code class="lang-kotlin">horizon</code> matches <code class="lang-kotlin">maximumIterations</code>, so the weight decays across the whole run (raising <code class="lang-kotlin">maximumIterations</code> without also passing a schedule no longer leaves the tail at floor inertia)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>cognitive</span><wbr></wbr><span><span>Coefficient</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the cognitive acceleration coefficient c1 (pull toward personal best)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>social</span><wbr></wbr><span><span>Coefficient</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the social acceleration coefficient c2 (pull toward global best)</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>boundary</span><wbr></wbr><span><span>Handler</span></span></u></div></span></div><div><div class="title"><p class="paragraph">how out-of-range positions are handled; defaults to <a href="../-clamp-to-bounds/index.html">ClampToBounds</a></p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>velocity</span><wbr></wbr><span><span>Initializer</span></span></u></div></span></div><div><div class="title"><p class="paragraph">how initial velocities are set; defaults to <a href="../-zero-velocity/index.html">ZeroVelocity</a></p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>maximum</span><wbr></wbr><span><span>Iterations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the maximum number of iterations</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>replications</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Evaluation</span></span></u></div></span></div><div><div class="title"><p class="paragraph">strategy to determine the number of replications per evaluation</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>solution</span><wbr></wbr><span>Equality</span><wbr></wbr><span><span>Checker</span></span></u></div></span></div><div><div class="title"><p class="paragraph">used to detect no-improvement convergence. The default is <a href="../../ksl.simopt.evaluator/-inputs-and-confidence-interval-equality/index.html">InputsAndConfidenceIntervalEquality</a>.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the solver</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="49150795%2FConstructors%2F-2024213039" anchor-label="ParticleSwarmSolver" id="49150795%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-particle-swarm-solver.html"><span>Particle</span><wbr></wbr><span>Swarm</span><wbr></wbr><span><span>Solver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="49150795%2FConstructors%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>RNStreamProvider()<span class="token punctuation">, </span></span><span class="parameter ">swarmSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultSwarmSize<span class="token punctuation">, </span></span><span class="parameter ">inertiaSchedule<span class="token operator">: </span><a href="../-inertia-weight-schedule-ifc/index.html">InertiaWeightScheduleIfc</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cognitiveCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultCognitiveCoefficient<span class="token punctuation">, </span></span><span class="parameter ">socialCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultSocialCoefficient<span class="token punctuation">, </span></span><span class="parameter ">boundaryHandler<span class="token operator">: </span><a href="../-boundary-handler-ifc/index.html">BoundaryHandlerIfc</a><span class="token operator"> = </span>ClampToBounds()<span class="token punctuation">, </span></span><span class="parameter ">velocityInitializer<span class="token operator">: </span><a href="../-velocity-initializer-ifc/index.html">VelocityInitializerIfc</a><span class="token operator"> = </span>ZeroVelocity()<span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>psoDefaultMaxIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../../ksl.simopt.solvers/-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>RNStreamProvider()<span class="token punctuation">, </span></span><span class="parameter ">swarmSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultSwarmSize<span class="token punctuation">, </span></span><span class="parameter ">inertiaSchedule<span class="token operator">: </span><a href="../-inertia-weight-schedule-ifc/index.html">InertiaWeightScheduleIfc</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cognitiveCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultCognitiveCoefficient<span class="token punctuation">, </span></span><span class="parameter ">socialCoefficient<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultSocialCoefficient<span class="token punctuation">, </span></span><span class="parameter ">boundaryHandler<span class="token operator">: </span><a href="../-boundary-handler-ifc/index.html">BoundaryHandlerIfc</a><span class="token operator"> = </span>ClampToBounds()<span class="token punctuation">, </span></span><span class="parameter ">velocityInitializer<span class="token operator">: </span><a href="../-velocity-initializer-ifc/index.html">VelocityInitializerIfc</a><span class="token operator"> = </span>ZeroVelocity()<span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>psoDefaultMaxIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultReplicationsPerEvaluation<span class="token punctuation">, </span></span><span class="parameter ">solutionEqualityChecker<span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-equality-ifc/index.html">SolutionEqualityIfc</a><span class="token operator"> = </span>InputsAndConfidenceIntervalEquality()<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Constructs a particle swarm solver using a fixed number of replications per evaluation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1738763739%2FClasslikes%2F-2024213039" anchor-label="Companion" id="-1738763739%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1738763739%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-2129528738%2FProperties%2F-2024213039" anchor-label="boundaryHandler" id="-2129528738%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="boundary-handler.html"><span>boundary</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2129528738%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="boundary-handler.html">boundaryHandler</a><span class="token operator">: </span><a href="../-boundary-handler-ifc/index.html">BoundaryHandlerIfc</a></div><div class="brief "><p class="paragraph">The boundary handler for out-of-range positions. Cannot be changed while the solver is running.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-340536782%2FProperties%2F-2024213039" anchor-label="coefficientSchedule" id="-340536782%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="coefficient-schedule.html"><span>coefficient</span><wbr></wbr><span><span>Schedule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-340536782%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="coefficient-schedule.html">coefficientSchedule</a><span class="token operator">: </span><a href="../-coefficient-schedule-ifc/index.html">CoefficientScheduleIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If supplied, this function determines (c1, c2) each iteration, overriding the scalars.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-118785823%2FProperties%2F-2024213039" anchor-label="cognitiveCoefficient" id="-118785823%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cognitive-coefficient.html"><span>cognitive</span><wbr></wbr><span><span>Coefficient</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-118785823%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="cognitive-coefficient.html">cognitiveCoefficient</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The cognitive acceleration coefficient c1 (pull toward the personal best). Must be >= 0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1841785739%2FProperties%2F-2024213039" anchor-label="configurationProperties" id="-1841785739%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="configuration-properties.html"><span>configuration</span><wbr></wbr><span><span>Properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1841785739%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="configuration-properties.html">configurationProperties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Structured, ordered snapshot of the solver's configuration — the same fields the <a href="../../ksl.simopt.solvers/-solver/to-string.html">toString</a> implementations expose, in a form that downstream consumers can iterate (reporting, machine-readable summary artifacts, &quot;compare two runs&quot; tooling).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1902294347%2FProperties%2F-2024213039" anchor-label="diameterBasedStoppingEnabled" id="-1902294347%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diameter-based-stopping-enabled.html"><span>diameter</span><wbr></wbr><span>Based</span><wbr></wbr><span>Stopping</span><wbr></wbr><span><span>Enabled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1902294347%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="diameter-based-stopping-enabled.html">diameterBasedStoppingEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">When true, the search stops once the normalized swarm diameter falls to or below <a href="diameter-threshold.html">diameterThreshold</a> (in addition to the no-improvement criterion). Enabled by default.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="8329024%2FProperties%2F-2024213039" anchor-label="diameterThreshold" id="8329024%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diameter-threshold.html"><span>diameter</span><wbr></wbr><span><span>Threshold</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8329024%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="diameter-threshold.html">diameterThreshold</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The normalized swarm-diameter threshold for convergence. The normalized diameter is the swarm's bounding-box diagonal divided by the search-space diagonal (in 0,1). Must be > 0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-965521291%2FProperties%2F-2024213039" anchor-label="globalBest" id="-965521291%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="global-best.html"><span>global</span><wbr></wbr><span><span>Best</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-965521291%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="global-best.html">globalBest</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution/index.html">Solution</a></div><div class="brief "><p class="paragraph">The current global best solution (equal to the inherited <a href="../../ksl.simopt.solvers/-solver/best-solution.html">bestSolution</a>).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-354853427%2FProperties%2F-2024213039" anchor-label="inertiaSchedule" id="-354853427%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="inertia-schedule.html"><span>inertia</span><wbr></wbr><span><span>Schedule</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-354853427%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="inertia-schedule.html">inertiaSchedule</a><span class="token operator">: </span><a href="../-inertia-weight-schedule-ifc/index.html">InertiaWeightScheduleIfc</a></div><div class="brief "><p class="paragraph">The inertia-weight schedule. Cannot be changed while the solver is running.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-917744298%2FProperties%2F-2024213039" anchor-label="socialCoefficient" id="-917744298%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="social-coefficient.html"><span>social</span><wbr></wbr><span><span>Coefficient</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-917744298%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="social-coefficient.html">socialCoefficient</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The social acceleration coefficient c2 (pull toward the global best). Must be >= 0.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1945327710%2FProperties%2F-2024213039" anchor-label="solutionChecker" id="-1945327710%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="solution-checker.html"><span>solution</span><wbr></wbr><span><span>Checker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1945327710%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="solution-checker.html">solutionChecker</a><span class="token operator">: </span><a href="../../ksl.simopt.evaluator/-solution-checker/index.html">SolutionChecker</a></div><div class="brief "><p class="paragraph">Used to check whether the most recent best solutions have converged (no improvement).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1266716954%2FProperties%2F-2024213039" anchor-label="swarm" id="-1266716954%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="swarm.html"><span><span>swarm</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1266716954%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="swarm.html">swarm</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-particle/index.html">Particle</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A read-only snapshot of the current swarm.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1843828069%2FProperties%2F-2024213039" anchor-label="swarmSize" id="1843828069%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="swarm-size.html"><span>swarm</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1843828069%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="swarm-size.html">swarmSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The number of particles in the swarm. Must be at least <a href="-companion/default-min-swarm-size.html">defaultMinSwarmSize</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="494737277%2FProperties%2F-2024213039" anchor-label="swarmSizeFn" id="494737277%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="swarm-size-fn.html"><span>swarm</span><wbr></wbr><span>Size</span><wbr></wbr><span><span>Fn</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="494737277%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="swarm-size-fn.html">swarmSizeFn</a><span class="token operator">: </span><a href="../-swarm-size-fn-ifc/index.html">SwarmSizeFnIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If supplied, this function determines the swarm size, overriding <span data-unresolved-link="ksl.simopt.solvers.algorithms.pso/ParticleSwarmSolver//#ksl.simopt.problem.ProblemDefinition#ksl.simopt.evaluator.EvaluatorIfc#kotlin.Int#ksl.utilities.random.rng.RNStreamProviderIfc#kotlin.Int#ksl.simopt.solvers.algorithms.pso.InertiaWeightScheduleIfc?#kotlin.Double#kotlin.Double#ksl.simopt.solvers.algorithms.pso.BoundaryHandlerIfc#ksl.simopt.solvers.algorithms.pso.VelocityInitializerIfc#kotlin.Int#ksl.simopt.solvers.ReplicationPerEvaluationIfc#ksl.simopt.evaluator.SolutionEqualityIfc#kotlin.String?/PointingToCallableParameters(4)/">swarmSize</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="396336100%2FProperties%2F-2024213039" anchor-label="useCRNWithinIteration" id="396336100%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use-c-r-n-within-iteration.html"><span>use</span><wbr></wbr><span>CRNWithin</span><wbr></wbr><span><span>Iteration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="396336100%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="use-c-r-n-within-iteration.html">useCRNWithinIteration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">When true, the whole swarm is evaluated under common random numbers within an iteration (which disables caching for that batch). Default is false.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-835596935%2FProperties%2F-2024213039" anchor-label="velocityInitializer" id="-835596935%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="velocity-initializer.html"><span>velocity</span><wbr></wbr><span><span>Initializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-835596935%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="velocity-initializer.html">velocityInitializer</a><span class="token operator">: </span><a href="../-velocity-initializer-ifc/index.html">VelocityInitializerIfc</a></div><div class="brief "><p class="paragraph">The velocity initializer. Cannot be changed while the solver is running.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1436740660%2FProperties%2F-2024213039" anchor-label="vMaxFraction" id="-1436740660%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="v-max-fraction.html"><span>v</span><wbr></wbr><span>Max</span><wbr></wbr><span><span>Fraction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1436740660%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="v-max-fraction.html">vMaxFraction</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The fraction of each input's range used as that coordinate's maximum speed (velocity clamp). Must be in (0,1].</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="1677772849%2FFunctions%2F-2024213039" anchor-label="extractSolverSpecificState" id="1677772849%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extract-solver-specific-state.html"><span>extract</span><wbr></wbr><span>Solver</span><wbr></wbr><span>Specific</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1677772849%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="extract-solver-specific-state.html"><span class="token function">extractSolverSpecificState</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A hook for subclasses to inject their specific internal state metrics into the snapshot without having to override the entire <a href="../../ksl.simopt.solvers/-solver/make-solver-state-snapshot.html">makeSolverStateSnapshot</a> method.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-872086058%2FFunctions%2F-2024213039" anchor-label="initializeIterations" id="-872086058%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize-iterations.html"><span>initialize</span><wbr></wbr><span><span>Iterations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-872086058%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize-iterations.html"><span class="token function">initializeIterations</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Subclasses may implement this function to prepare the solver before running the first iteration. Generally, it is sufficient to just implement the startingPoint() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1906592567%2FFunctions%2F-2024213039" anchor-label="isStoppingCriteriaSatisfied" id="-1906592567%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-stopping-criteria-satisfied.html"><span>is</span><wbr></wbr><span>Stopping</span><wbr></wbr><span>Criteria</span><wbr></wbr><span><span>Satisfied</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1906592567%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="is-stopping-criteria-satisfied.html"><span class="token function">isStoppingCriteriaSatisfied</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Subclasses should implement this function to determine if the solver should continue running iterations. This will likely include some implementation of stopping criteria. This function should implement stopping criteria based on the quality of the solution. The number of iterations, compared to the maximum number of iterations, is automatically checked after each step in the iterative process. Unless overridden, this function returns false by default, which indicates that the solution quality criteria have not been satisfied.  This will cause the solver to iterate through all iterations of the solution process up to the maximum number of iterations. Alternatively, the user can specify an instance of the SolutionQualityEvaluatorIfc interface to determine if the solution quality has been reached.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="194359226%2FFunctions%2F-2024213039" anchor-label="mainIteration" id="194359226%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="main-iteration.html"><span>main</span><wbr></wbr><span><span>Iteration</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="194359226%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="main-iteration.html"><span class="token function">mainIteration</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This function should contain the logic that iteratively executes until the maximum number of iterations is reached or until the stopping criteria is met.  The base implementation calls nextPoint() to determine the next point to evaluate, requests an evaluation of the point, and then updates the current solution if the resulting solution is better than the current solution. Generally, implementing startingPoint() and nextPoint() should be adequate. The property <a href="../../ksl.simopt.solvers/-solver/iteration-counter.html">iterationCounter</a> represents the current iteration within the mainIteration() function. That is, the value of <a href="../../ksl.simopt.solvers/-solver/iteration-counter.html">iterationCounter</a> is incremented prior to the execution of the mainIteration() function.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1936082660%2FFunctions%2F-2024213039" anchor-label="swarmSizeValue" id="1936082660%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="swarm-size-value.html"><span>swarm</span><wbr></wbr><span>Size</span><wbr></wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1936082660%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="swarm-size-value.html"><span class="token function">swarmSizeValue</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The effective swarm size: <a href="swarm-size-fn.html">swarmSizeFn</a> if supplied, otherwise <span data-unresolved-link="ksl.simopt.solvers.algorithms.pso/ParticleSwarmSolver//#ksl.simopt.problem.ProblemDefinition#ksl.simopt.evaluator.EvaluatorIfc#kotlin.Int#ksl.utilities.random.rng.RNStreamProviderIfc#kotlin.Int#ksl.simopt.solvers.algorithms.pso.InertiaWeightScheduleIfc?#kotlin.Double#kotlin.Double#ksl.simopt.solvers.algorithms.pso.BoundaryHandlerIfc#ksl.simopt.solvers.algorithms.pso.VelocityInitializerIfc#kotlin.Int#ksl.simopt.solvers.ReplicationPerEvaluationIfc#ksl.simopt.evaluator.SolutionEqualityIfc#kotlin.String?/PointingToCallableParameters(4)/">swarmSize</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="581950864%2FFunctions%2F-2024213039" anchor-label="toString" id="581950864%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="581950864%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

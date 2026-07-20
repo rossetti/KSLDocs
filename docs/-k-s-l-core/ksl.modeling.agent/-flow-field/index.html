@@ -44,11 +44,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.3        </div>
+R1.4        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
-                        data-filter=":/main">jvm</button>
+                        data-filter=":KSLCore/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -65,8 +65,8 @@ R1.3        </div>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
@@ -104,28 +104,28 @@ R1.3        </div>
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.agent/FlowField///PointingToDeclaration//-251573632">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.agent/FlowField///PointingToDeclaration//-2024213039">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.agent</a><span class="delimiter">/</span><span class="current">FlowField</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Flow</span><wbr></wbr><span><span>Field</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">FlowField</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>graph<span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sources<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cellSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Defaults.cellSize<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>origin<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a><span class="token operator"> = </span>Defaults.origin</span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/agent/FlowField.kt#L75">source</a>)</span></span></div><p class="paragraph">A precomputed distance-from-sources field over a <a href="../-grid-graph/index.html">GridGraph</a>, exposed at point-level granularity for continuous-space agents.</p><p class="paragraph">Wraps three things together that previously had to be carried in parallel by every continuous-space agent that wanted to follow a gradient: the <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(0)/">graph</span>, a set of goal cells (<span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(1)/">sources</span>), and the <a href="../-grid-graph/distance-field.html">distanceField</a> map that quantifies &quot;how far from any goal.&quot; Adds point-level conversions (<a href="cell-of.html">cellOf</a> / <a href="center-of.html">centerOf</a>) so agents holding continuous positions can query the field without rewriting the same point-to-cell arithmetic at every call site.</p><p class="paragraph">Construction runs one multi-source Dijkstra (the <a href="../-grid-graph/distance-field.html">GridGraph.distanceField</a> call). Queries are O(1) for <a href="distance-at.html">distanceAt</a> / <a href="arrived-at.html">arrivedAt</a> and O(|passable neighbors|) for <a href="direction-at.html">directionAt</a>. Reconstruct (with the same or different sources) to refresh — there is no in-place recompute. Reconstruction is cheap, so building a fresh <code class="lang-kotlin">FlowField</code> in <code class="lang-kotlin">initialize()</code> of each replication is the standard pattern when the graph or sources may change between replications.</p><p class="paragraph">Typical use (evacuation):</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">class MyModel(parent: ModelElement) : AgentModel(parent, &quot;evac&quot;) {<br>    val graph: GridGraph = ...<br>    val exits: Set&lt;Cell&gt; = setOf(Cell(0, 0), Cell(29, 29))<br>    lateinit var field: FlowField<br>    override fun initialize() {<br>        super.initialize()<br>        field = FlowField(graph, exits)<br>    }<br>}<br>// Per-agent: while (!field.arrivedAt(myPos)) { step in field.directionAt(myPos) }</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Geometry model: cells form a uniform grid of side <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(2)/">cellSize</span> anchored at <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(3)/">origin</span>. Cell <code class="lang-kotlin">(c, r)</code> covers the continuous-space half-open rectangle <code class="lang-kotlin">[origin.x + c*cellSize, origin.x + (c+1)*cellSize)</code> in x and similarly in y, with center at <code class="lang-kotlin">centerOf(Cell(c, r))</code>. For non-uniform or transformed layouts, subclass or compose; the simple uniform case covers every shipped example.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>graph</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the underlying lattice</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>sources</span></span></u></div></span></div><div><div class="title"><p class="paragraph">cells treated as goals (distance = 0). Must not be     empty.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>cell</span><wbr></wbr><span><span>Size</span></span></u></div></span></div><div><div class="title"><p class="paragraph">side length of each cell in continuous space.     Must be positive.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>origin</span></span></u></div></span></div><div><div class="title"><p class="paragraph">continuous-space anchor of cell <code class="lang-kotlin">(0, 0)</code>'s lower-left     corner.</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">FlowField</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>graph<span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sources<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cellSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Defaults.cellSize<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>origin<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a><span class="token operator"> = </span>Defaults.origin</span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/agent/FlowField.kt#L75">source</a>)</span></span></div><p class="paragraph">A precomputed distance-from-sources field over a <a href="../-grid-graph/index.html">GridGraph</a>, exposed at point-level granularity for continuous-space agents.</p><p class="paragraph">Wraps three things together that previously had to be carried in parallel by every continuous-space agent that wanted to follow a gradient: the <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(0)/">graph</span>, a set of goal cells (<span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(1)/">sources</span>), and the <a href="../-grid-graph/distance-field.html">distanceField</a> map that quantifies &quot;how far from any goal.&quot; Adds point-level conversions (<a href="cell-of.html">cellOf</a> / <a href="center-of.html">centerOf</a>) so agents holding continuous positions can query the field without rewriting the same point-to-cell arithmetic at every call site.</p><p class="paragraph">Construction runs one multi-source Dijkstra (the <a href="../-grid-graph/distance-field.html">GridGraph.distanceField</a> call). Queries are O(1) for <a href="distance-at.html">distanceAt</a> / <a href="arrived-at.html">arrivedAt</a> and O(|passable neighbors|) for <a href="direction-at.html">directionAt</a>. Reconstruct (with the same or different sources) to refresh — there is no in-place recompute. Reconstruction is cheap, so building a fresh <code class="lang-kotlin">FlowField</code> in <code class="lang-kotlin">initialize()</code> of each replication is the standard pattern when the graph or sources may change between replications.</p><p class="paragraph">Typical use (evacuation):</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">class MyModel(parent: ModelElement) : AgentModel(parent, &quot;evac&quot;) {<br>    val graph: GridGraph = ...<br>    val exits: Set&lt;Cell&gt; = setOf(Cell(0, 0), Cell(29, 29))<br>    lateinit var field: FlowField<br>    override fun initialize() {<br>        super.initialize()<br>        field = FlowField(graph, exits)<br>    }<br>}<br>// Per-agent: while (!field.arrivedAt(myPos)) { step in field.directionAt(myPos) }</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Geometry model: cells form a uniform grid of side <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(2)/">cellSize</span> anchored at <span data-unresolved-link="ksl.modeling.agent/FlowField//#ksl.modeling.agent.GridGraph#kotlin.collections.Set[ksl.modeling.agent.Cell]#kotlin.Double#ksl.modeling.agent.Point2D/PointingToCallableParameters(3)/">origin</span>. Cell <code class="lang-kotlin">(c, r)</code> covers the continuous-space half-open rectangle <code class="lang-kotlin">[origin.x + c*cellSize, origin.x + (c+1)*cellSize)</code> in x and similarly in y, with center at <code class="lang-kotlin">centerOf(Cell(c, r))</code>. For non-uniform or transformed layouts, subclass or compose; the simple uniform case covers every shipped example.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>graph</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the underlying lattice</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>sources</span></span></u></div></span></div><div><div class="title"><p class="paragraph">cells treated as goals (distance = 0). Must not be     empty.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>cell</span><wbr></wbr><span><span>Size</span></span></u></div></span></div><div><div class="title"><p class="paragraph">side length of each cell in continuous space.     Must be positive.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>origin</span></span></u></div></span></div><div><div class="title"><p class="paragraph">continuous-space anchor of cell <code class="lang-kotlin">(0, 0)</code>'s lower-left     corner.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="tableheader">Constructors</h2>
-        <div class="table"><a data-name="1886140314%2FConstructors%2F-251573632" anchor-label="FlowField" id="1886140314%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="1886140314%2FConstructors%2F-2024213039" anchor-label="FlowField" id="1886140314%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-flow-field.html"><span>Flow</span><wbr></wbr><span><span>Field</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886140314%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886140314%2FConstructors%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">graph<span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a><span class="token punctuation">, </span></span><span class="parameter ">sources<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">cellSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Defaults.cellSize<span class="token punctuation">, </span></span><span class="parameter ">origin<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a><span class="token operator"> = </span>Defaults.origin</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">graph<span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a><span class="token punctuation">, </span></span><span class="parameter ">sources<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">cellSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Defaults.cellSize<span class="token punctuation">, </span></span><span class="parameter ">origin<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a><span class="token operator"> = </span>Defaults.origin</span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,17 +134,17 @@ R1.3        </div>
       </div>
       <div data-togglable="TYPE">
         <h2 class="tableheader">Types</h2>
-        <div class="table"><a data-name="-530863000%2FClasslikes%2F-251573632" anchor-label="Defaults" id="-530863000%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="-530863000%2FClasslikes%2F-2024213039" anchor-label="Defaults" id="-530863000%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-defaults/index.html"><span><span>Defaults</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-530863000%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-530863000%2FClasslikes%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-defaults/index.html">Defaults</a></div><div class="brief "><p class="paragraph">Mutable global defaults for <a href="index.html">FlowField</a> construction. Set once at model setup to change the fallback used when constructors don't pass an explicit value.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-defaults/index.html">Defaults</a></div><div class="brief "><p class="paragraph">Mutable global defaults for <a href="index.html">FlowField</a> construction. Set once at model setup to change the fallback used when constructors don't pass an explicit value.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -153,77 +153,77 @@ R1.3        </div>
       </div>
       <div data-togglable="PROPERTY">
         <h2 class="tableheader">Properties</h2>
-        <div class="table"><a data-name="-27460318%2FProperties%2F-251573632" anchor-label="cellSize" id="-27460318%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="-27460318%2FProperties%2F-2024213039" anchor-label="cellSize" id="-27460318%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cell-size.html"><span>cell</span><wbr></wbr><span><span>Size</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-27460318%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-27460318%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cell-size.html">cellSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cell-size.html">cellSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-185748777%2FProperties%2F-251573632" anchor-label="distances" id="-185748777%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-185748777%2FProperties%2F-2024213039" anchor-label="distances" id="-185748777%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distances.html"><span><span>distances</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-185748777%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-185748777%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="distances.html">distances</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Distance-to-nearest-source for every reachable cell. Unreachable cells are absent. Source cells map to 0.0. Exposed for callers that want the raw map (e.g., to render a heatmap); most agent-side code should prefer <a href="distance-at.html">distanceAt</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="distances.html">distances</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Distance-to-nearest-source for every reachable cell. Unreachable cells are absent. Source cells map to 0.0. Exposed for callers that want the raw map (e.g., to render a heatmap); most agent-side code should prefer <a href="distance-at.html">distanceAt</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1408944473%2FProperties%2F-251573632" anchor-label="graph" id="-1408944473%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1408944473%2FProperties%2F-2024213039" anchor-label="graph" id="-1408944473%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="graph.html"><span><span>graph</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1408944473%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1408944473%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="graph.html">graph</a><span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="graph.html">graph</a><span class="token operator">: </span><a href="../-grid-graph/index.html">GridGraph</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-595895841%2FProperties%2F-251573632" anchor-label="origin" id="-595895841%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-595895841%2FProperties%2F-2024213039" anchor-label="origin" id="-595895841%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="origin.html"><span><span>origin</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-595895841%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-595895841%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="origin.html">origin</a><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="origin.html">origin</a><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="404277629%2FProperties%2F-251573632" anchor-label="sources" id="404277629%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="404277629%2FProperties%2F-2024213039" anchor-label="sources" id="404277629%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sources.html"><span><span>sources</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="404277629%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="404277629%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="sources.html">sources</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="sources.html">sources</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../-cell/index.html">Cell</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -232,77 +232,77 @@ R1.3        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="650654727%2FFunctions%2F-251573632" anchor-label="arrivedAt" id="650654727%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="650654727%2FFunctions%2F-2024213039" anchor-label="arrivedAt" id="650654727%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="arrived-at.html"><span>arrived</span><wbr></wbr><span><span>At</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650654727%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="650654727%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="arrived-at.html"><span class="token function">arrivedAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if <a href="arrived-at.html">point</a>'s cell is a source cell — i.e., the agent at <a href="arrived-at.html">point</a> has reached its goal. Out-of-bounds points are not arrived (they may be invalid placement).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="arrived-at.html"><span class="token function">arrivedAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True if <a href="arrived-at.html">point</a>'s cell is a source cell — i.e., the agent at <a href="arrived-at.html">point</a> has reached its goal. Out-of-bounds points are not arrived (they may be invalid placement).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="778328094%2FFunctions%2F-251573632" anchor-label="cellOf" id="778328094%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="778328094%2FFunctions%2F-2024213039" anchor-label="cellOf" id="778328094%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cell-of.html"><span>cell</span><wbr></wbr><span><span>Of</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="778328094%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="778328094%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cell-of.html"><span class="token function">cellOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cell/index.html">Cell</a></div><div class="brief "><p class="paragraph">Convert a point in continuous space to the cell containing it.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cell-of.html"><span class="token function">cellOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cell/index.html">Cell</a></div><div class="brief "><p class="paragraph">Convert a point in continuous space to the cell containing it.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="654684883%2FFunctions%2F-251573632" anchor-label="centerOf" id="654684883%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="654684883%2FFunctions%2F-2024213039" anchor-label="centerOf" id="654684883%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="center-of.html"><span>center</span><wbr></wbr><span><span>Of</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="654684883%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="654684883%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="center-of.html"><span class="token function">centerOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">cell<span class="token operator">: </span><a href="../-cell/index.html">Cell</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div><div class="brief "><p class="paragraph">Center coordinates of <a href="center-of.html">cell</a> in continuous space.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="center-of.html"><span class="token function">centerOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">cell<span class="token operator">: </span><a href="../-cell/index.html">Cell</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div><div class="brief "><p class="paragraph">Center coordinates of <a href="center-of.html">cell</a> in continuous space.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="990779957%2FFunctions%2F-251573632" anchor-label="directionAt" id="990779957%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="990779957%2FFunctions%2F-2024213039" anchor-label="directionAt" id="990779957%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="direction-at.html"><span>direction</span><wbr></wbr><span><span>At</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="990779957%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="990779957%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="direction-at.html"><span class="token function">directionAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div><div class="brief "><p class="paragraph">Unit vector pointing from <a href="direction-at.html">point</a> toward the center of the passable neighbor of <a href="direction-at.html">point</a>'s cell with the smallest field value (i.e., the most-downhill step in the gradient).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="direction-at.html"><span class="token function">directionAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></div><div class="brief "><p class="paragraph">Unit vector pointing from <a href="direction-at.html">point</a> toward the center of the passable neighbor of <a href="direction-at.html">point</a>'s cell with the smallest field value (i.e., the most-downhill step in the gradient).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-96631921%2FFunctions%2F-251573632" anchor-label="distanceAt" id="-96631921%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-96631921%2FFunctions%2F-2024213039" anchor-label="distanceAt" id="-96631921%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="distance-at.html"><span>distance</span><wbr></wbr><span><span>At</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-96631921%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-96631921%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-at.html"><span class="token function">distanceAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Distance from <a href="distance-at.html">point</a>'s cell to the nearest source. Returns <code class="lang-kotlin">Double.POSITIVE_INFINITY</code> for points whose cell is out of bounds, blocked, or unreachable from any source.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="distance-at.html"><span class="token function">distanceAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">point<span class="token operator">: </span><a href="../-point2-d/index.html">Point2D</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Distance from <a href="distance-at.html">point</a>'s cell to the nearest source. Returns <code class="lang-kotlin">Double.POSITIVE_INFINITY</code> for points whose cell is out of bounds, blocked, or unreachable from any source.</p></div></div></div>
                 </div>
               </div>
             </div>

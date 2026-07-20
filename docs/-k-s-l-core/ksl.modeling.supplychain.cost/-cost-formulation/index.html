@@ -44,11 +44,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.3        </div>
+R1.4        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
-                        data-filter=":/main">jvm</button>
+                        data-filter=":KSLCore/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -65,8 +65,8 @@ R1.3        </div>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
@@ -104,43 +104,58 @@ R1.3        </div>
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain.cost/CostFormulation///PointingToDeclaration//-251573632">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.supplychain.cost/CostFormulation///PointingToDeclaration//-2024213039">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.supplychain.cost</a><span class="delimiter">/</span><span class="current">CostFormulation</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Cost</span><wbr></wbr><span><span>Formulation</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">CostFormulation</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/cost/CostFormulation.kt#L32">source</a>)</span></span></div><p class="paragraph">A cost formulation is a container of <a href="../-cost-calculator/index.html">CostCalculator</a>s plus the rollup Responses (per line, per tier, grand total) that summarize them at every replication's end.</p><p class="paragraph"><strong>Lifecycle.</strong> A formulation is constructed before <code class="lang-kotlin">model.simulate()</code> runs, walks the <code class="lang-kotlin">MultiEchelonNetwork</code> at construction time to instantiate one calculator per source kind (Phase 3 detail), and pre-allocates every rollup Response.  Each calculator subscribes to its own source via a <code class="lang-kotlin">ksl.observers.ModelElementObserver</code>; the formulation itself sums the calculators' per-line Responses in its own <code class="lang-kotlin">ksl.simulation.ModelElement.replicationEnded()</code> override — KSL's tree walk guarantees the calculator children have already fired by then because children are visited before parent.</p><p class="paragraph"><strong>Multi-attach.</strong> A single <code class="lang-kotlin">MultiEchelonNetwork</code> may carry multiple formulations.  Each is independent — different formulations may use different <a href="../-cost-params/index.html">CostParams</a>, different physical-unit conventions, even different line-item structures, without interference.  All formulations report at every replication end; the half-width summary shows confidence intervals for every formulation's Responses in parallel.</p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-cost-calculator/index.html"><span>Cost</span><wbr></wbr><span><span>Calculator</span></span></a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-multi-echelon-cost-formulation/index.html"><span>Default</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Echelon</span><wbr></wbr><span>Cost</span><wbr></wbr><span><span>Formulation</span></span></a></div></span></div><div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-multi-echelon-cost-formulation/index.html">DefaultMultiEchelonCostFormulation</a></div></span></div><div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">CostFormulation</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/supplychain/cost/CostFormulation.kt#L32">source</a>)</span></span></div><p class="paragraph">A cost formulation is a container of <a href="../-cost-calculator/index.html">CostCalculator</a>s plus the rollup Responses (per line, per tier, grand total) that summarize them at every replication's end.</p><p class="paragraph"><strong>Lifecycle.</strong> A formulation is constructed before <code class="lang-kotlin">model.simulate()</code> runs, walks the <code class="lang-kotlin">MultiEchelonNetwork</code> at construction time to instantiate one calculator per source kind (Phase 3 detail), and pre-allocates every rollup Response.  Each calculator subscribes to its own source via a <code class="lang-kotlin">ksl.observers.ModelElementObserver</code>; the formulation itself sums the calculators' per-line Responses in its own <code class="lang-kotlin">ksl.simulation.ModelElement.replicationEnded()</code> override — KSL's tree walk guarantees the calculator children have already fired by then because children are visited before parent.</p><p class="paragraph"><strong>Multi-attach.</strong> A single <code class="lang-kotlin">MultiEchelonNetwork</code> may carry multiple formulations.  Each is independent — different formulations may use different <a href="../-cost-params/index.html">CostParams</a>, different physical-unit conventions, even different line-item structures, without interference.  All formulations report at every replication end; the half-width summary shows confidence intervals for every formulation's Responses in parallel.</p><h4 class="tableheader">See also</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-cost-calculator/index.html"><span>Cost</span><wbr></wbr><span><span>Calculator</span></span></a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-multi-echelon-cost-formulation/index.html"><span>Default</span><wbr></wbr><span>Multi</span><wbr></wbr><span>Echelon</span><wbr></wbr><span>Cost</span><wbr></wbr><span><span>Formulation</span></span></a></div></span></div><div></div></div></div></div><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-default-multi-echelon-cost-formulation/index.html">DefaultMultiEchelonCostFormulation</a></div></span></div><div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
         <h2 class="tableheader">Properties</h2>
-        <div class="table"><a data-name="1449734921%2FProperties%2F-251573632" anchor-label="calculators" id="1449734921%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="1449734921%2FProperties%2F-2024213039" anchor-label="calculators" id="1449734921%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="calculators.html"><span><span>calculators</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449734921%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1449734921%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="calculators.html">calculators</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../-cost-calculator/index.html">CostCalculator</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The calculators this formulation manages.  Phase 2's skeleton formulation returns an empty collection; Phase 3 populates it with concrete calculator instances.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="calculators.html">calculators</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../-cost-calculator/index.html">CostCalculator</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The calculators this formulation manages.  Phase 2's skeleton formulation returns an empty collection; Phase 3 populates it with concrete calculator instances.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2132175240%2FProperties%2F-251573632" anchor-label="totalCostResponse" id="2132175240%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="2132175240%2FProperties%2F-2024213039" anchor-label="totalCostResponse" id="2132175240%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="total-cost-response.html"><span>total</span><wbr></wbr><span>Cost</span><wbr></wbr><span><span>Response</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2132175240%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2132175240%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="total-cost-response.html">totalCostResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div><div class="brief "><p class="paragraph">Grand-total rollup Response — the sum across every line and every tier this formulation produces.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="total-cost-response.html">totalCostResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a></div><div class="brief "><p class="paragraph">Grand-total rollup Response — the sum across every line and every tier this formulation produces.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="299292452%2FProperties%2F-2024213039" anchor-label="trackedNodeNames" id="299292452%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tracked-node-names.html"><span>tracked</span><wbr></wbr><span>Node</span><wbr></wbr><span><span>Names</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="299292452%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="tracked-node-names.html">trackedNodeNames</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The names of the owning nodes this formulation tracks per-node totals for.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -149,47 +164,62 @@ R1.3        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="-1963833351%2FFunctions%2F-251573632" anchor-label="byLineResponse" id="-1963833351%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="-1963833351%2FFunctions%2F-2024213039" anchor-label="byLineResponse" id="-1963833351%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="by-line-response.html"><span>by</span><wbr></wbr><span>Line</span><wbr></wbr><span><span>Response</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1963833351%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1963833351%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-line-response.html"><span class="token function">byLineResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="../-cost-line/index.html">CostLine</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-line rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[line]</code> for the most recent replication, or null if this formulation does not produce that line.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-line-response.html"><span class="token function">byLineResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">line<span class="token operator">: </span><a href="../-cost-line/index.html">CostLine</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-line rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[line]</code> for the most recent replication, or null if this formulation does not produce that line.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1202689627%2FFunctions%2F-251573632" anchor-label="byTierAndLineResponse" id="1202689627%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-2137964258%2FFunctions%2F-2024213039" anchor-label="byNodeResponse" id="-2137964258%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="by-node-response.html"><span>by</span><wbr></wbr><span>Node</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2137964258%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-node-response.html"><span class="token function">byNodeResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">nodeName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-node (location) rollup Response — the sum across every cost line of every calculator attributed to the named owning node (an inventory's / backlog's / load-builder's holder, an outbound edge's supplier, an inbound edge's customer), or null when the formulation tracks no node with that name. The external supplier's own outbound has no owning node and contributes only to the grand total.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1202689627%2FFunctions%2F-2024213039" anchor-label="byTierAndLineResponse" id="1202689627%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="by-tier-and-line-response.html"><span>by</span><wbr></wbr><span>Tier</span><wbr></wbr><span>And</span><wbr></wbr><span>Line</span><wbr></wbr><span><span>Response</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1202689627%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1202689627%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-tier-and-line-response.html"><span class="token function">byTierAndLineResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tier<span class="token operator">: </span><a href="../-node-tier/index.html">NodeTier</a><span class="token punctuation">, </span></span><span class="parameter ">line<span class="token operator">: </span><a href="../-cost-line/index.html">CostLine</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-(tier, line) rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[line]</code> whose <a href="../-cost-calculator/tier.html">CostCalculator.tier</a> matches <a href="by-tier-and-line-response.html">tier</a>, or null if this formulation does not produce a rollup for this combination.  Used by Phase-4 to re-point the legacy 16 cost responses on <a href="../../ksl.modeling.supplychain.network/-multi-echelon-network/index.html">ksl.modeling.supplychain.network.MultiEchelonNetwork</a> onto formulation-managed Responses.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-tier-and-line-response.html"><span class="token function">byTierAndLineResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tier<span class="token operator">: </span><a href="../-node-tier/index.html">NodeTier</a><span class="token punctuation">, </span></span><span class="parameter ">line<span class="token operator">: </span><a href="../-cost-line/index.html">CostLine</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-(tier, line) rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[line]</code> whose <a href="../-cost-calculator/tier.html">CostCalculator.tier</a> matches <a href="by-tier-and-line-response.html">tier</a>, or null if this formulation does not produce a rollup for this combination.  Used by Phase-4 to re-point the legacy 16 cost responses on <a href="../../ksl.modeling.supplychain.network/-multi-echelon-network/index.html">ksl.modeling.supplychain.network.MultiEchelonNetwork</a> onto formulation-managed Responses.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="364939592%2FFunctions%2F-251573632" anchor-label="byTierResponse" id="364939592%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="364939592%2FFunctions%2F-2024213039" anchor-label="byTierResponse" id="364939592%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="by-tier-response.html"><span>by</span><wbr></wbr><span>Tier</span><wbr></wbr><span><span>Response</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="364939592%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="364939592%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-tier-response.html"><span class="token function">byTierResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tier<span class="token operator">: </span><a href="../-node-tier/index.html">NodeTier</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-tier rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[*]</code> whose <a href="../-cost-calculator/tier.html">CostCalculator.tier</a> matches <a href="by-tier-response.html">tier</a>, or null if this formulation does not produce a per-tier rollup for <a href="by-tier-response.html">tier</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="by-tier-response.html"><span class="token function">byTierResponse</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">tier<span class="token operator">: </span><a href="../-node-tier/index.html">NodeTier</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Per-tier rollup Response — the sum of every calculator's <code class="lang-kotlin">lineResponses[*]</code> whose <a href="../-cost-calculator/tier.html">CostCalculator.tier</a> matches <a href="by-tier-response.html">tier</a>, or null if this formulation does not produce a per-tier rollup for <a href="by-tier-response.html">tier</a>.</p></div></div></div>
                 </div>
               </div>
             </div>

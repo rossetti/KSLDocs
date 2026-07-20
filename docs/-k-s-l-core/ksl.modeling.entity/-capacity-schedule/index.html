@@ -44,11 +44,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.3        </div>
+R1.4        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
-                        data-filter=":/main">jvm</button>
+                        data-filter=":KSLCore/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -65,8 +65,8 @@ R1.3        </div>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
@@ -104,28 +104,28 @@ R1.3        </div>
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/CapacitySchedule///PointingToDeclaration//-251573632">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.entity/CapacitySchedule///PointingToDeclaration//-2024213039">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.entity</a><span class="delimiter">/</span><span class="current">CapacitySchedule</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Capacity</span><wbr></wbr><span><span>Schedule</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CapacitySchedule</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-capacity-schedule-c-ifc/index.html">CapacityScheduleCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/CapacitySchedule.kt#L326">source</a>)</span></span></div><p class="paragraph">A CapacitySchedule represents a known set of capacity specifications that last for a duration of time.</p><p class="paragraph">A CapacitySchedule has an auto start flag, which controls whether the schedule should start automatically upon initialization (at the start of the replication). The default is to start automatically.</p><p class="paragraph">A CapacitySchedule has an initial start time, which represents the amount of time after the beginning of the replication that the schedule is to start. The default start time is zero (at the beginning of the replication).</p><p class="paragraph">A CapacitySchedule as a length (or duration) that represents the total time associated with the schedule. After this time has elapsed the entire schedule can repeat if the repeat option is on. The length of the schedule is determined by the durations of the items placed on it.</p><p class="paragraph">A CapacitySchedule has a repeat flag that controls whether it will repeat after its duration has elapsed. The default is to repeat the schedule and is only relevant if the schedule duration (length) is finite.</p><p class="paragraph">A CapacitySchedule has a cycle start time that represents when the schedule started its current cycle. Again, this is only relevant if the repeat flag is true and the schedule duration is finite. If there is only one cycle, it is the time that the schedule started.</p><p class="paragraph">To make a CapacitySchedule useful, instances of the CapacityChangeListenerIfc interface should be added to listen for changes in the schedule.  Instances of CapacityChangeListenerIfc are notified in the order in which they are added to the schedule.  Instances of CapacityChangeListenerIfc are notified when the schedule starts, when it ends, and when any CapacityItem starts.  It is up to the instance of CapacityChangeListenerIfc to react to the schedule changes that it needs to react to and ignore those that it does not care about.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element holding the schedule</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>start</span><wbr></wbr><span><span>Time</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the time after the start of the replication that the schedule should start. The default is 0.0</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Option</span></span></u></div></span></div><div><div class="title"><p class="paragraph">whether the schedule should start automatically. The default is true.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>repeatable</span></span></u></div></span></div><div><div class="title"><p class="paragraph">whether the schedule will automatically repeat. The default is false.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>event</span><wbr></wbr><span><span>Priority</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the default priority of the events used to start each item on the schedule</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the schedule</p></div></div></div></div></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">CapacitySchedule</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-capacity-schedule-c-ifc/index.html">CapacityScheduleCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/entity/CapacitySchedule.kt#L326">source</a>)</span></span></div><p class="paragraph">A CapacitySchedule represents a known set of capacity specifications that last for a duration of time.</p><p class="paragraph">A CapacitySchedule has an auto start flag, which controls whether the schedule should start automatically upon initialization (at the start of the replication). The default is to start automatically.</p><p class="paragraph">A CapacitySchedule has an initial start time, which represents the amount of time after the beginning of the replication that the schedule is to start. The default start time is zero (at the beginning of the replication).</p><p class="paragraph">A CapacitySchedule as a length (or duration) that represents the total time associated with the schedule. After this time has elapsed the entire schedule can repeat if the repeat option is on. The length of the schedule is determined by the durations of the items placed on it.</p><p class="paragraph">A CapacitySchedule has a repeat flag that controls whether it will repeat after its duration has elapsed. The default is to repeat the schedule and is only relevant if the schedule duration (length) is finite.</p><p class="paragraph">A CapacitySchedule has a cycle start time that represents when the schedule started its current cycle. Again, this is only relevant if the repeat flag is true and the schedule duration is finite. If there is only one cycle, it is the time that the schedule started.</p><p class="paragraph">To make a CapacitySchedule useful, instances of the CapacityChangeListenerIfc interface should be added to listen for changes in the schedule.  Instances of CapacityChangeListenerIfc are notified in the order in which they are added to the schedule.  Instances of CapacityChangeListenerIfc are notified when the schedule starts, when it ends, and when any CapacityItem starts.  It is up to the instance of CapacityChangeListenerIfc to react to the schedule changes that it needs to react to and ignore those that it does not care about.</p><span class="kdoc-tag"><h4 class="">Author</h4><p class="paragraph">rossetti</p></span><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>parent</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the parent model element holding the schedule</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>start</span><wbr></wbr><span><span>Time</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the time after the start of the replication that the schedule should start. The default is 0.0</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>auto</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Option</span></span></u></div></span></div><div><div class="title"><p class="paragraph">whether the schedule should start automatically. The default is true.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>repeatable</span></span></u></div></span></div><div><div class="title"><p class="paragraph">whether the schedule will automatically repeat. The default is false.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>event</span><wbr></wbr><span><span>Priority</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the default priority of the events used to start each item on the schedule</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>name</span></span></u></div></span></div><div><div class="title"><p class="paragraph">an optional name for the schedule</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="tableheader">Constructors</h2>
-        <div class="table"><a data-name="1250409395%2FConstructors%2F-251573632" anchor-label="CapacitySchedule" id="1250409395%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="1250409395%2FConstructors%2F-2024213039" anchor-label="CapacitySchedule" id="1250409395%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-capacity-schedule.html"><span>Capacity</span><wbr></wbr><span><span>Schedule</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1250409395%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1250409395%2FConstructors%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacityScheduleData<span class="token operator">: </span><a href="../-capacity-schedule-data/index.html">CapacityScheduleData</a><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates a CapacitySchedule based on capacity schedule data</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacities<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a><span class="token punctuation">, </span></span><span class="parameter ">duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates a CapacitySchedule based on capacity schedule data</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacityScheduleData<span class="token operator">: </span><a href="../-capacity-schedule-data/index.html">CapacityScheduleData</a><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates a CapacitySchedule based on capacity schedule data</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">capacities<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int-array/index.html">IntArray</a><span class="token punctuation">, </span></span><span class="parameter ">duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">startTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.0</span><span class="token punctuation">, </span></span><span class="parameter ">autoStartOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">repeatable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">eventPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>KSLEvent.DEFAULT_PRIORITY<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Creates a CapacitySchedule based on capacity schedule data</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,32 +134,32 @@ R1.3        </div>
       </div>
       <div data-togglable="TYPE">
         <h2 class="tableheader">Types</h2>
-        <div class="table"><a data-name="-1524462872%2FClasslikes%2F-251573632" anchor-label="CapacityItem" id="-1524462872%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="-1524462872%2FClasslikes%2F-2024213039" anchor-label="CapacityItem" id="-1524462872%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-capacity-item/index.html"><span>Capacity</span><wbr></wbr><span><span>Item</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1524462872%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1524462872%2FClasslikes%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-capacity-item/index.html">CapacityItem</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>eventPriority</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A CapacityItem represents an item on a CapacitySchedule. CapacityItems are placed on a CapacitySchedule in the order that they will execute. The first item will start when the schedule starts and each item will be scheduled sequentially based on the durations of the previous items.  At the specified start time, the capacity is to be set to the supplied value.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">inner </span><span class="token keyword">class </span><a href="-capacity-item/index.html">CapacityItem</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>priority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>eventPriority</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A CapacityItem represents an item on a CapacitySchedule. CapacityItems are placed on a CapacitySchedule in the order that they will execute. The first item will start when the schedule starts and each item will be scheduled sequentially based on the durations of the previous items.  At the specified start time, the capacity is to be set to the supplied value.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-532406239%2FClasslikes%2F-251573632" anchor-label="Companion" id="-532406239%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-532406239%2FClasslikes%2F-2024213039" anchor-label="Companion" id="-532406239%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-532406239%2FClasslikes%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-532406239%2FClasslikes%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
                 </div>
               </div>
             </div>
@@ -168,122 +168,122 @@ R1.3        </div>
       </div>
       <div data-togglable="PROPERTY">
         <h2 class="tableheader">Properties</h2>
-        <div class="table"><a data-name="1080761047%2FProperties%2F-251573632" anchor-label="cycleStartTime" id="1080761047%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="1080761047%2FProperties%2F-2024213039" anchor-label="cycleStartTime" id="1080761047%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cycle-start-time.html"><span>cycle</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Time</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080761047%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1080761047%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="cycle-start-time.html">cycleStartTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the schedule started for its current cycle</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="cycle-start-time.html">cycleStartTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time that the schedule started for its current cycle</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1140959164%2FProperties%2F-251573632" anchor-label="eventPriority" id="1140959164%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1140959164%2FProperties%2F-2024213039" anchor-label="eventPriority" id="1140959164%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="event-priority.html"><span>event</span><wbr></wbr><span><span>Priority</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140959164%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1140959164%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="event-priority.html">eventPriority</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="event-priority.html">eventPriority</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1970008843%2FProperties%2F-251573632" anchor-label="initialStartTime" id="-1970008843%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1970008843%2FProperties%2F-2024213039" anchor-label="initialStartTime" id="-1970008843%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initial-start-time.html"><span>initial</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Time</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1970008843%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1970008843%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-start-time.html">initialStartTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time from the beginning of the replication to the time that the schedule is to start</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="initial-start-time.html">initialStartTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The time from the beginning of the replication to the time that the schedule is to start</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="379653573%2FProperties%2F-251573632" anchor-label="isAutoStartFlag" id="379653573%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="379653573%2FProperties%2F-2024213039" anchor-label="isAutoStartFlag" id="379653573%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-auto-start-flag.html"><span>is</span><wbr></wbr><span>Auto</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Flag</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="379653573%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="379653573%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-auto-start-flag.html">isAutoStartFlag</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether the schedule should be started automatically upon initialization, default is true</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-auto-start-flag.html">isAutoStartFlag</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether the schedule should be started automatically upon initialization, default is true</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="886260023%2FProperties%2F-251573632" anchor-label="isEmpty" id="886260023%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="886260023%2FProperties%2F-2024213039" anchor-label="isEmpty" id="886260023%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-empty.html"><span>is</span><wbr></wbr><span><span>Empty</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="886260023%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="886260023%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-empty.html">isEmpty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if there are no items on the schedule</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-empty.html">isEmpty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Checks if there are no items on the schedule</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-546525430%2FProperties%2F-251573632" anchor-label="isScheduleRepeatable" id="-546525430%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-546525430%2FProperties%2F-2024213039" anchor-label="isScheduleRepeatable" id="-546525430%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="is-schedule-repeatable.html"><span>is</span><wbr></wbr><span>Schedule</span><wbr></wbr><span><span>Repeatable</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-546525430%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-546525430%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-schedule-repeatable.html">isScheduleRepeatable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The schedule repeat flag controls whether the entire schedule will repeat after its entire duration has elapsed. The default is to repeat the schedule. The use of this flag only makes sense if a finite schedule length is specified</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-schedule-repeatable.html">isScheduleRepeatable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">The schedule repeat flag controls whether the entire schedule will repeat after its entire duration has elapsed. The default is to repeat the schedule. The use of this flag only makes sense if a finite schedule length is specified</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1366444646%2FProperties%2F-251573632" anchor-label="items" id="-1366444646%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1366444646%2FProperties%2F-2024213039" anchor-label="items" id="-1366444646%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="items.html"><span><span>items</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1366444646%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1366444646%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="items.html">items</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-capacity-item-data/index.html">CapacityItemData</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The capacity schedule item data as a list</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="items.html">items</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-capacity-item-data/index.html">CapacityItemData</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The capacity schedule item data as a list</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1407379715%2FProperties%2F-251573632" anchor-label="scheduleLength" id="1407379715%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1407379715%2FProperties%2F-2024213039" anchor-label="scheduleLength" id="1407379715%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="schedule-length.html"><span>schedule</span><wbr></wbr><span><span>Length</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1407379715%2FProperties%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1407379715%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="schedule-length.html">scheduleLength</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Represents the total length of time of the schedule. The total of the durations determines the length of the schedule. After this time has elapsed the entire schedule can repeat if the schedule repeat flag is true. The default is infinite.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="schedule-length.html">scheduleLength</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">Represents the total length of time of the schedule. The total of the durations determines the length of the schedule. After this time has elapsed the entire schedule can repeat if the schedule repeat flag is true. The default is infinite.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -292,197 +292,197 @@ R1.3        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="-1815858689%2FFunctions%2F-251573632" anchor-label="addCapacityChangeListener" id="-1815858689%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="-1815858689%2FFunctions%2F-2024213039" anchor-label="addCapacityChangeListener" id="-1815858689%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-capacity-change-listener.html"><span>add</span><wbr></wbr><span>Capacity</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Listener</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1815858689%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1815858689%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-capacity-change-listener.html"><span class="token function">addCapacityChangeListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The same listener cannot be added more than once. Listeners are notified of schedule changes in the sequence by which they were added.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-capacity-change-listener.html"><span class="token function">addCapacityChangeListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The same listener cannot be added more than once. Listeners are notified of schedule changes in the sequence by which they were added.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="720317492%2FFunctions%2F-251573632" anchor-label="addItem" id="720317492%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="720317492%2FFunctions%2F-2024213039" anchor-label="addItem" id="720317492%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="add-item.html"><span>add</span><wbr></wbr><span><span>Item</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="720317492%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="720317492%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-item.html"><span class="token function">addItem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">itemPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-capacity-item/index.html">CapacitySchedule.CapacityItem</a></div><div class="brief "><p class="paragraph">Adds an item to the schedule. Each item is added consecutively to the schedule in the order added. The start time of the 2nd capacity change is the ending time of the first capacity change and so on.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="add-item.html"><span class="token function">addItem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">capacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">duration<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">itemPriority<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-capacity-item/index.html">CapacitySchedule.CapacityItem</a></div><div class="brief "><p class="paragraph">Adds an item to the schedule. Each item is added consecutively to the schedule in the order added. The start time of the 2nd capacity change is the ending time of the first capacity change and so on.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="323420080%2FFunctions%2F-251573632" anchor-label="afterReplication" id="323420080%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="323420080%2FFunctions%2F-2024213039" anchor-label="afterReplication" id="323420080%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="after-replication.html"><span>after</span><wbr></wbr><span><span>Replication</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="323420080%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="323420080%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="after-replication.html"><span class="token function">afterReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed after each replication. It is called after replicationEnded() has been called.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="after-replication.html"><span class="token function">afterReplication</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed after each replication. It is called after replicationEnded() has been called.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1788783485%2FFunctions%2F-251573632" anchor-label="asString" id="1788783485%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1788783485%2FFunctions%2F-2024213039" anchor-label="asString" id="1788783485%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="as-string.html"><span>as</span><wbr></wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1788783485%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1788783485%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="as-string.html"><span class="token function">asString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="as-string.html"><span class="token function">asString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="759105545%2FFunctions%2F-251573632" anchor-label="cancelScheduleStart" id="759105545%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="759105545%2FFunctions%2F-2024213039" anchor-label="cancelScheduleStart" id="759105545%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="cancel-schedule-start.html"><span>cancel</span><wbr></wbr><span>Schedule</span><wbr></wbr><span><span>Start</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="759105545%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="759105545%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cancel-schedule-start.html"><span class="token function">cancelScheduleStart</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">If scheduled to start, this cancels the start of the schedule.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="cancel-schedule-start.html"><span class="token function">cancelScheduleStart</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">If scheduled to start, this cancels the start of the schedule.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2071743274%2FFunctions%2F-251573632" anchor-label="clearSchedule" id="-2071743274%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-2071743274%2FFunctions%2F-2024213039" anchor-label="clearSchedule" id="-2071743274%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="clear-schedule.html"><span>clear</span><wbr></wbr><span><span>Schedule</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2071743274%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2071743274%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="clear-schedule.html"><span class="token function">clearSchedule</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes all capacity items from the schedule</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="clear-schedule.html"><span class="token function">clearSchedule</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes all capacity items from the schedule</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="73640921%2FFunctions%2F-251573632" anchor-label="contains" id="73640921%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="73640921%2FFunctions%2F-2024213039" anchor-label="contains" id="73640921%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="contains.html"><span><span>contains</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="73640921%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="73640921%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1142827305%2FFunctions%2F-251573632" anchor-label="countScheduleChangeListeners" id="-1142827305%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1142827305%2FFunctions%2F-2024213039" anchor-label="countScheduleChangeListeners" id="-1142827305%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="count-schedule-change-listeners.html"><span>count</span><wbr></wbr><span>Schedule</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Listeners</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1142827305%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1142827305%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="count-schedule-change-listeners.html"><span class="token function">countScheduleChangeListeners</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="count-schedule-change-listeners.html"><span class="token function">countScheduleChangeListeners</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1086506275%2FFunctions%2F-251573632" anchor-label="deleteCapacityChangeListener" id="1086506275%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1086506275%2FFunctions%2F-2024213039" anchor-label="deleteCapacityChangeListener" id="1086506275%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="delete-capacity-change-listener.html"><span>delete</span><wbr></wbr><span>Capacity</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Listener</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086506275%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086506275%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="delete-capacity-change-listener.html"><span class="token function">deleteCapacityChangeListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="delete-capacity-change-listener.html"><span class="token function">deleteCapacityChangeListener</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">listener<span class="token operator">: </span><a href="../-capacity-change-listener-ifc/index.html">CapacityChangeListenerIfc</a></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1670742896%2FFunctions%2F-251573632" anchor-label="deleteCapacityChangeListeners" id="1670742896%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="1670742896%2FFunctions%2F-2024213039" anchor-label="deleteCapacityChangeListeners" id="1670742896%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="delete-capacity-change-listeners.html"><span>delete</span><wbr></wbr><span>Capacity</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Listeners</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1670742896%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1670742896%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="delete-capacity-change-listeners.html"><span class="token function">deleteCapacityChangeListeners</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deletes all listeners</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="delete-capacity-change-listeners.html"><span class="token function">deleteCapacityChangeListeners</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Deletes all listeners</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="58372784%2FFunctions%2F-251573632" anchor-label="initialize" id="58372784%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="58372784%2FFunctions%2F-2024213039" anchor-label="initialize" id="58372784%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="58372784%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="58372784%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-151928145%2FFunctions%2F-251573632" anchor-label="scheduleStart" id="-151928145%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-151928145%2FFunctions%2F-2024213039" anchor-label="scheduleStart" id="-151928145%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="schedule-start.html"><span>schedule</span><wbr></wbr><span><span>Start</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-151928145%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-151928145%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="schedule-start.html"><span class="token function">scheduleStart</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Schedules the start of the schedule for the start time of the schedule if it has not already been started</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="schedule-start.html"><span class="token function">scheduleStart</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Schedules the start of the schedule for the start time of the schedule if it has not already been started</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1595891692%2FFunctions%2F-251573632" anchor-label="toString" id="-1595891692%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1595891692%2FFunctions%2F-2024213039" anchor-label="toString" id="-1595891692%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1595891692%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1595891692%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Includes the model name, the id, the model element name, the parent name, and parent id</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Includes the model name, the id, the model element name, the parent name, and parent id</p></div></div></div>
                 </div>
               </div>
             </div>

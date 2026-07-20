@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ksl.simopt.solvers.algorithms.bo</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.4        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.simopt.solvers.algorithms.bo////PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.simopt.solvers.algorithms.bo</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="2126433954%2FClasslikes%2F-2024213039" anchor-label="AcquisitionFunctionIfc" id="2126433954%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-acquisition-function-ifc/index.html"><span>Acquisition</span><wbr></wbr><span>Function</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2126433954%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-acquisition-function-ifc/index.html">AcquisitionFunctionIfc</a></div><div class="brief "><p class="paragraph">An acquisition function scores a candidate point from the surrogate's posterior prediction and the current incumbent value. Larger is better: the acquisition optimizer maximizes it. All acquisition functions here are written for minimization of the objective.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-347676383%2FClasslikes%2F-2024213039" anchor-label="AcquisitionOptimizerIfc" id="-347676383%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-acquisition-optimizer-ifc/index.html"><span>Acquisition</span><wbr></wbr><span>Optimizer</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-347676383%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-acquisition-optimizer-ifc/index.html">AcquisitionOptimizerIfc</a></div><div class="brief "><p class="paragraph">Strategy for maximizing an acquisition function over the feasible region. This optimization uses the surrogate only — it makes no simulation oracle calls — so it can afford a large number of candidate evaluations.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1313193771%2FClasslikes%2F-2024213039" anchor-label="BayesianOptimizationSolver" id="-1313193771%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bayesian-optimization-solver/index.html"><span>Bayesian</span><wbr></wbr><span>Optimization</span><wbr></wbr><span><span>Solver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1313193771%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bayesian-optimization-solver/index.html">BayesianOptimizationSolver</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">problemDefinition<span class="token operator">: </span><a href="../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter ">evaluator<span class="token operator">: </span><a href="../ksl.simopt.evaluator/-evaluator-ifc/index.html">EvaluatorIfc</a><span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>RNStreamProvider()<span class="token punctuation">, </span></span><span class="parameter ">surrogate<span class="token operator">: </span><a href="-surrogate-model-ifc/index.html">SurrogateModelIfc</a><span class="token operator"> = </span>GaussianProcessModel(problemDefinition)<span class="token punctuation">, </span></span><span class="parameter ">acquisition<span class="token operator">: </span><a href="-acquisition-function-ifc/index.html">AcquisitionFunctionIfc</a><span class="token operator"> = </span>ExpectedImprovement()<span class="token punctuation">, </span></span><span class="parameter ">acquisitionOptimizer<span class="token operator">: </span><a href="-acquisition-optimizer-ifc/index.html">AcquisitionOptimizerIfc</a><span class="token operator"> = </span>SampledAcquisitionOptimizer()<span class="token punctuation">, </span></span><span class="parameter ">hyperparameterFitter<span class="token operator">: </span><a href="-hyperparameter-fitter-ifc/index.html">HyperparameterFitterIfc</a><span class="token operator"> = </span>FixedHyperparameters()<span class="token punctuation">, </span></span><span class="parameter ">initialDesign<span class="token operator">: </span><a href="-initial-design-ifc/index.html">InitialDesignIfc</a><span class="token operator"> = </span>LatinHyperCubeDesign()<span class="token punctuation">, </span></span><span class="parameter ">incumbentRule<span class="token operator">: </span><a href="-incumbent-rule-ifc/index.html">IncumbentRuleIfc</a><span class="token operator"> = </span>BestPosteriorMeanIncumbent()<span class="token punctuation">, </span></span><span class="parameter ">initialDesignSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultInitialDesignSize<span class="token punctuation">, </span></span><span class="parameter ">maximumIterations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>boDefaultMaxIterations<span class="token punctuation">, </span></span><span class="parameter ">replicationsPerEvaluation<span class="token operator">: </span><a href="../ksl.simopt.solvers/-replication-per-evaluation-ifc/index.html">ReplicationPerEvaluationIfc</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.simopt.solvers.algorithms/-stochastic-solver/index.html">StochasticSolver</a></div><div class="brief "><p class="paragraph">A Bayesian Optimization (BO) solver for stochastic simulation optimization. BO is a sequential, model-based method for expensive, noisy objectives: it fits a probabilistic surrogate to the observed data and, each iteration, optimizes a cheap acquisition function over the surrogate (no simulation) to choose the single most promising point to evaluate next.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1647675916%2FClasslikes%2F-2024213039" anchor-label="BestObservedIncumbent" id="1647675916%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-best-observed-incumbent/index.html"><span>Best</span><wbr></wbr><span>Observed</span><wbr></wbr><span><span>Incumbent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1647675916%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-best-observed-incumbent/index.html">BestObservedIncumbent</a> : <a href="-incumbent-rule-ifc/index.html">IncumbentRuleIfc</a></div><div class="brief "><p class="paragraph">The minimum observed (penalized) objective value over the observed points.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-762208028%2FClasslikes%2F-2024213039" anchor-label="BestPosteriorMeanIncumbent" id="-762208028%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-best-posterior-mean-incumbent/index.html"><span>Best</span><wbr></wbr><span>Posterior</span><wbr></wbr><span>Mean</span><wbr></wbr><span><span>Incumbent</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-762208028%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-best-posterior-mean-incumbent/index.html">BestPosteriorMeanIncumbent</a> : <a href="-incumbent-rule-ifc/index.html">IncumbentRuleIfc</a></div><div class="brief "><p class="paragraph">The minimum surrogate posterior mean over the observed points. This is noise-robust: it does not reward a point merely for having received a lucky (low) noisy observation. This is the default.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1038065983%2FClasslikes%2F-2024213039" anchor-label="ExpectedImprovement" id="-1038065983%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-expected-improvement/index.html"><span>Expected</span><wbr></wbr><span><span>Improvement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1038065983%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-expected-improvement/index.html">ExpectedImprovement</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>xi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>BayesianOptimizationSolver.defaultXi</span></span><span class="token punctuation">)</span> : <a href="-acquisition-function-ifc/index.html">AcquisitionFunctionIfc</a></div><div class="brief "><p class="paragraph">Expected Improvement (EI) for minimization. With incumbent <code class="lang-kotlin">f+</code>, predictive mean <code class="lang-kotlin">μ</code>, and predictive standard deviation <code class="lang-kotlin">σ</code>, the improvement is <code class="lang-kotlin">I = f+ - μ - xi</code>, and <code class="lang-kotlin">EI = I·Φ(I/σ) + σ·φ(I/σ)</code> for <code class="lang-kotlin">σ &gt; 0</code>, else <code class="lang-kotlin">max(I, 0)</code>. This is the default acquisition.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2062958881%2FClasslikes%2F-2024213039" anchor-label="FixedHyperparameters" id="2062958881%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-fixed-hyperparameters/index.html"><span>Fixed</span><wbr></wbr><span><span>Hyperparameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2062958881%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-fixed-hyperparameters/index.html">FixedHyperparameters</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">lengthScaleFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0</span></span></span><span class="token punctuation">)</span> : <a href="-hyperparameter-fitter-ifc/index.html">HyperparameterFitterIfc</a></div><div class="brief "><p class="paragraph">A heuristic, non-iterative hyperparameter setter: the ARD length scales are set to <span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/FixedHyperparameters//#kotlin.Double/PointingToCallableParameters(0)/">lengthScaleFactor</span> times each input's range, and the signal variance is set to the sample variance of the observed means (or 1.0 if degenerate). This is fast, deterministic, and robust, making it a good default for a first-cut surrogate.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-245244882%2FClasslikes%2F-2024213039" anchor-label="GaussianProcessModel" id="-245244882%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gaussian-process-model/index.html"><span>Gaussian</span><wbr></wbr><span>Process</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-245244882%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gaussian-process-model/index.html">GaussianProcessModel</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>problemDefinition<span class="token operator">: </span><a href="../ksl.simopt.problem/-problem-definition/index.html">ProblemDefinition</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>kernel<span class="token operator">: </span><a href="-stationary-kernel/index.html">StationaryKernel</a><span class="token operator"> = </span>RBFKernel(problemDefinition)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>constantMean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">jitter<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultJitter</span></span><span class="token punctuation">)</span> : <a href="-surrogate-model-ifc/index.html">SurrogateModelIfc</a></div><div class="brief "><p class="paragraph">A Gaussian-process (GP) regression surrogate with per-point observation noise, suitable for the stochastic simulation setting: each observed point carries its own noise variance (the variance of the estimated mean). The GP uses a constant prior mean (the data mean by default) and a <a href="-stationary-kernel/index.html">StationaryKernel</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1758807814%2FClasslikes%2F-2024213039" anchor-label="HyperparameterFitterIfc" id="1758807814%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-hyperparameter-fitter-ifc/index.html"><span>Hyperparameter</span><wbr></wbr><span>Fitter</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1758807814%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-hyperparameter-fitter-ifc/index.html">HyperparameterFitterIfc</a></div><div class="brief "><p class="paragraph">Strategy for selecting a Gaussian process's kernel hyperparameters (length scales and signal variance) from data. Implementations set the hyperparameters on the supplied model's kernel; the solver re-fits the model afterward.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1559680648%2FClasslikes%2F-2024213039" anchor-label="IncumbentRuleIfc" id="-1559680648%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-incumbent-rule-ifc/index.html"><span>Incumbent</span><wbr></wbr><span>Rule</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1559680648%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-incumbent-rule-ifc/index.html">IncumbentRuleIfc</a></div><div class="brief "><p class="paragraph">Strategy for choosing the incumbent value — the &quot;value to beat&quot; passed to the acquisition function. Under simulation noise, the best <i>observed</i> value is optimistically biased, so a posterior-mean-based incumbent is generally preferred.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1582340545%2FClasslikes%2F-2024213039" anchor-label="InitialDesignIfc" id="-1582340545%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-initial-design-ifc/index.html"><span>Initial</span><wbr></wbr><span>Design</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1582340545%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-initial-design-ifc/index.html">InitialDesignIfc</a></div><div class="brief "><p class="paragraph">Strategy for generating the initial design (the first batch of points evaluated before the surrogate-driven search begins).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-704117706%2FClasslikes%2F-2024213039" anchor-label="KernelIfc" id="-704117706%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-kernel-ifc/index.html"><span>Kernel</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-704117706%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-kernel-ifc/index.html">KernelIfc</a></div><div class="brief "><p class="paragraph">A covariance (kernel) function for a Gaussian-process surrogate: it returns the prior covariance between the responses at two input points.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1061095352%2FClasslikes%2F-2024213039" anchor-label="LatinHyperCubeDesign" id="-1061095352%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-latin-hyper-cube-design/index.html"><span>Latin</span><wbr></wbr><span>Hyper</span><wbr></wbr><span>Cube</span><wbr></wbr><span><span>Design</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1061095352%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-latin-hyper-cube-design/index.html">LatinHyperCubeDesign</a> : <a href="-initial-design-ifc/index.html">InitialDesignIfc</a></div><div class="brief "><p class="paragraph">A space-filling Latin-hypercube initial design over the input ranges. This is the default. The points are range-feasible; deterministic-constraint feasibility is governed by the solver's request handling.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-555270736%2FClasslikes%2F-2024213039" anchor-label="LowerConfidenceBound" id="-555270736%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-lower-confidence-bound/index.html"><span>Lower</span><wbr></wbr><span>Confidence</span><wbr></wbr><span><span>Bound</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-555270736%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-lower-confidence-bound/index.html">LowerConfidenceBound</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">beta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>BayesianOptimizationSolver.defaultBeta</span></span><span class="token punctuation">)</span> : <a href="-acquisition-function-ifc/index.html">AcquisitionFunctionIfc</a></div><div class="brief "><p class="paragraph">Lower Confidence Bound (LCB) for minimization. Minimizing <code class="lang-kotlin">μ - β·σ</code> is equivalent to maximizing <code class="lang-kotlin">β·σ - μ</code>, which is the value returned here. Larger <span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/LowerConfidenceBound//#kotlin.Double/PointingToCallableParameters(0)/">beta</span> favors exploration.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1886777288%2FClasslikes%2F-2024213039" anchor-label="Matern52Kernel" id="1886777288%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-matern52-kernel/index.html"><span><span>Matern52Kernel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1886777288%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-matern52-kernel/index.html">Matern52Kernel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">signalVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">lengthScales<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span> : <a href="-stationary-kernel/index.html">StationaryKernel</a></div><div class="brief "><p class="paragraph">The Matern 5/2 kernel with ARD length scales. It is less smooth than the RBF kernel (twice mean-square differentiable) and is often a more realistic choice for response surfaces.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-122734324%2FClasslikes%2F-2024213039" anchor-label="MleHyperparameterFitter" id="-122734324%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-mle-hyperparameter-fitter/index.html"><span>Mle</span><wbr></wbr><span>Hyperparameter</span><wbr></wbr><span><span>Fitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-122734324%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-mle-hyperparameter-fitter/index.html">MleHyperparameterFitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numStarts<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumStarts<span class="token punctuation">, </span></span><span class="parameter ">lengthScaleLowFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.05</span><span class="token punctuation">, </span></span><span class="parameter ">lengthScaleHighFactor<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">2.0</span></span></span><span class="token punctuation">)</span> : <a href="-hyperparameter-fitter-ifc/index.html">HyperparameterFitterIfc</a></div><div class="brief "><p class="paragraph">A maximum-likelihood hyperparameter fitter: it performs a random multi-start search over the log of the length scales and signal variance, refitting the GP at each candidate and keeping the hyperparameters with the highest log marginal likelihood. Length-scale candidates are drawn log-uniformly between <span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/MleHyperparameterFitter//#kotlin.Int#kotlin.Double#kotlin.Double/PointingToCallableParameters(1)/">lengthScaleLowFactor</span> and <span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/MleHyperparameterFitter//#kotlin.Int#kotlin.Double#kotlin.Double/PointingToCallableParameters(2)/">lengthScaleHighFactor</span> times each input range; signal-variance candidates are drawn log-uniformly around the data variance.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-970853351%2FClasslikes%2F-2024213039" anchor-label="ProbabilityOfImprovement" id="-970853351%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-probability-of-improvement/index.html"><span>Probability</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Improvement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-970853351%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-probability-of-improvement/index.html">ProbabilityOfImprovement</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>xi<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>BayesianOptimizationSolver.defaultXi</span></span><span class="token punctuation">)</span> : <a href="-acquisition-function-ifc/index.html">AcquisitionFunctionIfc</a></div><div class="brief "><p class="paragraph">Probability of Improvement (PI) for minimization: <code class="lang-kotlin">Φ((f+ - μ - xi)/σ)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1860759969%2FClasslikes%2F-2024213039" anchor-label="RandomFeasibleDesign" id="-1860759969%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-random-feasible-design/index.html"><span>Random</span><wbr></wbr><span>Feasible</span><wbr></wbr><span><span>Design</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1860759969%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-random-feasible-design/index.html">RandomFeasibleDesign</a> : <a href="-initial-design-ifc/index.html">InitialDesignIfc</a></div><div class="brief "><p class="paragraph">A random initial design of distinct input-feasible points (feasible with respect to input ranges, linear, and functional constraints).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1498310452%2FClasslikes%2F-2024213039" anchor-label="RBFKernel" id="-1498310452%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-r-b-f-kernel/index.html"><span><span>RBFKernel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1498310452%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-r-b-f-kernel/index.html">RBFKernel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">signalVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">lengthScales<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span> : <a href="-stationary-kernel/index.html">StationaryKernel</a></div><div class="brief "><p class="paragraph">The squared-exponential (radial basis function) kernel with ARD length scales. This is the default kernel; it models very smooth response surfaces.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="824816893%2FClasslikes%2F-2024213039" anchor-label="SampledAcquisitionOptimizer" id="824816893%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-sampled-acquisition-optimizer/index.html"><span>Sampled</span><wbr></wbr><span>Acquisition</span><wbr></wbr><span><span>Optimizer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="824816893%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-sampled-acquisition-optimizer/index.html">SampledAcquisitionOptimizer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numCandidates<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>BayesianOptimizationSolver.defaultNumCandidates<span class="token punctuation">, </span></span><span class="parameter ">numLocalRestarts<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>BayesianOptimizationSolver.defaultRestarts<span class="token punctuation">, </span></span><span class="parameter ">localFraction<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.1</span></span></span><span class="token punctuation">)</span> : <a href="-acquisition-optimizer-ifc/index.html">AcquisitionOptimizerIfc</a></div><div class="brief "><p class="paragraph">A robust, dependency-free acquisition optimizer: it scores a Latin-hypercube candidate set over the feasible region plus a set of local candidates around the current best, and returns the best-scoring candidate (rounded to granularity via the problem definition). Because acquisition evaluation is cheap (no simulation), a large candidate set gives good coverage.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1671071282%2FClasslikes%2F-2024213039" anchor-label="StationaryKernel" id="1671071282%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-stationary-kernel/index.html"><span>Stationary</span><wbr></wbr><span><span>Kernel</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1671071282%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-stationary-kernel/index.html">StationaryKernel</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">signalVariance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">lengthScales<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></span></span><span class="token punctuation">)</span> : <a href="-kernel-ifc/index.html">KernelIfc</a></div><div class="brief "><p class="paragraph">Base class for stationary kernels parameterized by an output scale (<span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/StationaryKernel//#kotlin.Double#kotlin.DoubleArray/PointingToCallableParameters(0)/">signalVariance</span>) and a per-dimension length scale (<span data-unresolved-link="ksl.simopt.solvers.algorithms.bo/StationaryKernel//#kotlin.Double#kotlin.DoubleArray/PointingToCallableParameters(1)/">lengthScales</span>, i.e. automatic relevance determination, ARD).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1652502314%2FClasslikes%2F-2024213039" anchor-label="SurrogateModelIfc" id="1652502314%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-surrogate-model-ifc/index.html"><span>Surrogate</span><wbr></wbr><span>Model</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1652502314%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-surrogate-model-ifc/index.html">SurrogateModelIfc</a></div><div class="brief "><p class="paragraph">A surrogate model that is fit to noisy observations and predicts a posterior mean and variance at an arbitrary input point. Bayesian optimization optimizes a cheap acquisition function over this surrogate rather than over the expensive simulation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

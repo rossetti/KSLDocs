@@ -44,11 +44,11 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.3        </div>
+R1.4        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
-                        data-filter=":/main">jvm</button>
+                        data-filter=":KSLCore/main">jvm</button>
             <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
                 <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
                         data-role="dropdown-toggle"
@@ -65,8 +65,8 @@ R1.3        </div>
                     </div>
                         <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
                             <label class="checkbox">
-                                <input type="checkbox" class="checkbox--input" id=":/main"
-                                       data-filter=":/main"/>
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
                                 <span class="checkbox--icon"></span>
                                 jvm
                             </label>
@@ -104,28 +104,28 @@ R1.3        </div>
         </nav>
         <div id="resizer" class="resizer" data-item-type="BAR"></div>
         <div id="main" data-item-type="SECTION" role="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.evaluator/StreamTapePolicy///PointingToDeclaration//-251573632">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.simopt.evaluator/StreamTapePolicy///PointingToDeclaration//-2024213039">
   <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.simopt.evaluator</a><span class="delimiter">/</span><span class="current">StreamTapePolicy</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Stream</span><wbr></wbr><span>Tape</span><wbr></wbr><span><span>Policy</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">StreamTapePolicy</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/evaluator/StreamTapePolicy.kt#L23">source</a>)</span></span></div><p class="paragraph">Computes the sub-stream advance applied before each point of an <a href="../-evaluation-request/index.html">EvaluationRequest</a> is run, so that consecutive requests draw fresh, non-overlapping random numbers — exactly the way a reused model's streams advance continuously in <a href="../-simulation-provider/index.html">SimulationProvider</a>.</p><p class="paragraph">The policy holds a persistent tape position (a sub-stream index) that survives across requests:</p><ul><li><p class="paragraph"><strong>Independent streams</strong> (<code class="lang-kotlin">crnOption == false</code>): each point consumes its replications and the     tape advances cumulatively, so point i runs on sub-streams [position, position + numReplications).</p></li><li><p class="paragraph"><strong>Common random numbers</strong> (<code class="lang-kotlin">crnOption == true</code>): every point of the request starts at the     current tape position (the same block, for paired comparison) and the tape then advances by the     request's maximum replication count.</p></li></ul><p class="paragraph">Each planned run is positioned <strong>absolutely</strong> (reset-to-start + advance), so the advances returned here do not depend on which model executes a point or in what order. This lets one policy drive both the sequential <a href="../-simulation-provider/index.html">SimulationProvider</a> and the concurrent <a href="../-parallel-simulation-provider/index.html">ParallelSimulationProvider</a> (including a pool of reused models) and have them produce identical streams.</p><p class="paragraph">Not thread-safe: <a href="advances-for.html">advancesFor</a> mutates the tape position. It is intended to be called once per request on the single solver thread, before the request fans out to workers.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">StreamTapePolicy</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialPosition<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/simopt/evaluator/StreamTapePolicy.kt#L29">source</a>)</span></span></div><p class="paragraph">Computes the sub-stream advance applied before each point of an <a href="../-evaluation-request/index.html">EvaluationRequest</a> is run, so that consecutive requests draw fresh, non-overlapping random numbers — exactly the way a reused model's streams advance continuously in <a href="../-simulation-provider/index.html">SimulationProvider</a>.</p><p class="paragraph">The policy holds a persistent tape position (a sub-stream index) that survives across requests:</p><ul><li><p class="paragraph"><strong>Independent streams</strong> (<code class="lang-kotlin">crnOption == false</code>): each point consumes its replications and the     tape advances cumulatively, so point i runs on sub-streams [position, position + numReplications).</p></li><li><p class="paragraph"><strong>Common random numbers</strong> (<code class="lang-kotlin">crnOption == true</code>): every point of the request starts at the     current tape position (the same block, for paired comparison) and the tape then advances by the     request's maximum replication count.</p></li></ul><p class="paragraph">Each planned run is positioned <strong>absolutely</strong> (reset-to-start + advance), so the advances returned here do not depend on which model executes a point or in what order. This lets one policy drive both the sequential <a href="../-simulation-provider/index.html">SimulationProvider</a> and the concurrent <a href="../-parallel-simulation-provider/index.html">ParallelSimulationProvider</a> (including a pool of reused models) and have them produce identical streams.</p><p class="paragraph">Not thread-safe: <a href="advances-for.html">advancesFor</a> mutates the tape position. It is intended to be called once per request on the single solver thread, before the request fans out to workers.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>initial</span><wbr></wbr><span><span>Position</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the sub-stream index at which the tape begins; defaults to 0. Concurrent solver execution (e.g. parallel random restarts) gives each member its own policy starting at a distinct block offset (member index times a generous block size) so members draw from non-overlapping regions of the sub-stream tape regardless of scheduling. Sub-stream positioning is a constant-time jump, so large offsets cost nothing. Must be non-negative.</p></div></div></div></div></div></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="CONSTRUCTOR">
         <h2 class="tableheader">Constructors</h2>
-        <div class="table"><a data-name="-1222105834%2FConstructors%2F-251573632" anchor-label="StreamTapePolicy" id="-1222105834%2FConstructors%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="2110470964%2FConstructors%2F-2024213039" anchor-label="StreamTapePolicy" id="2110470964%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-stream-tape-policy.html"><span>Stream</span><wbr></wbr><span>Tape</span><wbr></wbr><span><span>Policy</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1222105834%2FConstructors%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2110470964%2FConstructors%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">initialPosition<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span></span></span><span class="token punctuation">)</span></div></div></div>
                 </div>
               </div>
             </div>
@@ -134,17 +134,32 @@ R1.3        </div>
       </div>
       <div data-togglable="PROPERTY">
         <h2 class="tableheader">Properties</h2>
-        <div class="table"><a data-name="-1253647551%2FProperties%2F-251573632" anchor-label="position" id="-1253647551%2FProperties%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="605287075%2FProperties%2F-2024213039" anchor-label="initialPosition" id="605287075%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
-                  <div><a href="position.html"><span><span>position</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1253647551%2FProperties%2F-251573632"></span>
+                  <div><a href="initial-position.html"><span>initial</span><wbr></wbr><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="605287075%2FProperties%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="position.html">position</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The current tape position (the next free sub-stream index).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="initial-position.html">initialPosition</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The position at which this tape began (and to which reset() returns).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1253647551%2FProperties%2F-2024213039" anchor-label="position" id="-1253647551%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="position.html"><span><span>position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1253647551%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="position.html">position</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The current tape position (the next free sub-stream index).</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -153,32 +168,32 @@ R1.3        </div>
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="tableheader">Functions</h2>
-        <div class="table"><a data-name="1794900981%2FFunctions%2F-251573632" anchor-label="advancesFor" id="1794900981%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+        <div class="table"><a data-name="1794900981%2FFunctions%2F-2024213039" anchor-label="advancesFor" id="1794900981%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="advances-for.html"><span>advances</span><wbr></wbr><span><span>For</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1794900981%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1794900981%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="advances-for.html"><span class="token function">advancesFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-model-inputs/index.html">ModelInputs</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">crnOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the pre-run sub-stream advance for each point of <a href="advances-for.html">inputs</a>, in request order, and moves the tape forward. See the class documentation for the independent vs. CRN semantics.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="advances-for.html"><span class="token function">advancesFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-model-inputs/index.html">ModelInputs</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">crnOption<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns the pre-run sub-stream advance for each point of <a href="advances-for.html">inputs</a>, in request order, and moves the tape forward. See the class documentation for the independent vs. CRN semantics.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1353383967%2FFunctions%2F-251573632" anchor-label="reset" id="-1353383967%2FFunctions%2F-251573632" data-filterable-set=":/main"></a>
-          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+<a data-name="-1353383967%2FFunctions%2F-2024213039" anchor-label="reset" id="-1353383967%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reset.html"><span><span>reset</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1353383967%2FFunctions%2F-251573632"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1353383967%2FFunctions%2F-2024213039"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Resets the tape to the beginning. Primarily useful for tests.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="reset.html"><span class="token function">reset</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Resets the tape to its initial position. Primarily useful for tests.</p></div></div></div>
                 </div>
               </div>
             </div>
