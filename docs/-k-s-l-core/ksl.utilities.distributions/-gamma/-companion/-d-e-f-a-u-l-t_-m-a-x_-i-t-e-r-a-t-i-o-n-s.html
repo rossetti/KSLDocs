@@ -44,7 +44,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.4        </div>
+R1.5.1        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
@@ -109,7 +109,7 @@ R1.4        </div>
   <div class="cover ">
     <h1 class="cover"><span>DEFAULT_</span><wbr></wbr><span>MAX_</span><wbr></wbr><span>ITERATIONS</span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-m-a-x_-i-t-e-r-a-t-i-o-n-s.html">DEFAULT_MAX_ITERATIONS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">5000</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/Gamma.kt#L323">source</a>)</span></span></div></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">const </span><span class="token keyword">val </span><a href="-d-e-f-a-u-l-t_-m-a-x_-i-t-e-r-a-t-i-o-n-s.html">DEFAULT_MAX_ITERATIONS</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/Gamma.kt#L351">source</a>)</span></span></div><p class="paragraph">The maximum number of terms permitted when summing the incomplete gamma series.</p><p class="paragraph">This is a runaway guard, not the thing that decides accuracy. The series' own convergence test terminates the loop, normally after a few dozen terms; this bound exists only so that an input which cannot converge fails instead of running forever.</p><p class="paragraph">The term count the series genuinely needs grows like the square root of the shape, so no constant is correct for every shape. It does not have to be. A million terms covers shapes up to roughly 1.0E10, while a gamma fitted to real data reaches a shape near 1.0E6 only when the sample's standard deviation is about a thousandth of its mean. Beyond the bound the routine throws, which is the intended behaviour for an input that far outside the range the library is meant to serve.</p><p class="paragraph">The previous value of 5000 was low enough to be reached by ordinary fitted distributions: a shape above about 1.1E6 evaluated near its mean exhausted it and threw.</p></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
