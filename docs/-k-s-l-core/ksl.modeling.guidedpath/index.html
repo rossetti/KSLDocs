@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ksl.modeling.guidedpath</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.7        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="KSLCore::ksl.modeling.guidedpath////PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../index.html">KSLCore</a><span class="delimiter">/</span><span class="current">ksl.modeling.guidedpath</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1521277666%2FClasslikes%2F-2024213039" anchor-label="DirectionLock" id="-1521277666%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-direction-lock/index.html"><span>Direction</span><wbr></wbr><span><span>Lock</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1521277666%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-direction-lock/index.html">DirectionLock</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>forward<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>count<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The travel direction currently permitted on a bidirectional link, and how many transporters are relying on it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="627312611%2FClasslikes%2F-2024213039" anchor-label="GuidedPathAnimationEmitter" id="627312611%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-path-animation-emitter/index.html"><span>Guided</span><wbr></wbr><span>Path</span><wbr></wbr><span>Animation</span><wbr></wbr><span><span>Emitter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="627312611%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-guided-path-animation-emitter/index.html">GuidedPathAnimationEmitter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">system<span class="token operator">: </span><a href="-guided-path-space/index.html">GuidedPathSpace</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Turns what happens on a guide path into animation events, and does nothing at all when nobody is watching.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="918766215%2FClasslikes%2F-2024213039" anchor-label="GuidedPathNetwork" id="918766215%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-path-network/index.html"><span>Guided</span><wbr></wbr><span>Path</span><wbr></wbr><span><span>Network</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="918766215%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-guided-path-network/index.html">GuidedPathNetwork</a> : <a href="../ksl.modeling.spatial/-spatial-model/index.html">SpatialModel</a>, <a href="../ksl.modeling.spatial/-fleet-space-ifc/index.html">FleetSpaceIfc</a></div><div class="brief "><p class="paragraph">The static topology of a guide path: its intersections, links, zones, station aliases, and the shortest-path distances between every reachable pair of intersections.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-17993809%2FClasslikes%2F-2024213039" anchor-label="GuidedPathSpace" id="-17993809%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-path-space/index.html"><span>Guided</span><wbr></wbr><span>Path</span><wbr></wbr><span><span>Space</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-17993809%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-guided-path-space/index.html">GuidedPathSpace</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>network<span class="token operator">: </span><a href="-guided-path-network/index.html">GuidedPathNetwork</a><span class="token punctuation">, </span></span><span class="parameter ">zoneContentionRule<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-zone-contention-rule-ifc/index.html">ZoneContentionRuleIfc</a><span class="token operator"> = </span>FIFOZoneContentionRule()<span class="token punctuation">, </span></span><span class="parameter ">collectLinkStatistics<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">collectZoneStatistics<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.simulation/-model-element/index.html">ModelElement</a></div><div class="brief "><p class="paragraph">The runtime half of a guide path: it owns everything about the network that changes during a run.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-21310147%2FClasslikes%2F-2024213039" anchor-label="GuidedPathTransportSystem" id="-21310147%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-path-transport-system/index.html"><span>Guided</span><wbr></wbr><span>Path</span><wbr></wbr><span>Transport</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-21310147%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-guided-path-transport-system/index.html">GuidedPathTransportSystem</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter ">network<span class="token operator">: </span><a href="-guided-path-network/index.html">GuidedPathNetwork</a><span class="token punctuation">, </span></span><span class="parameter ">zoneContentionRule<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-zone-contention-rule-ifc/index.html">ZoneContentionRuleIfc</a><span class="token operator"> = </span>FIFOZoneContentionRule()<span class="token punctuation">, </span></span><span class="parameter ">collectLinkStatistics<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">collectZoneStatistics<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-guided-path-space/index.html">GuidedPathSpace</a></div><div class="brief "><p class="paragraph">A guide path an entity drives itself over: the space layer, plus the passive protocol's own accounting.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-523546662%2FClasslikes%2F-2024213039" anchor-label="GuidedTransporter" id="-523546662%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transporter/index.html"><span>Guided</span><wbr></wbr><span><span>Transporter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-523546662%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-guided-transporter/index.html">GuidedTransporter</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>system<span class="token operator">: </span><a href="-guided-path-space/index.html">GuidedPathSpace</a><span class="token punctuation">, </span></span><span class="parameter ">initialPlacement<span class="token operator">: </span><a href="-transporter-placement/index.html">TransporterPlacement</a><span class="token punctuation">, </span></span><span class="parameter ">velocity<span class="token operator">: </span><a href="../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>lengthInZones<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>zoneControlRule<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-zone-control-rule-ifc/index.html">ZoneControlRuleIfc</a><span class="token operator"> = </span>EndOfZoneControl()<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>physicalLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>loadCapacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span></span></span><span class="token punctuation">)</span> : <a href="../ksl.modeling.entity/-resource/index.html">Resource</a>, <a href="-guided-transporter-c-ifc/index.html">GuidedTransporterCIfc</a>, <a href="../ksl.modeling.spatial/-vehicle-movement-ifc/index.html">VehicleMovementIfc</a>, <a href="-zone-holder-ifc/index.html">ZoneHolderIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="936381719%2FClasslikes%2F-2024213039" anchor-label="GuidedTransporterCIfc" id="936381719%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transporter-c-ifc/index.html"><span>Guided</span><wbr></wbr><span>Transporter</span><wbr></wbr><span><span>CIfc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="936381719%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-guided-transporter-c-ifc/index.html">GuidedTransporterCIfc</a> : <a href="../ksl.modeling.entity/-resource-c-ifc/index.html">ResourceCIfc</a></div><div class="brief "><p class="paragraph">Controlled access to a transporter on a guide path: what a modeller sets, where it is, and what its time was spent on.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="887684571%2FClasslikes%2F-2024213039" anchor-label="GuidedTransporterPoolCIfc" id="887684571%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transporter-pool-c-ifc/index.html"><span>Guided</span><wbr></wbr><span>Transporter</span><wbr></wbr><span>Pool</span><wbr></wbr><span><span>CIfc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="887684571%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-guided-transporter-pool-c-ifc/index.html">GuidedTransporterPoolCIfc</a></div><div class="brief "><p class="paragraph">Controlled access to a pool of transporters: the fleet, where entities wait for it, and the two rules that decide which one is sent and where it waits afterwards.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1509841895%2FClasslikes%2F-2024213039" anchor-label="GuidedTransporterPoolWithQ" id="-1509841895%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transporter-pool-with-q/index.html"><span>Guided</span><wbr></wbr><span>Transporter</span><wbr></wbr><span>Pool</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Q</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1509841895%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-guided-transporter-pool-with-q/index.html">GuidedTransporterPoolWithQ</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>system<span class="token operator">: </span><a href="-guided-path-transport-system/index.html">GuidedPathTransportSystem</a><span class="token punctuation">, </span></span><span class="parameter ">transporters<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-guided-transporter/index.html">GuidedTransporter</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">allocationRule<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-guided-transporter-allocation-rule-ifc/index.html">GuidedTransporterAllocationRuleIfc</a><span class="token operator"> = </span>ClosestByNetworkDistanceRule()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>idleDispositionRule<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-idle-disposition-rule-ifc/index.html">IdleDispositionRuleIfc</a><span class="token operator"> = </span>ParkInPlaceRule()<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.modeling.entity/-abstract-resource-pool/index.html">AbstractResourcePool</a><span class="token operator">&lt;</span><a href="-guided-transporter/index.html">GuidedTransporter</a><span class="token operator">&gt; </span>, <a href="-guided-transporter-pool-c-ifc/index.html">GuidedTransporterPoolCIfc</a></div><div class="brief "><p class="paragraph">A set of interchangeable transporters that entities ask for by the group rather than by name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1892703916%2FClasslikes%2F-2024213039" anchor-label="GuidedTransportRequest" id="1892703916%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transport-request/index.html"><span>Guided</span><wbr></wbr><span>Transport</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1892703916%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-guided-transport-request/index.html">GuidedTransportRequest</a></div><div class="brief "><p class="paragraph">An entity's claim on a transporter: obtained when one is allocated, used to command the journey, and given up at the end.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1370898619%2FClasslikes%2F-2024213039" anchor-label="GuidedTransportRequestState" id="-1370898619%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transport-request-state/index.html"><span>Guided</span><wbr></wbr><span>Transport</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1370898619%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-guided-transport-request-state/index.html">GuidedTransportRequestState</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-guided-transport-request-state/index.html">GuidedTransportRequestState</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Where a journey has got to.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1006731082%2FClasslikes%2F-2024213039" anchor-label="GuidedTransportResult" id="1006731082%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-guided-transport-result/index.html"><span>Guided</span><wbr></wbr><span>Transport</span><wbr></wbr><span><span>Result</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1006731082%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-guided-transport-result/index.html">GuidedTransportResult</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>totalTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>approachTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>rideTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>blockedTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>zonesTraversed<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>routeLength<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">What happened during one journey.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="836305317%2FClasslikes%2F-2024213039" anchor-label="IntersectionZone" id="836305317%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-intersection-zone/index.html"><span>Intersection</span><wbr></wbr><span><span>Zone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="836305317%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-intersection-zone/index.html">IntersectionZone</a> : <a href="-zone/index.html">Zone</a></div><div class="brief "><p class="paragraph">The space of a junction, held by one transporter at a time.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1444307104%2FClasslikes%2F-2024213039" anchor-label="Link" id="1444307104%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-link/index.html"><span><span>Link</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1444307104%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-link/index.html">Link</a></div><div class="brief "><p class="paragraph">A run of guide path between two intersections, divided into an integral number of equal zones.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="576071430%2FClasslikes%2F-2024213039" anchor-label="LinkType" id="576071430%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-link-type/index.html"><span>Link</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="576071430%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">enum </span><a href="-link-type/index.html">LinkType</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-link-type/index.html">LinkType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">How traffic may traverse a link.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1063851732%2FClasslikes%2F-2024213039" anchor-label="LinkZone" id="1063851732%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-link-zone/index.html"><span>Link</span><wbr></wbr><span><span>Zone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1063851732%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-link-zone/index.html">LinkZone</a> : <a href="-zone/index.html">Zone</a></div><div class="brief "><p class="paragraph">One of the equal zones that divide a link.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1728965625%2FClasslikes%2F-2024213039" anchor-label="TransporterArrivalListenerIfc" id="1728965625%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transporter-arrival-listener-ifc/index.html"><span>Transporter</span><wbr></wbr><span>Arrival</span><wbr></wbr><span>Listener</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1728965625%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-transporter-arrival-listener-ifc/index.html">TransporterArrivalListenerIfc</a></div><div class="brief "><p class="paragraph">Told when a transporter reaches the end of a route.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="539997540%2FClasslikes%2F-2024213039" anchor-label="TransporterMovementGateIfc" id="539997540%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transporter-movement-gate-ifc/index.html"><span>Transporter</span><wbr></wbr><span>Movement</span><wbr></wbr><span>Gate</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="539997540%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-transporter-movement-gate-ifc/index.html">TransporterMovementGateIfc</a></div><div class="brief "><p class="paragraph">Asked, at every zone boundary, whether a transporter may carry on.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-896954805%2FClasslikes%2F-2024213039" anchor-label="TransporterPlacement" id="-896954805%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transporter-placement/index.html"><span>Transporter</span><wbr></wbr><span><span>Placement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-896954805%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-transporter-placement/index.html">TransporterPlacement</a></div><div class="brief "><p class="paragraph">Where a transporter stands at the start of every replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-727818849%2FClasslikes%2F-2024213039" anchor-label="TransporterState" id="-727818849%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-transporter-state/index.html"><span>Transporter</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-727818849%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-transporter-state/index.html">TransporterState</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-transporter-state/index.html">TransporterState</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">What a transporter is doing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="81900150%2FClasslikes%2F-2024213039" anchor-label="VelocitySampling" id="81900150%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-velocity-sampling/index.html"><span>Velocity</span><wbr></wbr><span><span>Sampling</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="81900150%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-velocity-sampling/index.html">VelocitySampling</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-velocity-sampling/index.html">VelocitySampling</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">How often a transporter's velocity is drawn when its velocity is random.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="843258158%2FClasslikes%2F-2024213039" anchor-label="Zone" id="843258158%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone/index.html"><span><span>Zone</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="843258158%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-zone/index.html">Zone</a></div><div class="brief "><p class="paragraph">The atom of contended space on a guide path: the unit that is claimed, covered, and released.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1627016210%2FClasslikes%2F-2024213039" anchor-label="ZoneAllocation" id="-1627016210%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-allocation/index.html"><span>Zone</span><wbr></wbr><span><span>Allocation</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1627016210%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-zone-allocation/index.html">ZoneAllocation</a></div><div class="brief "><p class="paragraph">The record of guide-path space actually held: which holder, which zones, from when until when.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="452644241%2FClasslikes%2F-2024213039" anchor-label="ZoneClosureDriver" id="452644241%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-closure-driver/index.html"><span>Zone</span><wbr></wbr><span>Closure</span><wbr></wbr><span><span>Driver</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="452644241%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-zone-closure-driver/index.html">ZoneClosureDriver</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>space<span class="token operator">: </span><a href="-guided-path-space/index.html">GuidedPathSpace</a><span class="token punctuation">, </span></span><span class="parameter ">zones<span class="token operator">: </span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-zone/index.html">Zone</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">timeBetween<span class="token operator">: </span><a href="../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter ">duration<span class="token operator">: </span><a href="../ksl.utilities.random.rvariable/-r-variable-ifc/index.html">RVariableIfc</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>onOverlap<span class="token operator">: </span><a href="-zone-overlap/index.html">ZoneOverlap</a><span class="token operator"> = </span>ZoneOverlap.RAISE<span class="token punctuation">, </span></span><span class="parameter ">firstAt<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>Double.NaN<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="-zone-hold-action-ifc/index.html">ZoneHoldActionIfc</a></div><div class="brief "><p class="paragraph">Closes space over and over on a schedule, so a model does not write the same six lines again.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1700441772%2FClasslikes%2F-2024213039" anchor-label="ZoneCrossing" id="1700441772%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-crossing/index.html"><span>Zone</span><wbr></wbr><span><span>Crossing</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1700441772%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-zone-crossing/index.html">ZoneCrossing</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parent<span class="token operator">: </span><a href="../ksl.simulation/-model-element/index.html">ModelElement</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>space<span class="token operator">: </span><a href="-guided-path-space/index.html">GuidedPathSpace</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>zones<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-zone/index.html">Zone</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>arbiter<span class="token operator">: </span><a href="../ksl.modeling.guidedpath.rules/-crossing-arbiter-ifc/index.html">CrossingArbiterIfc</a><span class="token operator"> = </span>BoundedBatchArbiter(batchSize = 3, maxWait = 5.0)<span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="-zone-population-host-ifc/index.html">ZonePopulationHostIfc</a>, <a href="-zone-hold-action-ifc/index.html">ZoneHoldActionIfc</a></div><div class="brief "><p class="paragraph">A place where people cross guide-path space that vehicles also want.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1528848189%2FClasslikes%2F-2024213039" anchor-label="ZoneHoldActionIfc" id="-1528848189%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-hold-action-ifc/index.html"><span>Zone</span><wbr></wbr><span>Hold</span><wbr></wbr><span>Action</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1528848189%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-zone-hold-action-ifc/index.html">ZoneHoldActionIfc</a></div><div class="brief "><p class="paragraph">Told when a hold on guide-path space begins and when it ends.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1816779674%2FClasslikes%2F-2024213039" anchor-label="ZoneHolderIfc" id="1816779674%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-holder-ifc/index.html"><span>Zone</span><wbr></wbr><span>Holder</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1816779674%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-zone-holder-ifc/index.html">ZoneHolderIfc</a></div><div class="brief "><p class="paragraph">Something that can hold a zone exclusively.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1593506381%2FClasslikes%2F-2024213039" anchor-label="ZoneOverlap" id="1593506381%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-overlap/index.html"><span>Zone</span><wbr></wbr><span><span>Overlap</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1593506381%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-zone-overlap/index.html">ZoneOverlap</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-zone-overlap/index.html">ZoneOverlap</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">What a closure should do when some zone it wants is already promised to another closure.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1889107453%2FClasslikes%2F-2024213039" anchor-label="ZonePopulationHostIfc" id="-1889107453%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-population-host-ifc/index.html"><span>Zone</span><wbr></wbr><span>Population</span><wbr></wbr><span>Host</span><wbr></wbr><span><span>Ifc</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1889107453%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-zone-population-host-ifc/index.html">ZonePopulationHostIfc</a> : <a href="-zone-holder-ifc/index.html">ZoneHolderIfc</a></div><div class="brief "><p class="paragraph">A holder that lets a population onto the space it is holding.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1627083304%2FClasslikes%2F-2024213039" anchor-label="ZoneRefusal" id="-1627083304%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-refusal/index.html"><span>Zone</span><wbr></wbr><span><span>Refusal</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1627083304%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-zone-refusal/index.html">ZoneRefusal</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-zone-refusal/index.html">ZoneRefusal</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Why a zone would refuse a claim, as <a href="-zone/refusal-for.html">Zone.refusalFor</a> answers it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1853919995%2FClasslikes%2F-2024213039" anchor-label="ZoneRequest" id="-1853919995%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-request/index.html"><span>Zone</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1853919995%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-zone-request/index.html">ZoneRequest</a> : <span data-unresolved-link="ksl.modeling.guidedpath/ZoneClosureIfc///PointingToDeclaration/">ZoneClosureIfc</span></div><div class="brief "><p class="paragraph">A request for guide-path space: what was asked for, before it has been given.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1196508675%2FClasslikes%2F-2024213039" anchor-label="ZoneState" id="1196508675%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-zone-state/index.html"><span>Zone</span><wbr></wbr><span><span>State</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1196508675%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-zone-state/index.html">ZoneState</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-zone-state/index.html">ZoneState</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Whether a zone is free, spoken for, or covered.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

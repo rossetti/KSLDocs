@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PartitionStability</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.7        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting.mixture/PartitionStability///PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.distributions.fitting.mixture</a><span class="delimiter">/</span><span class="current">PartitionStability</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Partition</span><wbr></wbr><span><span>Stability</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">PartitionStability</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>baselineNumComponents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numObservations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>displacements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>hellingerFromBaseline<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numObservationsReassigned<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gapShare<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultGapShare<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gapMovement<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultGapMovement<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>followsShare<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultFollowsShare</span></span><span class="token punctuation">)</span><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/fitting/mixture/PartitionStability.kt#L117">source</a>)</span></span></div><p class="paragraph">How far the fitted density moves, and how much of the sample changes hands, when the cuts between the components are nudged.</p><p class="paragraph">The method partitions the sorted sample and estimates each component from its own group, so every reported component depends on where two cuts fell. That dependence is invisible in the result: a mixture assembled from arbitrary cuts looks exactly like one assembled from meaningful cuts. This measures it, by moving each cut a little way along the axis the data lives on and refitting the components from the groups that result.</p><p class="paragraph"><strong>The cut moves in data units, not in observations.</strong> That is the whole point, and the reason the obvious alternative does not work. Displacing a cut by a fixed number of observations, or widening each component's estimation window by a fraction of its group, always moves data across the boundary — so a genuinely well-separated fit, whose components sit far apart, is disturbed the most, because the observations that cross are the most alien ones available. That inverts the reading. Moving the cut a fixed distance along the axis instead reassigns nothing when the cut sits in an empty gap, which is exactly when the partition is not doing arbitrary work, and reassigns a great deal when the sample is one blob.</p><p class="paragraph"><strong>The count of reassigned observations turned out to matter more than the distance.</strong> Calibrated against the designed experiment, the share of the sample that changes group separates answerable fits from unanswerable ones better than the density movement does — a Youden's J of 0.33 against 0.23 — and it is free, being a property of the displaced partition rather than of anything fitted to it. So the reading below is governed mainly by the share, with the movement as a guard against the case where a handful of reassigned observations happen to move the density a long way.</p><p class="paragraph"><strong>The alternative fits are not here, deliberately.</strong> They are computed, measured, and dropped. Returning them would offer the analyst a menu of densities differing by a tuning constant they have no basis to choose among, and the question this answers is not &quot;which fit&quot; but &quot;does the fit depend on the cuts&quot;.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>baseline</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>Components</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the number of components in the reported fit</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>num</span><wbr></wbr><span><span>Observations</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the size of the sample, so that a count of reassigned observations can be read as a share</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>displacements</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the signed cut displacements that were tried, each as a fraction of the span of the two groups the cut separates</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>hellinger</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Baseline</span></span></u></div></span></div><div><div class="title"><p class="paragraph">how far the refitted density sat from the reported one at each displacement. <strong>Null where the refit could not be measured</strong> — the displaced partition was inadmissible, no mixture could be assembled from it, or the quadrature could not represent both densities — because an unmeasured displacement is not a movement of zero.</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>num</span><wbr></wbr><span>Observations</span><wbr></wbr><span><span>Reassigned</span></span></u></div></span></div><div><div class="title"><p class="paragraph">how many observations changed groups at each displacement, or null where the displacement could not be applied at all</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>gap</span><wbr></wbr><span><span>Share</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the share of the sample that may change group and still count as nothing</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>gap</span><wbr></wbr><span><span>Movement</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the movement permitted alongside that share before the gap reading is refused</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>follows</span><wbr></wbr><span><span>Share</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the share above which the density is taken to follow the cuts</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="600114086%2FConstructors%2F-2024213039" anchor-label="PartitionStability" id="600114086%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-partition-stability.html"><span>Partition</span><wbr></wbr><span><span>Stability</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="600114086%2FConstructors%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">baselineNumComponents<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">numObservations<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">displacements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">hellingerFromBaseline<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">numObservationsReassigned<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">gapShare<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultGapShare<span class="token punctuation">, </span></span><span class="parameter ">gapMovement<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultGapMovement<span class="token punctuation">, </span></span><span class="parameter ">followsShare<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span>defaultFollowsShare</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-87015335%2FClasslikes%2F-2024213039" anchor-label="Companion" id="-87015335%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-87015335%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="1910869627%2FProperties%2F-2024213039" anchor-label="baselineNumComponents" id="1910869627%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="baseline-num-components.html"><span>baseline</span><wbr></wbr><span>Num</span><wbr></wbr><span><span>Components</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1910869627%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="baseline-num-components.html">baselineNumComponents</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1557984153%2FProperties%2F-2024213039" anchor-label="cutDependence" id="1557984153%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cut-dependence.html"><span>cut</span><wbr></wbr><span><span>Dependence</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1557984153%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cut-dependence.html">cutDependence</a><span class="token operator">: </span><a href="../-cut-dependence/index.html">CutDependence</a></div><div class="brief "><p class="paragraph">What the displacements revealed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2035606230%2FProperties%2F-2024213039" anchor-label="displacements" id="2035606230%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="displacements.html"><span><span>displacements</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2035606230%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="displacements.html">displacements</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-988830517%2FProperties%2F-2024213039" anchor-label="followsShare" id="-988830517%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="follows-share.html"><span>follows</span><wbr></wbr><span><span>Share</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-988830517%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="follows-share.html">followsShare</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1660263475%2FProperties%2F-2024213039" anchor-label="gapMovement" id="-1660263475%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gap-movement.html"><span>gap</span><wbr></wbr><span><span>Movement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1660263475%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="gap-movement.html">gapMovement</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1339911361%2FProperties%2F-2024213039" anchor-label="gapShare" id="-1339911361%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="gap-share.html"><span>gap</span><wbr></wbr><span><span>Share</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1339911361%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="gap-share.html">gapShare</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="596007569%2FProperties%2F-2024213039" anchor-label="hellingerFromBaseline" id="596007569%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hellinger-from-baseline.html"><span>hellinger</span><wbr></wbr><span>From</span><wbr></wbr><span><span>Baseline</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="596007569%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="hellinger-from-baseline.html">hellingerFromBaseline</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="366352196%2FProperties%2F-2024213039" anchor-label="largestShareReassigned" id="366352196%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="largest-share-reassigned.html"><span>largest</span><wbr></wbr><span>Share</span><wbr></wbr><span><span>Reassigned</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="366352196%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="largest-share-reassigned.html">largestShareReassigned</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The largest share of the sample that changed groups under any displacement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1622457155%2FProperties%2F-2024213039" anchor-label="maximumMovement" id="1622457155%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="maximum-movement.html"><span>maximum</span><wbr></wbr><span><span>Movement</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1622457155%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="maximum-movement.html">maximumMovement</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The largest movement over the displacements that could be measured, or null when none could.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2038584443%2FProperties%2F-2024213039" anchor-label="numObservations" id="-2038584443%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-observations.html"><span>num</span><wbr></wbr><span><span>Observations</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2038584443%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-observations.html">numObservations</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="136827780%2FProperties%2F-2024213039" anchor-label="numObservationsReassigned" id="136827780%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-observations-reassigned.html"><span>num</span><wbr></wbr><span>Observations</span><wbr></wbr><span><span>Reassigned</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="136827780%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-observations-reassigned.html">numObservationsReassigned</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1576949843%2FProperties%2F-2024213039" anchor-label="numUnmeasured" id="-1576949843%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-unmeasured.html"><span>num</span><wbr></wbr><span><span>Unmeasured</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1576949843%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-unmeasured.html">numUnmeasured</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many displacements produced no usable measurement.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-260745208%2FFunctions%2F-2024213039" anchor-label="caveat" id="-260745208%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="caveat.html"><span><span>caveat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-260745208%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="caveat.html"><span class="token function">caveat</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">What a reader must be told alongside the reading.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2135713572%2FFunctions%2F-2024213039" anchor-label="toString" id="-2135713572%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2135713572%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

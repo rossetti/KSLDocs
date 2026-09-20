@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>ModalityAnalyzer</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.7        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting.diagnostics/ModalityAnalyzer///PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.distributions.fitting.diagnostics</a><span class="delimiter">/</span><span class="current">ModalityAnalyzer</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Modality</span><wbr></wbr><span><span>Analyzer</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ModalityAnalyzer</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numBins<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumBins<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>KSLRandom.DefaultRNStreamProvider</span></span><span class="token punctuation">)</span> : <a href="../../ksl.utilities.random.rng/-r-n-stream-control-ifc/index.html">RNStreamControlIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/fitting/diagnostics/ModalityAnalyzer.kt#L147">source</a>)</span></span></div><p class="paragraph">How many modes the data appears to have, and whether that appearance survives smoothing.</p><p class="paragraph"><strong>Why this is here at all.</strong> An analyst reaching for a mixture has usually looked at a plot and counted humps. That count is the input the fitting workflow is built around, so it is worth knowing whether it is a property of the data or of the bin width that happened to be chosen.</p><p class="paragraph"><strong>Modes bound the component count from below, and only from below.</strong> A two-component mixture of equal-variance normals is unimodal whenever its means differ by less than twice the standard deviation, so seeing one hump does not mean one component. Seeing three humps does mean at least three components. The test here is therefore evidence about a floor rather than about the count itself.</p><p class="paragraph">A class rather than an object because the operations share expensive state: the binning, the mode trace, the bisection and every bootstrap replicate reuse the same sorted array and bin grid. This follows <code class="lang-kotlin">PDFModeler</code>, which caches its histogram for the same reason and splits instance members from stateless functions over supplied data in the same way.</p><p class="paragraph"><strong>The stream is a property of the analyzer, not an argument to its methods.</strong> That is the library's convention — <code class="lang-kotlin">Bootstrap</code>, <code class="lang-kotlin">DPopulation</code> and <code class="lang-kotlin">RVariable</code> all acquire their stream once at construction and expose <code class="lang-kotlin">RNStreamControlIfc</code> so that repositioning is something the caller asks for explicitly. Taking a stream number per call, as this class first did, cannot be made reproducible: an explicit number hands every caller the same stream object at whatever position the last caller left it, and a stream number of zero means <i>the next stream</i>, so consecutive calls draw from different streams. Both were measured; five identical calls at an explicit number returned five different p-values.</p><h4 class="tableheader">Parameters</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span><span>data</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the observations, which need not be sorted</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>num</span><wbr></wbr><span><span>Bins</span></span></u></div></span></div><div><div class="title"><p class="paragraph">how many cells the data is binned into</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Num</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the random number stream number, defaults to 0, which means the next stream</p></div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><u><span>stream</span><wbr></wbr><span><span>Provider</span></span></u></div></span></div><div><div class="title"><p class="paragraph">the provider of random number streams, defaults to the library's shared provider. Supply a provider of its own to an analyzer that must be independent of everything else drawing from the shared one — which is what concurrent callers need, since a stream is not safe to share between threads.</p></div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="786317876%2FConstructors%2F-2024213039" anchor-label="ModalityAnalyzer" id="786317876%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-modality-analyzer.html"><span>Modality</span><wbr></wbr><span><span>Analyzer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="786317876%2FConstructors%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">data<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">numBins<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumBins<span class="token punctuation">, </span></span><span class="parameter ">streamNum<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">streamProvider<span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a><span class="token operator"> = </span>KSLRandom.DefaultRNStreamProvider</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-1771556179%2FClasslikes%2F-2024213039" anchor-label="Companion" id="-1771556179%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1771556179%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-222352913%2FProperties%2F-2024213039" anchor-label="advanceToNextSubStreamOption" id="-222352913%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="advance-to-next-sub-stream-option.html"><span>advance</span><wbr></wbr><span>To</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-222352913%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="advance-to-next-sub-stream-option.html">advanceToNextSubStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the stream will automatically participate in having its stream advanced to the next sub-stream via stream managers</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1179262027%2FProperties%2F-2024213039" anchor-label="antithetic" id="-1179262027%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="antithetic.html"><span><span>antithetic</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1179262027%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="antithetic.html">antithetic</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Tells the stream to start producing antithetic variates</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1437648140%2FProperties%2F-2024213039" anchor-label="numBins" id="-1437648140%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-bins.html"><span>num</span><wbr></wbr><span><span>Bins</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1437648140%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-bins.html">numBins</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="41153964%2FProperties%2F-2024213039" anchor-label="resetStartStreamOption" id="41153964%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset-start-stream-option.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Stream</span><wbr></wbr><span><span>Option</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="41153964%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="reset-start-stream-option.html">resetStartStreamOption</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If true, the stream will automatically participate in having its stream reset to its start stream via stream managers</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="337187085%2FProperties%2F-2024213039" anchor-label="sortedData" id="337187085%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sorted-data.html"><span>sorted</span><wbr></wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="337187085%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="sorted-data.html">sortedData</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">The observations in non-decreasing order.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="706710187%2FProperties%2F-2024213039" anchor-label="streamNumber" id="706710187%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stream-number.html"><span>stream</span><wbr></wbr><span><span>Number</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="706710187%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stream-number.html">streamNumber</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The number of the stream the resampling draws from. The smoothing noise draws from the next one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1144847549%2FProperties%2F-2024213039" anchor-label="streamProvider" id="-1144847549%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stream-provider.html"><span>stream</span><wbr></wbr><span><span>Provider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1144847549%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stream-provider.html">streamProvider</a><span class="token operator">: </span><a href="../../ksl.utilities.random.rng/-r-n-stream-provider-ifc/index.html">RNStreamProviderIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1428265436%2FFunctions%2F-2024213039" anchor-label="advanceToNextSubStream" id="-1428265436%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="advance-to-next-sub-stream.html"><span>advance</span><wbr></wbr><span>To</span><wbr></wbr><span>Next</span><wbr></wbr><span>Sub</span><wbr></wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1428265436%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="advance-to-next-sub-stream.html"><span class="token function">advanceToNextSubStream</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Positions the RNG at the beginning of its next substream</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1372665490%2FFunctions%2F-2024213039" anchor-label="assess" id="-1372665490%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="assess.html"><span><span>assess</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1372665490%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="assess.html"><span class="token function">assess</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numBootstrapSamples<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumBootstrapSamples</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-modality-assessment/index.html">ModalityAssessment</a></div><div class="brief "><p class="paragraph">Everything the pre-fit description needs about modality, in one object.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-131490974%2FFunctions%2F-2024213039" anchor-label="binSensitivity" id="-131490974%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bin-sensitivity.html"><span>bin</span><wbr></wbr><span><span>Sensitivity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-131490974%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="bin-sensitivity.html"><span class="token function">binSensitivity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">binCounts<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span><span class="token operator"> = </span>defaultBinSensitivityCounts</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">How the apparent mode count varies with the number of bins.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1256673934%2FFunctions%2F-2024213039" anchor-label="criticalBandwidth" id="-1256673934%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="critical-bandwidth.html"><span>critical</span><wbr></wbr><span><span>Bandwidth</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1256673934%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="critical-bandwidth.html"><span class="token function">criticalBandwidth</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxModes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The smallest bandwidth at which the estimate has at most this many modes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="560317196%2FFunctions%2F-2024213039" anchor-label="defaultTraceBandwidths" id="560317196%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-trace-bandwidths.html"><span>default</span><wbr></wbr><span>Trace</span><wbr></wbr><span><span>Bandwidths</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="560317196%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="default-trace-bandwidths.html"><span class="token function">defaultTraceBandwidths</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">numPoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumTracePoints</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">A geometric sweep of bandwidths spanning the range over which the mode count changes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1113967174%2FFunctions%2F-2024213039" anchor-label="density" id="1113967174%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="density.html"><span><span>density</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1113967174%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="density.html"><span class="token function">density</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandwidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span class="token punctuation">(</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The kernel density estimate at a bandwidth, as a function, so that it can be plotted by the library's existing density plot rather than by a new one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="402142507%2FFunctions%2F-2024213039" anchor-label="densityOnGrid" id="402142507%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="density-on-grid.html"><span>density</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Grid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="402142507%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="density-on-grid.html"><span class="token function">densityOnGrid</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandwidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">The kernel density estimate at a bandwidth, over the analyzer's grid.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1981100050%2FFunctions%2F-2024213039" anchor-label="grid" id="-1981100050%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="grid.html"><span><span>grid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1981100050%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="grid.html"><span class="token function">grid</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">The grid the density is evaluated on.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1345272605%2FFunctions%2F-2024213039" anchor-label="modeCountAt" id="1345272605%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mode-count-at.html"><span>mode</span><wbr></wbr><span>Count</span><wbr></wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1345272605%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mode-count-at.html"><span class="token function">modeCountAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandwidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many modes the estimate has at a bandwidth.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="695689377%2FFunctions%2F-2024213039" anchor-label="modesAt" id="695689377%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="modes-at.html"><span>modes</span><wbr></wbr><span><span>At</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="695689377%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="modes-at.html"><span class="token function">modesAt</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandwidth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a></div><div class="brief "><p class="paragraph">Where the modes of the estimate sit at a bandwidth.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="116948393%2FFunctions%2F-2024213039" anchor-label="modeTrace" id="116948393%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="mode-trace.html"><span>mode</span><wbr></wbr><span><span>Trace</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="116948393%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="mode-trace.html"><span class="token function">modeTrace</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bandwidths<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token operator"> = </span>defaultTraceBandwidths()</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-mode-trace-entry/index.html">ModeTraceEntry</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Modes against bandwidth over a sweep, which is the display an analyst reads to see whether an apparent structure survives smoothing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="638714785%2FFunctions%2F-2024213039" anchor-label="resetStartStream" id="638714785%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset-start-stream.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="638714785%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="reset-start-stream.html"><span class="token function">resetStartStream</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The resetStartStream method will position the RNG at the beginning of its stream. This is the same location in the stream as assigned when the RNG was created and initialized.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2004743175%2FFunctions%2F-2024213039" anchor-label="resetStartSubStream" id="-2004743175%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="reset-start-sub-stream.html"><span>reset</span><wbr></wbr><span>Start</span><wbr></wbr><span>Sub</span><wbr></wbr><span><span>Stream</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2004743175%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="reset-start-sub-stream.html"><span class="token function">resetStartSubStream</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Resets the position of the RNG at the start of the current substream</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2031254045%2FFunctions%2F-2024213039" anchor-label="test" id="2031254045%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="test.html"><span><span>test</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2031254045%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="test.html"><span class="token function">test</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">maxModes<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">numBootstrapSamples<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span>defaultNumBootstrapSamples</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-modality-test-result/index.html">ModalityTestResult</a></div><div class="brief "><p class="paragraph">Silverman's test of &quot;at most this many modes&quot;, by the smoothed bootstrap.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

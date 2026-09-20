@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SeparabilityBound</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.7        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.utilities.distributions.fitting.mixture/SeparabilityBound///PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.utilities.distributions.fitting.mixture</a><span class="delimiter">/</span><span class="current">SeparabilityBound</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Separability</span><wbr></wbr><span><span>Bound</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">SeparabilityBound</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/fitting/mixture/SeparabilityBound.kt#L63">source</a>)</span></span></div><p class="paragraph">How far a k-component mixture is from the nearest mixture with one component fewer, and the sample size that distance implies.</p><p class="paragraph"><strong>Why this is worth computing.</strong> Every measured statement about component recovery so far has been about what one procedure achieves. This is about what <i>any</i> procedure could achieve. If the true mixture is very close to some mixture with fewer components, then no amount of cleverness in the fitting recovers the count from a small sample: the two models are nearly indistinguishable in the data, and the question is information-theoretic rather than algorithmic.</p><p class="paragraph">The governing quantity is</p><pre>
+    eta(k) = inf over all (k-1)-component mixtures g of Hellinger( f(k), g )
+</pre><p class="paragraph">and classical testing theory gives a <strong>necessary</strong> condition on the sample size, of the order of one over eta squared, to tell the two apart with bounded error. It is a lower bound: no procedure does better, and a real procedure that must also estimate parameters does worse.</p><p class="paragraph"><strong>The infimum is approximated from above.</strong> The candidate set here is every mixture obtained by merging one adjacent pair of true components into a single distribution, over a catalog of families and a refinement of that family's moments. That is a subset of all (k-1)-component mixtures, so the value returned is at least the true infimum. Since the implied sample size varies as one over the square of the distance, over-stating the distance <strong>under</strong>-states the sample size: every figure this produces is a floor, not an estimate.</p><p class="paragraph">Only adjacent pairs are merged. For components ordered on the line and separated in the way the design separates them, a non-adjacent merge is further away, so it cannot supply the infimum.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1076456089%2FClasslikes%2F-2024213039" anchor-label="Bound" id="1076456089%2FClasslikes%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bound/index.html"><span><span>Bound</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1076456089%2FClasslikes%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-bound/index.html">Bound</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>label<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>hellinger<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>kolmogorov<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mergedPair<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mergedFamily<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>mergedComponent<span class="token operator">: </span><a href="../../ksl.utilities.distributions/-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">What the search found for one case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-130902108%2FFunctions%2F-2024213039" anchor-label="boundFor" id="-130902108%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bound-for.html"><span>bound</span><wbr></wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-130902108%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="bound-for.html"><span class="token function">boundFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">label<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">weights<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double-array/index.html">DoubleArray</a><span class="token punctuation">, </span></span><span class="parameter ">components<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ksl.utilities.distributions/-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">types<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">numRefinements<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">6</span><span class="token punctuation">, </span></span><span class="parameter ">numPoints<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">8001</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-bound/index.html">SeparabilityBound.Bound</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The closest (k-1)-component mixture reachable by merging one adjacent pair.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="695270944%2FFunctions%2F-2024213039" anchor-label="dkwSampleSize" id="695270944%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dkw-sample-size.html"><span>dkw</span><wbr></wbr><span>Sample</span><wbr></wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="695270944%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="dkw-sample-size.html"><span class="token function">dkwSampleSize</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">eta<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">alpha<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">0.05</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">The Dvoretzky–Kiefer–Wolfowitz sample size: how many observations are needed for the empirical distribution function to lie within a given distance of the truth, uniformly, with the requested confidence.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="71829894%2FFunctions%2F-2024213039" anchor-label="mergedMoments" id="71829894%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="merged-moments.html"><span>merged</span><wbr></wbr><span><span>Moments</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="71829894%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="merged-moments.html"><span class="token function">mergedMoments</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">weight1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">component1<span class="token operator">: </span><a href="../../ksl.utilities.distributions/-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a><span class="token punctuation">, </span></span><span class="parameter ">weight2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">component2<span class="token operator">: </span><a href="../../ksl.utilities.distributions/-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The mean and variance of the sub-mixture formed by two weighted components.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="460747753%2FFunctions%2F-2024213039" anchor-label="momentMatched" id="460747753%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="moment-matched.html"><span>moment</span><wbr></wbr><span><span>Matched</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="460747753%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="moment-matched.html"><span class="token function">momentMatched</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">type<span class="token operator">: </span><a href="../../ksl.utilities.random.rvariable/-r-v-parameters-type-ifc/index.html">RVParametersTypeIfc</a><span class="token punctuation">, </span></span><span class="parameter ">mean<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">variance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.utilities.distributions/-continuous-distribution-ifc/index.html">ContinuousDistributionIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Builds a distribution of the requested family with the requested mean and variance, or null where those moments are not attainable by that family.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1391991520%2FFunctions%2F-2024213039" anchor-label="near" id="-1391991520%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="near.html"><span><span>near</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1391991520%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="near.html"><span class="token function">near</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">a<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">b<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">tolerance<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="token operator"> = </span><span class="token constant">1.0E-9</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicates whether two moment values are close enough to treat as the same.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

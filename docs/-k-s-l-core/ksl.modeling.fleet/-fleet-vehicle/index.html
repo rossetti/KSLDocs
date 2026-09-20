@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>FleetVehicle</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    KSLCore
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+R1.7        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":KSLCore/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":KSLCore/main"
+                                       data-filter=":KSLCore/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    KSLCore
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="KSLCore::ksl.modeling.fleet/FleetVehicle///PointingToDeclaration//-2024213039">
+  <div class="breadcrumbs"><a href="../../../index.html">KSLCore</a><span class="delimiter">/</span><a href="../index.html">ksl.modeling.fleet</a><span class="delimiter">/</span><span class="current">FleetVehicle</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Fleet</span><wbr></wbr><span><span>Vehicle</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="index.html">FleetVehicle</a> <span><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a> </span><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>system<span class="token operator">: </span><a href="../-fleet-system/index.html">FleetSystem</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>loadCapacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>battery<span class="token operator">: </span><a href="../-battery/index.html">Battery</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>failureModel<span class="token operator">: </span><a href="../-failure-model/index.html">FailureModel</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../../ksl.simulation/-model-element/index.html">ModelElement</a>, <a href="../-fleet-vehicle-c-ifc/index.html">FleetVehicleCIfc</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/modeling/fleet/FleetVehicle.kt#L50">source</a>)</span></span></div><p class="paragraph">A vehicle: the permanent identity a modeller declares, names, and reads statistics from.</p><p class="paragraph">What it is <i>not</i> is the thing that decides, and it is not the thing that occupies space. Those are two other objects, and both are hidden. The vehicle <strong>composes</strong> a <span data-unresolved-link="ksl.modeling.fleet/VehicleBodyIfc///PointingToDeclaration/">VehicleBodyIfc</span> for its physical presence, because every substrate's body is a <code class="lang-kotlin">Resource</code> and a resource is passive by construction: inheriting one would expose a way to seize this vehicle as though it were a tool, which is exactly the modelling stance this subsystem exists to replace. And it holds a per-replication agent for its behaviour, because a <code class="lang-kotlin">KSLProcess</code> runs once and a vehicle must run in every replication.</p><p class="paragraph"><strong>Substrate-independent.</strong> Nothing here names a guide path, a projection or a plane. What a subclass supplies is a <span data-unresolved-link="ksl.modeling.fleet/FleetVehicle/body/#/PointingToDeclaration/">body</span>, a tow, and the two facts an interruption carries about <i>where a vehicle stopped</i> -- which is the only thing about stopping that differs between substrates.</p><p class="paragraph">A modeller names only the concrete subclass.</p><h4 class="tableheader">Inheritors</h4><div class="table"><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../../ksl.modeling.agv/-agv-vehicle/index.html">AgvVehicle</a></div></span></div><div></div></div></div><div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-free-path-vehicle/index.html">FreePathVehicle</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="tableheader">Constructors</h2>
+        <div class="table"><a data-name="1288908413%2FConstructors%2F-2024213039" anchor-label="FleetVehicle" id="1288908413%2FConstructors%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-togglable="CONSTRUCTOR" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-fleet-vehicle.html"><span>Fleet</span><wbr></wbr><span><span>Vehicle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1288908413%2FConstructors%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.jvm/-jvm-overloads/index.html"><span class="token annotation builtin">JvmOverloads</span></a></div></div><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">system<span class="token operator">: </span><a href="../-fleet-system/index.html">FleetSystem</a><span class="token punctuation">, </span></span><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">loadCapacity<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter ">battery<span class="token operator">: </span><a href="../-battery/index.html">Battery</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">failureModel<span class="token operator">: </span><a href="../-failure-model/index.html">FailureModel</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-1738812452%2FProperties%2F-2024213039" anchor-label="assignments" id="-1738812452%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="assignments.html"><span><span>assignments</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1738812452%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="assignments.html">assignments</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-assignment/index.html">Assignment</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Everything this vehicle is committed to. One at a time while capacity is one.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1418169995%2FProperties%2F-2024213039" anchor-label="battery" id="-1418169995%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="battery.html"><span><span>battery</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1418169995%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="battery.html">battery</a><span class="token operator">: </span><a href="../-battery/index.html">Battery</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">the vehicle's energy store, or null for a vehicle whose charge is not modelled. A vehicle with no battery reports no charging statistics, because a row that measures something the model does not have is a question its reader has to answer for themselves every time.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1297761267%2FProperties%2F-2024213039" anchor-label="bidPolicy" id="1297761267%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bid-policy.html"><span>bid</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1297761267%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="bid-policy.html">bidPolicy</a><span class="token operator">: </span><a href="../../ksl.modeling.fleet.policies/-bid-policy-ifc/index.html">BidPolicyIfc</a></div><div class="brief "><p class="paragraph">What it offers when a dispatcher calls for proposals. Consulted from the negotiated phase.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="60614490%2FProperties%2F-2024213039" anchor-label="capacityUtilization" id="60614490%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="capacity-utilization.html"><span>capacity</span><wbr></wbr><span><span>Utilization</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="60614490%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="capacity-utilization.html">capacityUtilization</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How much of the room was used, time-weighted, or null for a single-load vehicle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1595267844%2FProperties%2F-2024213039" anchor-label="cumulativeBlockedTime" id="-1595267844%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="cumulative-blocked-time.html"><span>cumulative</span><wbr></wbr><span>Blocked</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1595267844%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="cumulative-blocked-time.html">cumulativeBlockedTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How long this vehicle has been blocked so far this replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="896718396%2FProperties%2F-2024213039" anchor-label="currentAssignment" id="896718396%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-assignment.html"><span>current</span><wbr></wbr><span><span>Assignment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="896718396%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="current-assignment.html">currentAssignment</a><span class="token operator">: </span><a href="../-assignment/index.html">Assignment</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The task it is committed to, or null.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1875378569%2FProperties%2F-2024213039" anchor-label="currentLocationName" id="1875378569%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-location-name.html"><span>current</span><wbr></wbr><span>Location</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1875378569%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="current-location-name.html">currentLocationName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Where the vehicle is, as a place name, <strong>updated while it travels</strong>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1953516844%2FProperties%2F-2024213039" anchor-label="currentVelocity" id="1953516844%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="current-velocity.html"><span>current</span><wbr></wbr><span><span>Velocity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1953516844%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="current-velocity.html">currentVelocity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How fast it is going now, which is not the mean of its velocity distribution.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1288141575%2FProperties%2F-2024213039" anchor-label="dispositionPolicy" id="-1288141575%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="disposition-policy.html"><span>disposition</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1288141575%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="disposition-policy.html">dispositionPolicy</a><span class="token operator">: </span><a href="../../ksl.modeling.fleet.policies/-disposition-policy-ifc/index.html">DispositionPolicyIfc</a></div><div class="brief "><p class="paragraph">What it does with itself when the dispatcher has no work. Per vehicle, so a fleet may be heterogeneous.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="533425126%2FProperties%2F-2024213039" anchor-label="distanceTravelled" id="533425126%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="distance-travelled.html"><span>distance</span><wbr></wbr><span><span>Travelled</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="533425126%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="distance-travelled.html">distanceTravelled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How far this vehicle has travelled in this replication, in the layout's own length units.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-248711975%2FProperties%2F-2024213039" anchor-label="failureModel" id="-248711975%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="failure-model.html"><span>failure</span><wbr></wbr><span><span>Model</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248711975%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="failure-model.html">failureModel</a><span class="token operator">: </span><a href="../-failure-model/index.html">FailureModel</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">when the vehicle breaks down and how long it takes to repair, or null for a vehicle that does not fail. Like <span data-unresolved-link="ksl.modeling.fleet/FleetVehicle//#ksl.modeling.fleet.FleetSystem#kotlin.String?#kotlin.Int#ksl.modeling.fleet.Battery?#ksl.modeling.fleet.FailureModel?/PointingToCallableParameters(3)/">battery</span>, a vehicle without one reports no failure rows.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-70063568%2FProperties%2F-2024213039" anchor-label="fracTimeAtCapacity" id="-70063568%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-at-capacity.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span>At</span><wbr></wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-70063568%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frac-time-at-capacity.html">fracTimeAtCapacity</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How much of the time it was full, or null for a single-load vehicle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="994189169%2FProperties%2F-2024213039" anchor-label="fracTimeBlocked" id="994189169%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-blocked.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Blocked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994189169%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frac-time-blocked.html">fracTimeBlocked</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Fraction of time stopped by space it could not have; flat zero on a free path.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="299244108%2FProperties%2F-2024213039" anchor-label="fracTimeCharging" id="299244108%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-charging.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Charging</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="299244108%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frac-time-charging.html">fracTimeCharging</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The fraction of time spent on a charger. Registered only for a vehicle that has a battery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="522763776%2FProperties%2F-2024213039" anchor-label="fracTimeFailed" id="522763776%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-failed.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Failed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="522763776%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frac-time-failed.html">fracTimeFailed</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The fraction of time the vehicle was broken down. Registered only if it can fail.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="184069903%2FProperties%2F-2024213039" anchor-label="fracTimeMoving" id="184069903%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-moving.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Moving</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="184069903%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frac-time-moving.html">fracTimeMoving</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Fraction of time travelling, loaded or empty.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1878490338%2FProperties%2F-2024213039" anchor-label="fracTimeMovingEmpty" id="-1878490338%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-moving-empty.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span>Moving</span><wbr></wbr><span><span>Empty</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1878490338%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frac-time-moving-empty.html">fracTimeMovingEmpty</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Fraction of time travelling empty.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1458806809%2FProperties%2F-2024213039" anchor-label="fracTimeOnTask" id="1458806809%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-on-task.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Task</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1458806809%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frac-time-on-task.html">fracTimeOnTask</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Fraction of time committed to a task, whether moving or standing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-425699932%2FProperties%2F-2024213039" anchor-label="fracTimeTransporting" id="-425699932%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frac-time-transporting.html"><span>frac</span><wbr></wbr><span>Time</span><wbr></wbr><span><span>Transporting</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-425699932%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="frac-time-transporting.html">fracTimeTransporting</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a></div><div class="brief "><p class="paragraph">Fraction of time travelling with a load aboard.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2105823700%2FProperties%2F-2024213039" anchor-label="fractionCharged" id="2105823700%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="fraction-charged.html"><span>fraction</span><wbr></wbr><span><span>Charged</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2105823700%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="fraction-charged.html">fractionCharged</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph"><a href="state-of-charge.html">stateOfCharge</a> as a fraction of capacity, or NaN for a vehicle with no battery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1004707845%2FProperties%2F-2024213039" anchor-label="hasAssignment" id="-1004707845%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="has-assignment.html"><span>has</span><wbr></wbr><span><span>Assignment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1004707845%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="has-assignment.html">hasAssignment</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when the vehicle is committed to anything at all.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-728721688%2FProperties%2F-2024213039" anchor-label="homeBase" id="-728721688%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="home-base.html"><span>home</span><wbr></wbr><span><span>Base</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-728721688%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="home-base.html">homeBase</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Where the vehicle waits when it has nothing to do, or null to wait where it stops.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1137077503%2FProperties%2F-2024213039" anchor-label="interruptionPolicy" id="-1137077503%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="interruption-policy.html"><span>interruption</span><wbr></wbr><span><span>Policy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1137077503%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="interruption-policy.html">interruptionPolicy</a><span class="token operator">: </span><a href="../-interruption-policy-ifc/index.html">InterruptionPolicyIfc</a></div><div class="brief "><p class="paragraph">What happens when this vehicle stops and cannot carry on by itself.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1141030719%2FProperties%2F-2024213039" anchor-label="isAtCapacity" id="-1141030719%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-at-capacity.html"><span>is</span><wbr></wbr><span>At</span><wbr></wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1141030719%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-at-capacity.html">isAtCapacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when there is no room for another load. The complement of <a href="spare-capacity.html">spareCapacity</a> being zero.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1078248579%2FProperties%2F-2024213039" anchor-label="isAvailable" id="1078248579%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-available.html"><span>is</span><wbr></wbr><span><span>Available</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1078248579%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-available.html">isAvailable</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when it has declared itself available and holds no assignment. Asserted by the vehicle, never inferred by the dispatcher.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1794314388%2FProperties%2F-2024213039" anchor-label="isCarryingALoad" id="-1794314388%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-carrying-a-load.html"><span>is</span><wbr></wbr><span>Carrying</span><wbr></wbr><span><span>ALoad</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1794314388%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-carrying-a-load.html">isCarryingALoad</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when anything is aboard.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1059125999%2FProperties%2F-2024213039" anchor-label="isFailed" id="-1059125999%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-failed.html"><span>is</span><wbr></wbr><span><span>Failed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1059125999%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-failed.html">isFailed</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True while the vehicle is broken down.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-37585515%2FProperties%2F-2024213039" anchor-label="isFlat" id="-37585515%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-flat.html"><span>is</span><wbr></wbr><span><span>Flat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-37585515%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-flat.html">isFlat</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True when the vehicle has no charge left. Always false for a vehicle with no battery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1322180930%2FProperties%2F-2024213039" anchor-label="isOutOfService" id="-1322180930%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-out-of-service.html"><span>is</span><wbr></wbr><span>Out</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Service</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1322180930%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="is-out-of-service.html">isOutOfService</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True from the moment the vehicle stops until its policy has put it right -- and thereafter, for good, if the policy did not.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="445124841%2FProperties%2F-2024213039" anchor-label="isStranded" id="445124841%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-stranded.html"><span>is</span><wbr></wbr><span><span>Stranded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="445124841%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-stranded.html">isStranded</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True while the vehicle is stopped mid-route because it ran out of charge.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1148669046%2FProperties%2F-2024213039" anchor-label="isUnderTow" id="-1148669046%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-under-tow.html"><span>is</span><wbr></wbr><span>Under</span><wbr></wbr><span><span>Tow</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1148669046%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-under-tow.html">isUnderTow</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">True while somebody is moving it rather than it moving itself.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="789811192%2FProperties%2F-2024213039" anchor-label="loadCapacity" id="789811192%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="load-capacity.html"><span>load</span><wbr></wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="789811192%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="load-capacity.html">loadCapacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many loads this vehicle can carry at once.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-812810478%2FProperties%2F-2024213039" anchor-label="loadsPerLoadedMove" id="-812810478%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="loads-per-loaded-move.html"><span>loads</span><wbr></wbr><span>Per</span><wbr></wbr><span>Loaded</span><wbr></wbr><span><span>Move</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-812810478%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="loads-per-loaded-move.html">loadsPerLoadedMove</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How many loads a loaded move carried, or null for a single-load vehicle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1197535408%2FProperties%2F-2024213039" anchor-label="loadsPerTour" id="1197535408%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="loads-per-tour.html"><span>loads</span><wbr></wbr><span>Per</span><wbr></wbr><span><span>Tour</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1197535408%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="loads-per-tour.html">loadsPerTour</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How many loads each completed round carried.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1661249047%2FProperties%2F-2024213039" anchor-label="manifest" id="-1661249047%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="manifest.html"><span><span>manifest</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1661249047%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="manifest.html">manifest</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ksl.modeling.entity/-process-model/-entity/index.html">ProcessModel.Entity</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">What is aboard, in the order it came aboard.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-482316402%2FProperties%2F-2024213039" anchor-label="minStateOfCharge" id="-482316402%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="min-state-of-charge.html"><span>min</span><wbr></wbr><span>State</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Charge</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-482316402%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="min-state-of-charge.html">minStateOfCharge</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The lowest charge the vehicle was seen to hold during the replication, one observation per replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-647398871%2FProperties%2F-2024213039" anchor-label="nominalVelocity" id="-647398871%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="nominal-velocity.html"><span>nominal</span><wbr></wbr><span><span>Velocity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-647398871%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="nominal-velocity.html">nominalVelocity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How fast this vehicle travels, as most recently sampled.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1286092546%2FProperties%2F-2024213039" anchor-label="numCarriedPast" id="1286092546%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-carried-past.html"><span>num</span><wbr></wbr><span>Carried</span><wbr></wbr><span><span>Past</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1286092546%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-carried-past.html">numCarriedPast</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">Loads that were aboard, bound for a stop this vehicle was told past, and stayed on.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-234957810%2FProperties%2F-2024213039" anchor-label="numChargingSessions" id="-234957810%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-charging-sessions.html"><span>num</span><wbr></wbr><span>Charging</span><wbr></wbr><span><span>Sessions</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234957810%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-charging-sessions.html">numChargingSessions</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How many times the vehicle charged. Registered only for a vehicle that has a battery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="204355955%2FProperties%2F-2024213039" anchor-label="numFailures" id="204355955%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-failures.html"><span>num</span><wbr></wbr><span><span>Failures</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="204355955%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-failures.html">numFailures</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How many times the vehicle failed. Registered only if it can fail.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="459720716%2FProperties%2F-2024213039" anchor-label="numLoadsAboard" id="459720716%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-loads-aboard.html"><span>num</span><wbr></wbr><span>Loads</span><wbr></wbr><span><span>Aboard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="459720716%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-loads-aboard.html">numLoadsAboard</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many loads are aboard.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="352260043%2FProperties%2F-2024213039" anchor-label="numLoadsAboardResponse" id="352260043%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-loads-aboard-response.html"><span>num</span><wbr></wbr><span>Loads</span><wbr></wbr><span>Aboard</span><wbr></wbr><span><span>Response</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="352260043%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-loads-aboard-response.html">numLoadsAboardResponse</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-t-w-response-c-ifc/index.html">TWResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The mean number aboard, or null for a single-load vehicle.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-299828835%2FProperties%2F-2024213039" anchor-label="numStopsSkipped" id="-299828835%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-stops-skipped.html"><span>num</span><wbr></wbr><span>Stops</span><wbr></wbr><span><span>Skipped</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-299828835%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-stops-skipped.html">numStopsSkipped</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">How much expressing this vehicle did. Zero for a fleet whose control never says <code class="lang-kotlin">Skip</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1086789247%2FProperties%2F-2024213039" anchor-label="numTasksCompleted" id="1086789247%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-tasks-completed.html"><span>num</span><wbr></wbr><span>Tasks</span><wbr></wbr><span><span>Completed</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1086789247%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-tasks-completed.html">numTasksCompleted</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-710982410%2FProperties%2F-2024213039" anchor-label="numTimesBlocked" id="-710982410%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-times-blocked.html"><span>num</span><wbr></wbr><span>Times</span><wbr></wbr><span><span>Blocked</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-710982410%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="num-times-blocked.html">numTimesBlocked</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a></div><div class="brief "><p class="paragraph">How many times it was stopped by space it could not have.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1097935565%2FProperties%2F-2024213039" anchor-label="numTimesStranded" id="-1097935565%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="num-times-stranded.html"><span>num</span><wbr></wbr><span>Times</span><wbr></wbr><span><span>Stranded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1097935565%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="num-times-stranded.html">numTimesStranded</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-counter-c-ifc/index.html">CounterCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How many times the vehicle stopped mid-route for want of charge.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="216482612%2FProperties%2F-2024213039" anchor-label="operatingTime" id="216482612%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="operating-time.html"><span>operating</span><wbr></wbr><span><span>Time</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="216482612%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="operating-time.html">operatingTime</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How long this vehicle has been anything other than idle in this replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="81897402%2FProperties%2F-2024213039" anchor-label="ridersAboard" id="81897402%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="riders-aboard.html"><span>riders</span><wbr></wbr><span><span>Aboard</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="81897402%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="riders-aboard.html">ridersAboard</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-stop/-ride/index.html">Stop.Ride</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Who is aboard without a task, in the order they boarded.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1517499503%2FProperties%2F-2024213039" anchor-label="spareCapacity" id="-1517499503%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="spare-capacity.html"><span>spare</span><wbr></wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1517499503%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="spare-capacity.html">spareCapacity</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many more loads this vehicle could take.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1084602490%2FProperties%2F-2024213039" anchor-label="stateOfCharge" id="-1084602490%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="state-of-charge.html"><span>state</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Charge</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084602490%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="state-of-charge.html">stateOfCharge</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></div><div class="brief "><p class="paragraph">How much charge is left, or NaN for a vehicle with no battery.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1706689081%2FProperties%2F-2024213039" anchor-label="stopControl" id="-1706689081%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stop-control.html"><span>stop</span><wbr></wbr><span><span>Control</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1706689081%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">var </span><a href="stop-control.html">stopControl</a><span class="token operator">: </span><a href="../-stop-control-ifc/index.html">StopControlIfc</a></div><div class="brief "><p class="paragraph">Who decides, stop by stop, whether this vehicle serves the next place in its tour.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1959573673%2FProperties%2F-2024213039" anchor-label="system" id="1959573673%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="system.html"><span><span>system</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1959573673%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="system.html">system</a><span class="token operator">: </span><a href="../-fleet-system/index.html">FleetSystem</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-825601989%2FProperties%2F-2024213039" anchor-label="timeOutOfService" id="-825601989%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="time-out-of-service.html"><span>time</span><wbr></wbr><span>Out</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Service</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-825601989%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="time-out-of-service.html">timeOutOfService</a><span class="token operator">: </span><a href="../../ksl.modeling.variable/-response-c-ifc/index.html">ResponseCIfc</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">How long the vehicle was out of service, one observation per failure.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1779216248%2FProperties%2F-2024213039" anchor-label="zonesEntered" id="-1779216248%2FProperties%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="zones-entered.html"><span>zones</span><wbr></wbr><span><span>Entered</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1779216248%2FProperties%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="zones-entered.html">zonesEntered</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">How many units of discretised space it has entered this replication.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-498212330%2FFunctions%2F-2024213039" anchor-label="failureInterruption" id="-498212330%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="failure-interruption.html"><span>failure</span><wbr></wbr><span><span>Interruption</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-498212330%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="failure-interruption.html"><span class="token function">failureInterruption</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">failureNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">repairTime<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-interruption/-failed/index.html">Interruption.Failed</a></div><div class="brief "><p class="paragraph">Builds the interruption for a breakdown, with whatever facts about <i>where it stopped</i> the substrate can supply -- what space it is denying to others, and what it was doing.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="339306728%2FFunctions%2F-2024213039" anchor-label="initialize" id="339306728%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="initialize.html"><span><span>initialize</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="339306728%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="initialize.html"><span class="token function">initialize</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">This method should be overridden by subclasses that need actions performed to initialize prior to a replication. It is called once before each replication occurs if the model element wants initialization. It is called after beforeReplication() is called</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1445357468%2FFunctions%2F-2024213039" anchor-label="outOfChargeInterruption" id="-1445357468%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="out-of-charge-interruption.html"><span>out</span><wbr></wbr><span>Of</span><wbr></wbr><span>Charge</span><wbr></wbr><span><span>Interruption</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1445357468%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="out-of-charge-interruption.html"><span class="token function">outOfChargeInterruption</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-interruption/-out-of-charge/index.html">Interruption.OutOfCharge</a></div><div class="brief "><p class="paragraph">Builds the interruption for a flat battery. See <a href="failure-interruption.html">failureInterruption</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-766927958%2FFunctions%2F-2024213039" anchor-label="replicationEnded" id="-766927958%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replication-ended.html"><span>replication</span><wbr></wbr><span><span>Ended</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-766927958%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="replication-ended.html"><span class="token function">replicationEnded</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Records the replication's lowest charge.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1663751472%2FFunctions%2F-2024213039" anchor-label="ridersBoundFor" id="-1663751472%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="riders-bound-for.html"><span>riders</span><wbr></wbr><span>Bound</span><wbr></wbr><span><span>For</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1663751472%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="riders-bound-for.html"><span class="token function">ridersBoundFor</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">location<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-stop/-ride/index.html">Stop.Ride</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Who aboard is bound for <a href="riders-bound-for.html">location</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-809008052%2FFunctions%2F-2024213039" anchor-label="toString" id="-809008052%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr></wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-809008052%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Includes the model name, the id, the model element name, the parent name, and parent id</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="446317436%2FFunctions%2F-2024213039" anchor-label="towJourney" id="446317436%2FFunctions%2F-2024213039" data-filterable-set=":KSLCore/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":KSLCore/main" data-filterable-set=":KSLCore/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="tow-journey.html"><span>tow</span><wbr></wbr><span><span>Journey</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="446317436%2FFunctions%2F-2024213039"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">protected </span><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="tow-journey.html"><span class="token function">towJourney</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">location<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">waiter<span class="token operator">: </span><a href="../../ksl.modeling.entity/-process-model/-entity/index.html">ProcessModel.Entity</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ksl.modeling.entity/-hold-queue/index.html">HoldQueue</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Commands the substrate to move this vehicle while it is under tow.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
