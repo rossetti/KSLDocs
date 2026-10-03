@@ -19,7 +19,6 @@
         }
       }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
@@ -44,7 +43,7 @@
         </button>
         <div class="navigation-controls--break ui-kit_mobile-only"></div>
         <div class="library-version" id="library-version">
-R1.7        </div>
+R1.7.1        </div>
         <div class="navigation-controls">
         <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
                 <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
@@ -109,7 +108,7 @@ R1.7        </div>
   <div class="cover ">
     <h1 class="cover"><span>log</span><wbr></wbr><span><span>Likelihood</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="log-likelihood.html"><span class="token function">logLikelihood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/Triangular.kt#L194">source</a>)</span></span></div><p class="paragraph">Computes the natural log of the pdf function evaluated at <a href="../-p-d-f-ifc/log-likelihood.html">x</a>. Implementations may want to specify computationally efficient formulas for this function.</p></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":KSLCore/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="log-likelihood.html"><span class="token function">logLikelihood</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">x<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-double/index.html">Double</a><span class="source-link-wrapper"><span class="source-link" data-element-type="source-link">(<a href="https://github.com/rossetti/KSL/tree/main/KSLCore/src/main/kotlin/ksl/utilities/distributions/Triangular.kt#L194">source</a>)</span></span></div><p class="paragraph">Computes the natural log of the pdf function evaluated at <a href="../-p-d-f-ifc/log-likelihood.html">x</a>. Implementations may want to specify computationally efficient formulas for this function.</p><p class="paragraph">Only a density that is exactly zero, because <a href="../-p-d-f-ifc/log-likelihood.html">x</a> is outside the support or because the density underflowed, is replaced by the floor ln(Double.MIN_VALUE), about -744.44. A small positive density is a legitimate tail value and keeps its true logarithm; treating densities below a numerical tolerance as zero added roughly 1,450 to BIC for each such observation and depended on the units the data were recorded in. The floor is the logarithm of the smallest positive double, so the result is continuous and increasing in the density.</p><p class="paragraph">A distribution that computes its log-density directly (Gamma, Lognormal, Weibull, PearsonType5) returns the exact value even where <code class="lang-kotlin">pdf</code> underflows, which can lie below the floor. An observation astronomically far in a fitted tail then scores as badly as it really does, and can score worse than one outside the support; both mark a candidate that fits very poorly.</p><p class="paragraph">The floor keeps single-distribution BIC and AIC finite and rankable. The mixture code's <code class="lang-kotlin">MixtureLogLikelihood</code> deliberately returns negative infinity instead and leaves the decision to its caller, since a mixture assigning no density to an observation is itself the finding.</p></div></div>
 </div>
     <div class="footer">
         <div class="footer--container">
